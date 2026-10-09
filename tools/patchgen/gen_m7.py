@@ -49,6 +49,7 @@ M8_FORCE_SITES = True
 # sites inside functions forces.cpp replaces (their bounds are dead code) and the per-record int[42] of the AI
 # force records, which keeps Koei's layout
 M8_SKIP = {0x4812d4, 0x4814c8, 0x4814e8, 0x481ac8, 0x481aea, 0x4792e4, 0x4798d2,
+           0x4811b8, 0x5f69aa, 0x5f69f8, 0x5f6a28, 0x5f6a58, 0x5f6a88, 0x5f6ab8, 0x5f6ae8,   # replaced by forces.cpp
            0x650dff, 0x650eb3}       # per-force column blocks of the force list: rebased separately (M8_FORCES.md)
 m8_city, m8_force = [], []
 for f in sorted(glob.glob(f'{PROJ}/m8_review/result_*.jsonl')):
@@ -127,7 +128,9 @@ for r in review:
     else:
         widen[va] = expr
 # ---- M8 (M8_FORCES.md): force / corps constants and the relocation of the per-force storage (m8_sites.py).
-# Stage 1 keeps every value below 128 (R <= 59, F <= 64), so the imm8 fields are patched in place.
+# R goes up to 249, so a value in R (F = R+5 up to 254) does not fit a sign-extended imm8: those instructions are
+# re-encoded with an imm32 in caves, like the M7 base constants. Byte operands (cmp al, imm8 + unsigned branch)
+# and constant patches keep their byte.
 if M8_FORCE_SITES:
     import m8_sites
     for r in m8_force:
@@ -136,9 +139,13 @@ if M8_FORCE_SITES:
             continue
         if va in m8_sites.FIXED:
             r = dict(r, patch=m8_sites.FIXED[va])
-        size = 4 if r['encoding'] == 'imm32' else 1
-        add_field(va, locate(va, int(str(r['value']), 0), size), size, norm(r['patch']),
-                  f"[M8 {r['role']}] {insn[va][1]} {insn[va][2]}")
+        expr = norm(r['patch'])
+        if r['encoding'] == 'imm32':
+            add_field(va, locate(va, int(str(r['value']), 0), 4), 4, expr, f"[M8 {r['role']}] {insn[va][1]} {insn[va][2]}")
+        elif va in m8_sites.BYTE_OK or not re.search(r'\bR\b', expr):
+            add_field(va, locate(va, int(str(r['value']), 0), 1), 1, expr, f"[M8 {r['role']}] {insn[va][1]} {insn[va][2]}")
+        else:
+            widen[va] = expr
     for va, old, size, expr, comment in m8_sites.FIELD:
         add_field(va, locate(va, old, size), size, norm(expr), f'[M8] {comment}')
     for start, length, text, comment in m8_sites.REWRITE:
@@ -191,8 +198,8 @@ PHASE_C_TEXT = {
 for va, text in PHASE_C_TEXT.items():
     widen[va] = 'TEXT'
     WIDEN_TEXT[va] = (None, text)
-if M8_FORCE_SITES:                              # M8 stack arrays -> STKARR slots (re-encoded in caves)
-    for va, old, new in m8_sites.STACK:
+if M8_FORCE_SITES:                              # M8 stack arrays, bit-set rows, code clamps (re-encoded in caves)
+    for va, old, new in m8_sites.STACK + m8_sites.CAVE_TEXT:
         assert f'{insn[va][1]} {insn[va][2]}' == old, (hex(va), old)
         widen[va] = 'TEXT'
         WIDEN_TEXT[va] = (None, new)
@@ -222,10 +229,15 @@ DETOUR_HAND = {
     # keeps its length (the TS / save layouts of convert_scen.py stay valid) and no city bit is lost
     # (streams without the 'WIDE' header mark, i.e. saves made before phase C: one byte per extra dword
     # written after the tail, as phase B did)
-    0x680729: 'push {CITYBITS}; mov ecx, esi; call 0x481b50; add ebp, 0x5c; push ebp; mov ecx, esi; call 0x481b50; '
+    # M8: the flag bitset<47> after it (composite +0x5c) lives in FBITS now: its first 2 dwords keep their place,
+    # the bytes beyond 64 forces follow the extra city bytes in the reserved tail
+    0x680729: 'push {CITYBITS}; mov ecx, esi; call 0x481b50; push {FBITS}; mov ecx, esi; call 0x481b50; '
               'cmp dword ptr [{IDWIDE}], 0; je O; '
               'mov ebp, {CITYBITS+8}; L: cmp ebp, {CITYBITS+8+MAX(0,((C+7)>>3)-8)}; jae D; push ebp; mov ecx, esi; '
-              'call 0x479620; inc ebp; jmp L; D: lea eax, [ebx + {0xc0-MAX(0,((C+7)>>3)-8)}]; jmp E; '
+              'call 0x479620; inc ebp; jmp L; '
+              'D: mov ebp, {FBITS+8}; L3: cmp ebp, {FBITS+8+MAX(0,((R+12)>>3)-8)}; jae D3; push ebp; mov ecx, esi; '
+              'call 0x479620; inc ebp; jmp L3; '
+              'D3: lea eax, [ebx + {0xc0-MAX(0,((C+7)>>3)-8)-MAX(0,((R+12)>>3)-8)}]; jmp E; '
               'O: mov ebp, {CITYBITS+8}; L2: cmp ebp, {CITYBITS+4*((C+31)>>5)}; jae D2; push ebp; mov ecx, esi; '
               'call 0x479620; add ebp, 4; jmp L2; D2: lea eax, [ebx + 0xc0]; E: nop',
 }

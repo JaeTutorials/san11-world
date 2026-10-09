@@ -106,8 +106,9 @@ def scen_layout(C, N, wide=False, R=42):
     """R: regular forces (M8_FORCES.md); F = R+5 force and corps records, each force record with F relations"""
     w = 1 if wide else 0
     F = R + 5
+    W = (F + 31) // 32          # dwords of the force bit set (+0x50), 2 for up to 64 forces
     secs = [('filehdr', 1, HDR), ('scen_info', 1, 595), ('force_desc', 42, 369), ('world_head', 1, 11),
-            ('building', N, BLD), ('person', 850, PERSON_SCEN), ('item', 100, 57 + w), ('force', F, 72 + w + F - 47),
+            ('building', N, BLD), ('person', 850, PERSON_SCEN), ('item', 100, 57 + w), ('force', F, 72 + w + F - 47 + 4 * (W - 2)),
             ('army', F, 8 + 2 * w), ('city', C, CITY_SCEN), ('gate', G, 64), ('port', P, 64), ('type14', 84, 87 + 2 * w)]
     return _place(secs, 0)
 
@@ -136,9 +137,10 @@ def forces_expand(W, C, N, R):
     """wide scenario stream with 47 forces/corps -> R regular forces (F = R+5); R = 42 gives W back"""
     if R == 42:
         return W
-    if not 42 < R <= 59:
-        raise ConvError(f'regular force count {R}: 42..59 supported (64 forces, the force bit sets are 64-bit)')
+    if not 42 < R <= min(249, C):
+        raise ConvError(f'regular force count {R}: 42..{min(249, C)} supported (no more than the cities, F = R+5 <= 254)')
     F = R + 5
+    NW = (F + 31) // 32                                     # dwords of the force bit set
     L, end = scen_layout(C, N, wide=True)
     if len(W) != end or W[0x2c:0x30] != WIDE_MARK:
         raise ConvError('not a wide scenario stream of this layout')
@@ -190,7 +192,7 @@ def forces_expand(W, C, N, R):
         for j in range(47):
             if bits >> j & 1:
                 nb |= 1 << newid[j]
-        tail[6:14] = struct.pack('<Q', nb)
+        tail[6:14] = nb.to_bytes(4 * NW, 'little')           # F bits (NW dwords)
         out_f.append(bytes(r[:4]) + bytes(rel) + bytes(tail))
 
     # corps: force, number, leader i16, (type, id i16) x 2

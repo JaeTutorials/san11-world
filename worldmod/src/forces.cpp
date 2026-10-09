@@ -74,6 +74,7 @@ void forceClearRows(uint8_t* self) {
     if (id < 0) return;
     memset(g_f->FREL + id * g_f->F, 0, g_f->F);
     memset(g_f->FA64 + id * g_f->F, 0, g_f->F);
+    memset(g_f->FMASK + id * g_f->W, 0, g_f->W * 4);
 }
 
 // one byte through a game stream exactly like the per-byte loop of 0x481ae0
@@ -99,6 +100,84 @@ static void serRow(uint8_t* stream, uint8_t* member, uint8_t* table, int off) {
 }
 void* __fastcall forceSerRel(uint8_t* stream, int, uint8_t* member) { serRow(stream, member, g_f->FREL, 0x0c); return stream; }
 void* __fastcall forceSerA64(uint8_t* stream, int, uint8_t* member) { serRow(stream, member, g_f->FA64, 0x64); return stream; }
+
+// ---- bit sets with one bit per force (64-bit in Koei's layout): rows of W = (F+31)/32 dwords
+//   FMASK  force +0x50 (test 0x4811b0, pair set 0x4b4f40, checks in 0x482050, serializer at 0x481dbd)
+//   AIM0/1 AI regular-force records +0 / +8 (accessors 0x5f69a0..0x5f6ae0, inline 0x5f86ea, AI serializer)
+//   FBITS  the flag bitset<47> of the static composite 0x9c43e80 (+0x58; methods rewritten in m8_sites.py)
+static uint32_t* maskRow(uint32_t* table, int row) { return table + row * g_f->W; }
+static bool bitGet(const uint32_t* row, int i) { return (row[i >> 5] >> (i & 31)) & 1; }
+static void bitPut(uint32_t* row, int i, bool v) { if (v) row[i >> 5] |= 1u << (i & 31); else row[i >> 5] &= ~(1u << (i & 31)); }
+
+// cdecl(force) -> its FMASK row (Koei's own member for an object outside FORCEARR)
+uint32_t* __cdecl forceMaskRow(uint8_t* force) {
+    int id = forceId(force);
+    return id >= 0 ? maskRow(g_f->FMASK, id) : (uint32_t*)(force + 0x50);
+}
+// thiscall(force, other) ret 4 (0x4811b0)
+int __fastcall forceTestMask(uint8_t* self, int, int other) {
+    if (other < 0 || other >= g_f->F) return 0;
+    int id = forceId(self);
+    if (id < 0) return other < 64 ? bitGet((uint32_t*)(self + 0x50), other) : 0;
+    return bitGet(maskRow(g_f->FMASK, id), other);
+}
+// stdcall(force a, force b, value) ret 0xc (0x4b4f40): the bit of b in a's set and of a in b's set
+void __stdcall forceSetMaskPair(int a, int b, int value) {
+    if (a < 0 || b < 0 || a >= g_f->F || b >= g_f->F || a == b) return;
+    bitPut(maskRow(g_f->FMASK, a), b, value != 0);
+    bitPut(maskRow(g_f->FMASK, b), a, value != 0);
+}
+
+// one dword through a game stream like 0x481b50 (obfuscation key per dword)
+static void serDword(uint8_t* stream, uint32_t* p) {
+    typedef uint32_t(__thiscall* KeyFn)(void*);
+    typedef void(__thiscall* IoFn)(void*, void*, int);
+    KeyFn key = (KeyFn)0x43a820;
+    int reading = *(int*)(stream + 8) == 1, obf = *(int*)(stream + 0x68) != 0;
+    if (!reading && obf) *p ^= key(stream);
+    if (reading) ((IoFn)0x46ff20)(stream, p, 4); else ((IoFn)0x470180)(stream, p, 4);
+    if (reading && obf) *p ^= key(stream);
+}
+// thiscall(stream, &force+0x50) ret 4, in place of 0x481b50 at 0x481dbd: W dwords of the force's FMASK row
+void* __fastcall forceSerMask(uint8_t* stream, int, uint8_t* member) {
+    int id = forceId(member - 0x50);
+    for (int k = 0; k < g_f->W; k++) {
+        uint32_t scratch = 0;
+        serDword(stream, id >= 0 ? maskRow(g_f->FMASK, id) + k : (k < 2 ? (uint32_t*)member + k : &scratch));
+    }
+    return stream;
+}
+// cdecl(stream, record) from the AI sub-object serializer (rewritten loop at 0x479815): both bit sets of AI
+// regular-force record k
+void __cdecl forceSerAIMasks(uint8_t* stream, int k) {
+    for (int t = 0; t < 2; t++)
+        for (int j = 0; j < g_f->W; j++) {
+            uint32_t scratch = 0;
+            serDword(stream, k >= 0 && k < g_f->R ? maskRow(t ? g_f->AIM1 : g_f->AIM0, k) + j : &scratch);
+        }
+}
+// AI regular-force records (stdcall, record = regular force id)
+void __stdcall aiReset(int f) {                     // 0x5f69a0
+    if (f < 0 || f >= g_f->R) return;
+    memset(maskRow(g_f->AIM0, f), 0, g_f->W * 4);
+    memset(maskRow(g_f->AIM1, f), 0, g_f->W * 4);
+    uint8_t* r = g_f->AIFREG + f * 0xd4;
+    *(uint32_t*)(r + 0xc8) = 0x7fffffff;
+    r[0xd0] = 0; r[0xd1] = 0;
+}
+static void aiClear(uint32_t* t, int f) { if (f >= 0 && f < g_f->R) memset(maskRow(t, f), 0, g_f->W * 4); }
+static void aiSet(uint32_t* t, int f, int bit, const int* val) {
+    if (f >= 0 && f < g_f->R && bit >= 0 && bit < g_f->W * 32) bitPut(maskRow(t, f), bit, *val != 0);
+}
+static int aiTest(uint32_t* t, int f, int bit) {
+    return f >= 0 && f < g_f->R && bit >= 0 && bit < g_f->W * 32 ? bitGet(maskRow(t, f), bit) : 0;
+}
+void __stdcall aiClear0(int f) { aiClear(g_f->AIM0, f); }                                  // 0x5f69f0
+void __stdcall aiClear1(int f) { aiClear(g_f->AIM1, f); }                                  // 0x5f6a80
+void __stdcall aiSet0(int f, int bit, int val) { aiSet(g_f->AIM0, f, bit, &val); }         // 0x5f6a20
+void __stdcall aiSet1(int f, int bit, int val) { aiSet(g_f->AIM1, f, bit, &val); }         // 0x5f6ab0
+int __stdcall aiTest0(int f, int bit) { return aiTest(g_f->AIM0, f, bit); }                // 0x5f6a50
+int __stdcall aiTest1(int f, int bit) { return aiTest(g_f->AIM1, f, bit); }                // 0x5f6ae0
 
 // ---- four stores into the stack-array slots that are 4-byte instructions with branch targets at them and
 // right after them (no 5-byte jump fits): int3 + this vectored handler (tools/patchgen/m8_sites.py STACK_TRAP)
@@ -145,12 +224,18 @@ bool forcesInstallTraps() {
 
 bool forcesSetup(int R, Forces& f, TraceLogFn log) {
     g_log = log;
-    // stage 1 allows up to 59: 64 forces, so the force bit sets stay 64-bit and every id and patched constant fits
-    // in a signed byte (M8_FORCES.md)
-    const int maxR = 59;
-    if (R < 42 || R > maxR) { if (log) log("forces: regular force count %d not supported yet (42..%d), using 42", R, maxR); R = 42; }
+    // up to 249: F = R+5 <= 254, so a force id fits in an unsigned byte with 0xff = none (the byte-sized id fields
+    // of the streams and the AI records); the bit sets are F bits wide (M8_FORCES.md)
+    const int maxR = 249;
+    if (R < 42 || R > maxR) { if (log) log("forces: regular force count %d not supported (42..%d), using 42", R, maxR); R = 42; }
     f.R = R; f.F = R + 5;
     const int F = f.F;
+    f.W = (F + 31) / 32;
+    f.FMASK = (uint32_t*)alloc(F * f.W * 4);
+    f.AIM0 = (uint32_t*)alloc(R * f.W * 4);
+    f.AIM1 = (uint32_t*)alloc(R * f.W * 4);
+    f.FBITS = (uint32_t*)alloc(f.W * 4);
+    if (!f.FMASK || !f.AIM0 || !f.AIM1 || !f.FBITS) { if (log) log("forces: allocation failed"); return false; }
     f.FORCEARR = alloc(F * FORCE_SIZE);
     f.CORPSARR = alloc(F * CORPS_SIZE);
     f.FREL = alloc(F * F);

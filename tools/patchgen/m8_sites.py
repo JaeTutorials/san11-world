@@ -243,3 +243,56 @@ FIXED = {0x4804c8: '41', 0x4804f8: '41'}
 
 # 0x4ccf2a: sort key of non-regular forces = 0x7fffffd0 + force id; keep the largest key below 2^31
 f(0x4ccf2a, 0x7fffffd0, '0x7fffffd0+42-R', 'sort key of non-regular forces (no signed overflow)')
+
+# ======================================================================= stage 2: R up to 249 (F <= 254)
+BYTE_OK = {0x482614}           # cmp al, F (unsigned jae): an unsigned byte holds F up to 255
+
+# ---- the force bit sets become F-bit rows (forces.cpp): FMASK (force +0x50), AIM0 / AIM1 (AI force records +0/+8),
+# FBITS (flag bitset<47> of the composite 0x9c43e80). Accessors 0x4811b0, 0x4b4f40, 0x5f69a0..0x5f6ae0 and the
+# +0x50 serializer call are replaced in forces.cpp / worldmod.cpp; the rest is patched here.
+ROW = '((R+36)/32)*4'              # bytes per bit-set row (W dwords, W = (F+31)/32)
+FIELD = [r for r in FIELD if r[0] != 0x5f86f0]
+REWRITE.append((0x5f86ea, 11, 'imul eax, eax, {' + ROW + '}; add eax, {AIM0}',
+                'inline test of AI force record bit set +0 -> AIM0 row'))
+# AI sub-object serializer: the two 2-dword loops over a record's bit sets -> W dwords each from AIM0 / AIM1
+# (ebp = 1 afterwards, as the second loop left it)
+REWRITE.append((0x479815, 0x4798c8 - 0x479815,
+                'mov eax, dword ptr [esp + 0x14]; push eax; push esi; mov eax, {SER_AIM}; call eax; add esp, 8; mov ebp, 1',
+                'AI serializer: force record bit sets -> AIM0 / AIM1 rows'))
+# flag bitset<47> (only instance: composite +0x58): test / set on FBITS (like CITYBITS in M7)
+REWRITE.append((0x680190, 0x6801e0 - 0x680190,
+                'mov ecx, dword ptr [esp + 4]; cmp ecx, {R+5}; jae L0; bt dword ptr [{FBITS}], ecx; sbb eax, eax; '
+                'neg eax; ret 4; L0: xor eax, eax; ret 4', 'flag bitset<F>: test on FBITS'))
+REWRITE.append((0x6801e0, 0x680234 - 0x6801e0,
+                'mov ecx, dword ptr [esp + 4]; cmp ecx, {R+5}; jae L0; mov eax, dword ptr [esp + 8]; '
+                'test byte ptr [eax], 1; je L1; bts dword ptr [{FBITS}], ecx; ret 8; L1: btr dword ptr [{FBITS}], ecx; '
+                'L0: ret 8', 'flag bitset<F>: set on FBITS'))
+
+# (va, original, replacement) re-encoded in caves
+CAVE_TEXT = [
+    # consistency check 0x482050: the two bit-set row pointers
+    (0x48228a, 'add edi, 0x50', 'push eax; push ecx; push edx; push edi; mov eax, {FROWPTR}; call eax; add esp, 4; mov edi, eax; '
+                                'pop edx; pop ecx; pop eax'),
+    (0x4822a5, 'lea eax, [esi + 0x50]', 'push ecx; push edx; push esi; mov eax, {FROWPTR}; call eax; add esp, 4; pop edx; pop ecx'),
+    # attribute codes "base + force id" (decoder 0x4c4260, blocks of 47): forces 47+ get no code (-1)
+    (0x4c22a8, 'add eax, 0xe0', 'cmp eax, 0x2f; jl K; or eax, 0xffffffff; jmp D; K: add eax, 0xe0; D: nop'),
+    (0x4c22d3, 'add eax, 0xb1', 'cmp eax, 0x2f; jl K; or eax, 0xffffffff; jmp D; K: add eax, 0xb1; D: nop'),
+    (0x4c22fe, 'add eax, 0x82', 'cmp eax, 0x2f; jl K; or eax, 0xffffffff; jmp D; K: add eax, 0x82; D: nop'),
+    (0x4c2386, 'add eax, 0xe0', 'cmp eax, 0x2f; jl K; or eax, 0xffffffff; jmp D; K: add eax, 0xe0; D: nop'),
+    (0x4c2398, 'add eax, 0xb1', 'cmp eax, 0x2f; jl K; or eax, 0xffffffff; jmp D; K: add eax, 0xb1; D: nop'),
+    (0x4c23aa, 'add eax, 0x82', 'cmp eax, 0x2f; jl K; or eax, 0xffffffff; jmp D; K: add eax, 0x82; D: nop'),
+    (0x5bd26c, 'add eax, 0x82', 'cmp eax, 0x2f; jl K; or ecx, 0xffffffff; or edx, 0xffffffff; or eax, 0xffffffff; '
+                                'jmp D; K: add eax, 0x82; D: nop'),
+]
+
+# byte-sized force / corps ids in the streams: unsigned byte, 0xff = none (forces.cpp limit F <= 254), so the file
+# formats stay as they are (Koei's values 0..46 and -1 read the same)
+for va, what in [(0x47c996, 'city +0x38 corps'), (0x47e4f1, 'corps +4 force'), (0x481e0e, 'force +0x94 force'),
+                 (0x4832e3, 'world header turn order (force ids)'), (0x4881b8, 'building +0xc owner force'),
+                 (0x48b8b7, 'person +0x94 corps'), (0x48bb07, 'person +0x160 force'),
+                 (0x48de22, 'gate/port +0x20 corps'), (0x497362, 'unit +0x44 force')]:
+    f(va, (0x48a970 - (va + 5)) & 0xffffffff, f'SER_U8ID-{va + 5:#x}', f'stream id field {what}: u8 (0xff = none)')
+# byte-sized force ids read as signed bytes in memory (AI base / unit records): movsx -> movzx (0xff = none is then
+# 255, past every bound, the same branch as -1 took)
+for va in (0x479483, 0x479502, 0x5df095):
+    f(va, 0xbe, '0xb6', 'AI record force byte: movsx -> movzx', size=1)

@@ -65,7 +65,7 @@ DEFAULT_PROJECT = {
     "world_dir": "data/world",          # 世界地图的工作目录（生成的中间文件，在本项目里）
     "data_name": "world_custom",        # 游戏目录里的数据目录名
     "cities": 500,                      # 城市总数（含光荣的 42 座），42~1000
-    "forces": 42,                       # 常规势力（= 常规军团）数，42~59；另有 4 个异族和 1 个贼（M8_FORCES.md）
+    "forces": 42,                       # 常规势力（= 常规军团）数，42~249 且不超过城市数；另有 4 个异族和 1 个贼（M8_FORCES.md）
     "spacing": 14,                      # 城市最小间距（格），光荣中国约 13~21
     "exe": "san11pk_world.exe",         # 用哪个启动程序玩（它在 worldmod.ini 里有同名的一节）
     "save_dir": "",                     # 存档目录（空 = 游戏默认的「我的文档」）
@@ -205,6 +205,9 @@ def build_world(cfg, fresh=False, reselect=False, log=say):
     C = int(cfg["cities"])
     if not 42 <= C <= 1000:
         raise StepError(f"cities 要在 42~1000 之间（{C}）")
+    R = int(cfg.get("forces", 42))
+    if not 42 <= R <= min(249, C):
+        raise StepError(f"forces 要在 42~{min(249, C)} 之间（最多 249，且不超过城市数 {C}）（{R}）")
     for f in ("china_shex.npy", "china_k3st_v.npy"):
         if not (DATA / f).exists():
             raise StepError(f"缺少 data/{f}：先运行  python san11kit.py setup")
@@ -228,7 +231,6 @@ def build_world(cfg, fresh=False, reselect=False, log=say):
     run("make_world.py", world, "--types-from", world / "world_types.npy", "--cache", cache, log=log)
     dst.mkdir(parents=True, exist_ok=True)
     run("gen_bases.py", world, "--cities", C, "--out", dst, "--game", g, log=log)
-    R = int(cfg.get("forces", 42))
     run("convert_scen.py", "--cities-json", dst / "bases_cities.json", "--out", dst, "--no-ts", "--game", g,
         "--forces", R, log=log)
     shutil.rmtree(dst / "scenario_base", ignore_errors=True)    # scenario_build.py starts from the fresh files

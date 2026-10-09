@@ -320,7 +320,9 @@ DLL 用 `VirtualAlloc` 按 W×H 分配，补丁把所有引用改到新地址。
   1152 个常量审查后改了 486 处；按势力开的数组（world 里的势力表、军团表、回合顺序，AI 子对象里的势力记录、军团记录，
   一个约 22 万字节的「标志对象」里的四个按势力数组，四个静态数组，十几个栈上数组，新游戏设置对话框里的势力记录）
   全部搬到 DLL；势力里的两个 u8[47]「对每个势力」的表改成 F×F 的侧表。第一步 R 最多 59（64 个势力，64 位的势力位集
-  和字节宽度的编号都还够用），细节和剩下的工作见 `M8_FORCES.md`。
+  和字节宽度的编号都还够用）；第二步把势力位集改成 F 位一行（放在 DLL 里），值超过 127 的 imm8 常量在代码洞里改成 imm32，
+  文件里的字节势力号按无符号读（0xff = 无），R 最多 249（F ≤ 254，势力号还放得进一个字节）且不超过城市数。
+  R=200 测过新游戏、过回合、存读档。细节和剩下的限制见 `M8_FORCES.md`。
 
 ## 7. 第五步：稳定性——两个典型崩溃
 
@@ -523,7 +525,7 @@ python tools/editor/server.py [--world data/world] [--game G:/San11PK] [--out wo
 | `tools/extract_game_data.py` | 从玩家自己的游戏里提取中国地图（光荣的数据不随项目发布） |
 | `tools/scenario_build.py`、`scenarios/` | 剧本编译器：用 JSON 写势力、武将、城市归属 |
 | `tools/connect_cities.py` | 沿城市连线修路（主径、栈道、渡所），报告走不到的城 |
-| `M8_FORCES.md`、`m8_review/`、`tools/patchgen/m8_sites.py`、`worldmod/src/forces.cpp` | 势力 / 军团上限（常规势力 R，目前 ≤59）：审查结果、搬迁清单、DLL 侧的表和替换函数 |
+| `M8_FORCES.md`、`m8_review/`、`tools/patchgen/m8_sites.py`、`worldmod/src/forces.cpp` | 势力 / 军团上限（常规势力 R ≤ 249 且 ≤ 城市数）：审查结果、搬迁清单、DLL 侧的表和替换函数 |
 | `tools/add_force.py`、`tools/forces/*.json` | 往转换后的剧本里加势力、武将、国号 |
 | `tools/editor/` | 地图和城市编辑器 |
 | `tools/gamectl.py`、`profile_report.py` | 测试与分析 |

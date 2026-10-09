@@ -48,9 +48,9 @@ cities=210
 ; trace=1
 ; heap_check: validate all heaps every 20 ms, log where the main/loader threads are when one breaks
 ; heap_check=1
-; forces: regular forces (= regular corps), 42..59 (M8_FORCES.md); the data directory must be converted for the
-; same count (convert_scen.py --forces, or "forces" in project.json)
-; forces=59
+; forces: regular forces (= regular corps), 42..249 and at most the city count (M8_FORCES.md); the data directory
+; must be converted for the same count (convert_scen.py --forces, or "forces" in project.json)
+; forces=200
 ; getter_check: log gate / port getter calls with an out-of-range index and their call sites (missed id-boundary patches)
 ; getter_check=1
 ; astar_stats: log A* calls slower than 5 ms and a summary every 10 s

@@ -1537,12 +1537,27 @@ static bool installForceHooks() {
     };
     setCall(0x481d7b, g_forces->SER_FREL);
     setCall(0x481e00, g_forces->SER_FA64);
+    // the force bit sets (F bits per row)
+    static const uint8_t testMask[] = { 0x8b, 0x44, 0x24, 0x04, 0x85, 0xc0, 0x7c, 0x15 };   // 0x4811b0
+    static const uint8_t pairSet[] = { 0x55, 0x8b, 0x6c, 0x24, 0x08, 0x56, 0x57, 0x55 };    // 0x4b4f40
+    static const uint8_t serMask[] = { 0xe8, 0x8e, 0xfd, 0xff, 0xff };                      // 0x481dbd call 0x481b50
+    static const uint8_t aiHead[] = { 0x8b, 0x44, 0x24, 0x04 };
+    static const uint32_t ai[] = { 0x5f69a0, 0x5f69f0, 0x5f6a20, 0x5f6a50, 0x5f6a80, 0x5f6ab0, 0x5f6ae0 };
+    static void* const aiFn[] = { (void*)aiReset, (void*)aiClear0, (void*)aiSet0, (void*)aiTest0, (void*)aiClear1,
+                                  (void*)aiSet1, (void*)aiTest1 };
+    if (memcmp((void*)0x4811b0, testMask, sizeof testMask) || memcmp((void*)0x4b4f40, pairSet, sizeof pairSet) ||
+        memcmp((void*)0x481dbd, serMask, sizeof serMask)) return false;
+    for (uint32_t a : ai) if (memcmp((void*)(uintptr_t)a, aiHead, sizeof aiHead)) return false;
+    writeJmp(0x4811b0, (void*)forceTestMask);
+    writeJmp(0x4b4f40, (void*)forceSetMaskPair);
+    setCall(0x481dbd, (void*)forceSerMask);
+    for (int i = 0; i < 7; i++) writeJmp(ai[i], aiFn[i]);
     return true;
 }
 
 static void installHooks() {
     writeJmp(0x483b70, (void*)hexCtor);
-    if (g_forces && g_forces->R > 42) logf("force x force tables (R=%d): %s", g_forces->R, installForceHooks() ? "installed" : "NOT installed (unexpected code)");
+    if (g_forces) logf("force tables and bit sets (R=%d): %s", g_forces->R, installForceHooks() ? "installed" : "NOT installed (unexpected code)");
     if (g_forces) logf("stack-array store traps: %s", forcesInstallTraps() ? "installed" : "NOT installed (unexpected code)");
     if (g_bases) {
         static const uint8_t rdHead[] = { 0x51, 0x53, 0x55, 0x56, 0x8B, 0x74, 0x24, 0x14 };   // push ecx/ebx/ebp/esi; mov esi,[esp+14h]
@@ -1735,7 +1750,8 @@ static void init() {
             { "SER_FREL", fo.SER_FREL }, { "SER_FA64", fo.SER_FA64 }, { "TURNORD", fo.TURNORD },
             { "AIFREG", fo.AIFREG }, { "AICORPS", fo.AICORPS }, { "FLAG104", fo.FLAG104 }, { "FLAG84A", fo.FLAG84A },
             { "FLAG84B", fo.FLAG84B }, { "FLAG1004", fo.FLAG1004 }, { "SFRC1", fo.SFRC1 }, { "SFRC2", fo.SFRC2 },
-            { "SFRC3", fo.SFRC3 }, { "SFRC4", fo.SFRC4 }, { "STKARR", fo.STKARR }, { "DLGREC", fo.DLGREC } };
+            { "SFRC3", fo.SFRC3 }, { "SFRC4", fo.SFRC4 }, { "STKARR", fo.STKARR }, { "DLGREC", fo.DLGREC },
+            { "AIM0", fo.AIM0 }, { "FBITS", fo.FBITS }, { "FROWPTR", (void*)forceMaskRow }, { "SER_AIM", (void*)forceSerAIMasks } };
         for (auto& e : fsyms) Eval::add(e.n, e.v);
         // u16 area of every hex, at the same byte offset as its HEX20 record (+4): the 7-bit field
         // in HEX20 dword+4 bits 5..11 cannot hold more than 128 areas

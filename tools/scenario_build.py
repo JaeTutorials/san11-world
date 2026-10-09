@@ -92,6 +92,7 @@ class Scenario:
         mark = bytes(data[0x2c:0x30])           # "WIDE", or "WF" + u16 regular forces (M8_FORCES.md)
         self.R = struct.unpack("<H", mark[2:])[0] if mark[:2] == b"WF" else 42
         self.F = self.R + 5
+        self.W = (self.F + 31) // 32           # dwords of the force bit set in the force record
         for C in range(42, 1001):
             L, end = scen_layout(C, C + 45, wide=True, R=self.R)
             if end == len(data):
@@ -168,13 +169,16 @@ def build(spec, scn):
         # ---- ids: force, corps, 国号, colour
         fid = next((f for f in range(R) if scn.force_ruler(f) == -1), None)
         kid = next((k for k in range(R) if D[at("army", k)] == 0xff), None)
-        kok = next((k for k in KOKUGO_FREE if k not in used_kokugo), None)
-        if fid is None or kid is None or kok is None:
-            raise BuildError(f"势力已满：这个剧本最多 {R} 个常规势力（project.json 的 forces 可以调大，最大 59）")
-        used_kokugo.add(kok)
+        kok = next((k for k in KOKUGO_FREE if k not in used_kokugo), 0xff)    # 0xff: no 国号 (the ruler's name is shown)
+        if fid is None or kid is None:
+            raise BuildError(f"势力已满：这个剧本最多 {R} 个常规势力（project.json 的 forces 可以调大，最多 249 且不超过城市数）")
+        if kok == 0xff:
+            log.append(f"国号的 42 个空位用完了：势力「{fs.get('name', '?')}」不设国号，游戏里用君主的名字称呼")
+        else:
+            used_kokugo.add(kok)
         color = fs.get("color")
-        if color is None:
-            color = next(c for c in range(55) if c not in used_colors)
+        if color is None:                           # 55 colours: when they run out they repeat
+            color = next((c for c in range(55) if c not in used_colors), len(created) % 55)
         if not 0 <= color <= 54:
             raise BuildError(f"势力「{fname}」的颜色 {color} 不在 0~54 之间")
         used_colors.add(color)
@@ -269,12 +273,14 @@ def build(spec, scn):
         for k in range(R, F):
             rel[k] = 0
         fo = at("force", fid)
-        D[fo:fo + 4 + F + 22] = struct.pack("<hh", ruler, -1) + bytes(rel) + bytes([9, kok, color, 0]) + struct.pack("<h", -1) + bytes(16)
+        D[fo:fo + 4 + F + 14 + 4 * scn.W] = (struct.pack("<hh", ruler, -1) + bytes(rel) + bytes([9, kok, color, 0]) +
+                                             struct.pack("<h", -1) + bytes(4 * scn.W + 8))
         for k in scn.used_forces():
             if k != fid:
                 D[at("force", k) + 4 + fid] = 50
-        to = at("type14", kok)
-        D[to:to + 5] = big5(fname, 5, "国号")
+        if kok != 0xff:
+            to = at("type14", kok)
+            D[to:to + 5] = big5(fname, 5, "国号")
         if fs.get("intro") and fid < 42:                    # the scenario has 42 descriptions (forces 0..41)
             do = scn.L["force_desc"][0] + 369 * fid
             D[do] = fs.get("stars", 3)
