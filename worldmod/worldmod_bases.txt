@@ -87,8 +87,8 @@
 00480418 1 4 b92a000000 0x2a ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
 00480448 2 1 83f829 0x29 ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
 00480468 2 1 83f829 0x29 ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
-004804c8 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
-004804f8 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
+004804c8 2 1 83f82e 41 ; [M8 FORCE_MAX] cmp eax, 0x2e
+004804f8 2 1 83f82e 41 ; [M8 FORCE_MAX] cmp eax, 0x2e
 0048057b 1 4 b92a000000 0x2a ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
 004805a8 2 1 83f829 0x29 ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
 004805c8 2 1 83f829 0x29 ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
@@ -96,7 +96,6 @@
 00480798 2 1 83f829 0x29 ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
 00480bea 4 4 c74424142a000000 0x2a ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
 00480d19 1 4 bd2a000000 0x2a ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
-00480d6f 1 4 bd2a000000 R ; [M8 REG_COUNT] mov ebp, 0x2a
 00480edc 1 4 bd2a000000 0x2a ; [imm] ScnInfo scenario/save header (ScnInfoB 0x2e0 vt 0x
 00480f14 2 1 83f82a R ; [M8 BARB] cmp eax, 0x2a
 00480f19 2 1 83f82d R+3 ; [M8 BARB] cmp eax, 0x2d
@@ -427,6 +426,7 @@
 004cc24d 2 1 83ff29 R-1 ; [M8 REG_MAX] cmp edi, 0x29
 004cc290 2 1 83ff29 R-1 ; [M8 REG_MAX] cmp edi, 0x29
 004ccf18 2 1 83f829 R-1 ; [M8 REG_MAX] cmp eax, 0x29
+004ccf2a 2 4 81c5d0ffff7f 0x7fffffd0+42-R ; [M8] sort key of non-regular forces (no signed overflow)
 004cd957 2 4 81c6488c9907 SFRC3 ; [M8] static char[47][64] by force -> SFRC3
 004cd968 1 4 05488c9907 SFRC3 ; [M8] static char[47][64] by force -> SFRC3
 004cda44 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
@@ -2780,22 +2780,6 @@
 0068e248 1 4 68e8030000 0x3e8+(C-42)*0x14 ; [alloc] CityOverlay X3 (vt 0x854ea8, ctor 0x622100, dtor 0
 0068f896 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
 0068fa3d 2 1 83fb2e R+4 ; [M8 FORCE_MAX] cmp ebx, 0x2e
-00695afd 1 4 bb2f000000 R+5 ; [M8 FORCE_COUNT] mov ebx, 0x2f
-00695b44 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695b64 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695b84 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695ba8 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695c18 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695c58 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695c66 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695c84 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695cac 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695cb7 2 1 83f82f R+5 ; [M8 FORCE_COUNT] cmp eax, 0x2f
-00695d94 2 1 83fe2f R+5 ; [M8 FORCE_COUNT] cmp esi, 0x2f
-00695db0 2 1 83fe2f R+5 ; [M8 FORCE_COUNT] cmp esi, 0x2f
-00695e2a 2 1 83fe2f R+5 ; [M8 FORCE_COUNT] cmp esi, 0x2f
-00696271 2 1 83fe2f R+5 ; [M8 FORCE_COUNT] cmp esi, 0x2f
-00696400 2 1 83fb2f R+5 ; [M8 FORCE_COUNT] cmp ebx, 0x2f
 00696435 2 4 81ec8c050000 0x58c+(C-42)*0x14 ; [frame] stack K7 (vt 0x862930, size 0x588, X3@+0x1a0) in 0
 006964bc 3 4 c78424ac05000000000000 0x5ac+(C-42)*0x14 ; [disp] stack K7 (vt 0x862930, size 0x588, X3@+0x1a0) in 0
 00696512 3 4 89ac24a0050000 0x5a0+(C-42)*0x14 ; [disp] stack K7 (vt 0x862930, size 0x588, X3@+0x1a0) in 0
@@ -2809,14 +2793,6 @@
 00696621 3 4 c7842494050000ffffffff 0x594+(C-42)*0x14 ; [disp] stack K7 (vt 0x862930, size 0x588, X3@+0x1a0) in 0
 00696631 3 4 8b8c248c050000 0x58c+(C-42)*0x14 ; [disp] stack K7 (vt 0x862930, size 0x588, X3@+0x1a0) in 0
 00696642 2 4 81c494050000 0x594+(C-42)*0x14 ; [frame] stack K7 (vt 0x862930, size 0x588, X3@+0x1a0) in 0
-00696878 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
-0069690e 2 1 83fe2e R+4 ; [M8 FORCE_MAX] cmp esi, 0x2e
-00696a18 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
-00696d6d 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
-006970d4 2 1 83ff2f R+5 ; [M8 FORCE_COUNT] cmp edi, 0x2f
-00697211 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
-00697b20 2 1 83ff2e R+4 ; [M8 FORCE_MAX] cmp edi, 0x2e
-00697b25 2 1 83ff2f R+5 ; [M8 FORCE_COUNT] cmp edi, 0x2f
 00697c34 2 4 8db1d8190000 0x19d8+(N-87)*0x4c ; [disp] per-base evaluation object (vtable 0x862b14, ctor 
 00697c3d 1 4 bd57000000 N ; [BASE_COUNT] mov ebp, 0x57
 00697d72 2 4 81c1d8190000 0x19d8+(N-87)*0x4c ; [imm] per-base evaluation object (vtable 0x862b14, ctor 
@@ -2836,7 +2812,6 @@
 006985cf 3 4 c7842494050000ffffffff 0x594+((C-42)*0x14) ; [disp] stack K8 (vt 0x862b18, size 0x588) in 0x698550
 006985df 3 4 8b8c248c050000 0x58c+((C-42)*0x14) ; [disp] stack K8 (vt 0x862b18, size 0x588) in 0x698550
 006985f0 2 4 81c494050000 0x594+(C-42)*0x14 ; [frame] stack X3-container instance in 0x698550
-006a39f3 2 1 83f82e R+4 ; [M8 FORCE_MAX] cmp eax, 0x2e
 006a4535 2 4 81ec8c050000 0x58c+((C-42)*0x14) ; [frame] stack K9 (vt 0x863e20, size 0x588) in 0x6a4520
 006a45a4 3 4 c78424ac05000000000000 0x5ac+((C-42)*0x14) ; [disp] stack K9 (vt 0x863e20, size 0x588) in 0x6a4520
 006a45c0 3 4 89ac24a0050000 0x5a0+((C-42)*0x14) ; [disp] stack K9 (vt 0x863e20, size 0x588) in 0x6a4520
