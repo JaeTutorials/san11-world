@@ -45,7 +45,11 @@ for f in sorted(glob.glob(f'{PROJ}/m7_review/result_*.jsonl')):
 # M8 review (M8_FORCES.md, m8_review/result_*.jsonl): CITY = base constants the M7 review missed (always on);
 # FORCE = force / corps count constants, written in C by the reviewers (trinity: R = C), applied with the regular
 # force count R. FORCE sites are generated only when M8_FORCE_SITES is on (the force arrays must move first).
-M8_FORCE_SITES = False
+M8_FORCE_SITES = True
+# sites inside functions forces.cpp replaces (their bounds are dead code) and the per-record int[42] of the AI
+# force records, which keeps Koei's layout
+M8_SKIP = {0x4812d4, 0x4814c8, 0x4814e8, 0x481ac8, 0x481aea, 0x4792e4, 0x4798d2,
+           0x650dff, 0x650eb3}       # per-force column blocks of the force list: rebased separately (M8_FORCES.md)
 m8_city, m8_force = [], []
 for f in sorted(glob.glob(f'{PROJ}/m8_review/result_*.jsonl')):
     for l in open(f, encoding='utf-8'):
@@ -54,11 +58,9 @@ for f in sorted(glob.glob(f'{PROJ}/m8_review/result_*.jsonl')):
         r = json.loads(l)
         if r['verdict'] == 'CITY' and r.get('patch'):
             m8_city.append(r)
-        elif r['verdict'] == 'FORCE' and r.get('patch') and r.get('role') not in ('PAIR', 'ARRAY_SIZE'):
+        elif r['verdict'] == 'FORCE' and r.get('patch') and int(r['addr'], 16) not in M8_SKIP:
             m8_force.append(dict(r, patch=re.sub(r'\bC\b', 'R', r['patch'])))
 review += m8_city
-if M8_FORCE_SITES:
-    review += m8_force
 struct_rows = [json.loads(l) for l in open(f'{PROJ}/m7_struct_sites.jsonl', encoding='utf-8') if l.strip()]
 # follow-up pass after the C=210 tests (M7_LAYOUT.md §11a)
 struct_rows += [json.loads(l) for l in open(f'{PROJ}/m7_struct_sites_extra.jsonl', encoding='utf-8') if l.strip()]
@@ -124,6 +126,19 @@ for r in review:
         add_field(va, locate(va, v, 4), 4, expr, f"[{r['role']}] {insn[va][1]} {insn[va][2]}")
     else:
         widen[va] = expr
+# ---- M8 (M8_FORCES.md): force / corps constants and the relocation of the per-force storage (m8_sites.py).
+# Stage 1 keeps every value below 128 (R <= 59, F <= 64), so the imm8 fields are patched in place.
+if M8_FORCE_SITES:
+    import m8_sites
+    for r in m8_force:
+        va = int(r['addr'], 16)
+        size = 4 if r['encoding'] == 'imm32' else 1
+        add_field(va, locate(va, int(str(r['value']), 0), size), size, norm(r['patch']),
+                  f"[M8 {r['role']}] {insn[va][1]} {insn[va][2]}")
+    for va, old, size, expr, comment in m8_sites.FIELD:
+        add_field(va, locate(va, old, size), size, norm(expr), f'[M8] {comment}')
+    for start, length, text, comment in m8_sites.REWRITE:
+        rewrites.append((start, length, text, None, f'[M8] {comment}'))
 # found in testing (an officer marched out of a new city): unit index <-> person location (+0x9c = N + unit)
 # sites the review missed. Encoders and decoders must all use N, or a marching officer reads as being in city 87+k.
 WIDEN_TEXT = {0x4a1c47: ('N', 'lea esi, [eax + {N}]'),        # unit formation 0x4a1bd0: officers' location

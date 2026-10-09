@@ -1719,10 +1719,14 @@ static void init() {
         if (g_cfg.R > g_cfg.C) g_cfg.R = g_cfg.C;
         if (!forcesSetup(g_cfg.R, fo, logf)) { logf("ERROR: force arrays could not be set up. Patches disabled."); return; }
         g_forces = &fo;
+        g_cfg.R = fo.R;                    // the patch expressions use the count forcesSetup accepted
         struct { const char* n; const void* v; } fsyms[] = {
             { "FORCEARR", fo.FORCEARR }, { "CORPSARR", fo.CORPSARR }, { "FREL", fo.FREL }, { "FA64", fo.FA64 },
             { "GET_REL", fo.GET_REL }, { "SET_REL", fo.SET_REL }, { "GET_A64", fo.GET_A64 }, { "SET_A64", fo.SET_A64 },
-            { "SER_FREL", fo.SER_FREL }, { "SER_FA64", fo.SER_FA64 } };
+            { "SER_FREL", fo.SER_FREL }, { "SER_FA64", fo.SER_FA64 }, { "TURNORD", fo.TURNORD },
+            { "AIFREG", fo.AIFREG }, { "AICORPS", fo.AICORPS }, { "FLAG104", fo.FLAG104 }, { "FLAG84A", fo.FLAG84A },
+            { "FLAG84B", fo.FLAG84B }, { "FLAG1004", fo.FLAG1004 }, { "SFRC1", fo.SFRC1 }, { "SFRC2", fo.SFRC2 },
+            { "SFRC3", fo.SFRC3 }, { "SFRC4", fo.SFRC4 } };
         for (auto& e : fsyms) Eval::add(e.n, e.v);
         // u16 area of every hex, at the same byte offset as its HEX20 record (+4): the 7-bit field
         // in HEX20 dword+4 bits 5..11 cannot hold more than 128 areas

@@ -102,13 +102,35 @@ void* __fastcall forceSerA64(uint8_t* stream, int, uint8_t* member) { serRow(str
 
 bool forcesSetup(int R, Forces& f, TraceLogFn log) {
     g_log = log;
-    if (R < 42 || R > 59) { if (log) log("forces: invalid regular force count %d (42..59 until the force bit sets are widened)", R); return false; }
+    // stage 1 allows up to 59 (64 forces: the force bit sets stay 64-bit, ids fit in signed bytes); until the
+    // stack arrays and screen objects sized by the force count are moved too (M8_FORCES.md), only 42
+    const int maxR = 42;
+    if (R < 42 || R > maxR) { if (log) log("forces: regular force count %d not supported yet (42..%d), using 42", R, maxR); R = 42; }
     f.R = R; f.F = R + 5;
     const int F = f.F;
     f.FORCEARR = alloc(F * FORCE_SIZE);
     f.CORPSARR = alloc(F * CORPS_SIZE);
     f.FREL = alloc(F * F);
     f.FA64 = alloc(F * F);
+    // the other per-force / per-corps storage (tools/patchgen/m8_sites.py); all of it is constructed or
+    // cleared by the game at run time, the static arrays get their original image as far as it goes
+    f.TURNORD = alloc(F * 4);
+    f.AIFREG = alloc(R * 0xd4);
+    f.AICORPS = alloc(F * 0x34);
+    f.FLAG104 = alloc(F * 0x104);
+    f.FLAG84A = alloc(F * 0x84);
+    f.FLAG84B = alloc(F * 0x84);
+    f.FLAG1004 = alloc(F * 0x1004);
+    f.SFRC1 = alloc(F * 4);
+    f.SFRC2 = alloc(F * 4);
+    f.SFRC3 = alloc(F * 0x40);
+    f.SFRC4 = alloc(F * 4);
+    if (!f.TURNORD || !f.AIFREG || !f.AICORPS || !f.FLAG104 || !f.FLAG84A || !f.FLAG84B || !f.FLAG1004 ||
+        !f.SFRC1 || !f.SFRC2 || !f.SFRC3 || !f.SFRC4) { if (log) log("forces: allocation failed"); return false; }
+    memcpy(f.SFRC1, (void*)0x9283108, 42 * 4);
+    memcpy(f.SFRC2, (void*)0x7998b88, 47 * 4);
+    memcpy(f.SFRC3, (void*)0x7998c48, 47 * 0x40);
+    memcpy(f.SFRC4, (void*)0x9c4a608, 47 * 4);
     if (R == 42) {          // the original layout: keep the original image (constructed at run time anyway)
         memcpy(f.FORCEARR, (void*)0x7209450, 47 * FORCE_SIZE);
         memcpy(f.CORPSARR, (void*)0x720cb64, 47 * CORPS_SIZE);
