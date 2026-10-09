@@ -1,0 +1,7 @@
+# 换行符：仓库里统一存 LF，检出时按平台转换；批处理在 Windows 上必须是 CRLF
+* text=auto
+*.bat text eol=crlf
+*.png binary
+*.npy binary
+*.bin binary
+*.dll binary

@@ -1,0 +1,70 @@
+; worldmod settings. Each launcher exe reads the section named after itself.
+[mod]
+enable=1
+verify_only=0
+; ascii_dir: an ASCII path to the game directory (e.g. a junction). When the game is started from a
+; path the system's ANSI code page cannot represent, worldmod restarts it from here. Without it, worldmod
+; looks for a junction in the root of each fixed drive that points to the game directory.
+; ascii_dir=G:\San11PK
+
+; stock exe: original 200x200 map (arrays relocated, everything else unchanged)
+[san11pk]
+width=200
+height=200
+china_x=0
+china_y=0
+
+; san11pk_world.exe (LAA + 48 MB stack, made by tools/make_world_exe.py): the Eurasia world with 210 cities.
+; width/height: multiples of 200 (width = columns, north-south; height = rows, west-east).
+; china_x/china_y: where Koei's 200x200 China map sits (china_y even).
+[san11pk_world]
+; world_terrain: whole-world 3D terrain (M4B.md)
+world_terrain=1
+; data_dir: world data, inside the game directory (tools/editor or the tools in TUTORIAL.md section 10)
+data_dir=world_eurasia210
+width=1000
+height=1800
+china_x=436
+china_y=1234
+; bases: more cities (M7_LAYOUT.md)
+bases=1
+; cities: city count C, 42..210; the data directory must be built for the same C
+cities=210
+
+; ---- optional (defaults shown)
+; astar: A* (0x567520): 0 original, 1 binary heap (same results), 2 + 2x heuristic, 3 + search window
+; astar=3
+; astar_margin: mode 3: hexes searched around the box of the start and the goal
+; astar_margin=100
+; objlist_lock: serialize the 3D object manager's list edits (loader thread vs main thread)
+; objlist_lock=1
+; model_guard: skip the queued unit model rebuild (0x5a03e0) for units that no longer have a model
+; model_guard=1
+; fast_clear: clear only the HEX28 pages the previous search wrote
+; fast_clear=1
+
+; ---- debugging
+; trace: which game code creates/draws Direct3D resources (worldmod_trace_<section>.log)
+; trace=1
+; heap_check: validate all heaps every 20 ms, log where the main/loader threads are when one breaks
+; heap_check=1
+; astar_stats: log A* calls slower than 5 ms and a summary every 10 s
+; astar_stats=1
+; astar_verify: run the original A* as well and compare HEX28 byte for byte
+; astar_verify=1
+; astar_bench_slow: replay the first 10 slow A* calls with every mode and log the times
+; astar_bench_slow=1
+; watch_objlist: check the object lists every 50 ms (2: also make the list heads read-only and log stray writes)
+; watch_objlist=1
+; watch=<hex address>    ; hardware write watchpoint (watch_read=1: reads too)
+
+; auto_skip: no launch movies (KOEI logo, opening movie; the "click the mouse" screen is clicked away) up to
+; the title menu, and when a map appears (new game, loaded save) the opening events and dialogs are
+; clicked through until the map is idle. It never holds the mouse; a real click, Enter, Space, Esc or a
+; mouse move of more than 40 pixels stops it.
+auto_skip=1
+
+; san11pk_test.exe: a copy used for automated tests (tools/gamectl.py): fake mouse/keyboard, screenshots
+; [san11pk_test]
+; automation=1
+; ...same keys as [san11pk_world]

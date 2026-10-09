@@ -1,0 +1,43 @@
+# 推送 v* 标签（比如 git tag v0.1 && git push origin v0.1）时：
+# 从源码编译 worldmod 的 d3d9.dll，打成发布包，创建 GitHub Release。
+# 也可以在 Actions 页面手动运行（不发布，只把 zip 留在这次运行的 Artifacts 里，用来试编译）。
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 编译 d3d9.dll
+        shell: cmd
+        run: worldmod\build.bat
+
+      - name: 打发布包
+        shell: pwsh
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python tools/make_release.py --out dist
+
+      - name: 保存发布包
+        uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: dist/
+
+      - name: 创建 GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$env:GITHUB_REF_NAME" (Get-Item dist/*.zip).FullName --title "$env:GITHUB_REF_NAME" --notes-file dist/release_notes.md

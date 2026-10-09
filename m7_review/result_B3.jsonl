@@ -1,0 +1,238 @@
+{"addr": "0x004106c9", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sprite animation helper 0x410540 (eax=anim 0x93): 0x29 is an end frame number"}
+{"addr": "0x0044e442", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "switch on display bit depth returning D3DFMT codes; 0x29 = D3DFMT_P8"}
+{"addr": "0x00474dbb", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "printf-style format parser: '*' width character"}
+{"addr": "0x004792e4", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rep stosd 42 dwords at +0x10 inside each 0xd4 AI record (0x73f61c0); those records are per-force (indexed by 0x491270 force idx) and this sub-array has no readers besides init/serializer; leave"}
+{"addr": "0x0047b044", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "is_gate(id): C <= id <= 0x33"}
+{"addr": "0x0047b46f", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city ptr->idx (0x491180) bound check"}
+{"addr": "0x0047b535", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city +0x98 setter: city id <=0x29"}
+{"addr": "0x0047c4cf", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city obj -> building: city idx (0x491180) <=0x29 then get_building"}
+{"addr": "0x0047cb8f", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city idx (0x491180) <=0x29 then get_building"}
+{"addr": "0x0047cfb4", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city validator: adjacent city ids +0x1c[6] <=0x29"}
+{"addr": "0x0047d19b", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city idx (0x491180) <=0x29 then get_building"}
+{"addr": "0x0047d374", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "loop over gates+ports: esi from C to 0x56 with get_building"}
+{"addr": "0x0047e6f9", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "corps target id validator: valid if <=5 (region) or <=0xb (province) or <=0x29 (city, type 3 -> get_city 0x490a10) or <=0x2e (force); 0x29 is the city bound"}
+{"addr": "0x00480405", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "scenario-info class init: rep stosd per-city owner array +0x190 int[42] (struct has fixed layout: +0x238 follows)"}
+{"addr": "0x0048057b", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "scenario-info class init: loop over 42 per-city entries (+0xa8 owner, +0x150 position)"}
+{"addr": "0x00480798", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "scenario-info setter: per-city position array +0x150[42] index <=0x29"}
+{"addr": "0x00480edc", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "scenario-info serializer: 42 x i8 per-city owner (+0xa8) -> file format"}
+{"addr": "0x0048146c", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "force target setter 0x481440: same region/province/city/force union check; 0x29 is the city bound"}
+{"addr": "0x0048219b", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "force validator: same region/province/city/force union check on +0x4c; 0x29 is the city bound"}
+{"addr": "0x00483534", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "gate ptr->idx (0x4911d0, <=9) + C = building id for get_building 0x490d00"}
+{"addr": "0x0048375c", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "gate setter: gate idx (0x4911d0) + C = building id"}
+{"addr": "0x00484ec3", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "item (type 13) validator: +0x44 = city where unowned item lies (0x4c618a passes it to get_city), <=0x29"}
+{"addr": "0x0048653e", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "building dispatch on type 1 (gate): base id -> gate index (id-C) for get_gate 0x490a40"}
+{"addr": "0x0048662a", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building dispatch on type 0 (city): base id <=0x29 before get_city 0x490a10"}
+{"addr": "0x004866e3", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building ptr->idx (0x491770) then <=0x29 -> city index (building->city helper)"}
+{"addr": "0x00486824", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building dispatch: gate range lower bound (0x2a<=id<=0x33) before get_gate 0x490a40"}
+{"addr": "0x004868ee", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "building dispatch on type 1 (gate): base id -> gate index (id-C) for get_gate 0x490a40"}
+{"addr": "0x004869f4", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building dispatch on type 0 (city): base id <=0x29 before get_city 0x490a10"}
+{"addr": "0x00486b61", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building dispatch: gate range lower bound (0x2a<=id<=0x33) before get_gate 0x490a40"}
+{"addr": "0x00486c1e", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "building dispatch on type 1 (gate): base id -> gate index (id-C) for get_gate 0x490a40"}
+{"addr": "0x00486cff", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building dispatch on type 0 (city): base id <=0x29 before get_city 0x490a10"}
+{"addr": "0x00486e41", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building dispatch: gate range lower bound (0x2a<=id<=0x33) before get_gate 0x490a40"}
+{"addr": "0x00486efe", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "building dispatch on type 1 (gate): base id -> gate index (id-C) for get_gate 0x490a40"}
+{"addr": "0x00486fe0", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building dispatch on type 0 (city): base id <=0x29 before get_city 0x490a10"}
+{"addr": "0x0048719b", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building dispatch: gate range lower bound (0x2a<=id<=0x33) before get_gate 0x490a40"}
+{"addr": "0x0048729a", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "building dispatch on type 1 (gate): base id -> gate index (id-C) for get_gate 0x490a40"}
+{"addr": "0x004873b0", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building dispatch on type 0 (city): base id <=0x29 before get_city 0x490a10"}
+{"addr": "0x00487539", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building dispatch: gate range lower bound (0x2a<=id<=0x33) before get_gate 0x490a40"}
+{"addr": "0x0048762a", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "building dispatch on type 1 (gate): base id -> gate index (id-C) for get_gate 0x490a40"}
+{"addr": "0x00487740", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building dispatch on type 0 (city): base id <=0x29 before get_city 0x490a10"}
+{"addr": "0x004878b4", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building dispatch: gate range lower bound (0x2a<=id<=0x33) before get_gate 0x490a40"}
+{"addr": "0x00487c24", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "building dispatch on type 1 (gate): base id -> gate index (id-C) for get_gate 0x490a40"}
+{"addr": "0x00487fd3", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building dispatch on type 0 (city): base id <=0x29 before get_city 0x490a10"}
+{"addr": "0x00488367", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "normalize base id 0x488350: gate index = id-C (then +C back)"}
+{"addr": "0x004896df", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "person +0x98 base normalization: gate index = id-C"}
+{"addr": "0x0048b01d", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person validator: ronin/unappeared person location +0x9c must be a city <=0x29"}
+{"addr": "0x0048b430", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "person validator: gate index + C back to base id"}
+{"addr": "0x0048b51c", "value": "-42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "-C", "encoding": "imm8", "note": "person validator: +0x98 base normalization, gate index = id-C"}
+{"addr": "0x0048d38f", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "person relationship classifier 0x48cff0 returns relation enum codes 0x0..0x2c; not an id"}
+{"addr": "0x00490fef", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop over force array world+0x7af8 (stride 0x12c) looking for free regular force slot 0..41"}
+{"addr": "0x00493496", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "post-load fixup loop over city array world+0x1d8 (stride 0x248)"}
+{"addr": "0x00497859", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "script expression evaluator: '*' operator character"}
+{"addr": "0x0049cec8", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building idx (0x491770) gate range lower bound -> get_gate"}
+{"addr": "0x0049e3cc", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities filling scenario-info per-city owner/position (0x480770/0x480790)"}
+{"addr": "0x0049f38b", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city of barbarian base (0x487920 area->city) <=0x29, index into per-city array"}
+{"addr": "0x0049f410", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "city of object (0x47a9b0) < 42 bound for per-city counter array"}
+{"addr": "0x004a2576", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "rand(42) random city assigned as person +0x98 building"}
+{"addr": "0x004a4aca", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "base id normalization (gate lower bound) of random city/building id"}
+{"addr": "0x004a5153", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city + 0x47b6a0)"}
+{"addr": "0x004a64ba", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "force +0x40 (official rank 0..0x53, setter 0x481400) range test 0x25..0x29; not a base"}
+{"addr": "0x004a7b0b", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "base id normalization (city part) of building id from 0x4a6340"}
+{"addr": "0x004a8c56", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 = city (normalization)"}
+{"addr": "0x004aac62", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "base id normalization (city part) of building id passed to 0x4a31e0"}
+{"addr": "0x004ad0ed", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "building idx (0x491770) gate range lower bound -> get_gate"}
+{"addr": "0x004ae87d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit vfunc+0x40 = force id; <=0x29 means regular force"}
+{"addr": "0x004b065d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit vfunc+0x40 = force id; <=0x29 means regular force"}
+{"addr": "0x004b1249", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "random city rand(0x2a) bound check <=0x29 then get_building"}
+{"addr": "0x004b1b69", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit (list 0x73fb4cc) vfunc+0x40 = force id; <=0x29 regular force"}
+{"addr": "0x004b349f", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "get_item(42) via 0x490b30: item id 42"}
+{"addr": "0x004b4e64", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "loop counter over forces 0..41 (get_force 0x490aa0(edi))"}
+{"addr": "0x004b5eac", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "rep stosd 42 dwords: per-city flag array (+4) of a stack graph-flood object (seeded with city idx 0x491180)"}
+{"addr": "0x004b6679", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city of building (0x487920) <=0x29, index into per-city stack array"}
+{"addr": "0x004b951e", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city, distance 0x47bc70) into stack array of 42 (frame 0xa8)"}
+{"addr": "0x004ba54f", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city of person (0x4ba490) <=0x29 else random city"}
+{"addr": "0x004bb2f7", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "get_item(41) via 0x490b30: item id 41"}
+{"addr": "0x004bbd4f", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "base id normalization: gate lower bound"}
+{"addr": "0x004bcd3c", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "base id normalization (city part) of building id from 0x4a6340"}
+{"addr": "0x004bd2f0", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "get_item(41) via 0x490b30: item id 41"}
+{"addr": "0x004bdeba", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "get_item(42) via 0x490b30: item id 42"}
+{"addr": "0x004becc4", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "building/city vfunc+0x40 = owner force id; <=0x29 regular force"}
+{"addr": "0x004c2447", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities counting those in corps"}
+{"addr": "0x004c61e8", "value": "42", "verdict": "BASE", "role": "OTHER", "patch": "C", "encoding": "imm8", "note": "item \"location\" sort key: city key (property 1 of get_city(item+0x44)) or owner person key + 42 so person-held items sort after cities (medium confidence)"}
+{"addr": "0x004c7e2b", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "person +0x13c mission type (0..0x2b, set with params +0x140[6] by 0x489bd0); not a base id"}
+{"addr": "0x004ccf18", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "object vfunc+0x40 = force id; <=0x29 regular force, else force-0x30 offset"}
+{"addr": "0x004ce2d8", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities matching province (+0x18)"}
+{"addr": "0x004ceb61", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 = city (normalization)"}
+{"addr": "0x004cf689", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "person vfunc+0x40 = force id; 0x2a..0x2d = barbarian forces"}
+{"addr": "0x004fa798", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI resource lookup 0x4dc620(0x29) (control/string id)"}
+{"addr": "0x004fffc1", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI draw call argument to 0x4fe850"}
+{"addr": "0x00501576", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI layout struct field on stack (with float params)"}
+{"addr": "0x00502d90", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI layout struct field on stack (with float params)"}
+{"addr": "0x005049fc", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control ids 6/7/0x2a/0x2d/0x2e/0x31 stored on stack"}
+{"addr": "0x00506c88", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch chain on value from 0x4883c0 (0x18b/0x62/0x90/0xb9): game ids, not bases"}
+{"addr": "0x00527e70", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "message id range switch (ebx-0xad9 <= 0x2b)"}
+{"addr": "0x0052c4d5", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI scene/state id from vfunc+0x1d4 compared with 0x29"}
+{"addr": "0x0052e46b", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "city map UI: loop over 42 city buttons (+0x7d8, stride 0x8c)"}
+{"addr": "0x0052e73b", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "city map UI: loop over 42 city buttons (+0x7d8, stride 0x8c)"}
+{"addr": "0x0052e906", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "city map UI: clear 42 entries at +0xc8 (array +0xa0, stride 0x2c)"}
+{"addr": "0x0052f2ab", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "city map UI ctor: vector ctor 42 x 0x8c city buttons at +0x7d8 (object layout fixed: +0x1ed0/+0x1f78 int[42] follow)"}
+{"addr": "0x0052f6b0", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "city map UI: selected index < 42 into city buttons"}
+{"addr": "0x0052f9ec", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city map UI: selected index <=0x29 into 42 x 0x8c city buttons at +0x7d8"}
+{"addr": "0x0052fbf7", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "city map UI: loop over 42 cities (+0x1f78/+0x1ed0 int[42], +0xa0 x0x2c)"}
+{"addr": "0x0052fe6c", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "city map UI: clear 42 entries at +0xc8 (stride 0x2c)"}
+{"addr": "0x00543a7e", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI call 0x4da250(0x29, text, 0): control id"}
+{"addr": "0x005466fd", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI call 0x5442b0(0x29): control/sound id"}
+{"addr": "0x00548d49", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI command id switch (0x29 / 0x31f / 0x320)"}
+{"addr": "0x0054a920", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities setting per-city force colour in map UI (0x52e610)"}
+{"addr": "0x0054b088", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "city vfunc+0x40 = force id (then get_force 0x490aa0); <=0x29 regular force"}
+{"addr": "0x0054de83", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city id <=0x29 passed to city info panel 0x55baf0"}
+{"addr": "0x0054e095", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "base normalization: gate index + C back to base id"}
+{"addr": "0x0054e36e", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city(ebp))"}
+{"addr": "0x0054ef5a", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over 42 per-city records (+0x259c, stride 0x14) of new-game UI"}
+{"addr": "0x0055084d", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "force-slot record +0x14 = chosen city id <=0x29 -> get_building for name"}
+{"addr": "0x00553b67", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "rep stosd 42 dwords: per-city stack flag array [esp+0x38] (indexed by person +0x98 city)"}
+{"addr": "0x00553d0a", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over per-city stack flag array 0..41 -> get_building"}
+{"addr": "0x005551da", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "loop index over per-city stack array <=0x29 -> get_building"}
+{"addr": "0x00556129", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "new-game UI: clicked city id (map button index) <=0x29"}
+{"addr": "0x005561f6", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "new-game UI: clicked city id <=0x29 stored as slot city"}
+{"addr": "0x005562bc", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "new-game UI: clicked city id <=0x29 stored as slot city"}
+{"addr": "0x005565cc", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over 42 per-city records (stride 0x14) calling map UI 0x52e840"}
+{"addr": "0x00556e8f", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "slot city id <=0x29 indexing stack copy of 42 x 0x14 city records"}
+{"addr": "0x00556f51", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "slot city id <=0x29 indexing stack copy of 42 x 0x14 city records"}
+{"addr": "0x00557658", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city(ebx))"}
+{"addr": "0x005577fd", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "base id normalization: gate lower bound"}
+{"addr": "0x005595c6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id from 0x4db7e0 compared with 0x29"}
+{"addr": "0x0055bb48", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "city info panel: city id <=0x29 -> get_city; also indexes static per-city table 0x844130 (int[42])"}
+{"addr": "0x00560762", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "ebp = UI control id (0x4db7e0) compared with 0x29"}
+{"addr": "0x0056296d", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "returns state code 0x2b (alternatives 0x2c/0x2e)"}
+{"addr": "0x0056529d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI state check 0x5623c0(0x29)"}
+{"addr": "0x005654e6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id 0x29 passed to 0x414280 (this=0xa5fef0)"}
+{"addr": "0x00565706", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id 0x29 passed to 0x414280 (this=0xa5fef0)"}
+{"addr": "0x0056670a", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI animation parameter 0x2b passed to 0x562280 with a float"}
+{"addr": "0x005668ca", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI animation parameter 0x2b passed to 0x562280 with a float"}
+{"addr": "0x00566d85", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI state check 0x5623c0(0x29)"}
+{"addr": "0x00566ee5", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI state check 0x5623c0(0x29)"}
+{"addr": "0x00568975", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id 0x2a passed to 0x414280 (this=0xa5fef0)"}
+{"addr": "0x00569aa1", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI state machine: state id stored in [esi+4] (table 0x848d94, <0x38)"}
+{"addr": "0x0056d128", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI state machine: state id stored in [esi+4] (table 0x848d94, <0x38)"}
+{"addr": "0x0056d820", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI state machine: state id stored in [esi+4] (table 0x848d94, <0x38)"}
+{"addr": "0x005873bd", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "object vfunc+0x40 = force id; <=0x29 regular force"}
+{"addr": "0x0058bba9", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "returns barbarian force id 43 from city->tribe switch 0x58bb90 (input bound 0x29 at 0x58bb90 is the city site)"}
+{"addr": "0x0058c64e", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x9c location <=0x29 = city -> get_city"}
+{"addr": "0x0058c7ea", "value": "42", "verdict": "BASE", "role": "OTHER", "patch": "C", "encoding": "imm32", "note": "sentinel for minimum city hop distance (0x47bc70, max C-1) in loop over cities"}
+{"addr": "0x0058c883", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x9c location <=0x29 = city"}
+{"addr": "0x0058cf1f", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "inner loop over forces (get_force 0x490aa0(ebp)) in force-pair loop"}
+{"addr": "0x0058e12b", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x9c location <=0x29 = city -> get_city"}
+{"addr": "0x0058f0ee", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city) collecting into stack array"}
+{"addr": "0x0058f3cf", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city(ebp))"}
+{"addr": "0x0058f89a", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities into stack array [esp+0x60] of 42"}
+{"addr": "0x0058fea9", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit vfunc+0x40 = force id; skips regular forces 0..41"}
+{"addr": "0x00590034", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over per-city stack arrays [esp+ebp*4+0xa8] and 42 x 0x20 lists; result -> get_city"}
+{"addr": "0x0059078d", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "loop over building ids 0..0x29 (get_building, 0x4866f0 building->city); inclusive bound"}
+{"addr": "0x00590bb6", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city)"}
+{"addr": "0x00598607", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "nested loop over force ids (get_force 0x490aa0(edi))"}
+{"addr": "0x00598f0f", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "esi = city owner force id; inc per-force counter [ebx+esi*4]"}
+{"addr": "0x00599205", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rep stosd 42 dwords @esp+0x20 in 0x599190: summed per force ([esp+force*4+0x20], force from building vfunc+0x40 <=0x29)"}
+{"addr": "0x005995b9", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "building vfunc+0x40 = force id; <=0x29 regular force"}
+{"addr": "0x00599f1e", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "person +0x13c mission type range 0..0x2b; not a base id"}
+{"addr": "0x0059ae5b", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rep stosd 42 dwords: per-force counter array passed to 0x598ea0 ([ebx+force*4]++)"}
+{"addr": "0x0059b5d9", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rep stosd 42 dwords @esp+0x118: arg1 of 0x599190, written [arr+force*4]=1 -> per-force flags (the @0x1c0 array at 0x59b5e7 is the per-city one)"}
+{"addr": "0x0059be16", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "loop over gates+ports: ebx from C to 0x56 with get_building"}
+{"addr": "0x0059f855", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "switch returning enum values (0x8..0x2c); not an id range"}
+{"addr": "0x005aa547", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit vfunc+0x40 -> leader vfunc+0x40 = force id; <=0x29 regular force"}
+{"addr": "0x005ae6e2", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit vfunc+0x58(0x2a): skill/ability id 42"}
+{"addr": "0x005b6d58", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person mission param +0x140[0] (0x4897b0) <=0x29 -> get_city"}
+{"addr": "0x005bb3ac", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city(ebp))"}
+{"addr": "0x005bccd0", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop over forces (get_force 0x490aa0(ebx))"}
+{"addr": "0x005bd77c", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop over forces 0..41 (get_force 0x490aa0(edi))"}
+{"addr": "0x005c05f1", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "rep stosd 42 dwords: per-city stack array [esp+0x14] indexed by city idx (0x491180)"}
+{"addr": "0x005c2059", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x98 <=0x29 = city -> 0x47b080 -> get_city"}
+{"addr": "0x005c3816", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005c65d3", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005ca490", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005cac63", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005d01f1", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005d6128", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x98 <=0x29: person belongs to a city"}
+{"addr": "0x005d8854", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005dc51b", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop counting existing forces 0..41 (get_force 0x490aa0(esi))"}
+{"addr": "0x005dcddf", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) indexing 0x34 AI base records; <=0x29 = city"}
+{"addr": "0x005defca", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "ebp = force index from 0x491270 (force ptr->idx); <=0x29 regular force"}
+{"addr": "0x005e1d92", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop over forces (get_force 0x490aa0(ebp))"}
+{"addr": "0x005e2fd0", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "ebp = force index (0x491270); bound of the 42 x 0xd4 per-force AI records at 0x73f61c0"}
+{"addr": "0x005e49fe", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "AI task target (type 3, +0x14) <=0x29 = city -> get_building"}
+{"addr": "0x005e5246", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005e5ddc", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "loop over base ids 0..0x56 (87 x 0x34 AI records); <=0x29 = city"}
+{"addr": "0x005e731c", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x98 <=0x29 = city"}
+{"addr": "0x005e914f", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "force list object vfunc+0x28 = force index < 42 into per-force stack array"}
+{"addr": "0x005e95e1", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop over per-force stack array [esp+esi*4+0x108] with get_force(esi)"}
+{"addr": "0x005eab8a", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x98 <=0x29 -> get_city"}
+{"addr": "0x005eb342", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop over forces (get_force 0x490aa0(esi))"}
+{"addr": "0x005ec86b", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> get_city"}
+{"addr": "0x005ed8bb", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "edi = force index (0x491270); bound of per-force AI records 0x73f61c0 (x0xd4)"}
+{"addr": "0x005edf31", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 = city"}
+{"addr": "0x005ef6e9", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "rand(41)+50 percentage factor"}
+{"addr": "0x005f0ad5", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 -> 0x5f7070 (get_city)"}
+{"addr": "0x005f0cc9", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 = city"}
+{"addr": "0x005f1945", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building idx (0x491770) <=0x29 = city"}
+{"addr": "0x005f5064", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "base id (0x491770, used with 7-neighbour area table 0x5f6b90) <=0x29 = city"}
+{"addr": "0x005f69aa", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "accessor of 42 x 0xd4 AI records at 0x73f61c0: callers pass force index (0x491270), records are per-force"}
+{"addr": "0x005f6a88", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "accessor of per-force AI records 0x73f61c8 (caller 0x5e6288 passes 0x491270 force index)"}
+{"addr": "0x005f6efc", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "accessor of 42 x 0x21 AI city records 0x73faf60: called with city idx 0x491180, uses get_city"}
+{"addr": "0x005f86e3", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "edi = force index (caller 0x5f36ad uses 0x491270); per-force record bitset tested for each force"}
+{"addr": "0x005f9b2b", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "base id <=0x29 = city (caller 0x5eb549 passes city ptr->idx 0x47b460)"}
+{"addr": "0x00601097", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "facility type ids 0x28..0x2d/0x31 (edi used with facility-type getter 0x490b90)"}
+{"addr": "0x00605cbd", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "property id 0x2a for text formatter 0x4c9890"}
+{"addr": "0x00618480", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI table value (0x8baf58) range check <= 0x2b"}
+{"addr": "0x00620ef4", "value": "43", "verdict": "BASE", "role": "OTHER", "patch": "C+1", "encoding": "imm32", "note": "city overlay UI: loop over 43 x 0x14 entries at +0x78 = 42 cities + 1 extra marker (fields +0x3c0..+0x3d3 hardcoded)"}
+{"addr": "0x006221ca", "value": "43", "verdict": "BASE", "role": "OTHER", "patch": "C+1", "encoding": "imm8", "note": "city overlay UI: draw loop over 43 entries (42 cities + extra marker) via 0x621ac0"}
+{"addr": "0x006223e3", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "city overlay UI: loop over cities with per-city 0x14 entries at +0x80"}
+{"addr": "0x00624c29", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "selected city index from 0x698550 <=0x29 -> get_city"}
+{"addr": "0x00637b5d", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "building owner force (vfunc+0x40) in 0x2a..0x2d = barbarian forces"}
+{"addr": "0x0063e072", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building id <=0x29 (setg) selects city vs other icon"}
+{"addr": "0x0063e8f3", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "minimap UI: loop over the 42 city entries of 87-entry arrays (+0x88010 x0x8c, +0x310 x0x20)"}
+{"addr": "0x0063f8d2", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "loop over gates+ports (edi C..0x56) in UI arrays of 87 entries (+0x310 x0x20, +0x88010 x0x8c); start pointers +0x850/+0x89708 are folded C offsets"}
+{"addr": "0x0064bfd2", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "loop over cities (get_city(edi))"}
+{"addr": "0x0066db63", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch over 44 UI/script cases"}
+{"addr": "0x0067624d", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "person +0x9c location <=0x29 = city id"}
+{"addr": "0x00678225", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "person force (vfunc+0x40) in 0x2a..0x2d = barbarian forces"}
+{"addr": "0x0067be94", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "switch return value 0x2b in a sequential enum mapping"}
+{"addr": "0x0067f850", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "bitset<42>::count() (vtables 0x85fa6c/0x85fb1c); instance 0x9c43ecc is tested with area->city ids (0x576aa7); storage only 2 dwords"}
+{"addr": "0x00680cee", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "bitset<42> set-all loop over 0..41 (city flag set at 0x9c43ecc)"}
+{"addr": "0x006893d7", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm32", "note": "loop over gates: edi from C to 0x33 with get_building"}
+{"addr": "0x0068e748", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "property id 0x2a for text formatter 0x4c9890"}
+{"addr": "0x00697f48", "value": "41", "verdict": "BASE", "role": "CITY_MAX", "patch": "C-1", "encoding": "imm8", "note": "building vfunc+0x28 (ptr->idx) <=0x29 -> get_city"}
+{"addr": "0x0069dc3f", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "property id 0x2a for text formatter 0x4c9890"}
+{"addr": "0x006b5424", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "table of (n,id) pairs 0x22..0x2e pushed to a UI/sound routine"}
+{"addr": "0x006b66f9", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "text parser: '/*' comment detection ('*' char)"}
+{"addr": "0x006b9d7c", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "mis-disassembled data (jump table bytes)"}
+{"addr": "0x006ba491", "value": "-42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "mis-disassembled data (jump table bytes)"}
+{"addr": "0x006e2fe6", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "library/codec routine arithmetic (+42)"}
+{"addr": "0x0070eda8", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT printf: '*' width char"}
+{"addr": "0x007118cf", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT scanf/format parser: '*' char"}
+{"addr": "0x0071213b", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT number parser: '+' char"}
+{"addr": "0x00718b6c", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT tzset parser: '+' char"}
+{"addr": "0x0071a6dc", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT float parser: '+' char"}
+{"addr": "0x0071e6b0", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT: argument 0x2a to imported API [0x74e524]"}
+{"addr": "0x00723598", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT: argument 0x2a to imported API [0x74e524]"}
+{"addr": "0x0072ee9d", "value": "42", "verdict": "BASE", "role": "CITY_COUNT", "patch": "C", "encoding": "imm8", "note": "EH unwind: vector ctor/dtor of city array (42 x 0x248 at world+0x1d8)"}

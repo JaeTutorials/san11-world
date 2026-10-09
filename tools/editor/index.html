@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三国志11 世界编辑器</title>
+<style>
+  :root {
+    --bg: #1d1f23; --panel: #26292e; --line: #3a3e45; --text: #e6e3dc; --muted: #9a978f;
+    --accent: #d8a54a; --danger: #d0574b; --ok: #6fae5c; --sel: #3b3424;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font: 13px/1.45 "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; }
+  body { display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: 220px 1fr 290px; height: 100vh; }
+  header { grid-column: 1 / 4; display: flex; align-items: center; gap: 10px; padding: 6px 12px;
+    background: var(--panel); border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 15px; margin: 0 12px 0 0; color: var(--accent); font-weight: 600; letter-spacing: 1px; }
+  header .sp { flex: 1; }
+  button { background: #33373e; color: var(--text); border: 1px solid var(--line); border-radius: 4px;
+    padding: 4px 10px; cursor: pointer; font: inherit; }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: var(--accent); color: #1d1f23; border-color: var(--accent); font-weight: 600; }
+  button.on { background: var(--sel); border-color: var(--accent); color: var(--accent); }
+  button:disabled { opacity: .45; cursor: default; }
+  label.tg { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); cursor: pointer; }
+  aside { background: var(--panel); overflow: auto; padding: 10px; }
+  aside.left { border-right: 1px solid var(--line); }
+  aside.right { border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+  h2 { font-size: 12px; color: var(--muted); font-weight: 600; margin: 12px 0 6px; text-transform: uppercase; letter-spacing: 1px; }
+  h2:first-child { margin-top: 0; }
+  .tools { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+  .pal { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .pal button { display: flex; align-items: center; gap: 6px; padding: 3px 6px; text-align: left; }
+  .pal i { width: 14px; height: 14px; border-radius: 2px; border: 1px solid #0006; flex: none; }
+  .hint { color: var(--muted); font-size: 12px; margin-top: 10px; }
+  .hint b { color: var(--text); font-weight: 600; }
+  main { position: relative; overflow: hidden; background: #111; }
+  canvas { display: block; width: 100%; height: 100%; cursor: crosshair; }
+  #list { flex: 1; min-height: 120px; overflow: auto; border: 1px solid var(--line); border-radius: 4px; background: #202227; }
+  #list div { display: flex; gap: 6px; padding: 2px 6px; cursor: pointer; white-space: nowrap; }
+  #list div:hover { background: #2c2f35; }
+  #list div.sel { background: var(--sel); color: var(--accent); }
+  #list div.unused { color: var(--muted); }
+  #list div.koei { color: #8fa9c9; }
+  #list .id { width: 30px; color: var(--muted); text-align: right; }
+  #list .warn { color: var(--danger); }
+  .form { display: grid; grid-template-columns: 56px 1fr; gap: 4px 6px; align-items: center; }
+  .form input { width: 100%; background: #1b1d21; color: var(--text); border: 1px solid var(--line); border-radius: 3px; padding: 3px 5px; font: inherit; }
+  .row { display: flex; gap: 4px; flex-wrap: wrap; }
+  input[type=search] { width: 100%; background: #1b1d21; color: var(--text); border: 1px solid var(--line); border-radius: 3px; padding: 4px 6px; font: inherit; }
+  footer { grid-column: 1 / 4; display: flex; gap: 16px; padding: 4px 12px; background: var(--panel); border-top: 1px solid var(--line); color: var(--muted); }
+  footer span b { color: var(--text); font-weight: 500; }
+  #build { position: absolute; right: 12px; bottom: 12px; width: 520px; max-width: calc(100% - 24px); background: #23262bf2;
+    border: 1px solid var(--line); border-radius: 6px; padding: 10px; display: none; box-shadow: 0 8px 30px #0008; }
+  #build.open { display: block; }
+  #build pre { height: 220px; overflow: auto; background: #15161a; margin: 8px 0 0; padding: 6px; font: 11px/1.4 Consolas, monospace; white-space: pre-wrap; }
+  #toast { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); background: #000c; padding: 6px 14px; border-radius: 4px; display: none; }
+  .warnbox { color: var(--danger); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>三国志11 世界编辑器</h1>
+  <button id="save" class="primary" title="Ctrl+S">保存</button>
+  <button id="openBuild">生成 / 部署…</button>
+  <span class="sp"></span>
+  <label class="tg"><input type="checkbox" id="vAreas"> 领地</label>
+  <label class="tg"><input type="checkbox" id="vLinks"> 相邻</label>
+  <label class="tg"><input type="checkbox" id="vNames" checked> 城名</label>
+  <label class="tg"><input type="checkbox" id="vChina" checked> 中国区域</label>
+  <button id="fit">全图</button>
+</header>
+
+<aside class="left">
+  <h2>工具</h2>
+  <div class="tools">
+    <button data-tool="pan" class="on" title="拖动地图 (空格)">浏览</button>
+    <button data-tool="paint" title="画地形 (B)">地形</button>
+    <button data-tool="city" title="编辑城市 (C)">城市</button>
+  </div>
+  <h2>地形</h2>
+  <div class="pal" id="pal"></div>
+  <h2>笔刷 <span id="brushVal">3</span></h2>
+  <input type="range" id="brush" min="1" max="20" value="3" style="width:100%">
+  <div class="hint" id="hint"></div>
+</aside>
+
+<main>
+  <canvas id="map"></canvas>
+  <div id="toast"></div>
+  <div id="build">
+    <div class="row" style="align-items:center;justify-content:space-between">
+      <b>生成游戏数据</b><button id="closeBuild">关闭</button>
+    </div>
+    <div class="form" style="margin-top:8px;grid-template-columns:110px 1fr">
+      <span>城市总数 C</span><input type="number" id="bC" min="42" max="1000">
+      <span>输出目录</span><span id="bOut"></span>
+      <span></span><label class="tg"><input type="checkbox" id="b3d" checked> 地形改过时重建 3D 地表（几分钟）</label>
+      <span></span><label class="tg"><input type="checkbox" id="bDeploy" checked> 写入 worldmod.ini（san11pk_world.exe 用这份数据）</label>
+    </div>
+    <div class="row" style="margin-top:8px"><button id="bGo" class="primary">开始生成</button><span id="bState" class="hint" style="margin:4px 0 0 8px"></span></div>
+    <pre id="bLog"></pre>
+  </div>
+</main>
+
+<aside class="right">
+  <h2>城市（新城 id 从 42 开始，按顺序取前 C−42 个）</h2>
+  <input type="search" id="find" placeholder="搜索城名">
+  <div id="list"></div>
+  <div id="detail">
+    <div class="form">
+      <span>编号</span><span id="fId">—</span>
+      <span>城名</span><input id="fName" maxlength="2" placeholder="1–2 个字">
+      <span>全名</span><input id="fFull">
+      <span>地区</span><input id="fRegion">
+      <span>坐标</span><span class="row"><input id="fLo" type="number" style="width:70px"> <input id="fHi" type="number" style="width:70px"></span>
+    </div>
+    <div class="warnbox" id="fWarn"></div>
+    <div class="row" style="margin-top:6px">
+      <button id="cGo">定位</button><button id="cUp">上移</button><button id="cDown">下移</button>
+      <button id="cDel" style="color:var(--danger)">删除</button>
+    </div>
+  </div>
+</aside>
+
+<footer>
+  <span>格 <b id="sHex">—</b></span>
+  <span>地形 <b id="sTer">—</b></span>
+  <span>领地 <b id="sArea">—</b></span>
+  <span>城市 <b id="sCity">—</b></span>
+  <span class="sp" style="flex:1"></span>
+  <span id="sDirty"></span>
+</footer>
+<script src="editor.js"></script>
+</body>
+</html>

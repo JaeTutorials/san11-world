@@ -1,0 +1,170 @@
+[
+ {
+  "va": "0x796768",
+  "struct": "area adjacency 0x796768 -> AREAADJ",
+  "expr": "(N+6)*7*8",
+  "phase": 1,
+  "note": "AREAADJ: rows = area ids (bases 0..N-1, special areas N..N+5), 7 x {i16 neighbour area, i16 route type, i16, i16}; generated from the new map data (route types 0 land,1/4 with a hex,2 -> special area,3 water,5); fields +4/+6 are never read"
+ },
+ {
+  "va": "0x797bc0",
+  "struct": "hop matrix 0x797bc0 -> MAT87A",
+  "expr": "N*N",
+  "phase": 1,
+  "note": "MAT87A: u8 hop counts between bases, BFS over AREAADJ edges with route type in {0,3,5} (reproduces the original table 100%)"
+ },
+ {
+  "va": "0x799958",
+  "struct": "hop matrix 0x799958 -> MAT87B",
+  "expr": "N*N",
+  "phase": 1,
+  "note": "MAT87B: u8 hop counts between bases, BFS over all AREAADJ edges (reproduces the original 100%)"
+ },
+ {
+  "va": "0x79b830",
+  "struct": "city matrix 0x79b830 -> MATC",
+  "expr": "C*C",
+  "phase": 1,
+  "note": "MATC: u8 hop counts between cities, BFS over city +0x1c[6] adjacency from Scenario.s11 (reproduces the original 100%)"
+ },
+ {
+  "va": "0x79c2b0",
+  "struct": "area->city 0x79c2b0 -> AREA2CITY",
+  "expr": "N+6",
+  "phase": 1,
+  "note": "AREA2CITY: u8 city of each area (city: itself, gate/port: its city, special areas N..N+5 -> 1,8,21,24,39,41); u8 is enough up to C=255; the original table is followed by the direction table 0x79c310, do not extend in place"
+ },
+ {
+  "va": "0x79c358",
+  "struct": "area->base 0x79c358 -> AREA2BASE",
+  "expr": "(N+6)*4",
+  "phase": 1,
+  "note": "AREA2BASE: i32; 0..N-1 identity, N -> -1, N+1..N+5 -> -8,-21,-24,-39,-41 (negative = city id returned when the flag argument is set)"
+ },
+ {
+  "va": "0x7e7bd8",
+  "struct": "debug base table 0x7e7bd8 -> DBGBASE",
+  "expr": "N*16",
+  "phase": 1,
+  "note": "DBGBASE: N x {i16 type,i16 group,i16 idx,i16 vy,i16 vx,i16 0,i16 model,i16 area}; debug/RPC path 0x4a4f30 only (optional)"
+ },
+ {
+  "va": "0x844130",
+  "struct": "per-city int table 0x844130 -> CITYTAB844",
+  "expr": "C*4",
+  "phase": 1,
+  "note": "CITYTAB844: int per city shown in the city info panel (values 10..22); copy the 42 old values, choose values for the new cities"
+ },
+ {
+  "va": "0x7201b30",
+  "struct": "world.city[C] -> CITYARR",
+  "expr": "C*0x248",
+  "phase": 1,
+  "note": "CITYARR: C city objects (0x248 each, 8-aligned), constructed by the patched world ctor (eh vector ctor 0x707b86 with ctor 0x47c2b0); must exist before the static world ctor 0x74d780 runs (d3d9 proxy DllMain)"
+ },
+ {
+  "va": "0x73f8e14",
+  "struct": "AI subobject 0x73f612c: base records -> AIBASE",
+  "expr": "N*0x34",
+  "phase": 1,
+  "note": "AIBASE: N x 0x34 AI base records, initialised by the patched 0x4792a0/0x479400, saved by 0x479680 (52 bytes each)"
+ },
+ {
+  "va": "0x73faf60",
+  "struct": "AI subobject 0x73f612c: city records -> AICITY",
+  "expr": "A4(C*0x21+2)",
+  "phase": 1,
+  "note": "AICITY: C x 0x21 runtime city records (+padding for the trailing stosw of the clear at 0x479411/0x47941a); not saved"
+ },
+ {
+  "va": "0x9193388",
+  "struct": "UISCR_B static UI screen object relocated",
+  "expr": "0x29e4+(C-42)*0xc0",
+  "phase": 1,
+  "note": "UISCR_B: DLL allocation (zero-filled) replacing the static screen object at 0x9193388; it embeds the city-map widget (grows by (C-42)*0xc0); constructed at run time by 0x4d4b5a..0x4d4d4a (ctor ecx and registry store) and destroyed by the atexit thunk 0x74d9xx; the 3 absolute refs per screen are kind imm lines with expr UISCR_B"
+ },
+ {
+  "va": "0x91a7bb8",
+  "struct": "UISCR_C static UI screen object relocated",
+  "expr": "0x434c+(C-42)*0xc0",
+  "phase": 1,
+  "note": "UISCR_C: DLL allocation (zero-filled) replacing the static screen object at 0x91a7bb8; it embeds the city-map widget (grows by (C-42)*0xc0); constructed at run time by 0x4d4b5a..0x4d4d4a (ctor ecx and registry store) and destroyed by the atexit thunk 0x74d9xx; the 3 absolute refs per screen are kind imm lines with expr UISCR_C"
+ },
+ {
+  "va": "0x91abf08",
+  "struct": "UISCR_D static UI screen object relocated",
+  "expr": "0x2b84+(C-42)*0xc0",
+  "phase": 1,
+  "note": "UISCR_D: DLL allocation (zero-filled) replacing the static screen object at 0x91abf08; it embeds the city-map widget (grows by (C-42)*0xc0); constructed at run time by 0x4d4b5a..0x4d4d4a (ctor ecx and registry store) and destroyed by the atexit thunk 0x74d9xx; the 3 absolute refs per screen are kind imm lines with expr UISCR_D"
+ },
+ {
+  "va": "0x91aea90",
+  "struct": "UISCR_F static UI screen object relocated",
+  "expr": "0x2448+(C-42)*0xc0",
+  "phase": 1,
+  "note": "UISCR_F: DLL allocation (zero-filled) replacing the static screen object at 0x91aea90; it embeds the city-map widget (grows by (C-42)*0xc0); constructed at run time by 0x4d4b5a..0x4d4d4a (ctor ecx and registry store) and destroyed by the atexit thunk 0x74d9xx; the 3 absolute refs per screen are kind imm lines with expr UISCR_F"
+ },
+ {
+  "va": "0x91b0ed8",
+  "struct": "UISCR_E static UI screen object relocated",
+  "expr": "0x5dc0+(C-42)*0xc0",
+  "phase": 1,
+  "note": "UISCR_E: DLL allocation (zero-filled) replacing the static screen object at 0x91b0ed8; it embeds the city-map widget (grows by (C-42)*0xc0); constructed at run time by 0x4d4b5a..0x4d4d4a (ctor ecx and registry store) and destroyed by the atexit thunk 0x74d9xx; the 3 absolute refs per screen are kind imm lines with expr UISCR_E"
+ },
+ {
+  "va": "0x91b6978",
+  "struct": "UISCR_A static UI screen object relocated",
+  "expr": "0x341c+(C-42)*0xc0",
+  "phase": 1,
+  "note": "UISCR_A: DLL allocation (zero-filled) replacing the static screen object at 0x91b6978; it embeds the city-map widget (grows by (C-42)*0xc0); constructed at run time by 0x4d4b5a..0x4d4d4a (ctor ecx and registry store) and destroyed by the atexit thunk 0x74d9xx; the 3 absolute refs per screen are kind imm lines with expr UISCR_A"
+ },
+ {
+  "va": "0x96a5a30",
+  "struct": "global AI object 0x96a59d8 (vtbl 0x84a918, ctor 0x57da70): 87x0x10 per-base array at +0x58 -> AIBLD16 (N*0x10 bytes, zeroed)",
+  "expr": "N*0x10",
+  "phase": 1,
+  "note": "AIBLD16: N x 0x10 per-base sums rebuilt every turn by 0x58c3d0 (not saved); the old +0x58..+0x5c8 slot inside 0x96a59d8 (followed by a CRITICAL_SECTION at +0x5c8) becomes unused"
+ },
+ {
+  "va": "0x96a9350",
+  "struct": "area hex-list object 0x96a9350 (AREAHEX): +0 ptr, +4 87 x 0x44 {dword hex[16], int count} indexed by hex area id <N; builder 0x5a6020",
+  "expr": "4+N*0x44",
+  "phase": 1,
+  "note": "DLL symbol AREAHEX, zero-initialised; POD (no ctor/dtor); +0 set by 0x5a8350, cleared by 0x5a59d0/0x5ad980; records rebuilt by 0x5a6020 (called from 0x5a24cb)"
+ },
+ {
+  "va": "0x99c8a6c",
+  "struct": "AI runtime object 0x99c78a8 (AIRT; ctor 0x5e1590, init 0x5e1900, dtor 0x5e1620)",
+  "expr": "0xfa0",
+  "phase": 1,
+  "note": "new DLL array AIUNIT, 1000 dwords, zero-initialised (static .bss in the DLL; written by 0x5e1900/0x5e0e20 before use). Freed space this+0x11c4..0x2163 takes records 87..N-1 (0x18+N*0x34<=0x2164 <=> N<=163)."
+ },
+ {
+  "va": "0x9c43ed0",
+  "struct": "CITYBITS bitset<C> (was bitset<42> @0x9c43ecc, storage 0x9c43ed0 2 dwords)",
+  "expr": "CITYBITS = DLL buffer 4*max(2,(C+31)>>5) bytes, zero-filled, allocated before the exe CRT static init (0x73ffe0 -> ctor 0x680530)",
+  "phase": 1,
+  "note": "single instance (vtables 0x85fa6c/0x85fb1c only installed by ctor 0x680530/0x680240 and dtors). Old storage +0x50/+0x54 becomes dead (ctor 0x6805b3 still zeroes it, harmless). Container cannot grow in place: +0x58 bitset<47>, +0x64.. +0x7c other fields"
+ },
+ {
+  "va": "0x6fae590",
+  "struct": "AREACOL u32[144] @0x6fae590 (function-static, filled by 0x47d790)",
+  "expr": "max(144,N+6)*4",
+  "phase": 2,
+  "note": "AREACOL: per-area colour table indexed by raw area id (0x41e9aa via 0x47dd2c); only needed when N+6>144; fill with the 144 constants of 0x47d790 repeated"
+ },
+ {
+  "va": "0x6fb0e6c",
+  "struct": "HEX20.area(+4 bits5-11)->AREA20 u16 side table",
+  "expr": "AREA20 = DLL buffer of W*H*20 bytes (or W*H*2 with stride change, see note), zero-filled; u16 area at AREA20+idx*20+4",
+  "phase": 2,
+  "note": "side table; all 71 readers + 1 writer above use AREA20+4 (abs) or AREA20-B20+4 (from a B20 record pointer). No save-game change: area is not saved (0x484960 saves only +0 bits 23-28); it is reloaded from SHEX each map load."
+ },
+ {
+  "va": "0x99c78a8",
+  "struct": "AI runtime object 0x99c78a8 (AIRT; ctor 0x5e1590, init 0x5e1900, dtor 0x5e1620)",
+  "expr": "0x3354+(N-87)*0x34",
+  "phase": 2,
+  "note": "DLL symbol AIRT (zero-initialised, 8-aligned), must exist before static init 0x73eac0 runs (DLL in import table) or the DLL must run ctor 0x5e1590 on it itself; phase-2 layout: records 0x18..0x18+N*0x34, old int[1000] area unused (AIUNIT), members >=0x2164 shifted by (N-87)*0x34"
+ }
+]

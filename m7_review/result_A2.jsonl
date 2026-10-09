@@ -1,0 +1,184 @@
+{"addr": "0x004106ec", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "inclusive end id of 0x410540 loop over building ids (0x490d00) for gates+ports 0x2a..0x56; sibling caller 0x4106c0 passes 0..0x29 for cities"}
+{"addr": "0x00429cf6", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size"}
+{"addr": "0x0043a4ea", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x004471aa", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "struct member offset in copy constructor"}
+{"addr": "0x00472243", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "'X' hex prefix in number parser"}
+{"addr": "0x004794f1", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "AI init 0x479400: loop over the 87 x 0x34 AI base records"}
+{"addr": "0x004795da", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "row stride of 87x87 base hop matrix 0x797bc0 (bounds checked with 0x57 just before; table must be regenerated)"}
+{"addr": "0x0047960a", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "row stride of 87x87 base hop matrix 0x799958 (bounds checked with 0x57 just before)"}
+{"addr": "0x0047b069", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "is_port(id): 0x34<=id<=0x56"}
+{"addr": "0x0047eae5", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00 summing stats of bases owned by a corps"}
+{"addr": "0x00482025", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00 summing stats of bases owned by a force"}
+{"addr": "0x004865c5", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x004867f5", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x00486a59", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x00486ca5", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x00486ec5", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x00487176", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x00487419", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x004876c9", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x00487be3", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from 0x491770, port range upper bound before add -0x34 and port getter 0x490a70"}
+{"addr": "0x004882f4", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "is_unit_loc 0x4882f0: 0x57<=loc<=0x43e"}
+{"addr": "0x00488319", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "loc->unit 0x488310 upper bound of person location"}
+{"addr": "0x0048837a", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "normalize base id 0x488350: port range upper bound"}
+{"addr": "0x004891d6", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location -> unit (add -0x57, 0x490e70)"}
+{"addr": "0x00489226", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location is unit check"}
+{"addr": "0x00489237", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "person+0x9c location -> unit upper bound"}
+{"addr": "0x0048928f", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "person+0x9c location -> unit upper bound"}
+{"addr": "0x0048964b", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location -> unit (lea [esi-0x57])"}
+{"addr": "0x00489ef8", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "location validator 0x489ef0: 0<=loc<=0x43e"}
+{"addr": "0x0048a31f", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location is unit check"}
+{"addr": "0x0048a331", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "person+0x9c location -> unit upper bound"}
+{"addr": "0x0048ab88", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "person+0x9c location is unit check before 0x489220"}
+{"addr": "0x0048b43a", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "normalize person+0x98 base id: port range upper bound"}
+{"addr": "0x0048e388", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "is_base_location 0x48e380: 0<=loc<=0x56 (caller then uses 0x488330 loc->base)"}
+{"addr": "0x0049060c", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "location >=0x57 -> unit (add -0x57, 0x490e70)"}
+{"addr": "0x00491bbe", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "location -> unit pointer 0x491bb0: 0x57<=loc<=0x43e"}
+{"addr": "0x004955f6", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "unit index (0x4917c0) + 0x57 -> location value"}
+{"addr": "0x0049eb9e", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm32", "note": "inclusive upper bound of loop over building ids (0x490d00) used when person is in a unit; otherwise 0x29 (cities)"}
+{"addr": "0x004a1c65", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "validate location (unit idx+0x57) before writing person+0x9c"}
+{"addr": "0x004a4b15", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "validate location before writing person+0x9c"}
+{"addr": "0x004a54bb", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location -> unit"}
+{"addr": "0x004a5dd4", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location -> unit"}
+{"addr": "0x004a5f1c", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location is unit check"}
+{"addr": "0x004a6360", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x004a8394", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id, compared to person+0x98"}
+{"addr": "0x004a8c83", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "normalize building id (0x491770): port range upper bound"}
+{"addr": "0x004a9555", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "location from 0x4a7530 (unit idx+0x57 via 0x4955e0) is-unit check"}
+{"addr": "0x004ad132", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id (0x491770) port range upper bound before port getter"}
+{"addr": "0x004b2212", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "unit idx + 0x57 location upper bound"}
+{"addr": "0x004b49f6", "value": "87", "verdict": "BASE", "role": "FACILITY_START", "patch": "N", "encoding": "imm8", "note": "building id (0x491770) in 0x57..0x3fff = facility, else base"}
+{"addr": "0x004b7c3c", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location -> unit"}
+{"addr": "0x004b83d7", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = in a base"}
+{"addr": "0x004ba584", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "person+0x9c location is unit check"}
+{"addr": "0x004bbc0d", "value": "87", "verdict": "BASE", "role": "LOCATION_UNIT_BASE", "patch": "N", "encoding": "imm8", "note": "person+0x9c location -> unit"}
+{"addr": "0x004bbd7e", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "normalize base id from 0x47b460 (port range) before location setter 0x4a0cb0"}
+{"addr": "0x004bcd6b", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "normalize base id from 0x4a6340: port range upper bound"}
+{"addr": "0x004c2615", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x004c3e05", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x004ca5f2", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "text/message id argument to 0x4c7fa0 (valid 0..0x10d; other branches pass 0x106)"}
+{"addr": "0x004cf8d7", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "location from 0x486680 validated before 0x4cf2f0 which compares it to person+0x9c"}
+{"addr": "0x004df34d", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "key code 'V' (also 0x76 'v', 0x1b Esc)"}
+{"addr": "0x004eab63", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x004eace5", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x004f0915", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x00513d54", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x00529055", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x00530278", "value": "87", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "DBCS second-byte test (0x81 0x57/0x58)"}
+{"addr": "0x0053a685", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x00542879", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x0054d1e7", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x0055a9d0", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x00561529", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "effect/sound id passed to 0x414670 (this=0xa5fef0)"}
+{"addr": "0x00566807", "value": "87", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "effect/sound id passed to 0x414280 (this=0xa5fef0)"}
+{"addr": "0x00568bd7", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005697a6", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x00570669", "value": "87", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "byte inside jump-table data (address 0x5704xx)"}
+{"addr": "0x0057ebdf", "value": "87", "verdict": "BASE", "role": "FACILITY_START", "patch": "N", "encoding": "imm32", "note": "loop edi=0x57..0x3fff over facilities via 0x490d00"}
+{"addr": "0x00582ff7", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "message/dialog kind id for 0x5899c0 (other callers pass 0x3c/0x5c/0x62)"}
+{"addr": "0x0058529d", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "message id 0x53/0x56 selected for 0x587450"}
+{"addr": "0x00587ee4", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x0058c022", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x0058c41a", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over 87 buildings filling an 87 x 0x10 array (cleared with rep stosd 0x15c)"}
+{"addr": "0x0058c5d5", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over base/area ids 0..86 (0x4839f0 area->city, 0x490d00)"}
+{"addr": "0x0058d6b2", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "building id (0x491770) bound for int[87] at this+0x160 (also int[87] at this+4)"}
+{"addr": "0x0058f1c5", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over base ids 0..86 (0x4839f0, 0x490d00)"}
+{"addr": "0x0058f9d7", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over base ids 0..86 (0x4839f0, 0x490d00)"}
+{"addr": "0x00590705", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "building id (0x491770) bound for 87 x 0x10 array (+0x5c)"}
+{"addr": "0x0059080b", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm32", "note": "rep stosd count: fills stack int[87] at esp+0x1e4 with -1 (stack frame must grow)"}
+{"addr": "0x00590a0b", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "outer loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x0059820e", "value": "87", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "index 0x57/0x58/0x59 into 16-byte message table 0x84a9b0 chosen by type"}
+{"addr": "0x005989b3", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x00599e6e", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x0059b41e", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x0059dfde", "value": "87", "verdict": "BASE", "role": "FACILITY_START", "patch": "N", "encoding": "imm32", "note": "loop edi=0x57..0x3fff over facilities (type 0x30) via 0x490d00"}
+{"addr": "0x005a60b0", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "hex area id (bits5-11) < 0x57 indexes 87 x 0x44 array at this+4"}
+{"addr": "0x005a6188", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "hex area id (bits5-11) < 0x57 indexes 87 x 0x44 array at this+4"}
+{"addr": "0x005ab6ef", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "hex area id < 0x57 (base area); then stack arrays of 87 entries cleared"}
+{"addr": "0x005ab79d", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over stack array [esp+i*4+0x2d4] of 87 base lists"}
+{"addr": "0x005ab925", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "init loop of stack array [esp+i*8+0x20] with 87 entries"}
+{"addr": "0x005abb0a", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "hex area id < 0x57 (base area)"}
+{"addr": "0x005abbe2", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over stack array [esp+i*4+0x2dc] of 87 base lists"}
+{"addr": "0x005b20f6", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "skill id for 0x4890f0 (person+0xe8 == id, id<=0x63)"}
+{"addr": "0x005b6d29", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x005baedc", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x005bcdaa", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x005c1356", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x005c47b0", "value": "1086", "verdict": "BASE", "role": "LOCATION_MAX", "patch": "N+999", "encoding": "imm32", "note": "person+0x9c location is unit check"}
+{"addr": "0x005cb079", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x005cfb99", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x005d5df9", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x005d6447", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over stack array [esp+i*4+0x18] indexed by person+0x98 (87 entries)"}
+{"addr": "0x005dbe09", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005e2994", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "skill id 0x56 in callback param (0x5f6830 -> 0x4890f0)"}
+{"addr": "0x005e3660", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "skill id 0x56 in callback param (0x5f6830 -> 0x4890f0)"}
+{"addr": "0x005e437a", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "building id from city+0xd4[5] (0x47bc50) is port: 0x34..0x56"}
+{"addr": "0x005e5617", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm32", "note": "loop count initialising 87 AI base records (stride 0x34)"}
+{"addr": "0x005e57d1", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "neighbour base id (0x5f6b90) bound for 87 x 0x34 records"}
+{"addr": "0x005e5b66", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "neighbour base id (0x5f6b90) bound before 0x490d00"}
+{"addr": "0x005e5ce8", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "outer loop over 87 AI base records (stride 0x34)"}
+{"addr": "0x005e62d5", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005e6cc3", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on skill/attribute id (0x54,0x55,0x58..0x62)"}
+{"addr": "0x005e95a3", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x005ebbcc", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over 87 bases (0x490d00, record stride 0x34, stack int[87])"}
+{"addr": "0x005f21a3", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "neighbour id (0x5f6b90) in 0x2a..0x56 = gate/port"}
+{"addr": "0x005f3ae5", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005f55e4", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005f66c6", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x005f6ba6", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "clamp area neighbour (0x479560) to base id 0..0x56"}
+{"addr": "0x005f7bfb", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "base id bound for 87 x 0x34 AI records 0x73f8e18"}
+{"addr": "0x005f857f", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x005f88c1", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "person+0x98 bound for 87 x 0x34 AI records 0x73f8e16"}
+{"addr": "0x005f8c6f", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005f8e50", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 (callback, 0x34 port test)"}
+{"addr": "0x005f8fdf", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005f9259", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size (sub/add esp)"}
+{"addr": "0x005f949f", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 via 0x490d00"}
+{"addr": "0x00600bb6", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "loop ebx=0x34..0x56 inclusive over ports via 0x490d00"}
+{"addr": "0x00625850", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "jump-table data misdisassembled"}
+{"addr": "0x00636d24", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop 0..86 over base widgets via 0x63d510"}
+{"addr": "0x0063d518", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "index bound for 87 x 0x8c base widget array at this+0x88010"}
+{"addr": "0x0063d650", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm32", "note": "loop count over 87 base widgets (this+0x88098, stride 0x8c)"}
+{"addr": "0x0063d6f6", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "index [ebp+0x84] bound for 87 x 0x8c widget array"}
+{"addr": "0x0063e6b9", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "eh vector ctor count: 87 x 0x8c widgets at this+0x88010 (object layout after it shifts)"}
+{"addr": "0x0063eab3", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm32", "note": "loop count over 87 base widgets (stride 0x8c)"}
+{"addr": "0x0063ebb7", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "building id < 0x57 before 0x490d00"}
+{"addr": "0x0063ed4f", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "building id < 0x57 before 0x490d00"}
+{"addr": "0x0063f073", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 (0x490d00, per-building 0x20 entries)"}
+{"addr": "0x0063f227", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over building ids 0..86 with widget stride 0x8c"}
+{"addr": "0x0063f322", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm32", "note": "rep stosd count: clears stack int[87] at esp+0x18"}
+{"addr": "0x0063f5d3", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop 0x2a..0x56 over gate/port widgets (start uses folded this+0x89708)"}
+{"addr": "0x0063fd3e", "value": "87", "verdict": "BASE", "role": "FACILITY_START", "patch": "N", "encoding": "imm8", "note": "in loop over all 0x4000 building ids: id<0x57 -> base widget, else facility"}
+{"addr": "0x00640532", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over 87 base widgets (stride 0x8c)"}
+{"addr": "0x00659a5d", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "person+0x9c location 0..0x56 = base id"}
+{"addr": "0x0066b366", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b3eb", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b430", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b475", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b4ba", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b4ff", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b54a", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b5a6", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b63e", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0066b6ad", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame epilogue"}
+{"addr": "0x0067a774", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "random(0x57) (0x67d2b0) -> building id for 0x490d00"}
+{"addr": "0x0067bf9c", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "return value in switch mapping script codes (0x4c..0x8b sequence)"}
+{"addr": "0x00689450", "value": "86", "verdict": "BASE", "role": "BASE_MAX", "patch": "N-1", "encoding": "imm8", "note": "loop edi=0x34..0x56 inclusive over ports via 0x490d00"}
+{"addr": "0x006910b5", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI layout id for 0x4d96b0"}
+{"addr": "0x00692ee9", "value": "86", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI layout id for 0x4d96b0"}
+{"addr": "0x00693829", "value": "87", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control resource id in 0x4da4a0 param block"}
+{"addr": "0x00697d78", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over this+0x19d8 int[87]"}
+{"addr": "0x00697dcc", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "loop over this+0x19d8 int[87]"}
+{"addr": "0x00697ec0", "value": "87", "verdict": "BASE", "role": "BASE_COUNT", "patch": "N", "encoding": "imm8", "note": "index bound for 87 x 0x4c array"}
+{"addr": "0x006998f4", "value": "87", "verdict": "BASE", "role": "FACILITY_START", "patch": "N", "encoding": "imm8", "note": "building id [esi+0x198] (<=0x3fff) < 0x57 -> base"}
+{"addr": "0x006afd5c", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "stack frame size"}
+{"addr": "0x006f7fa9", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "audio/DSP filter loop bound (library code)"}
+{"addr": "0x006f8032", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "audio/DSP filter loop bound (library code)"}
+{"addr": "0x0070eec3", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT printf format 'X'"}
+{"addr": "0x00712027", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT scanf '0X' prefix"}
+{"addr": "0x0071836b", "value": "87", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "CRT itoa hex digit ('a'-10)"}
+{"addr": "0x00723e63", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "GetDeviceCaps LOGPIXELSX"}
+{"addr": "0x0072ea19", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "EH unwind member offset"}
+{"addr": "0x00738c73", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "EH unwind member offset"}
+{"addr": "0x0073a7f8", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "EH unwind member offset"}
+{"addr": "0x007422e2", "value": "88", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "static UI/resource table initialisation"}

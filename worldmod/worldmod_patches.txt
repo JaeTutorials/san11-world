@@ -1,0 +1,1523 @@
+00410971 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00410978 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00410c7e 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00410c85 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00416776 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+004168fa 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00416e2f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00416e67 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+00416fbc 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00416ff1 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00416ff8 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00417445 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00417452 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00417807 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+0041c42d 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+0041d667 3 4 8b14856c0efb06 B20+4 ; mov edx, dword ptr [eax*4 + 0x6fb0e6c]
+0041d66e 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0041d6c7 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+0041d6ce 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0041d757 3 4 8b14856c0efb06 B20+4 ; mov edx, dword ptr [eax*4 + 0x6fb0e6c]
+0041d75e 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0041d7d9 2 4 f6823881430904 B28+16 ; test byte ptr [edx + 0x9438138], 4
+0041d7f4 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+0041d7fb 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0041d887 3 4 8b14856c0efb06 B20+4 ; mov edx, dword ptr [eax*4 + 0x6fb0e6c]
+0041d88e 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0041d8f8 3 4 8b14b56c0efb06 B20+4 ; mov edx, dword ptr [esi*4 + 0x6fb0e6c]
+0041d8ff 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+0041e9aa 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+0041ed6a 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+0041f914 3 4 8b348d680efb06 B20 ; mov esi, dword ptr [ecx*4 + 0x6fb0e68]
+0041f953 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+0041fb6f 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+0047a985 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+0047a9e5 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+00484735 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0048473c 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00484876 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0048487d 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00484b84 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+00486340 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0048635f 3 4 f70495680efb0600008003 B20 ; test dword ptr [edx*4 + 0x6fb0e68], 0x3800000
+00486394 3 4 8b0495680efb06 B20 ; mov eax, dword ptr [edx*4 + 0x6fb0e68]
+0048793f 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00487982 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00487f06 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00493bb7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00495a80 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00495cbf 3 4 8b0495680efb06 B20 ; mov eax, dword ptr [edx*4 + 0x6fb0e68]
+00495e06 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00496177 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+00496460 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00496ebb 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+0049d1d2 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0049d5d7 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+0049d65d 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0049db34 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+0049e4a5 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+0049e517 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0049e54d 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+004a4c87 1 4 b8680efb06 B20 ; mov eax, 0x6fb0e68
+004a4ca1 1 4 3d68430707 E20 ; cmp eax, 0x7074368
+004a4cc8 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+004a4cd4 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+004a507d 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+004a5178 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+004ae046 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+004ae06e 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+004af0b3 1 4 0528814309 B28 ; add eax, 0x9438128
+004b07e5 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+004b08d8 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+004b0900 3 4 8b14856c0efb06 B20+4 ; mov edx, dword ptr [eax*4 + 0x6fb0e6c]
+004b0907 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+004b16df 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+004b1746 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+004b99e4 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+004b9a2a 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+004ba501 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+004ba5a7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+004ba5cc 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+004bc352 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+004bc3c7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+004bc3fd 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+004c7514 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00561a47 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+00561a9a 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005622aa 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+00562345 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005623ea 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+0056247a 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005624fa 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005628aa 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+0056290a 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005629f5 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00562e2a 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+00564a76 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+00564ac6 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+0056544a 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+0056566a 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005662b4 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005662e4 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005664e8 3 4 8b04856c0efb06 B20+4 ; mov eax, dword ptr [eax*4 + 0x6fb0e6c]
+005665ad 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00566680 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005673b8 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00567457 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567495 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+0056749c 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00567546 1 4 bf28814309 B28 ; mov edi, 0x9438128
+00567591 1 4 0528814309 B28 ; add eax, 0x9438128
+005675f1 3 4 f6048d680efb0603 B20 ; test byte ptr [ecx*4 + 0x6fb0e68], 3
+005676c3 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567709 3 4 8b14b56c0efb06 B20+4 ; mov edx, dword ptr [esi*4 + 0x6fb0e6c]
+00567710 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+00567842 2 4 81c628814309 B28 ; add esi, 0x9438128
+00567a8c 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00567b3d 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+00567b84 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567be8 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+00567d2f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567d7a 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567e4c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567e8b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567eaa 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00567ee7 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+00567eee 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00567f63 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00568252 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0056884e 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+0056983b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00569e19 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0056a3c2 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+0056ab06 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0056dd77 3 4 8d1485680efb06 B20 ; lea edx, [eax*4 + 0x6fb0e68]
+0056e0f7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0056e135 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+0056e13c 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0056e4ba 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+0056e4c3 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0056e557 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+0056e55e 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0056f0f4 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00570041 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0057010e 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+0057012a 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0057024d 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+0057026a 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00570370 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+005703a5 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005704ba 4 4 0fb73c95700efb06 B20+8 ; movzx edi, word ptr [edx*4 + 0x6fb0e70]
+00570528 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+0057059e 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005705a5 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005706db 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+0057072c 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+0057079b 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+005707ec 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00570862 4 4 0fb73c95700efb06 B20+8 ; movzx edi, word ptr [edx*4 + 0x6fb0e70]
+00570940 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00570947 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00570a2a 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+00570a73 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00570aca 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+00570b13 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00570b68 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00570b6f 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00570c0b 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+00570c5d 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+00570c64 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00570d11 4 4 0fb73c95700efb06 B20+8 ; movzx edi, word ptr [edx*4 + 0x6fb0e70]
+00570d9c 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00570da3 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00570e5a 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+00570ecc 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+00570f06 4 4 0fb73c8d700efb06 B20+8 ; movzx edi, word ptr [ecx*4 + 0x6fb0e70]
+005711ca 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+0057120f 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+0057128a 4 4 0fb73495700efb06 B20+8 ; movzx esi, word ptr [edx*4 + 0x6fb0e70]
+005712d3 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00573b61 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00573b86 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00574fec 3 4 8b049d6c0efb06 B20+4 ; mov eax, dword ptr [ebx*4 + 0x6fb0e6c]
+00574ff3 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005765e4 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005767e4 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005769c6 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005769ee 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00576b27 3 4 8b148d680efb06 B20 ; mov edx, dword ptr [ecx*4 + 0x6fb0e68]
+00576b2e 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00576cfb 3 4 8b148d680efb06 B20 ; mov edx, dword ptr [ecx*4 + 0x6fb0e68]
+00576d02 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00576d12 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00578ce4 3 4 8a04b5680efb06 B20 ; mov al, byte ptr [esi*4 + 0x6fb0e68]
+00578ced 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005795b9 3 4 8a04b5680efb06 B20 ; mov al, byte ptr [esi*4 + 0x6fb0e68]
+005795c2 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005796ab 3 4 8b1c85680efb06 B20 ; mov ebx, dword ptr [eax*4 + 0x6fb0e68]
+005796b2 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00579cb6 3 4 8d148d680efb06 B20 ; lea edx, [ecx*4 + 0x6fb0e68]
+00579df6 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00579dfd 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00579e62 3 4 8b04b5680efb06 B20 ; mov eax, dword ptr [esi*4 + 0x6fb0e68]
+00579e69 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+00579fed 4 4 0fb70485700efb06 B20+8 ; movzx eax, word ptr [eax*4 + 0x6fb0e70]
+0057a097 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057a101 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0057a108 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057a16b 3 4 8b04b5680efb06 B20 ; mov eax, dword ptr [esi*4 + 0x6fb0e68]
+0057a172 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+0057a231 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0057a238 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057a2b3 3 4 8b049d680efb06 B20 ; mov eax, dword ptr [ebx*4 + 0x6fb0e68]
+0057a2ba 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+0057a47e 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057a521 3 4 8d0c85680efb06 B20 ; lea ecx, [eax*4 + 0x6fb0e68]
+0057a58a 3 4 8b04b5680efb06 B20 ; mov eax, dword ptr [esi*4 + 0x6fb0e68]
+0057a591 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+0057a6d1 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0057a6d8 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057a757 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057a83f 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+0057a846 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0057a966 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0057a96d 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057a9ce 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057aae2 3 4 8b14b5680efb06 B20 ; mov edx, dword ptr [esi*4 + 0x6fb0e68]
+0057aae9 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+0057ad26 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0057ad2d 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057ad95 3 4 8b04ad680efb06 B20 ; mov eax, dword ptr [ebp*4 + 0x6fb0e68]
+0057ad9c 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+0057af2e 3 4 8b0495680efb06 B20 ; mov eax, dword ptr [edx*4 + 0x6fb0e68]
+0057af35 3 4 8d1495680efb06 B20 ; lea edx, [edx*4 + 0x6fb0e68]
+0057b17e 3 4 8a04bd680efb06 B20 ; mov al, byte ptr [edi*4 + 0x6fb0e68]
+0057b187 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+0057b2e4 3 4 8b0cb56c0efb06 B20+4 ; mov ecx, dword ptr [esi*4 + 0x6fb0e6c]
+0057b2eb 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+0057b92e 3 4 8b049d680efb06 B20 ; mov eax, dword ptr [ebx*4 + 0x6fb0e68]
+0057b937 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+0057c79b 3 4 8b2c8d680efb06 B20 ; mov ebp, dword ptr [ecx*4 + 0x6fb0e68]
+0057c7a2 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0057c90c 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0057c968 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+0057ca70 3 4 8b3c85680efb06 B20 ; mov edi, dword ptr [eax*4 + 0x6fb0e68]
+0057ca77 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057caf7 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+0057cb8d 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+0057ce87 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+0057d603 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0057d656 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0057d68b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0057d6d5 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+0057d76c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0057d7bb 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0057dd67 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0057dd6e 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057e9ca 3 4 8b148d6c0efb06 B20+4 ; mov edx, dword ptr [ecx*4 + 0x6fb0e6c]
+0057ea74 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0057eaa1 3 4 8b0c956c0efb06 B20+4 ; mov ecx, dword ptr [edx*4 + 0x6fb0e6c]
+0057eaa8 3 4 8d1495680efb06 B20 ; lea edx, [edx*4 + 0x6fb0e68]
+0057eb26 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0057eb88 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0057ec28 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+0057ec2f 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0058478b 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00584792 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0058488b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00584a83 3 4 8b148d680efb06 B20 ; mov edx, dword ptr [ecx*4 + 0x6fb0e68]
+00584a8a 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00584b7e 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00584f3b 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00584f70 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00585209 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005855e7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00585630 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005857e1 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00585817 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0058586b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00585b5f 4 4 0fb7049d700efb06 B20+8 ; movzx eax, word ptr [ebx*4 + 0x6fb0e70]
+00585b67 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+00585bd5 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00585dda 3 4 f60495680efb0603 B20 ; test byte ptr [edx*4 + 0x6fb0e68], 3
+00585f87 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00585f94 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0058610e 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00586162 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0058619e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00586483 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005866ce 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00586b41 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00587065 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00587651 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00587658 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00587980 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00587987 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00587a9a 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+00587b9b 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+00587c4b 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+00587fff 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00589080 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058a16d 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058a1a4 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+0058a1c1 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058abdc 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058abff 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058bda5 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+0058bdc8 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058d017 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058d04d 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+0058d054 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0058d09a 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0058d0cd 3 4 8b348d6c0efb06 B20+4 ; mov esi, dword ptr [ecx*4 + 0x6fb0e6c]
+0058d0d4 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0058e8b8 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+0058e8d4 3 4 8b0cb56c0efb06 B20+4 ; mov ecx, dword ptr [esi*4 + 0x6fb0e6c]
+0058e8e2 3 4 8b34b5680efb06 B20 ; mov esi, dword ptr [esi*4 + 0x6fb0e68]
+00590f47 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00590fe0 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00590fe7 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005912c7 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+00591611 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+00591823 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+0059182a 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00591a73 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00591a7a 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00591cc1 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00591dd7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00591e0d 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00591e14 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00591f47 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00591f7d 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00591f84 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0059207f 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+00592231 4 4 0fb70485700efb06 B20+8 ; movzx eax, word ptr [eax*4 + 0x6fb0e70]
+00592483 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+00592796 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00592aaf 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00592d80 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+00593096 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005930ea 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059312d 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00593158 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+0059315f 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005933db 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005936c5 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00593777 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+00593783 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005937fd 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00593804 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0059387d 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00593884 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00593986 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00593c6b 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00593c9c 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00593ca3 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00593e11 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00593e18 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00593e78 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00593efc 3 4 8b04bd680efb06 B20 ; mov eax, dword ptr [edi*4 + 0x6fb0e68]
+00593f03 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+00593fb9 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00594046 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0059404d 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005941ae 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+005941b5 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00594224 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594261 3 4 8b14b56c0efb06 B20+4 ; mov edx, dword ptr [esi*4 + 0x6fb0e6c]
+00594268 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005942fa 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+0059432c 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00594333 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00594363 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059442c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594440 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594572 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594680 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+00594687 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+00594718 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+0059474a 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00594751 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00594791 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005947a5 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005948a6 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594933 4 4 0fb70485700efb06 B20+8 ; movzx eax, word ptr [eax*4 + 0x6fb0e70]
+0059495e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594998 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+0059499f 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00594a7a 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00594a81 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00594b07 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594b2f 4 4 0fb70485700efb06 B20+8 ; movzx eax, word ptr [eax*4 + 0x6fb0e70]
+00594b62 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594b9c 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+00594ba3 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00594c84 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00594c8b 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00594d08 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00594d3e 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00594eff 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00594f30 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00594f37 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00594f66 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00594fdd 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005950ea 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00595186 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00595280 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+005952b2 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005952cb 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059534f 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+00595525 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005955cb 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005955d2 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0059565a 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+0059568c 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00595693 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005956db 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00595717 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00595774 3 4 8b148d680efb06 B20 ; mov edx, dword ptr [ecx*4 + 0x6fb0e68]
+0059577b 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005957b9 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005957d8 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00595806 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+0059580d 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00595bda 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00595c0c 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00595c13 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00595c51 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00595c65 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00595d4c 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00595d82 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00595ddf 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0059615f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059617f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005961c7 3 4 8b14856c0efb06 B20+4 ; mov edx, dword ptr [eax*4 + 0x6fb0e6c]
+0059623f 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00596328 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+0059632f 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00596639 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059666d 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005966b5 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005966bc 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005968a2 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+005968f5 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+00596a27 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+00596a52 3 4 8b0cb5680efb06 B20 ; mov ecx, dword ptr [esi*4 + 0x6fb0e68]
+00596a6f 3 4 8914b5680efb06 B20 ; mov dword ptr [esi*4 + 0x6fb0e68], edx
+00596e93 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+00597a9c 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+00597c74 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00597d1f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005981bb 1 4 b8680efb06 B20 ; mov eax, 0x6fb0e68
+005981d1 1 4 3d68430707 E20 ; cmp eax, 0x7074368
+00598a8c 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00598b78 3 4 8b0c95680efb06 B20 ; mov ecx, dword ptr [edx*4 + 0x6fb0e68]
+00598b7f 3 4 8d1495680efb06 B20 ; lea edx, [edx*4 + 0x6fb0e68]
+00598c49 3 4 8b04bd6c0efb06 B20+4 ; mov eax, dword ptr [edi*4 + 0x6fb0e6c]
+00598c50 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+005990e3 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005997af 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00599c9c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059a1dc 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059a2eb 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059a315 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+0059ad38 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059cebc 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+0059d421 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+0059d73b 1 4 b87c0efb06 B20+20 ; mov eax, 0x6fb0e7c
+0059d773 1 4 3d7c430707 E20+20 ; cmp eax, 0x707437c
+0059dc51 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0059dc8b 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+0059f626 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0059fee5 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+0059feec 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a0109 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005a0110 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a02a8 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005a0318 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005a07a7 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a085f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a089d 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+005a08a4 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a0ec4 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a10bb 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+005a167c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a16c4 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+005a16cb 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a17d7 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a180a 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a20a2 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a20e3 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a3078 3 4 8a1485680efb06 B20 ; mov dl, byte ptr [eax*4 + 0x6fb0e68]
+005a3082 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a30ad 3 4 8a1485680efb06 B20 ; mov dl, byte ptr [eax*4 + 0x6fb0e68]
+005a30b7 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a347e 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005a37c4 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005a37cb 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a3834 3 4 8b0c8d740efb06 B20+12 ; mov ecx, dword ptr [ecx*4 + 0x6fb0e74]
+005a3997 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005a3d17 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a3ed2 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a3f10 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+005a4006 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+005a40d1 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a4188 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005a4192 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a422a 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+005a4297 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a42ae 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a42e9 3 4 330c85680efb06 B20 ; xor ecx, dword ptr [eax*4 + 0x6fb0e68]
+005a42f0 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a4308 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a43ab 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a43e0 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005a43e7 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a451c 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a4575 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a4767 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a479f 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+005a4829 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005a4830 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a487f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a48b7 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005a4941 3 4 8b3c85680efb06 B20 ; mov edi, dword ptr [eax*4 + 0x6fb0e68]
+005a4948 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a4a5d 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a4c1b 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+005a4c9e 3 4 8b3495680efb06 B20 ; mov esi, dword ptr [edx*4 + 0x6fb0e68]
+005a4ca5 3 4 8d1495680efb06 B20 ; lea edx, [edx*4 + 0x6fb0e68]
+005a4d74 3 4 8b04b5680efb06 B20 ; mov eax, dword ptr [esi*4 + 0x6fb0e68]
+005a4d7b 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a4e0c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a4e5c 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+005a4e63 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a4fe4 3 4 f70485680efb0600008003 B20 ; test dword ptr [eax*4 + 0x6fb0e68], 0x3800000
+005a5033 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+005a503c 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a509b 3 4 8b1c85680efb06 B20 ; mov ebx, dword ptr [eax*4 + 0x6fb0e68]
+005a50a2 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a5174 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a51a7 3 4 8b049d680efb06 B20 ; mov eax, dword ptr [ebx*4 + 0x6fb0e68]
+005a51ae 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005a5447 3 4 8b0c8d6c0efb06 B20+4 ; mov ecx, dword ptr [ecx*4 + 0x6fb0e6c]
+005a55ed 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a5642 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a5671 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a5821 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a5b0e 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005a5c5c 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005a5e8c 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a604d 3 4 8b34856c0efb06 B20+4 ; mov esi, dword ptr [eax*4 + 0x6fb0e6c]
+005a6054 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a609a 3 4 8b34856c0efb06 B20+4 ; mov esi, dword ptr [eax*4 + 0x6fb0e6c]
+005a60a1 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a60e2 3 4 8b34856c0efb06 B20+4 ; mov esi, dword ptr [eax*4 + 0x6fb0e6c]
+005a60e9 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a612a 3 4 8b34856c0efb06 B20+4 ; mov esi, dword ptr [eax*4 + 0x6fb0e6c]
+005a6131 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a6172 3 4 8b34856c0efb06 B20+4 ; mov esi, dword ptr [eax*4 + 0x6fb0e6c]
+005a6179 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a61fe 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+005a6205 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a658c 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+005a6677 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a6743 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+005a674a 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005a688c 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a68bb 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a68d7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a6945 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a6aee 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a6b2d 3 4 8b048d680efb06 B20 ; mov eax, dword ptr [ecx*4 + 0x6fb0e68]
+005a6b34 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a6d00 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+005a6d27 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a6d5d 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005a6d64 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a6e4b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a6e81 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005a6e88 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a6f0d 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a6f5b 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a6ffb 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7041 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+005a7048 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a70e7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a711d 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005a7124 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a7191 3 4 8b0485680efb06 B20 ; mov eax, dword ptr [eax*4 + 0x6fb0e68]
+005a71d2 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a727d 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a72c6 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a72fa 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7366 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a73bf 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a73fd 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005a7404 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a74da 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7512 3 4 8a048d680efb06 B20 ; mov al, byte ptr [ecx*4 + 0x6fb0e68]
+005a751b 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a7560 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7590 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a75e8 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a7750 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7780 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a77d8 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a7a93 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7b27 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005a7b7a 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7bb7 3 4 8b04b5680efb06 B20 ; mov eax, dword ptr [esi*4 + 0x6fb0e68]
+005a7bc3 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a7cea 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7d51 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005a7e53 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005a7f6c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a7fde 3 4 f704956c0efb0600001000 B20+4 ; test dword ptr [edx*4 + 0x6fb0e6c], 0x100000
+005a80cc 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005a8176 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a81c0 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005a82d1 3 4 8b148d680efb06 B20 ; mov edx, dword ptr [ecx*4 + 0x6fb0e68]
+005a82d8 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a84ab 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a84e8 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a8518 3 4 8b049d680efb06 B20 ; mov eax, dword ptr [ebx*4 + 0x6fb0e68]
+005a851f 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005a867e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a885c 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005a8863 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a88f7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a8b62 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a8dd6 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+005a8efd 4 4 0fb70485700efb06 B20+8 ; movzx eax, word ptr [eax*4 + 0x6fb0e70]
+005a9212 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a9237 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005a970b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a973f 3 4 8b0c856c0efb06 B20+4 ; mov ecx, dword ptr [eax*4 + 0x6fb0e6c]
+005a9a52 3 4 f70495680efb0600008003 B20 ; test dword ptr [edx*4 + 0x6fb0e68], 0x3800000
+005a9d9b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a9e04 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005a9f0b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aa017 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aa080 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aa0a2 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aa0fd 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aa2a8 3 4 f70495680efb0600008003 B20 ; test dword ptr [edx*4 + 0x6fb0e68], 0x3800000
+005aa481 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+005aa87f 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005aa887 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aaa6e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aaa9f 3 4 f6048d680efb0603 B20 ; test byte ptr [ecx*4 + 0x6fb0e68], 3
+005aae3e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ab149 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ab356 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005ab38c 3 4 8b04b5680efb06 B20 ; mov eax, dword ptr [esi*4 + 0x6fb0e68]
+005ab398 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005ab43c 3 4 8d3cbd680efb06 B20 ; lea edi, [edi*4 + 0x6fb0e68]
+005ab6db 3 4 8b34856c0efb06 B20+4 ; mov esi, dword ptr [eax*4 + 0x6fb0e6c]
+005ab6e2 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005ab8f0 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005abaf4 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005abd4b 3 4 8d1c9d680efb06 B20 ; lea ebx, [ebx*4 + 0x6fb0e68]
+005ac10e 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005ac115 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005ac46e 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005ac67f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ac961 3 4 f70495680efb0600000400 B20 ; test dword ptr [edx*4 + 0x6fb0e68], 0x40000
+005acb78 3 4 8b14ad680efb06 B20 ; mov edx, dword ptr [ebp*4 + 0x6fb0e68]
+005acb7f 3 4 8d2cad680efb06 B20 ; lea ebp, [ebp*4 + 0x6fb0e68]
+005acc06 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005acc53 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005acef1 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005acfb8 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005ad07f 3 4 8b0495680efb06 B20 ; mov eax, dword ptr [edx*4 + 0x6fb0e68]
+005ad1d5 3 4 8b0495680efb06 B20 ; mov eax, dword ptr [edx*4 + 0x6fb0e68]
+005ad313 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ad33b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ad35e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ad3a7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ad62e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ad65f 3 4 8b14b5680efb06 B20 ; mov edx, dword ptr [esi*4 + 0x6fb0e68]
+005ad666 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005adfe6 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ae086 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ae51c 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005ae664 3 4 8d0495680efb06 B20 ; lea eax, [edx*4 + 0x6fb0e68]
+005ae9c6 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005ae9cd 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005af5a3 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005af5aa 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005af95c 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005af973 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005af9bd 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005af9d8 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005afa2f 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005afa8f 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005afaa6 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005afca6 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005afddd 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005afe18 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005afeb6 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005aff56 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b04b7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b06b6 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005b0792 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b07cd 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b086b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b0ad7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b0b15 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b0c98 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005b18ab 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005b18b2 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005b18f2 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005b191c 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005b1923 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005b1985 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005bbc35 3 4 8b04b56c0efb06 B20+4 ; mov eax, dword ptr [esi*4 + 0x6fb0e6c]
+005bbc41 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005bbc77 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005d1afa 1 4 be680efb06 B20 ; mov esi, 0x6fb0e68
+005d1b37 2 4 81fe68430707 E20 ; cmp esi, 0x7074368
+005d2b68 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005d6e2f 3 4 f7048d6c0efb0600000400 B20+4 ; test dword ptr [ecx*4 + 0x6fb0e6c], 0x40000
+005d6efb 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005d6f27 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005d6faf 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005d6fe9 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005d70e7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005d711d 3 4 8d34b5680efb06 B20 ; lea esi, [esi*4 + 0x6fb0e68]
+005db414 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005dde5b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005dde8d 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005dde94 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005ddf35 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ddf6d 3 4 8b0c956c0efb06 B20+4 ; mov ecx, dword ptr [edx*4 + 0x6fb0e6c]
+005ddf74 3 4 8d1495680efb06 B20 ; lea edx, [edx*4 + 0x6fb0e68]
+005df233 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005df2f7 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005df3dc 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005df434 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005df4f6 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005df78e 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+005df795 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005df847 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005df9fa 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005dfa30 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005dfa3c 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005dfe4c 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005dfe53 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005e005b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005e00a1 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005e01fc 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005e0232 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005e023e 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005e573c 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005e5bd4 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005e780b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005e7821 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ec6fd 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005eca3b 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005eca75 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005eca81 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005ee2f8 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005ee9b4 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005ee9f0 3 4 8b0c85680efb06 B20 ; mov ecx, dword ptr [eax*4 + 0x6fb0e68]
+005ee9f7 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+005f4040 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005f6fd9 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005f700f 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005f701b 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005f728d 3 4 f704856c0efb0600000400 B20+4 ; test dword ptr [eax*4 + 0x6fb0e6c], 0x40000
+005f72fa 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+005f733e 3 4 8b048d6c0efb06 B20+4 ; mov eax, dword ptr [ecx*4 + 0x6fb0e6c]
+005f734a 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+005f87a1 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+005f9ae4 3 4 8b04956c0efb06 B20+4 ; mov eax, dword ptr [edx*4 + 0x6fb0e6c]
+00632990 3 4 8b1485680efb06 B20 ; mov edx, dword ptr [eax*4 + 0x6fb0e68]
+00632997 3 4 8d0485680efb06 B20 ; lea eax, [eax*4 + 0x6fb0e68]
+006329e0 4 4 0fb70495700efb06 B20+8 ; movzx eax, word ptr [edx*4 + 0x6fb0e70]
+00676a3e 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00676aa5 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0067d4b4 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0067d724 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0067d7d8 3 4 852c85680efb06 B20 ; test dword ptr [eax*4 + 0x6fb0e68], ebp
+0067d823 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0067d854 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0067d985 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0067ea81 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0067eb14 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00684ab8 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+0068577e 3 4 8d0c8d680efb06 B20 ; lea ecx, [ecx*4 + 0x6fb0e68]
+0073be40 1 4 b9680efb06 B20 ; mov ecx, 0x6fb0e68
+00410966 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00410c73 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00416e5c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00416fe6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041743a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041d659 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041d6b9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041d749 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041d879 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041d8e9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041e99f 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0041ed5f 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0047a97a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0047a9da 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0048472a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0048486b 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00484b6d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00486354 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00486386 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00487931 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00487974 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00487ef8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00495a72 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00495cb1 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00495df4 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00496169 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00496452 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00496eb0 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0049d5c9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0049db1d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0049e49a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0049e542 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004a4cb5 2 4 69dbc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004a5165 2 4 69ffc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004ae038 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004ae063 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004b07d1 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004b08c8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004b08ef 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004b1738 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004ba4f6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004ba5c1 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004bc344 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004bc3f2 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+004c7509 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00561a39 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00561a8c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056229c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056233a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005623dc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056246c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005624ec 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056289c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005628fc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005629e7 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00562e1c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00564a68 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00564ab8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056543c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056565c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005662a6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005662d9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005664da 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00566672 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005673aa 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056748a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005675e3 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005676fe 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00567a7c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00567b27 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00567bd4 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00567ed9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00568843 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056dd69 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056e12a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056e4ac 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0056e549 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005700fd 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057023d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570362 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005704ac 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057051a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570593 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005706cd 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057071e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057078d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005707de 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570854 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570932 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570a1c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570a65 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570abc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570b05 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570b5a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570bfd 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570c4f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570d03 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570d8e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570e4c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570eb1 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00570ef2 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005711bc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00571201 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057127c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005712c5 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00573b7b 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00574fde 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005769b8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005769e3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00576b19 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00576cd9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00576cf0 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00578cd8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005795a7 2 4 69f6c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057969d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00579cab 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00579de0 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00579e51 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00579fdf 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a089 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a0f3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a159 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a223 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a297 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a463 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a516 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a57f 2 4 69f6c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a6c3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a74c 2 4 69f6c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a831 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a950 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057a9bc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057aad7 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057ad10 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057ad83 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057af23 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057b16c 2 4 69ffc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057b2d9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057b923 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057c78d 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057c8f8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057c959 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057ca62 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057cae7 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057cb7a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057ce72 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057d5ef 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057d648 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057d6ca 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057dd59 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057ea93 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057eb75 2 4 69edc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0057ec17 2 4 69edc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0058477d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00584a75 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00584b70 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00584f2d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00584f62 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005851fb 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00585622 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005857d6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0058580c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00585b51 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00585dcc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00585f7c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00586103 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00586157 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00586b33 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00587643 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00587972 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00587a8f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00587b90 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00587c40 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00587ff1 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0058a199 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0058bd9a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0058d042 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0058d0bf 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0058e8a5 2 4 69dbc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00590f39 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00590fd2 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005912b9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005915fb 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00591815 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00591a65 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00591cb6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00591dff 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00591f6f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00592069 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00592223 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059246c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059278b 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00592a98 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00592d6e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593085 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059311f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059314a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005933cd 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593767 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005937ef 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059386f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593978 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593c55 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593c8e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593e03 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593e62 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593eee 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00593fa3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594036 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005941a3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594255 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005942e4 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059431e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594675 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594704 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059473c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594925 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059498d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594a6a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594b21 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594b91 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594c74 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594cf4 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594d30 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594ee9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594f22 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00594fd2 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595175 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059526a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005952a4 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595341 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595514 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005955bb 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595644 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059567e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595769 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005957f8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595bc4 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595bfe 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595d3e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00595dd1 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005961bc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00596234 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00596318 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005966aa 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00596892 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00596e85 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00597a88 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00598a7e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00598b65 2 4 69ffc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00598c36 2 4 69edc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005997a1 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059a309 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059ceaa 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059d40a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059dc7d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059f61b 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0059fed9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a00fb 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a029a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a030d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a0798 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a088f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a10b0 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a16b9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a17cc 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a306a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a309f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a3469 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a37b6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a3825 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a3989 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a3d08 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a3f05 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a3ffb 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a4178 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a4218 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a42db 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a43d2 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a455d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a4794 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a481e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a48ac 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a4933 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a4c10 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a4d66 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a4fd9 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a5025 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a508d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a5197 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a5439 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a55dd 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a5663 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a5b00 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a5c4e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a5e7e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a603a 2 4 69d2c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a61f3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6581 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6731 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6880 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6932 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6b1f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6cf0 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6d4f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6e76 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a6f4d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7036 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7112 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7186 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a71c6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a72bb 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a735a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a73ef 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7507 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a75da 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a77ca 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7b19 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7ba7 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7d43 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7e45 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a7fd3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a80be 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a81aa 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a82c3 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a8508 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a8b57 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a8dc6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a8eef 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a922c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a9734 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005a9a47 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005aa29a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005aa870 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005aaa91 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ab34b 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ab37f 2 4 69f6c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ab42e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ab6cd 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ab8db 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005abadf 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005abd3d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ac103 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ac463 2 4 69f6c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ac956 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005acb6d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005acc48 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005acfaa 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ad071 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ad1c7 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ad651 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ae509 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ae654 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ae9bb 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005af598 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005afa21 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005afc9b 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005b06ab 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005b189d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005b18e4 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005b190e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005bbc29 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005bbc69 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005d6e24 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005d6ef0 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005d6f1c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005d6fde 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005d7112 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005dde7f 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ddf5f 2 4 69c9c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005df223 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005df4e6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005df77c 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005dfa25 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005dfe41 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005e0096 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005e0227 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005e572e 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005e5bc6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005eca6a 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ee2ea 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005ee9e2 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005f7004 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005f727d 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005f7333 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005f8793 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+005f9ad6 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00632982 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+006329d2 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0067d4a8 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0067d718 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0067d7c5 2 4 69ffc8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0067d818 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0067d848 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+00685770 2 4 69c0c8000000 W ; row stride y*W (auto-confirmed: followed by a HEX20 access)
+0040f6e9 2 4 69c0c8000000 W ; HEX20 cell-pointer method (this=ecx=0x6fb0e68): movsx word arg (Y)*200 + sar16 X
+0041095b 1 4 3dc8000000 W ; eax=(vx-0x70-2*(y&1))/4 = hex X derived from terrain vertex; Y checked at 0x4109
+00416763 1 4 3dc8000000 W ; eax=(2*edi-0x70-2*(y&1))/4 stored as high word [esp+0x16] = X; Y checked at 0x41
+00416e49 1 4 3dc8000000 H ; eax = movsx low word of pos returned by 0x483a50 (Y); X checked at 0x416e54; the
+00417432 2 4 81f9c8000000 W ; ecx = terrain-cell column - 0x1c stored as high word [esp+0x1e] = hex X (0x1c = 
+0041d7c9 2 4 69c0c8000000 W ; movsx word arg (Y)*200 + sar16 X = idx, used for HEX28 (idx*0x1c+0x9438138) and 
+0041f8a9 2 4 81fac8000000 H ; edx = terrain-cell row (word list at this+0x132501c) - 0x1c = hex Y; X checked a
+0041fd69 1 4 3dc8000000 H ; eax = terrain-cell row ([list-2]) - 0x1c = hex Y; X checked at 0x41fd7c; convert
+004206ac 2 4 81fec8000000 W ; esi = terrain-cell column (word at this+0x132501e) - 0x1c = hex X; Y checked at 
+004214c9 1 4 3dc8000000 H ; eax = terrain-cell row - 0x1c = hex Y (row parity tested with cl&1 afterwards); 
+0047a931 2 4 81f9c8000000 W ; pos validity predicate: ecx = sar16 = X (Y checked at 0x47a926).
+00483b87 1 4 bbc8000000 W ; Map init 0x483b70: after rep stosd 0x30d40 (W*H*5), outer counter ebx=200 walks 
+00484009 2 4 81ffc8000000 W ; edi = movsx(X + dx) using neighbor table 0x79c310; neighbor Y checked at 0x483ff
+00484484 2 4 81f9c8000000 W ; ecx = movsx(X + dx) neighbor X (high word [esp+0x32]); then Y*200+X -> this+idx*
+00484717 1 4 3dc8000000 H ; eax = movsx(Y + dy) neighbor Y (low word [esp+0x14]); then imul eax,200 into HEX
+00484997 2 4 69edc8000000 W ; outer loop var [esp+0x14] (0..199, bound at 0x484a64) times 200 + inner X (bx) -
+00484bf8 2 4 69c0c8000000 W ; map method (this=ecx): movsx si (Y)*200 + sar16 X, *20 + this.
+004963aa 2 4 81fac8000000 W ; edx = sar16 of [esi] pos = X; Y checked at 0x49639f before storing pos.
+00496e9d 1 4 3dc8000000 H ; eax = movsx ax of unit pos = Y; imul eax,200 into HEX20 follows.
+0049e52f 1 4 3dc8000000 H ; eax = movsx word [esp+0x18] (low word of pos from 0x483a50) = Y; imul eax,200 fo
+004a4d16 2 4 81fdc8000000 H ; outer loop counter ebp; ebx = movsx bp *200 at 0x4a4cb5 is the row base; inner e
+004b16c4 2 4 81fac8000000 W ; edx = sar16 of unit pos = X; Y checked at 0x4b16b8; then map method 0x484510.
+00567473 1 4 3dc8000000 H ; eax = movsx word [esp+0x10] (low word of neighbor pos) = Y; imul eax,200 follows
+005676f2 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x46] (high word) = X in pathfinding 0x567520; Y checked a
+00568830 1 4 3dc8000000 H ; eax = movsx low word of pos from world->hex 0x561930 = Y; imul eax,200 follows.
+0056e48d 2 4 81f9c8000000 H ; ecx = movsx ax of building pos ([id*0xf4+0x736b0c4]) = Y; X checked at 0x56e499.
+005723e4 2 4 81f9c8000000 W ; ecx = sar16 of pos arg = X; Y checked at 0x5723d9; then hex->terrain 0x417750.
+00578b69 1 4 3dc8000000 H ; eax = movsx di (low word of pos) = Y; X checked at 0x578b74.
+005794d9 2 4 81fec8000000 H ; esi = movsx ax of pos from 0x441800 = Y; X (sar16 edi) checked at 0x5794ed.
+00579d7c 2 4 81fac8000000 W ; edx = sar16 of pos from 0x578ad0 = X; Y checked at 0x579d70.
+0057b2ba 1 4 3dc8000000 H ; eax = movsx bp (pos from 0x441800) = Y; imul eax,200 follows.
+0057d0a3 2 4 81f9c8000000 W ; ecx = sar16 of [esi+0x28] pos = X; Y checked at 0x57d090; then hex->vertex conve
+0057e7d5 2 4 81fec8000000 W ; inner loop esi stored as high word [esp+0xa] = X; outer edi (low word, bound at 
+0057ec97 2 4 81ffc8000000 W ; inner edi stored as high word [esp+0x1a] = X; outer ebx (low word, bound at 0x57
+00587952 1 4 3dc8000000 H ; eax = movsx ax of pos [edi] = Y; X checked at 0x58795d; then Y*200+X HEX20.
+0058d02f 1 4 3dc8000000 H ; eax = movsx word [esp+0x10] (low word of neighbor pos) = Y; imul eax,200 follows
+0059419b 2 4 81f9c8000000 W ; ecx = sar16 of pos arg = X; Y checked at 0x594190; imul eax,200 follows.
+0059497a 1 4 3dc8000000 H ; eax = movsx word [esp+0x24] (low word of neighbor pos) = Y; imul eax,200 follows
+00595761 2 4 81f9c8000000 W ; ecx = sar16 of neighbor pos edi = X; Y checked at 0x595756.
+0059694a 1 4 3dc8000000 H ; outer counter [esp+0x28]; movsx *200 at 0x5968cc forms row base (stored as low w
+00598179 1 4 3dc8000000 H ; eax = movsx ax of pos = Y; Y*200+X indexes the 40000-byte stack byte array [esp+
+00598d32 2 4 81fbc8000000 W ; inner ebx stored as high word [esp+0x12] = X; outer [esp+0x14] (bound at 0x598d4
+005a00cf 1 4 3dc8000000 H ; eax = movsx ax of unit pos = Y; X checked at 0x5a00da; imul eax,200 follows.
+005a109d 1 4 3dc8000000 H ; eax = movsx low word of world->hex 0x561930 result = Y; imul eax,200 follows.
+005a17c0 2 4 81f9c8000000 W ; ecx = sar16 of pos [0x8b9820] = X; Y checked at 0x5a17ad.
+005a478c 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x22] (high word of neighbor pos) = X; Y checked at 0x5a47
+005a61ad 2 4 81f9c8000000 W ; inner X loop unrolled x5 (ecx+=5, body handles ecx..ecx+4, stored as high word [
+005a6576 2 4 81f9c8000000 W ; ecx = movsx word [esp+6] (high word of pos arg) = X; Y checked at 0x5a656b.
+005a6874 2 4 81f9c8000000 W ; ecx = sar16 of second pos arg = X; Y checked at 0x5a6869; imul eax,200 follows.
+005a7017 1 4 3dc8000000 H ; eax = movsx word [esp+0x1c] (low word of neighbor pos) = Y; imul eax,200 follows
+005a717b 2 4 81f9c8000000 W ; ecx = sar16 of pos arg = X; Y checked at 0x5a7170.
+005a733e 1 4 3dc8000000 H ; eax = movsx bx (low word of pos arg) = Y; X (sar16) checked at 0x5a7349.
+005a7cc5 1 4 3dc8000000 H ; eax = movsx dx of pos arg = Y; X checked at 0x5a7cd0.
+005a8800 1 4 b828710200 W*H*4+40 ; __chkstk frame 0x27128 = 40 bytes of locals + 40000-dword array at [esp+0x34] th
+005a8a05 2 4 81c428710200 W*H*4+40 ; epilogue add esp of the same 160040-byte frame as 0x5a8800 (must match the prolo
+005ac0f0 1 4 3dc8000000 H ; eax = movsx ax of pos from 0x56dc30 = Y; imul eax,200 follows.
+005ac43c 2 4 81fbc8000000 W ; ebx = movsx word [esp+0x1e] (high word of pos arg) = X; Y (esi) checked at 0x5ac
+005ac91b 1 4 3dc8000000 H ; eax = movsx bp (low word of [esp+0x1c] pos) = Y; X checked at 0x5ac926.
+005ad5df 2 4 81f9c8000000 W ; ecx = sar16 of pos from 0x5a8160 = X; Y checked at 0x5ad5cc.
+005ae926 2 4 81fec8000000 W ; esi = sar16 of [ecx+0x74] pos = X; Y checked at 0x5ae91a; returns that pos if va
+005af579 1 4 3dc8000000 H ; eax = movsx word [esp+0x10] (low word of second pos arg) = Y; imul eax,200 follo
+005bbc11 1 4 3dc8000000 H ; eax = movsx word [esp+0x10] (low word of pos arg) = Y; imul eax,200 follows.
+005d1b00 1 4 bbc8000000 W ; linear scan of HEX20 from 0x6fb0e68: inner count ebx=200 cells per row (esi+=0x1
+005d6e11 1 4 3dc8000000 H ; eax = movsx ax of object pos = Y; imul eax,200 follows.
+005d710a 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x12] (high word of neighbor pos) = X; Y checked at 0x5d70
+005dfa1d 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x26] (high word of neighbor pos) = X; Y checked at 0x5dfa
+005e0214 1 4 3dc8000000 H ; eax = movsx word [esp+0x10] (low word of neighbor pos) = Y; imul eax,200 follows
+005ee2cb 2 4 81f9c8000000 H ; ecx = movsx ax of [edi+0x84] pos = Y; X checked at 0x5ee2d7; imul eax,200 follow
+005f6ff1 1 4 3dc8000000 H ; eax = movsx word [esp+0x20] (low word of neighbor pos) = Y; imul eax,200 follows
+005f732b 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x1a] (high word of neighbor pos) = X; Y checked at 0x5f73
+0040fa20 1 4 3dc8000000 H ; Map method 0x40fa10 is_valid(pos): eax=movsx low word of pos (y) checked < 200.
+00410c54 2 4 81f9c8000000 H ; ecx=(vy-0x70)/4 = hex y (its parity is used to derive x, then imul ecx,0xc8); bo
+004168e2 2 4 81f9c8000000 H ; ecx=(2*esi-0x70)/4 = hex y (parity used for x); checked before map method 0x484b
+00416e54 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x16] = high half of pos (x); eax (y) is the one multiplied 
+00417783 2 4 69dbc8000000 W ; ebx=y arg (also gives vy=y*4+0x70); ebx*200 + x arg -> HEX20 index at 0x4177f6.
+0041e980 2 4 81f9c8000000 H ; ecx=(vy-0x70)/4 = hex y, later imul ecx,0xc8 into HEX20.
+0041f8bd 2 4 81fbc8000000 W ; Terrain-render cell list: ebx=terrain-cell col-0x1c (256-wide cell grid, China h
+0041fd7c 2 4 81fec8000000 W ; Same terrain-cell loop pattern: esi=cell col-0x1c = hex x (row is word[eax-2], t
+00420b39 1 4 3dc8000000 H ; Same terrain-cell loop: eax=cell row-0x1c = hex y (row parity tested, row*256+co
+004214dc 2 4 81fbc8000000 W ; Same terrain-cell loop: ebx=cell col-0x1c = hex x.
+0047a967 1 4 3dc8000000 H ; eax=movsx ax of pos (y) checked before imul eax,0xc8 into HEX20.
+00483d49 2 4 81fac8000000 H ; Neighbor walk: edx = y + dy (table 0x79c310); imul edx,0xc8 then [this+idx*20+4]
+00484302 1 4 3dc8000000 W ; SHEX loader 0x484090 inner loop counter [esp+0x10] is x (index = x + rowbase, ro
+00484490 2 4 69c0c8000000 W ; Neighbor y (eax) * 200 + x -> this-relative HEX20 record passed to callback.
+00484722 2 4 81f9c8000000 W ; Neighbor walk: ecx = x + dx (table 0x79c312), high word of new pos.
+00484a53 2 4 81fbc8000000 W ; SHEX writer 0x484960: inner ebx is x (movsx bx added to y*200); outer [esp+0x14]
+004963ef 1 4 3dc8000000 H ; eax=movsx ax of pos (y) checked before storing pos to [ecx+0x38].
+00496ea8 2 4 81f9c8000000 W ; ecx=pos>>16 (x) before HEX20 terrain lookup.
+0049e53a 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x1a] = x of pos from map method 0x483a50.
+004a51b5 2 4 81fec8000000 W ; Inner loop esi is x (movsx si added to y*200, stored as high word [esp+0x16]); o
+004b1719 2 4 81f9c8000000 H ; ecx=movsx ax of pos (y); later imul eax,0xc8.
+004ba4e3 1 4 3dc8000000 H ; eax=movsx ax of pos (y) before HEX20 region lookup.
+00567482 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x12] = x of pos from 0x483a50.
+00567837 2 4 69f6c8000000 W ; esi=movsx bx (y); y*200+x then *0x1c + 0x9438128 (HEX28 index) in pathfinder 0x5
+0056883b 2 4 81f9c8000000 W ; ecx=pos>>16 (x) of world->hex result (0x561930).
+0056e499 2 4 81fac8000000 W ; edx=pos>>16 (x) of a building/object position.
+0057248a 1 4 3dc8000000 H ; eax=movsx word [esp+8] (y of pos arg) validity check.
+00578b74 2 4 81f9c8000000 W ; ecx=pos>>16 (x) validity check of cursor/target pos.
+005794ed 2 4 81ffc8000000 W ; edi=pos>>16 (x) of pos returned by 0x441800.
+0057a503 1 4 3dc8000000 H ; eax=movsx ax of pos (y) before HEX20 access.
+0057b2cd 2 4 81f9c8000000 W ; ecx=pos>>16 (x) before HEX20 access.
+0057d5cd 1 4 3dc8000000 H ; eax=movsx ax of pos (y) before HEX20 access.
+0057e7de 2 4 81ffc8000000 H ; Outer loop edi = y (stored as low word [esp+8]); inner esi = x.
+0057eca0 2 4 81fbc8000000 H ; Outer loop ebx = y (movsx bx * 200 at 0x57ec17); inner edi = x.
+0058795d 2 4 81fec8000000 W ; esi=pos>>16 (x) before HEX20 access.
+0058d03a 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x12] = x of pos from 0x483a50.
+0059423c 1 4 3dc8000000 H ; eax=movsx word [esp+8] = y of pos from 0x483a50.
+00594985 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x26] = x of pos.
+0059668b 1 4 3dc8000000 H ; eax=movsx dx = y of pos from 0x483a50.
+005969f4 2 4 69c0c8000000 W ; Outer loop var (stored as low word [esp+0x20]) is y; y*200 + x (ebp) -> HEX20; l
+00598184 2 4 81f9c8000000 W ; ecx=pos>>16 (x) before indexing the 40000-byte stack array [esp+y*200+x+0x20].
+00598d43 1 4 3dc8000000 H ; Outer loop counter [esp+0x14] is y (movsx ebp,ax; imul 0xc8); inner ebx = x.
+005a00da 2 4 81f9c8000000 W ; ecx=pos>>16 (x) before HEX20 access.
+005a10a8 2 4 81f9c8000000 W ; ecx=pos>>16 (x) of world->hex result before HEX20 access.
+005a42c8 1 4 3dc8000000 H ; eax=movsx dx = y of pos from 0x483a50.
+005a4899 1 4 3dc8000000 H ; eax=movsx dx = y of pos from 0x483a50.
+005a61ba 2 4 81ffc8000000 H ; Outer loop edi = y (movsx di * 200); inner x loop is unrolled by 5 (add ecx,5; c
+005a671a 2 4 69c0c8000000 W ; eax=movsx cx (y of pos) * 200 + x -> HEX20.
+005a6911 1 4 3dc8000000 H ; eax=movsx ax of pos (y) validity check.
+005a702a 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x1e] = x of pos from 0x483a50.
+005a71b0 1 4 3dc8000000 H ; eax=movsx word [esp+4] = y of pos arg.
+005a7349 2 4 81f9c8000000 W ; ecx=pos>>16 (x) of pos arg.
+005a7cd0 2 4 81f9c8000000 W ; ecx=pos>>16 (x) of pos arg.
+005a8835 2 4 69c9c8000000 W ; Outer loop ax = y (stored low word [esp+0x1c]) * 200 + x (bp) -> HEX20; function
+005a8af2 1 4 3dc8000000 H ; eax=movsx word [esp+8] = y of pos arg.
+005ac0fb 2 4 81f9c8000000 W ; ecx=pos>>16 (x) before HEX20 access.
+005ac583 1 4 3dc8000000 H ; eax=movsx dx = y of pos from 0x5a8240.
+005ac926 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x1e] = x of pos.
+005ae95a 2 4 81f9c8000000 H ; ecx=movsx cx of pos [ecx+0x78] (y).
+005af58c 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x12] = x of second pos arg.
+005bbc1c 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x12] = x of pos arg.
+005d6e1c 2 4 81f9c8000000 W ; ecx=pos>>16 (x) before HEX20 access.
+005dfe2e 1 4 3dc8000000 H ; eax=movsx ax of pos (y) before HEX20 write.
+005e021f 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x12] = x of pos.
+005ee2d7 2 4 81fac8000000 W ; edx=pos>>16 (x) of [edi+0x84] pos.
+005f6ffc 2 4 81f9c8000000 W ; ecx=movsx word [esp+0x22] = x of pos.
+0067d7f6 2 4 81fec8000000 W ; Inner loop esi = x (movsx si added to y*200, stored as high word [esp+0x12]); ou
+0040fa2b 2 4 81f9c8000000 W ; Pos validity helper 0x40fa10: ecx = pos>>16 (X) checked < 200 (Y is checked at 0
+00410c68 1 4 3dc8000000 W ; eax = (vx-0x70-2*(y&1))/4 = hex X from terrain vertex coord; then idx = y*200+ea
+004168ee 1 4 3dc8000000 W ; eax = hex X from vertex coord (stored to high word [esp+0x12]); valid pos passed
+00416fd3 1 4 3dc8000000 H ; eax = movsx word [esp] = Y of pos returned by map method 0x483a50; then Y*200+X 
+0041c3e3 2 4 81f9c8000000 H ; ecx = ([obj+0x6e]*2-0x70)/4 = hex Y (later imul ecx,200 and parity used for X).
+0041e994 1 4 3dc8000000 W ; eax = ([edi+6]-0x70-2*(y&1))/4 = hex X; idx = ecx(Y)*200+eax into HEX20+4.
+0041f8f1 2 4 69c9c8000000 W ; ecx = hex Y ((row*4-0x70)/4 from 256-grid terrain row) multiplied by 200 to inde
+00420209 1 4 3dc8000000 H ; eax = terrain-cell row - 28 (0x1c) = hex Y (row parity drives odd-r offset); che
+00420b4c 2 4 81fbc8000000 W ; ebx = terrain-cell column - 28 = hex X; bound of the hex area inside the 256x256
+0047a972 2 4 81f9c8000000 W ; ecx = pos>>16 (X) of object position; then HEX20 lookup.
+00483d55 2 4 81fec8000000 W ; esi = X + dx from neighbor table 0x79c310 (high word of pos); map method indexes
+00484315 1 4 05c8000000 W ; SHEX loader 0x484090: row base (y*200) advanced by 200 per row until 0x9c40; res
+004845e9 1 4 3dc8000000 H ; eax = Y + dy (low word of neighbor pos) in ring walker 0x484510.
+00484858 1 4 3dc8000000 H ; eax = Y + dy (low word of neighbor pos) in 0x4847a0 before clearing HEX20 bit 20
+00484a64 1 4 3dc8000000 H ; Outer loop var [esp+0x14] is Y (imul 200), inner ebx is X; serializes HEX20 bits
+00487e89 1 4 3dc8000000 H ; eax = movsx low word = Y of pos before storing it to [ecx+0x1e].
+004963fa 2 4 81fac8000000 W ; edx = pos>>16 (X) before storing pos to [ecx+0x38].
+004a51be 2 4 81fdc8000000 H ; Outer ebp = Y (imul edi,ebp,200; low word [esp+0x14]), inner esi = X; scans all 
+004b1725 2 4 81fac8000000 W ; edx = pos>>16 (X); then HEX20 terrain lookup.
+004ba4ee 2 4 81f9c8000000 W ; ecx = pos>>16 (X); then HEX20+4 region lookup.
+004c74f6 1 4 3dc8000000 H ; eax = movsx ax = Y of object pos; then HEX20 lookup.
+00567541 1 4 b9c0450400 W*H*7 ; rep stosd count clearing HEX28 at 0x9438128 (200*200*28/4 dwords).
+0056a3a5 2 4 69c0c8000000 W ; movsx Y of pos * 200 + X -> HEX20 index.
+0056e52a 2 4 81f9c8000000 H ; ecx = movsx ax = Y of pos read from 0x736b0c4 table.
+0057249d 2 4 81f9c8000000 W ; ecx = arg>>16 (X).
+00578cb9 1 4 3dc8000000 H ; eax = movsx di = Y of pos from 0x441800; then HEX20 lookup.
+00579c8c 1 4 3dc8000000 H ; eax = movsx si = Y of pos from 0x578ad0.
+0057a50e 2 4 81f9c8000000 W ; ecx = pos>>16 (X) from 0x578ad0.
+0057b901 2 4 81f9c8000000 H ; ecx = movsx si = Y (then imul by 200).
+0057d5e0 2 4 81fac8000000 W ; edx = pos>>16 (X) of [esi+0x2c].
+0057e9a2 2 4 69c9c8000000 W ; ecx = hex Y from map-object vertex coord (([edi-4]*2-0x70)/4) times 200 -> HEX20
+0057ed13 2 4 81fec8000000 W ; Inner esi stored as high word [esp+0x1a] = X (outer ebx = Y); calls 0x59fea0(pos
+00589225 1 4 3dc8000000 H ; eax = movsx dx = Y of pos argument.
+0058e923 2 4 81ffc8000000 W ; Inner edi = X (high word [esp+0x12]), outer [esp+0x14] = Y (imul ebx,200).
+00594247 2 4 81f9c8000000 W ; ecx = movsx [esp+0xa] = X of neighbor pos from 0x483a50.
+00594b7e 1 4 3dc8000000 H ; eax = movsx [esp+0x1c] = Y of neighbor pos.
+0059669e 2 4 81f9c8000000 W ; ecx = movsx [esp+0x12] = X of neighbor pos.
+00596aa6 2 4 81fdc8000000 W ; Inner ebp = X (stored to high word, added to Y*200); outer [esp+0x18] = Y (check
+0059818c 2 4 69c0c8000000 W ; Y*200+X indexes the 40000-byte stack array [esp+0x20] (cleared by rep stosd ecx=
+005a0782 1 4 3dc8000000 H ; eax = movsx dx = Y of pos argument.
+005a169a 1 4 3dc8000000 H ; eax = movsx dx = Y (low word of neighbor pos).
+005a42d3 2 4 81f9c8000000 W ; ecx = movsx [esp+0x1e] = X of neighbor pos.
+005a48a4 2 4 81f9c8000000 W ; ecx = movsx [esp+0x2a] = X of neighbor pos.
+005a61e0 1 4 3dc8000000 H ; eax = movsx word arg = Y.
+005a6840 1 4 3dc8000000 H ; eax = movsx word arg = Y.
+005a691c 2 4 81fac8000000 W ; edx = pos>>16 (X) of [ebx+8].
+005a70ff 1 4 3dc8000000 H ; eax = movsx [esp+0xc] = Y of neighbor pos.
+005a71bb 2 4 81f9c8000000 W ; ecx = arg>>16 (X).
+005a74f4 1 4 3dc8000000 H ; eax = movsx dx = Y of neighbor pos.
+005a8913 2 4 81fdc8000000 W ; Inner ebp = X (high word [esp+0x1e]); outer [esp+0x18] = Y (imul 200); in 0x5a88
+005a8afd 2 4 81f9c8000000 W ; ecx = arg>>16 (X).
+005ac35f 1 4 3dc8000000 H ; eax = movsx bp = Y (low word of pos arg).
+005ac58e 2 4 81f9c8000000 W ; ecx = movsx [esp+0x12] = X of pos.
+005acc34 2 4 81f9c8000000 H ; ecx = movsx di = Y of pos from 0x483c80 ring list.
+005ae966 2 4 81fec8000000 W ; esi = pos>>16 (X) of [ecx+0x78].
+005afb4f 2 4 81f9c8000000 H ; ecx = movsx ax = Y of pos (function really starts 0x5afb30, misdisassembled); po
+005d6fcb 1 4 3dc8000000 H ; eax = movsx [esp+0x10] = Y of neighbor pos.
+005df769 1 4 3dc8000000 H ; eax = movsx ax = Y of pos from [obj+idx*8+0xf0].
+005dfe39 2 4 81f9c8000000 W ; ecx = pos>>16 (X).
+005f7261 1 4 3dc8000000 H ; eax = movsx ax = Y of pos arg.
+0061abfe 1 4 3dc8000000 H ; eax = movsx dx = Y of pos before hex->world conversion 0x417750.
+0067d7ff 2 4 81fbc8000000 H ; Outer ebx = Y (imul edi,200; low word [esp+0x10]), inner esi = X; scans all HEX2
+00416c34 2 4 81fac8000000 H ; edx=movsx low word of pos arg (Y); validity check before hex->terrain vertex con
+00416fde 2 4 81f9c8000000 W ; ecx=word [esp+2] of neighbour pos returned by 0x483a50 (X); followed by imul Y*2
+0041c3ef 1 4 3dc8000000 W ; eax=(vx-0x70-2*(y&1))/4 = hex X derived from object vertex coords; then Y*200+X 
+0041ed40 2 4 81f9c8000000 H ; ecx=(v-0x70)/4 = hex Y (its parity drives the X half-offset); followed by imul e
+0041f92a 2 4 69c9c8000000 W ; ecx=hex Y from (v-0x70)/4 (unchecked); y*200+x indexes HEX20 [*4+0x6fb0e68].
+0042021c 2 4 81fbc8000000 W ; Terrain renderer: ebx=terrain cell column-0x1c (hex X; China starts at cell 28),
+00420fd9 1 4 3dc8000000 H ; Terrain renderer: eax=terrain cell row-0x1c (hex Y; row parity used for x offset
+0047a9c7 1 4 3dc8000000 H ; eax=movsx ax of object pos (Y); then Y*200+X HEX20 region lookup.
+00483d5d 2 4 69d2c8000000 W ; edx=Y+dy from neighbour table 0x79c310 (bounds-checked); idx*20 into map object 
+0048431a 1 4 3d409c0000 W*H ; SHEX loader outer loop: row offset accumulator (+=200 per row) compared to 40000
+004845f4 2 4 81f9c8000000 W ; ecx=X+dx (high word of pos + neighbour table delta); then Y*200+X into map recor
+00484863 2 4 81f9c8000000 W ; ecx=X+dx from neighbour table 0x79c312; then HEX20 flag clear.
+00484b5a 1 4 3dc8000000 H ; eax=Y+dy from neighbour table (low word); then Y*200+X into HEX20.
+00487e94 2 4 81fec8000000 W ; esi=sar pos,16 (X); pos validity check before storing it to [ecx+0x1e].
+0049642b 1 4 3dc8000000 H ; eax=movsx ax of object pos (Y); then Y*200+X.
+0049e47f 1 4 3dc8000000 H ; eax=movsx ax of object pos (Y); then HEX20 region lookup.
+004a4c90 1 4 b9c8000000 W ; Per-row record count (200 x 20 B) in loop clearing bits over all of HEX20 until 
+004af0a5 2 4 69c0c8000000 W ; Y*200+X then *0x1c + 0x9438128 (HEX28 index).
+004bc3df 1 4 3dc8000000 H ; eax=word [esp+0x18] low word of neighbour pos from 0x483a50 (Y).
+004c7501 2 4 81f9c8000000 W ; ecx=sar pos,16 (X); then HEX20 region lookup.
+0056614f 1 4 3dc8000000 H ; eax=movsx of [esi+0x220] pos low word (Y).
+0056757f 2 4 69c0c8000000 W ; Y*200+X then *0x1c+0x9438128 (HEX28) in pathfinding 0x567520.
+00567cc4 1 4 3dc8000000 H ; eax=movsx dx of best pos (Y).
+0056e113 1 4 3dc8000000 H ; eax=word [esp+0x10] low word of neighbour pos (Y); then HEX20.
+0056e536 2 4 81fac8000000 W ; edx=sar pos,16 (X) of person pos from 0x736b0c4 table; then HEX20.
+00574f2e 1 4 3dc8000000 H ; eax=word [0x96a5924] (Y of cursor hex returned by 0x441800).
+00578ccc 2 4 81f9c8000000 W ; ecx=sar pos,16 (X) of hex under cursor; then HEX20.
+00579c9f 2 4 81f9c8000000 W ; ecx=sar pos,16 (X); then HEX20.
+0057b103 2 4 81ffc8000000 H ; edi=movsx bp of hex pos (Y).
+0057b915 2 4 81fac8000000 W ; edx=sar pos,16 (X); then HEX20.
+0057d6ab 1 4 3dc8000000 H ; eax=movsx ax of pos from 0x483a00 (Y); then HEX20.
+0057ebce 2 4 81fec8000000 W ; Inner loop esi=X (stored as high word [esp+0x1a]) of a full-map scan of HEX20.
+0057ed1c 2 4 81fbc8000000 H ; Outer loop ebx=Y (low word [esp+0x18]) calling 0x59fea0(pos) for every hex.
+00585f3c 1 4 3dc8000000 H ; eax=movsx dx of pos arg (Y); then HEX20.
+00589230 2 4 81f9c8000000 W ; ecx=sar pos,16 (X); validity check before 0x588aa0.
+0058e930 1 4 3dc8000000 H ; Outer counter [esp+0x14] is movsx'd and multiplied by 200 (Y) in full-map HEX20 
+00594662 1 4 3dc8000000 H ; eax=movsx word arg (Y); then HEX20.
+00594b89 2 4 81f9c8000000 W ; ecx=word [esp+0x1e] high word of neighbour pos (X); then HEX20.
+005968cc 2 4 69dbc8000000 W ; ebx=outer loop counter [esp+0x28] (Y) * 200, X loop added, HEX20 index.
+00596ab7 1 4 3dc8000000 H ; Outer counter [esp+0x18] is Y (imul 200, parity tested) in full-map scan that al
+005981c0 1 4 b9c8000000 W ; Per-row record count in loop clearing a bit over all of HEX20 until 0x7074368.
+00598bb7 2 4 81fec8000000 W ; Inner loop esi=X (high word [esp+0x12]) in full-map HEX20 scan.
+0059feba 1 4 3dc8000000 H ; eax=movsx di of pos arg (Y); then HEX20.
+005a078d 2 4 81f9c8000000 W ; ecx=sar pos,16 (X); then HEX20.
+005a16ad 2 4 81f9c8000000 W ; ecx=word [esp+0x12] high word of neighbour pos (X); then HEX20.
+005a44e9 2 4 69c0c8000000 W ; movsx di of pos arg (Y) * 200 + X, HEX20 index.
+005a4c5f 2 4 69c0c8000000 W ; movsx di of pos arg (Y) * 200 + X, HEX20 index.
+005a61eb 2 4 81f9c8000000 W ; ecx=sar pos,16 (X); then HEX20.
+005a684b 2 4 81f9c8000000 W ; ecx=sar pos,16 (X) of first pos arg.
+005a6e63 1 4 3dc8000000 H ; eax=word [esp+0x10] low word of neighbour pos (Y); then HEX20.
+005a710a 2 4 81f9c8000000 W ; ecx=word [esp+0xe] high word of neighbour pos (X); then HEX20.
+005a7259 1 4 3dc8000000 H ; eax=movsx si of pos arg (Y).
+005a74ff 2 4 81f9c8000000 W ; ecx=word [esp+0x16] high word of neighbour pos (X); then HEX20.
+005a87d5 2 4 81f9c8000000 H ; ecx=movsx ax of pos returned by 0x5a8630 (Y).
+005a8924 1 4 3dc8000000 H ; Outer counter [esp+0x18] is Y (imul 200) in full-map scan of 0x5a8800 (160040-by
+005ab335 2 4 81fec8000000 H ; esi=movsx low word of pos arg 3 (Y); then HEX20.
+005ac36a 2 4 81f9c8000000 W ; ecx=word [esp+0x16] high word of pos arg (X).
+005ac7b4 1 4 3dc8000000 H ; eax=movsx dx of pos from 0x5a8240 (Y).
+005acc40 2 4 81fac8000000 W ; edx=sar pos,16 (X) of ring position from 0x483c80; then HEX20.
+005af548 1 4 3dc8000000 H ; eax=movsx word [esp+0xc] low word of pos arg (Y).
+005afb5b 2 4 81fac8000000 W ; edx=sar pos,16 (X); invalid pos falls back before hex->world via 0x417750.
+005d6fd6 2 4 81f9c8000000 W ; ecx=word [esp+0x12] high word of neighbour pos (X); then HEX20.
+005df774 2 4 81f9c8000000 W ; ecx=sar pos,16 (X); then HEX20 flag write.
+005e0077 1 4 3dc8000000 H ; eax=word [esp+0x18] low word of neighbour pos (Y); then HEX20.
+005eca57 1 4 3dc8000000 H ; eax=word [esp+0x10] low word of neighbour pos (Y); then HEX20.
+005f726c 2 4 81fac8000000 W ; edx=sar pos,16 (X); then HEX20.
+0061ac11 2 4 81f9c8000000 W ; ecx=word [esp+0x36] high word of pos arg (X); then hex->world via terrain 0x4177
+0067ea9b 1 4 3dc8000000 H ; eax=movsx dx of neighbour pos (Y) before 0x588fc0(pos).
+00410947 2 4 81f9c8000000 H ; ecx=(vy-0x70)/4 = hex y from terrain vertex; then imul ecx,0xc8 indexes HEX20.
+00416757 2 4 81f9c8000000 H ; ecx=(2*esi-0x70)/4 = hex y (its parity drives the x offset); pos then passed to 
+00416c40 2 4 81ffc8000000 W ; edi = movsx of high word of pos argument = x; function then converts pos to terr
+00417427 1 4 3dc8000000 H ; eax = terrain-cell row (vertex/4, 0..255) minus 0x1c = hex y, then imul 0xc8 int
+0041c40a 2 4 69c9c8000000 W ; ecx=(vy-0x70)/4 = hex y; y*200+x indexes HEX20+4 (region field).
+0041ed54 1 4 3dc8000000 W ; eax=(vx-0x70-2*(y&1))/4 = hex x; then y*200+x into HEX20+4.
+0041fb4a 2 4 69c9c8000000 W ; ecx=(vy-0x70)/4 = hex y (parity used for x offset); y*200+x indexes HEX20.
+00420699 1 4 3dc8000000 H ; eax = terrain-cell row (word at list 0x132501c, row parity tested via cl&1) minu
+00420fec 2 4 81fbc8000000 W ; ebx = terrain-cell column (word at +2 of same list entry) minus 0x1c = hex x.
+0047a926 1 4 3dc8000000 H ; eax = movsx low word of pos = y in a pos-validity helper.
+0047a9d2 2 4 81f9c8000000 W ; ecx = pos>>16 = x, then y*200+x into HEX20+4.
+00483b78 1 4 b9400d0300 W*H*5 ; HEX20 constructor (static init 0x73be40: mov ecx,0x6fb0e68; jmp 0x483b70) rep st
+00483ffd 2 4 81fac8000000 H ; edx = y + dy from hex neighbor table 0x79c310 (new y).
+00484479 1 4 3dc8000000 H ; eax = neighbor y (y+dy from 0x79c310), then y*200+x in HEX20 method 0x4843a0.
+00484600 2 4 69c0c8000000 W ; neighbor y*200+x, record at [this+idx*20] in HEX20 method 0x484510.
+004848f7 2 4 69c0c8000000 W ; HEX20 method: movsx(pos low)=y *200 + pos>>16, record [ecx+idx*20].
+00484b65 2 4 81f9c8000000 W ; ecx = neighbor x (x+dx from 0x79c312), then y*200+x into HEX20.
+0049639f 1 4 3dc8000000 H ; eax = movsx low word of pos = y before storing pos to [ecx+0x3c].
+00496436 2 4 81f9c8000000 W ; ecx = pos>>16 = x, then y*200+x into HEX20+4.
+0049e48a 2 4 81f9c8000000 W ; ecx = pos>>16 = x, then y*200+x into HEX20+4.
+004a4d0d 2 4 81ffc8000000 W ; Inner loop counter edi = x (movsx di + y*200) scanning every column of HEX20; ou
+004b16b8 2 4 81f9c8000000 H ; ecx = movsx low word of unit pos = y; pos then passed to HEX20 method 0x484510.
+004bc3ea 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x1a] = high word of neighbor pos = x, then y*200+x into H
+0056615a 2 4 81fac8000000 W ; edx = [esi+0x220]>>16 = x of stored pos.
+005676df 1 4 3dc8000000 H ; eax = movsx low word of neighbor pos from 0x483a50 = y, then y*200+x into HEX20 
+00567ccf 2 4 81f9c8000000 W ; ecx = best pos>>16 = x.
+0056e122 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x12] = high word of neighbor pos = x, then y*200+x into H
+005723d9 1 4 3dc8000000 H ; eax = movsx low word of pos = y, before terrain height lookup 0x417750.
+00574f41 2 4 81f9c8000000 W ; ecx = movsx word [0x96a5926] = high word of global pos 0x96a5924 = x.
+00579d70 2 4 81f9c8000000 H ; ecx = movsx low word of returned pos = y.
+0057b117 2 4 81fec8000000 W ; esi = pos>>16 = x.
+0057d090 1 4 3dc8000000 H ; eax = movsx low word of [esi+0x28] pos = y (later converted to vertex y*4+0x70).
+0057d6be 2 4 81f9c8000000 W ; ecx = pos>>16 = x, then y*200+x into HEX20.
+0057ebd7 2 4 81fbc8000000 H ; Outer loop ebx = y (bx stored as low word of pos, ebp=y*200); inner esi loop is 
+00585f4f 2 4 81f9c8000000 W ; ecx = pos>>16 = x, then y*200+x into HEX20.
+00594190 1 4 3dc8000000 H ; eax = movsx low word of pos arg = y, then y*200+x into HEX20.
+0059466d 2 4 81f9c8000000 W ; ecx = pos>>16 = x, then y*200+x into HEX20.
+00595756 1 4 3dc8000000 H ; eax = movsx di (neighbor pos low word) = y, then y*200+x into HEX20.
+0059693d 2 4 81fec8000000 W ; Inner loop esi = x (si stored as high word of pos, movsx si + y*200); outer loop
+00597f38 1 4 6800c40900 W*H*16 ; malloc of 40000 16-byte per-cell work records in 0x597f20; same function has a 4
+00598bc0 2 4 81fbc8000000 H ; Outer loop ebx = y (bx stored as low word, edi=y*200); inner esi loop is x.
+0059fecd 2 4 81f9c8000000 W ; ecx = pos>>16 = x, then y*200+x into HEX20.
+005a17ad 1 4 3dc8000000 H ; eax = movsx di (pos from 0x8b981c+4) = y, then y*200+x into HEX20.
+005a4781 1 4 3dc8000000 H ; eax = movsx dx = low word of neighbor pos = y, then y*200+x into HEX20.
+005a4e3a 2 4 69c0c8000000 W ; movsx si (pos low word) = y times 200 plus pos>>16, HEX20 index.
+005a656b 1 4 3dc8000000 H ; eax = movsx word [esp+4] = y, then y*200+x into HEX20.
+005a6869 1 4 3dc8000000 H ; eax = movsx di = y of second pos argument, then y*200+x into HEX20.
+005a6e6e 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x12] = x of neighbor pos, then y*200+x into HEX20.
+005a7170 1 4 3dc8000000 H ; eax = movsx word [esp+4] = y, then y*200+x into HEX20.
+005a7264 2 4 81f9c8000000 W ; ecx = pos>>16 = x before HEX20 method 0x484040.
+005a87e1 2 4 81fac8000000 W ; edx = returned pos>>16 = x.
+005a89f7 2 4 81c428710200 W*H*4+40 ; Epilogue of 0x5a8800 whose frame holds dword array [esp+0x34] of up to W*H posit
+005aa45b 2 4 69c0c8000000 W ; movsx ax (pos low word) = y times 200 plus pos>>16; reads HEX20+8.
+005ab341 2 4 81ffc8000000 W ; edi = pos arg >>16 = x, then y*200+x into HEX20.
+005ac428 2 4 81fec8000000 H ; esi = movsx bp (pos low word) = y, later imul esi,0xc8.
+005ac7bf 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x1a] = x of returned pos.
+005ad5cc 1 4 3dc8000000 H ; eax = movsx si (returned pos low word) = y.
+005ae91a 2 4 81f9c8000000 H ; ecx = movsx low word of [ecx+0x74] pos = y.
+005af55b 2 4 81f9c8000000 W ; ecx = movsx word [esp+0xe] = x of first pos argument.
+005d70ff 1 4 3dc8000000 H ; eax = movsx word [esp+0x10] = y of neighbor pos, then y*200+x into HEX20.
+005dfa12 1 4 3dc8000000 H ; eax = movsx word [esp+0x24] = y of neighbor pos, then y*200+x into HEX20.
+005e008a 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x1a] = x of neighbor pos, then y*200+x into HEX20.
+005eca62 2 4 81f9c8000000 W ; ecx = movsx word [esp+0x12] = x of neighbor pos, then y*200+x into HEX20.
+005f7318 1 4 3dc8000000 H ; eax = movsx dx = y of neighbor pos, then y*200+x into HEX20.
+0067eaa6 2 4 81f9c8000000 W ; ecx = movsx word [esp+0xe] = x of neighbor pos before HEX-related call 0x588fc0.
+00597f26 1 4 b85c9c0000 W*H+28 ; frame of 0x597f20 (W*H byte map + 28)
+00597f3d 3 4 898424689c0000 W*H+40 ; security cookie slot above the byte map
+00597f5a 3 4 8b8c24649c0000 W*H+36 ; security cookie slot (after push)
+0059829a 3 4 8b8c24649c0000 W*H+36 ; security cookie slot (epilogue)
+00598144 1 4 b910270000 W*H/4 ; rep stosd count clearing the W*H byte map

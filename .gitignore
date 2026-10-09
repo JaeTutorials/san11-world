@@ -1,0 +1,25 @@
+# ---- 光荣的游戏文件和从中提取的数据：不能随项目发布，每个人用自己的游戏生成
+backup/
+data/china_shex.npy
+data/china_k3st_v.npy
+*.exe
+*.s11
+san11pkres.bin
+
+# ---- 下载的公开数据和由它生成的大文件（san11kit.py download / setup 会重新生成）
+data/raw/
+data/etopo60s_i16.npy
+data/world_hexcache.npz
+
+# ---- 生成的世界数据（san11kit.py world 重新生成）
+data/world*/
+!data/world_template/
+
+# ---- 编译和临时文件
+build/
+worldmod/build/
+dist/
+__pycache__/
+*.pyc
+*.part
+project.json

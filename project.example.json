@@ -1,0 +1,10 @@
+{
+  "game_dir": "C:/San11PK",
+  "world_dir": "data/world",
+  "data_name": "world_custom",
+  "cities": 500,
+  "spacing": 14,
+  "exe": "san11pk_world.exe",
+  "save_dir": "UserData_kit",
+  "scenarios": ["scenarios/europe_184.json"]
+}

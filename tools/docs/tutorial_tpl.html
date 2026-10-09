@@ -1,0 +1,130 @@
+<title>三国志11 世界扩展教程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field manual — sticky contents rail on the left, one reading column, wide tables/code scroll in place. */
+:root {
+  --paper: #f3f5f2;      /* cool rice paper */
+  --sheet: #ffffff;
+  --ink: #1b2228;        /* body text */
+  --ink-soft: #55616b;
+  --rule: #d5dcd8;
+  --jade: #1f6f5f;       /* accent: celadon */
+  --jade-soft: #e2efea;
+  --seal: #b8322a;       /* seal red, used only for marks */
+  --code-bg: #eef1ef;
+  --on-mark: #ffffff;    /* text on the coloured id segments */
+  --f-display: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --f-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --f-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12171b; --sheet: #182026; --ink: #e3e8e4; --ink-soft: #9aa7a2; --rule: #2b363d;
+    --jade: #5fc0a6; --jade-soft: #1b3330; --seal: #e0675c; --code-bg: #1d272d; --on-mark: #10171b; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12171b; --sheet: #182026; --ink: #e3e8e4; --ink-soft: #9aa7a2; --rule: #2b363d;
+  --jade: #5fc0a6; --jade-soft: #1b3330; --seal: #e0675c; --code-bg: #1d272d; --on-mark: #10171b; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.8 var(--f-body); margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 0 64px;
+  display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 48px; }
+header.hero { grid-column: 1 / -1; padding-block: 56px 28px; border-bottom: 1px solid var(--rule); display: grid; gap: 22px; }
+.eyebrow { font: 600 12px/1 var(--f-mono); letter-spacing: .14em; color: var(--jade); text-transform: uppercase; }
+h1 { font: 900 clamp(28px, 4.4vw, 46px)/1.25 var(--f-display); margin: 0; text-wrap: balance; letter-spacing: .01em; }
+.sub { color: var(--ink-soft); font-size: 17px; margin: 0; max-width: 60ch; }
+.figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--rule); background: var(--sheet); }
+.fig { padding: 14px 18px; display: grid; gap: 2px; min-width: 0; }
+.fig + .fig { border-left: 1px solid var(--rule); }
+.fig b { font: 600 22px/1.3 var(--f-mono); font-variant-numeric: tabular-nums; }
+.fig b i { font-style: normal; color: var(--ink-soft); font-weight: 400; }
+.fig span { color: var(--ink-soft); font-size: 13px; }
+.ids { display: grid; gap: 6px; }
+.ids .lbl { font: 600 12px/1 var(--f-mono); letter-spacing: .08em; color: var(--ink-soft); }
+.bar { display: flex; height: 30px; border: 1px solid var(--rule); background: var(--sheet); }
+.bar div { display: flex; align-items: center; padding-inline: 8px; font: 500 12px/1 var(--f-mono); color: var(--on-mark); white-space: nowrap; overflow: hidden; min-width: 0; }
+.bar .c0 { background: var(--seal); }
+.bar .c1 { background: color-mix(in srgb, var(--seal) 70%, var(--paper)); }
+.bar .g { background: var(--jade); }
+.bar .p { background: color-mix(in srgb, var(--jade) 65%, var(--paper)); }
+.bar .s { background: var(--ink-soft); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.legend i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); align-self: start; padding-top: 32px; max-height: 100vh; overflow: auto; }
+nav.toc h2 { font: 600 12px/1 var(--f-mono); letter-spacing: .14em; color: var(--ink-soft); margin: 0 0 12px; text-transform: uppercase; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; counter-reset: none; }
+nav.toc a { display: block; padding: 4px 10px; border-left: 2px solid transparent; color: var(--ink-soft); text-decoration: none; font-size: 14px; line-height: 1.5; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--ink); border-left-color: var(--jade); outline: none; }
+main { min-width: 0; padding-top: 24px; }
+main h2 { font: 600 26px/1.4 var(--f-display); margin: 48px 0 14px; padding-top: 8px; text-wrap: balance; scroll-margin-top: 16px; }
+main h3 { font: 700 18px/1.5 var(--f-body); margin: 30px 0 8px; }
+main p, main li { max-width: 68ch; }
+main ul, main ol { padding-left: 1.4em; }
+main li { margin: 4px 0; }
+main li::marker { color: var(--jade); }
+a { color: var(--jade); }
+strong { font-weight: 700; }
+code { font: 0.88em/1.5 var(--f-mono); background: var(--code-bg); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+.code { overflow-x: auto; background: var(--code-bg); border-left: 3px solid var(--jade); margin: 14px 0; }
+.code pre { margin: 0; padding: 14px 16px; }
+.code code { background: none; padding: 0; font-size: 13.5px; line-height: 1.65; white-space: pre; overflow-wrap: normal; }
+.table { overflow-x: auto; margin: 16px 0; border: 1px solid var(--rule); background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.6; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+th { font-weight: 700; background: var(--jade-soft); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+footer { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 18px; color: var(--ink-soft); font-size: 13px; }
+@media (max-width: 860px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 0; padding-inline: 16px; }
+  nav.toc { position: static; max-height: none; padding-top: 20px; }
+  nav.toc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figures { grid-template-columns: minmax(0, 1fr); }
+  .fig + .fig { border-left: 0; border-top: 1px solid var(--rule); }
+  header.hero { padding-block: 32px 22px; }
+}
+@media (max-width: 480px) { nav.toc ol { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">San11 PK · worldmod</div>
+    <h1>{{TITLE}}</h1>
+    <p class="sub">{{SUBTITLE}}。从原理到工具，按实际做过的顺序讲：内存补丁、整张世界的 3D 地形、地图生成、城市上限、稳定性、寻路，以及编辑器。</p>
+    <div class="figures" role="list">
+      <div class="fig" role="listitem"><b>40 000 <i>→</i> 1 800 000</b><span>六角格（中国 200×200 → 欧亚 1800×1000）</span></div>
+      <div class="fig" role="listitem"><b>42 <i>→</i> 210</b><span>城市（据点总数最多 255）</span></div>
+      <div class="fig" role="listitem"><b>0</b><span>被修改的游戏文件（全部在内存里完成）</span></div>
+    </div>
+    <div class="ids" aria-label="C=210 时的据点编号布局">
+      <div class="lbl">据点编号布局 · C = 210，N = C + 45 = 255</div>
+      <div class="bar">
+        <div class="c0" style="flex:42" title="光荣原版城市 0–41">0–41</div>
+        <div class="c1" style="flex:168" title="新城 42–209">新城 42–209</div>
+        <div class="g" style="flex:10" title="关 210–219">关</div>
+        <div class="p" style="flex:35" title="港 220–254">港</div>
+        <div class="s" style="flex:6" title="特殊区域 255–260"></div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--seal)"></i>光荣城市 0–41</span>
+        <span><i style="background:color-mix(in srgb, var(--seal) 70%, var(--paper))"></i>新城 42–209</span>
+        <span><i style="background:var(--jade)"></i>关 210–219</span>
+        <span><i style="background:color-mix(in srgb, var(--jade) 65%, var(--paper))"></i>港 220–254</span>
+        <span><i style="background:var(--ink-soft)"></i>特殊区域 255–260</span>
+      </div>
+    </div>
+  </header>
+  <nav class="toc" aria-label="目录">
+    <h2>目录</h2>
+    <ol>{{TOC}}</ol>
+  </nav>
+  <main>
+{{BODY}}
+  </main>
+  <footer>源文件：<code>mapmod_re/TUTORIAL.md</code>。细节资料：<code>M4B.md</code>、<code>M7_LAYOUT.md</code>、<code>COORDS.md</code>、<code>TERRAIN_WINDOW.md</code>。</footer>
+</div>
