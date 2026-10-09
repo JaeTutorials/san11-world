@@ -974,6 +974,7 @@
 005abbf7 2 4 81c428040000 0x428+((N-87)*8)+((N-87)*4) ; [frame] stack 0x5aba80 base-distance bucket sorter (0x5a62
 005abc8b 2 4 81c428040000 0x428+((N-87)*8)+((N-87)*4) ; [frame] stack 0x5aba80 base-distance bucket sorter (0x5a62
 005ac1ab 1 4 b950936a09 AREAHEX ; [imm] area hex-list object 0x96a9350 (AREAHEX): +0 ptr, 
+005bb62d 1 4 bb34000000 C+G ; [GATE_END] mov ebx, 0x34
 005c05c4 2 4 81ecac000000 0xac+((C-42)*4) ; [frame] stack 0x5c05c0 int[C] city flags
 005c05d0 3 4 8b9c24b8000000 0xb8+((C-42)*4) ; [disp] stack 0x5c05c0 int[C] city flags
 005c05e5 2 4 81c4ac000000 0xac+((C-42)*4) ; [frame] stack 0x5c05c0 int[C] city flags
@@ -1903,6 +1904,7 @@
 005f7c08 2 4 2b81188e3f07 AIBASE+4 ; [disp] AI subobject 0x73f612c: base records -> AIBASE
 005f8839 3 4 0fbf80168e3f07 AIBASE+2 ; [disp] AI subobject 0x73f612c: base records -> AIBASE
 005f88c9 3 4 0fbf80168e3f07 AIBASE+2 ; [disp] AI subobject 0x73f612c: base records -> AIBASE
+00600b76 1 4 bb34000000 C+G ; [GATE_END] mov ebx, 0x34
 0061c35e 1 4 b8e0900700 0x790e0+(N-87)*0x50 ; [frame] stack 0x61c350: union slot [esp+0x1e038] (0x1e20 B
 0061c37f 3 4 898424e4900700 0x790e4+((N-87)*0x50) ; [disp] stack 0x61c350: union slot [esp+0x1e038] (0x1e20 B
 0061c398 3 4 899c24f0900700 0x790f0+((N-87)*0x50) ; [disp] stack 0x61c350: union slot [esp+0x1e038] (0x1e20 B
@@ -2176,6 +2178,7 @@
 006891e5 3 4 8b8c2490080000 0x890+((C-42)*4) ; [disp] stack 0x688d20: city-count predicate object (vtabl
 006891f5 2 4 81c494080000 0x894+((C-42)*4) ; [frame] stack 0x688d20: city-count predicate object (vtabl
 006893d7 1 4 bf2a000000 C ; [CITY_COUNT] mov edi, 0x2a
+00689419 1 4 bf34000000 C+G ; [GATE_END] mov edi, 0x34
 00689559 1 4 b92a000000 C ; [CITY_COUNT] mov ecx, 0x2a
 0068e248 1 4 68e8030000 0x3e8+(C-42)*0x14 ; [alloc] CityOverlay X3 (vt 0x854ea8, ctor 0x622100, dtor 0
 00696435 2 4 81ec8c050000 0x58c+(C-42)*0x14 ; [frame] stack K7 (vt 0x862930, size 0x588, X3@+0x1a0) in 0

@@ -250,6 +250,16 @@ LOOP_S = [
 ]
 for start, end, text in LOOP_S:
     rewrites.append((start, end - start, text, None, 'S.city[C] loop (was unrolled 6x7)'))
+# gate/port boundary review (2026-10-08, m7_review/result_GP.jsonl): the two id -> index helpers have every operand
+# changing, too dense for imm8 caves; rewritten whole (22 bytes + int3 padding = 0x20 each)
+ID2IDX = [
+    (0x4862d0, 'mov eax, dword ptr [esp + 4]; cmp eax, {C}; jl L; cmp eax, {C+G-1}; jg L; sub eax, {C}; ret; '
+               'L: or eax, 0xffffffff; ret', 'building id -> gate index'),
+    (0x4862f0, 'mov eax, dword ptr [esp + 4]; cmp eax, {C+G}; jl L; cmp eax, {N-1}; jg L; sub eax, {C+G}; ret; '
+               'L: or eax, 0xffffffff; ret', 'building id -> port index'),
+]
+for start, text, comment in ID2IDX:
+    rewrites.append((start, 0x20, text, None, comment))
 
 # ---- field patch lines (fields inside an in-place rewrite are part of the rewrite)
 rw_spans = [(start, length) for start, length, text, relocs, comment in rewrites]
@@ -276,8 +286,14 @@ caves_ok, caves_failed = 0, []
 
 def imm32_text(va, expr):
     raw, mn, ops = insn[va]
-    ops = re.sub(r'(-?0x[0-9a-f]+|-?\d+)$', '{' + expr + '}' if not expr.startswith('-') else '{0' + expr + '}', ops)
-    return f'{mn} {ops}'
+    sym = '{' + expr + '}' if not expr.startswith('-') else '{0' + expr + '}'
+    if mn == 'lea':           # lea r, [base +/- disp8] -> [base + disp32]; expr is the signed displacement
+        new = re.sub(r' [+-] (0x[0-9a-f]+|\d+)\]$', ' + ' + sym + ']', ops)
+    else:
+        new = re.sub(r'(-?0x[0-9a-f]+|-?\d+)$', sym, ops)
+    if new == ops:
+        raise SystemExit(f'{va:#x} {mn} {ops}: no immediate to widen')
+    return f'{mn} {new}'
 
 
 for va in sorted(widen):

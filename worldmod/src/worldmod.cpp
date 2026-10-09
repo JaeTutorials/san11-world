@@ -10,6 +10,7 @@
 #include <share.h>
 #include <shlobj.h>
 #include <vector>
+#include <intrin.h>
 #include "d3dtrace.h"
 #include "automation.h"
 #include "profiler.h"
@@ -50,6 +51,7 @@ struct Config {
     int watchObjList = 0;        // debug: watch the object manager's list heads and validate its node lists
     int objListLock = 1;         // serialize the object manager's list operations (loader thread vs main thread)
     int modelGuard = 1;          // skip the unit model rebuild callback for units without a model (0x5a03e0)
+    int getterCheck = 0;         // debug: log gate / port getter calls with an out-of-range index and their call sites
     int astarStats = 0;          // debug: time every A* call (0x567520) and log the slow ones
     int astarMode = 3;           // A*: 0 original, 1 binary heap (same results), 2 + 2x heuristic, 3 + search window
     int astarMargin = 100;       // A* mode 3: search window margin in hexes
@@ -98,6 +100,7 @@ static void loadConfig() {
     g_cfg.watchObjList = GetPrivateProfileIntW(g_section, L"watch_objlist", 0, ini);
     g_cfg.objListLock = GetPrivateProfileIntW(g_section, L"objlist_lock", 1, ini);
     g_cfg.modelGuard = GetPrivateProfileIntW(g_section, L"model_guard", 1, ini);
+    g_cfg.getterCheck = GetPrivateProfileIntW(g_section, L"getter_check", 0, ini);
     g_cfg.watchLo = GetPrivateProfileIntW(g_section, L"watch_lo", -1, ini);
     g_cfg.watchHi = GetPrivateProfileIntW(g_section, L"watch_hi", -1, ini);
     g_cfg.watchMirror = GetPrivateProfileIntW(g_section, L"area_mirror", 1, ini);
@@ -660,6 +663,36 @@ static bool installModelGuard() {
     g_trModelUpd = makeTrampoline(0x5a03e0, sizeof head, head);
     if (!g_trModelUpd) return false;
     writeJmp(0x5a03e0, (void*)modelUpdateHook);
+    return true;
+}
+
+// debug (getter_check=1): the gate and port getters take an index (building id - first gate / port id).
+// A caller that still computes it from Koei's id layout passes an index out of range and gets NULL back;
+// these replacements behave the same and log each such call site once (-1 = "not a gate/port" is normal).
+static void noteBadIndex(const char* what, int idx, uint32_t ret) {
+    static uint32_t seen[128];
+    static volatile LONG n;
+    for (LONG i = 0; i < n; i++) if (seen[i] == ret) return;
+    LONG k = InterlockedIncrement(&n) - 1;
+    if (k < 128) seen[k] = ret;
+    logf("getter_check: %s index %d, call at %08x", what, idx, ret - 5);
+}
+static void* __fastcall gateGetter(uint8_t* world, int, int idx) {
+    if (idx >= 0 && idx <= 9) return world + 0x61a8 + idx * 0x90;
+    if (idx != -1) noteBadIndex("gate", idx, (uint32_t)(uintptr_t)_ReturnAddress());
+    return nullptr;
+}
+static void* __fastcall portGetter(uint8_t* world, int, int idx) {
+    if (idx >= 0 && idx <= 34) return world + 0x6748 + idx * 0x90;
+    if (idx != -1) noteBadIndex("port", idx, (uint32_t)(uintptr_t)_ReturnAddress());
+    return nullptr;
+}
+static bool installGetterCheck() {
+    static const uint8_t gate[] = { 0x8b, 0x44, 0x24, 0x04, 0x85, 0xc0, 0x7c, 0x15, 0x83, 0xf8, 0x09 };
+    static const uint8_t port[] = { 0x8b, 0x44, 0x24, 0x04, 0x85, 0xc0, 0x7c, 0x15, 0x83, 0xf8, 0x22 };
+    if (memcmp((void*)0x490a40, gate, sizeof gate) || memcmp((void*)0x490a70, port, sizeof port)) return false;
+    writeJmp(0x490a40, (void*)gateGetter);
+    writeJmp(0x490a70, (void*)portGetter);
     return true;
 }
 
@@ -1485,6 +1518,7 @@ static void installHooks() {
     bool clear = g_cfg.fastClear && hookHex28Clear();
     if (g_cfg.objListLock) logf("object list lock: %s", installObjListLock() ? "installed" : "NOT installed (unexpected code)");
     if (g_cfg.modelGuard) logf("unit model update guard: %s", installModelGuard() ? "installed" : "NOT installed (unexpected code)");
+    if (g_cfg.getterCheck) logf("gate/port getter check: %s", installGetterCheck() ? "installed" : "NOT installed (unexpected code)");
     logf("hooks installed (hexCtor, shex=%s, hex28 dirty-page clear=%s)", g_shexOrig ? "yes" : "no", clear ? "yes" : "no");
     PathfindConfig pf = {};
     pf.mode = g_cfg.astarMode; pf.margin = g_cfg.astarMargin; pf.benchSlow = g_cfg.astarBenchSlow; pf.benchGoal = g_cfg.astarBenchGoal; pf.stats = g_cfg.astarStats; pf.verify = g_cfg.astarVerify; pf.benchable = g_cfg.automation;

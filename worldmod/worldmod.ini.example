@@ -48,6 +48,8 @@ cities=210
 ; trace=1
 ; heap_check: validate all heaps every 20 ms, log where the main/loader threads are when one breaks
 ; heap_check=1
+; getter_check: log gate / port getter calls with an out-of-range index and their call sites (missed id-boundary patches)
+; getter_check=1
 ; astar_stats: log A* calls slower than 5 ms and a summary every 10 s
 ; astar_stats=1
 ; astar_verify: run the original A* as well and compare HEX28 byte for byte

@@ -9,10 +9,14 @@ CAVE 00479605 5 83f9577d0c 81f90000007f0f8d0a9647f0e9f99547f0 @2=abs:N @8=rel:47
 CAVE 0047960a 11 6bc0570fb6840858997900 69c00000007f0fb6840858997900e9029647f0 @2=abs:N @15=rel:479615 @10=abs:MAT87B ; imm8->imm32 imul eax, eax, 0x57 = N
 CAVE 0047a9a1 5 83f8577c03 3d0000007f0f8c9ea947f0e996a947f0 @1=abs:N @7=rel:47a9a9 @12=rel:47a9a6 ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 0047b044 5 83f82a7c0b 3d0000007f0f8c49b047f0e939b047f0 @1=abs:C @7=rel:47b054 @12=rel:47b049 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 0047b049 5 83f8337f06 3d0000007f0f8f49b047f0e93eb047f0 @1=abs:C+G-1 @7=rel:47b054 @12=rel:47b04e ; imm8->imm32 cmp eax, 0x33 = C+G-1
+CAVE 0047b064 5 83f8347c0b 3d0000007f0f8c69b047f0e959b047f0 @1=abs:C+G @7=rel:47b074 @12=rel:47b069 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 0047b069 5 83f8567f06 3d0000007f0f8f69b047f0e95eb047f0 @1=abs:N-1 @7=rel:47b074 @12=rel:47b06e ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 0047b088 5 83f8297e03 3d0000007f0f8e85b047f0e97db047f0 @1=abs:C-1 @7=rel:47b090 @12=rel:47b08d ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0047b238 5 83fa297e05 81fa0000007f0f8e36b247f0e92cb247f0 @2=abs:C-1 @8=rel:47b242 @13=rel:47b23d ; imm8->imm32 cmp edx, 0x29 = C-1
 CAVE 0047b274 5 83fa2a7c05 81fa0000007f0f8c72b247f0e968b247f0 @2=abs:C @8=rel:47b27e @13=rel:47b279 ; imm8->imm32 cmp edx, 0x2a = C
+CAVE 0047b279 5 83fa337e0f 81fa0000007f0f8e81b247f0e96db247f0 @2=abs:C+G-1 @8=rel:47b28d @13=rel:47b27e ; imm8->imm32 cmp edx, 0x33 = C+G-1
+CAVE 0047b27e 5 83fa347c05 81fa0000007f0f8c7cb247f0e972b247f0 @2=abs:C+G @8=rel:47b288 @13=rel:47b283 ; imm8->imm32 cmp edx, 0x34 = C+G
 CAVE 0047b283 5 83fa567e05 81fa0000007f0f8e81b247f0e977b247f0 @2=abs:N-1 @8=rel:47b28d @13=rel:47b288 ; imm8->imm32 cmp edx, 0x56 = N-1
 CAVE 0047b46f 5 83f8297e03 3d0000007f0f8e6cb447f0e964b447f0 @1=abs:C-1 @7=rel:47b477 @12=rel:47b474 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0047b488 5 83f8297f19 3d0000007f0f8f9bb447f0e97db447f0 @1=abs:C-1 @7=rel:47b4a6 @12=rel:47b48d ; imm8->imm32 cmp eax, 0x29 = C-1
@@ -58,116 +62,195 @@ CAVE 0048387c 5 83c02aeb03 050000007fe97a3848f0e9723848f0 @1=abs:C @6=rel:483884
 CAVE 00483994 5 83c02aeb03 050000007fe9923948f0e98a3948f0 @1=abs:C @6=rel:48399c @11=rel:483999 ; imm8->imm32 add eax, 0x2a = C
 CAVE 00484e06 5 83f8297f03 3d0000007f0f8f034e48f0e9fb4d48f0 @1=abs:C-1 @7=rel:484e0e @12=rel:484e0b ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 00484ec3 5 83f9297e04 81f90000007f0f8ec04e48f0e9b74e48f0 @2=abs:C-1 @8=rel:484ecc @13=rel:484ec8 ; imm8->imm32 cmp ecx, 0x29 = C-1
-CAVE 004862d4 5 83f82a7c09 3d0000007f0f8cd76248f0e9c96248f0 @1=abs:C @7=rel:4862e2 @12=rel:4862d9 ; imm8->imm32 cmp eax, 0x2a = C
-CAVE 004862dc 5 7f0483c0d6 0f8fdc6248f0050000007fe9d16248f0 @2=rel:4862e2 @7=abs:0-C @12=rel:4862e1 ; imm8->imm32 add eax, -0x2a = -C
-CAVE 004862f9 5 83f8567f04 3d0000007f0f8ff76248f0e9ee6248f0 @1=abs:N-1 @7=rel:486302 @12=rel:4862fe ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486500 5 83f8347c0a 3d0000007f0f8c046548f0e9f56448f0 @1=abs:C+G @7=rel:48650f @12=rel:486505 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486505 5 83f8567f05 3d0000007f0f8f046548f0e9fa6448f0 @1=abs:N-1 @7=rel:48650f @12=rel:48650a ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048650a 5 83c0cceb03 050000007fe9086548f0e9006548f0 @1=abs:0-(C+G) @6=rel:486512 @11=rel:48650f ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486534 5 83f82a7c0a 3d0000007f0f8c386548f0e9296548f0 @1=abs:C @7=rel:486543 @12=rel:486539 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486539 5 83f8337f05 3d0000007f0f8f386548f0e92e6548f0 @1=abs:C+G-1 @7=rel:486543 @12=rel:48653e ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048653e 5 83c0d6eb03 050000007fe93c6548f0e9346548f0 @1=abs:0-C @6=rel:486546 @11=rel:486543 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048656c 5 83f8297e03 3d0000007f0f8e696548f0e9616548f0 @1=abs:C-1 @7=rel:486574 @12=rel:486571 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 004865c0 5 83f8347c0a 3d0000007f0f8cc46548f0e9b56548f0 @1=abs:C+G @7=rel:4865cf @12=rel:4865c5 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004865c5 5 83f8567f05 3d0000007f0f8fc46548f0e9ba6548f0 @1=abs:N-1 @7=rel:4865cf @12=rel:4865ca ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004865ca 5 83c0cceb03 050000007fe9c86548f0e9c06548f0 @1=abs:0-(C+G) @6=rel:4865d2 @11=rel:4865cf ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 004865fc 5 83f82a7c15 3d0000007f0f8c0b6648f0e9f16548f0 @1=abs:C @7=rel:486616 @12=rel:486601 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486601 5 83f8337f10 3d0000007f0f8f0b6648f0e9f66548f0 @1=abs:C+G-1 @7=rel:486616 @12=rel:486606 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486606 9 83c0d650b958192007 050000007f50b958192007e9ff6548f0 @1=abs:0-C @12=rel:48660f ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048662a 5 83f8297e03 3d0000007f0f8e276648f0e91f6648f0 @1=abs:C-1 @7=rel:486632 @12=rel:48662f ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486699 5 83f8347c4a 3d0000007f0f8cdd6648f0e98e6648f0 @1=abs:C+G @7=rel:4866e8 @12=rel:48669e ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 0048669e 5 83f8567f45 3d0000007f0f8fdd6648f0e9936648f0 @1=abs:N-1 @7=rel:4866e8 @12=rel:4866a3 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004866a3 5 83c0cc7840 050000007f0f88dd6648f0e9986648f0 @1=abs:0-(C+G) @7=rel:4866e8 @12=rel:4866a8 ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 004866ab 5 7f3b83c034 0f8fe26648f0050000007fe9a06648f0 @2=rel:4866e8 @7=abs:C+G @12=rel:4866b0 ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 004866bc 5 83f82a7c27 3d0000007f0f8cdd6648f0e9b16648f0 @1=abs:C @7=rel:4866e8 @12=rel:4866c1 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004866c1 5 83f8337f22 3d0000007f0f8fdd6648f0e9b66648f0 @1=abs:C+G-1 @7=rel:4866e8 @12=rel:4866c6 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004866c6 5 83c0d6781d 050000007f0f88dd6648f0e9bb6648f0 @1=abs:0-C @7=rel:4866e8 @12=rel:4866cb ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004866ce 5 7f1883c02a 0f8fe26648f0050000007fe9c36648f0 @2=rel:4866e8 @7=abs:C @12=rel:4866d3 ; imm8->imm32 add eax, 0x2a = C
 CAVE 004866e3 5 83f8297e03 3d0000007f0f8ee06648f0e9d86648f0 @1=abs:C-1 @7=rel:4866eb @12=rel:4866e8 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 004866ff 5 83f8297e03 3d0000007f0f8efc6648f0e9f46648f0 @1=abs:C-1 @7=rel:486707 @12=rel:486704 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0048672b 5 83f82a7c14 3d0000007f0f8c396748f0e9206748f0 @1=abs:C @7=rel:486744 @12=rel:486730 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486730 5 83f8337f0f 3d0000007f0f8f396748f0e9256748f0 @1=abs:C+G-1 @7=rel:486744 @12=rel:486735 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486735 9 83c0d650b958192007 050000007f50b958192007e92e6748f0 @1=abs:0-C @12=rel:48673e ; imm8->imm32 add eax, -0x2a = -C
+CAVE 0048676b 5 83f8347c14 3d0000007f0f8c796748f0e9606748f0 @1=abs:C+G @7=rel:486784 @12=rel:486770 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486770 5 83f8567f0f 3d0000007f0f8f796748f0e9656748f0 @1=abs:N-1 @7=rel:486784 @12=rel:486775 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486775 9 83c0cc50b958192007 050000007f50b958192007e96e6748f0 @1=abs:0-(C+G) @12=rel:48677e ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 004867f0 5 83f8347c0a 3d0000007f0f8cf46748f0e9e56748f0 @1=abs:C+G @7=rel:4867ff @12=rel:4867f5 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004867f5 5 83f8567f05 3d0000007f0f8ff46748f0e9ea6748f0 @1=abs:N-1 @7=rel:4867ff @12=rel:4867fa ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004867fa 5 83c0cceb03 050000007fe9f86748f0e9f06748f0 @1=abs:0-(C+G) @6=rel:486802 @11=rel:4867ff ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486824 5 83f82a7c0a 3d0000007f0f8c286848f0e9196848f0 @1=abs:C @7=rel:486833 @12=rel:486829 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486829 5 83f8337f05 3d0000007f0f8f286848f0e91e6848f0 @1=abs:C+G-1 @7=rel:486833 @12=rel:48682e ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048682e 5 83c0d6eb03 050000007fe92c6848f0e9246848f0 @1=abs:0-C @6=rel:486836 @11=rel:486833 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048685c 5 83f8297e03 3d0000007f0f8e596848f0e9516848f0 @1=abs:C-1 @7=rel:486864 @12=rel:486861 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 004868b0 5 83f8347c0a 3d0000007f0f8cb46848f0e9a56848f0 @1=abs:C+G @7=rel:4868bf @12=rel:4868b5 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004868b5 5 83f8567f05 3d0000007f0f8fb46848f0e9aa6848f0 @1=abs:N-1 @7=rel:4868bf @12=rel:4868ba ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004868ba 5 83c0cceb03 050000007fe9b86848f0e9b06848f0 @1=abs:0-(C+G) @6=rel:4868c2 @11=rel:4868bf ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 004868e4 5 83f82a7c0a 3d0000007f0f8ce86848f0e9d96848f0 @1=abs:C @7=rel:4868f3 @12=rel:4868e9 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004868e9 5 83f8337f05 3d0000007f0f8fe86848f0e9de6848f0 @1=abs:C+G-1 @7=rel:4868f3 @12=rel:4868ee ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004868ee 5 83c0d6eb03 050000007fe9ec6848f0e9e46848f0 @1=abs:0-C @6=rel:4868f6 @11=rel:4868f3 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048691c 5 83f8297e03 3d0000007f0f8e196948f0e9116948f0 @1=abs:C-1 @7=rel:486924 @12=rel:486921 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486974 5 83f8347c0a 3d0000007f0f8c786948f0e9696948f0 @1=abs:C+G @7=rel:486983 @12=rel:486979 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486979 5 83f8567f05 3d0000007f0f8f786948f0e96e6948f0 @1=abs:N-1 @7=rel:486983 @12=rel:48697e ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048697e 5 83c0cceb03 050000007fe97c6948f0e9746948f0 @1=abs:0-(C+G) @6=rel:486986 @11=rel:486983 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 004869b4 5 83f82a7c0a 3d0000007f0f8cb86948f0e9a96948f0 @1=abs:C @7=rel:4869c3 @12=rel:4869b9 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004869b9 5 83f8337f05 3d0000007f0f8fb86948f0e9ae6948f0 @1=abs:C+G-1 @7=rel:4869c3 @12=rel:4869be ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004869be 5 83c0d6eb03 050000007fe9bc6948f0e9b46948f0 @1=abs:0-C @6=rel:4869c6 @11=rel:4869c3 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004869f4 5 83f8297e03 3d0000007f0f8ef16948f0e9e96948f0 @1=abs:C-1 @7=rel:4869fc @12=rel:4869f9 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486a54 5 83f8347c0a 3d0000007f0f8c586a48f0e9496a48f0 @1=abs:C+G @7=rel:486a63 @12=rel:486a59 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486a59 5 83f8567f05 3d0000007f0f8f586a48f0e94e6a48f0 @1=abs:N-1 @7=rel:486a63 @12=rel:486a5e ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486a5e 5 83c0cceb03 050000007fe95c6a48f0e9546a48f0 @1=abs:0-(C+G) @6=rel:486a66 @11=rel:486a63 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486a94 5 83f82a7c0a 3d0000007f0f8c986a48f0e9896a48f0 @1=abs:C @7=rel:486aa3 @12=rel:486a99 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486a99 5 83f8337f05 3d0000007f0f8f986a48f0e98e6a48f0 @1=abs:C+G-1 @7=rel:486aa3 @12=rel:486a9e ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486a9e 5 83c0d6eb03 050000007fe99c6a48f0e9946a48f0 @1=abs:0-C @6=rel:486aa6 @11=rel:486aa3 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486ad4 5 83f8297e03 3d0000007f0f8ed16a48f0e9c96a48f0 @1=abs:C-1 @7=rel:486adc @12=rel:486ad9 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486b30 5 83f8347c0a 3d0000007f0f8c346b48f0e9256b48f0 @1=abs:C+G @7=rel:486b3f @12=rel:486b35 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486b35 5 83f8567f05 3d0000007f0f8f346b48f0e92a6b48f0 @1=abs:N-1 @7=rel:486b3f @12=rel:486b3a ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486b3a 5 83c0cceb03 050000007fe9386b48f0e9306b48f0 @1=abs:0-(C+G) @6=rel:486b42 @11=rel:486b3f ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486b61 5 83f82a7c15 3d0000007f0f8c706b48f0e9566b48f0 @1=abs:C @7=rel:486b7b @12=rel:486b66 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486b66 5 83f8337f10 3d0000007f0f8f706b48f0e95b6b48f0 @1=abs:C+G-1 @7=rel:486b7b @12=rel:486b6b ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486b6b 9 83c0d650b958192007 050000007f50b958192007e9646b48f0 @1=abs:0-C @12=rel:486b74 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486b8f 5 83f8297e03 3d0000007f0f8e8c6b48f0e9846b48f0 @1=abs:C-1 @7=rel:486b97 @12=rel:486b94 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486be0 5 83f8347c0a 3d0000007f0f8ce46b48f0e9d56b48f0 @1=abs:C+G @7=rel:486bef @12=rel:486be5 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486be5 5 83f8567f05 3d0000007f0f8fe46b48f0e9da6b48f0 @1=abs:N-1 @7=rel:486bef @12=rel:486bea ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486bea 5 83c0cceb03 050000007fe9e86b48f0e9e06b48f0 @1=abs:0-(C+G) @6=rel:486bf2 @11=rel:486bef ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486c14 5 83f82a7c0a 3d0000007f0f8c186c48f0e9096c48f0 @1=abs:C @7=rel:486c23 @12=rel:486c19 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486c19 5 83f8337f05 3d0000007f0f8f186c48f0e90e6c48f0 @1=abs:C+G-1 @7=rel:486c23 @12=rel:486c1e ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486c1e 5 83c0d6eb03 050000007fe91c6c48f0e9146c48f0 @1=abs:0-C @6=rel:486c26 @11=rel:486c23 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486c4c 5 83f8297e03 3d0000007f0f8e496c48f0e9416c48f0 @1=abs:C-1 @7=rel:486c54 @12=rel:486c51 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486ca0 5 83f8347c0a 3d0000007f0f8ca46c48f0e9956c48f0 @1=abs:C+G @7=rel:486caf @12=rel:486ca5 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486ca5 5 83f8567f05 3d0000007f0f8fa46c48f0e99a6c48f0 @1=abs:N-1 @7=rel:486caf @12=rel:486caa ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486caa 5 83c0cceb03 050000007fe9a86c48f0e9a06c48f0 @1=abs:0-(C+G) @6=rel:486cb2 @11=rel:486caf ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486cd1 5 83f82a7c15 3d0000007f0f8ce06c48f0e9c66c48f0 @1=abs:C @7=rel:486ceb @12=rel:486cd6 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486cd6 5 83f8337f10 3d0000007f0f8fe06c48f0e9cb6c48f0 @1=abs:C+G-1 @7=rel:486ceb @12=rel:486cdb ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486cdb 9 83c0d650b958192007 050000007f50b958192007e9d46c48f0 @1=abs:0-C @12=rel:486ce4 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486cff 5 83f8297e03 3d0000007f0f8efc6c48f0e9f46c48f0 @1=abs:C-1 @7=rel:486d07 @12=rel:486d04 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486d50 5 83f8347c0a 3d0000007f0f8c546d48f0e9456d48f0 @1=abs:C+G @7=rel:486d5f @12=rel:486d55 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486d55 5 83f8567f05 3d0000007f0f8f546d48f0e94a6d48f0 @1=abs:N-1 @7=rel:486d5f @12=rel:486d5a ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486d5a 5 83c0cceb03 050000007fe9586d48f0e9506d48f0 @1=abs:0-(C+G) @6=rel:486d62 @11=rel:486d5f ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486d84 5 83f82a7c0a 3d0000007f0f8c886d48f0e9796d48f0 @1=abs:C @7=rel:486d93 @12=rel:486d89 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486d89 5 83f8337f05 3d0000007f0f8f886d48f0e97e6d48f0 @1=abs:C+G-1 @7=rel:486d93 @12=rel:486d8e ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486d8e 5 83c0d6eb03 050000007fe98c6d48f0e9846d48f0 @1=abs:0-C @6=rel:486d96 @11=rel:486d93 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486dbc 5 83f8297e03 3d0000007f0f8eb96d48f0e9b16d48f0 @1=abs:C-1 @7=rel:486dc4 @12=rel:486dc1 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486e10 5 83f8347c0a 3d0000007f0f8c146e48f0e9056e48f0 @1=abs:C+G @7=rel:486e1f @12=rel:486e15 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486e15 5 83f8567f05 3d0000007f0f8f146e48f0e90a6e48f0 @1=abs:N-1 @7=rel:486e1f @12=rel:486e1a ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486e1a 5 83c0cceb03 050000007fe9186e48f0e9106e48f0 @1=abs:0-(C+G) @6=rel:486e22 @11=rel:486e1f ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486e41 5 83f82a7c15 3d0000007f0f8c506e48f0e9366e48f0 @1=abs:C @7=rel:486e5b @12=rel:486e46 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486e46 5 83f8337f10 3d0000007f0f8f506e48f0e93b6e48f0 @1=abs:C+G-1 @7=rel:486e5b @12=rel:486e4b ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486e4b 9 83c0d650b958192007 050000007f50b958192007e9446e48f0 @1=abs:0-C @12=rel:486e54 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486e6f 5 83f8297e03 3d0000007f0f8e6c6e48f0e9646e48f0 @1=abs:C-1 @7=rel:486e77 @12=rel:486e74 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486ec0 5 83f8347c0a 3d0000007f0f8cc46e48f0e9b56e48f0 @1=abs:C+G @7=rel:486ecf @12=rel:486ec5 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486ec5 5 83f8567f05 3d0000007f0f8fc46e48f0e9ba6e48f0 @1=abs:N-1 @7=rel:486ecf @12=rel:486eca ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486eca 5 83c0cceb03 050000007fe9c86e48f0e9c06e48f0 @1=abs:0-(C+G) @6=rel:486ed2 @11=rel:486ecf ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486ef4 5 83f82a7c0a 3d0000007f0f8cf86e48f0e9e96e48f0 @1=abs:C @7=rel:486f03 @12=rel:486ef9 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486ef9 5 83f8337f05 3d0000007f0f8ff86e48f0e9ee6e48f0 @1=abs:C+G-1 @7=rel:486f03 @12=rel:486efe ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486efe 5 83c0d6eb03 050000007fe9fc6e48f0e9f46e48f0 @1=abs:0-C @6=rel:486f06 @11=rel:486f03 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486f2c 5 83f8297e03 3d0000007f0f8e296f48f0e9216f48f0 @1=abs:C-1 @7=rel:486f34 @12=rel:486f31 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00486f80 5 83f8347c0a 3d0000007f0f8c846f48f0e9756f48f0 @1=abs:C+G @7=rel:486f8f @12=rel:486f85 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00486f85 5 83f8567f05 3d0000007f0f8f846f48f0e97a6f48f0 @1=abs:N-1 @7=rel:486f8f @12=rel:486f8a ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00486f8a 5 83c0cceb03 050000007fe9886f48f0e9806f48f0 @1=abs:0-(C+G) @6=rel:486f92 @11=rel:486f8f ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00486fb2 5 83f82a7c15 3d0000007f0f8cc16f48f0e9a76f48f0 @1=abs:C @7=rel:486fcc @12=rel:486fb7 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00486fb7 5 83f8337f10 3d0000007f0f8fc16f48f0e9ac6f48f0 @1=abs:C+G-1 @7=rel:486fcc @12=rel:486fbc ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00486fbc 9 83c0d650b958192007 050000007f50b958192007e9b56f48f0 @1=abs:0-C @12=rel:486fc5 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00486fe0 5 83f8297e03 3d0000007f0f8edd6f48f0e9d56f48f0 @1=abs:C-1 @7=rel:486fe8 @12=rel:486fe5 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487081 5 83f8347c0a 3d0000007f0f8c857048f0e9767048f0 @1=abs:C+G @7=rel:487090 @12=rel:487086 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487086 5 83f8567f05 3d0000007f0f8f857048f0e97b7048f0 @1=abs:N-1 @7=rel:487090 @12=rel:48708b ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048708b 5 83c0cceb03 050000007fe9897048f0e9817048f0 @1=abs:0-(C+G) @6=rel:487093 @11=rel:487090 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 004870b6 5 83f82a7c0a 3d0000007f0f8cba7048f0e9ab7048f0 @1=abs:C @7=rel:4870c5 @12=rel:4870bb ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004870bb 5 83f8337f05 3d0000007f0f8fba7048f0e9b07048f0 @1=abs:C+G-1 @7=rel:4870c5 @12=rel:4870c0 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004870c0 5 83c0d6eb03 050000007fe9be7048f0e9b67048f0 @1=abs:0-C @6=rel:4870c8 @11=rel:4870c5 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004870ef 5 83f8297e03 3d0000007f0f8eec7048f0e9e47048f0 @1=abs:C-1 @7=rel:4870f7 @12=rel:4870f4 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487171 5 83f8347c15 3d0000007f0f8c807148f0e9667148f0 @1=abs:C+G @7=rel:48718b @12=rel:487176 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487176 5 83f8567f10 3d0000007f0f8f807148f0e96b7148f0 @1=abs:N-1 @7=rel:48718b @12=rel:48717b ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048717b 9 83c0cc50b958192007 050000007f50b958192007e9747148f0 @1=abs:0-(C+G) @12=rel:487184 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 0048719b 5 83f82a7c15 3d0000007f0f8caa7148f0e9907148f0 @1=abs:C @7=rel:4871b5 @12=rel:4871a0 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004871a0 5 83f8337f10 3d0000007f0f8faa7148f0e9957148f0 @1=abs:C+G-1 @7=rel:4871b5 @12=rel:4871a5 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004871a5 9 83c0d650b958192007 050000007f50b958192007e99e7148f0 @1=abs:0-C @12=rel:4871ae ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004871c9 5 83f8297e03 3d0000007f0f8ec67148f0e9be7148f0 @1=abs:C-1 @7=rel:4871d1 @12=rel:4871ce ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487254 5 83f8347c0a 3d0000007f0f8c587248f0e9497248f0 @1=abs:C+G @7=rel:487263 @12=rel:487259 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487259 5 83f8567f05 3d0000007f0f8f587248f0e94e7248f0 @1=abs:N-1 @7=rel:487263 @12=rel:48725e ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048725e 5 83c0cceb03 050000007fe95c7248f0e9547248f0 @1=abs:0-(C+G) @6=rel:487266 @11=rel:487263 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487290 5 83f82a7c0a 3d0000007f0f8c947248f0e9857248f0 @1=abs:C @7=rel:48729f @12=rel:487295 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00487295 5 83f8337f05 3d0000007f0f8f947248f0e98a7248f0 @1=abs:C+G-1 @7=rel:48729f @12=rel:48729a ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048729a 5 83c0d6eb03 050000007fe9987248f0e9907248f0 @1=abs:0-C @6=rel:4872a2 @11=rel:48729f ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004872d0 5 83f8297e03 3d0000007f0f8ecd7248f0e9c57248f0 @1=abs:C-1 @7=rel:4872d8 @12=rel:4872d5 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487334 5 83f8347c0a 3d0000007f0f8c387348f0e9297348f0 @1=abs:C+G @7=rel:487343 @12=rel:487339 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487339 5 83f8567f05 3d0000007f0f8f387348f0e92e7348f0 @1=abs:N-1 @7=rel:487343 @12=rel:48733e ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048733e 5 83c0cceb03 050000007fe93c7348f0e9347348f0 @1=abs:0-(C+G) @6=rel:487346 @11=rel:487343 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487370 5 83f82a7c0a 3d0000007f0f8c747348f0e9657348f0 @1=abs:C @7=rel:48737f @12=rel:487375 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00487375 5 83f8337f05 3d0000007f0f8f747348f0e96a7348f0 @1=abs:C+G-1 @7=rel:48737f @12=rel:48737a ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048737a 5 83c0d6eb03 050000007fe9787348f0e9707348f0 @1=abs:0-C @6=rel:487382 @11=rel:48737f ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004873b0 5 83f8297e03 3d0000007f0f8ead7348f0e9a57348f0 @1=abs:C-1 @7=rel:4873b8 @12=rel:4873b5 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487414 5 83f8347c0a 3d0000007f0f8c187448f0e9097448f0 @1=abs:C+G @7=rel:487423 @12=rel:487419 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487419 5 83f8567f05 3d0000007f0f8f187448f0e90e7448f0 @1=abs:N-1 @7=rel:487423 @12=rel:48741e ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048741e 5 83c0cceb03 050000007fe91c7448f0e9147448f0 @1=abs:0-(C+G) @6=rel:487426 @11=rel:487423 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487450 5 83f82a7c0a 3d0000007f0f8c547448f0e9457448f0 @1=abs:C @7=rel:48745f @12=rel:487455 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00487455 5 83f8337f05 3d0000007f0f8f547448f0e94a7448f0 @1=abs:C+G-1 @7=rel:48745f @12=rel:48745a ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048745a 5 83c0d6eb03 050000007fe9587448f0e9507448f0 @1=abs:0-C @6=rel:487462 @11=rel:48745f ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00487490 5 83f8297e03 3d0000007f0f8e8d7448f0e9857448f0 @1=abs:C-1 @7=rel:487498 @12=rel:487495 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 004874f4 5 83f8347c0a 3d0000007f0f8cf87448f0e9e97448f0 @1=abs:C+G @7=rel:487503 @12=rel:4874f9 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004874f9 5 83f8567f05 3d0000007f0f8ff87448f0e9ee7448f0 @1=abs:N-1 @7=rel:487503 @12=rel:4874fe ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004874fe 5 83c0cceb03 050000007fe9fc7448f0e9f47448f0 @1=abs:0-(C+G) @6=rel:487506 @11=rel:487503 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487539 5 83f82a7c0a 3d0000007f0f8c3d7548f0e92e7548f0 @1=abs:C @7=rel:487548 @12=rel:48753e ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 0048753e 5 83f8337f05 3d0000007f0f8f3d7548f0e9337548f0 @1=abs:C+G-1 @7=rel:487548 @12=rel:487543 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00487543 5 83c0d6eb03 050000007fe9417548f0e9397548f0 @1=abs:0-C @6=rel:48754b @11=rel:487548 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048757e 5 83f8297e03 3d0000007f0f8e7b7548f0e9737548f0 @1=abs:C-1 @7=rel:487586 @12=rel:487583 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 004875e4 5 83f8347c0a 3d0000007f0f8ce87548f0e9d97548f0 @1=abs:C+G @7=rel:4875f3 @12=rel:4875e9 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004875e9 5 83f8567f05 3d0000007f0f8fe87548f0e9de7548f0 @1=abs:N-1 @7=rel:4875f3 @12=rel:4875ee ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004875ee 5 83c0cceb03 050000007fe9ec7548f0e9e47548f0 @1=abs:0-(C+G) @6=rel:4875f6 @11=rel:4875f3 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487620 5 83f82a7c0a 3d0000007f0f8c247648f0e9157648f0 @1=abs:C @7=rel:48762f @12=rel:487625 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00487625 5 83f8337f05 3d0000007f0f8f247648f0e91a7648f0 @1=abs:C+G-1 @7=rel:48762f @12=rel:48762a ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048762a 5 83c0d6eb03 050000007fe9287648f0e9207648f0 @1=abs:0-C @6=rel:487632 @11=rel:48762f ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00487660 5 83f8297e03 3d0000007f0f8e5d7648f0e9557648f0 @1=abs:C-1 @7=rel:487668 @12=rel:487665 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 004876c4 5 83f8347c0a 3d0000007f0f8cc87648f0e9b97648f0 @1=abs:C+G @7=rel:4876d3 @12=rel:4876c9 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004876c9 5 83f8567f05 3d0000007f0f8fc87648f0e9be7648f0 @1=abs:N-1 @7=rel:4876d3 @12=rel:4876ce ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004876ce 5 83c0cceb03 050000007fe9cc7648f0e9c47648f0 @1=abs:0-(C+G) @6=rel:4876d6 @11=rel:4876d3 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487700 5 83f82a7c0a 3d0000007f0f8c047748f0e9f57648f0 @1=abs:C @7=rel:48770f @12=rel:487705 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00487705 5 83f8337f05 3d0000007f0f8f047748f0e9fa7648f0 @1=abs:C+G-1 @7=rel:48770f @12=rel:48770a ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048770a 5 83c0d6eb03 050000007fe9087748f0e9007748f0 @1=abs:0-C @6=rel:487712 @11=rel:48770f ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00487740 5 83f8297e03 3d0000007f0f8e3d7748f0e9357748f0 @1=abs:C-1 @7=rel:487748 @12=rel:487745 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 004877a4 5 83f8347c0a 3d0000007f0f8ca87748f0e9997748f0 @1=abs:C+G @7=rel:4877b3 @12=rel:4877a9 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004877a9 5 83f8567f05 3d0000007f0f8fa87748f0e99e7748f0 @1=abs:N-1 @7=rel:4877b3 @12=rel:4877ae ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004877ae 5 83c0cceb03 050000007fe9ac7748f0e9a47748f0 @1=abs:0-(C+G) @6=rel:4877b6 @11=rel:4877b3 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 004877e0 5 83f82a7c0a 3d0000007f0f8ce47748f0e9d57748f0 @1=abs:C @7=rel:4877ef @12=rel:4877e5 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004877e5 5 83f8337f05 3d0000007f0f8fe47748f0e9da7748f0 @1=abs:C+G-1 @7=rel:4877ef @12=rel:4877ea ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004877ea 5 83c0d6eb03 050000007fe9e87748f0e9e07748f0 @1=abs:0-C @6=rel:4877f2 @11=rel:4877ef ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00487820 5 83f8297e03 3d0000007f0f8e1d7848f0e9157848f0 @1=abs:C-1 @7=rel:487828 @12=rel:487825 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487880 5 83f8347c0a 3d0000007f0f8c847848f0e9757848f0 @1=abs:C+G @7=rel:48788f @12=rel:487885 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487885 5 83f8567f05 3d0000007f0f8f847848f0e97a7848f0 @1=abs:N-1 @7=rel:48788f @12=rel:48788a ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048788a 5 83c0cceb03 050000007fe9887848f0e9807848f0 @1=abs:0-(C+G) @6=rel:487892 @11=rel:48788f ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 004878b4 5 83f82a7c0a 3d0000007f0f8cb87848f0e9a97848f0 @1=abs:C @7=rel:4878c3 @12=rel:4878b9 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004878b9 5 83f8337f05 3d0000007f0f8fb87848f0e9ae7848f0 @1=abs:C+G-1 @7=rel:4878c3 @12=rel:4878be ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004878be 5 83c0d6eb03 050000007fe9bc7848f0e9b47848f0 @1=abs:0-C @6=rel:4878c6 @11=rel:4878c3 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004878ec 5 83f8297e03 3d0000007f0f8ee97848f0e9e17848f0 @1=abs:C-1 @7=rel:4878f4 @12=rel:4878f1 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487bde 5 83f8347c0a 3d0000007f0f8ce27b48f0e9d37b48f0 @1=abs:C+G @7=rel:487bed @12=rel:487be3 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487be3 5 83f8567f05 3d0000007f0f8fe27b48f0e9d87b48f0 @1=abs:N-1 @7=rel:487bed @12=rel:487be8 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00487be8 5 83c0cceb03 050000007fe9e67b48f0e9de7b48f0 @1=abs:0-(C+G) @6=rel:487bf0 @11=rel:487bed ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487c1a 5 83f82a7c15 3d0000007f0f8c297c48f0e90f7c48f0 @1=abs:C @7=rel:487c34 @12=rel:487c1f ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00487c1f 5 83f8337f10 3d0000007f0f8f297c48f0e9147c48f0 @1=abs:C+G-1 @7=rel:487c34 @12=rel:487c24 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00487c24 9 83c0d650b958192007 050000007f50b958192007e91d7c48f0 @1=abs:0-C @12=rel:487c2d ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00487c53 5 83f8297e03 3d0000007f0f8e507c48f0e9487c48f0 @1=abs:C-1 @7=rel:487c5b @12=rel:487c58 ; imm8->imm32 cmp eax, 0x29 = C-1
+CAVE 00487f5f 5 83f8347c0a 3d0000007f0f8c637f48f0e9547f48f0 @1=abs:C+G @7=rel:487f6e @12=rel:487f64 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 00487f64 5 83f8567f05 3d0000007f0f8f637f48f0e9597f48f0 @1=abs:N-1 @7=rel:487f6e @12=rel:487f69 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 00487f69 5 83c0cceb03 050000007fe9677f48f0e95f7f48f0 @1=abs:0-(C+G) @6=rel:487f71 @11=rel:487f6e ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 00487f97 5 83f82a7c0a 3d0000007f0f8c9b7f48f0e98c7f48f0 @1=abs:C @7=rel:487fa6 @12=rel:487f9c ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00487f9c 5 83f8337f05 3d0000007f0f8f9b7f48f0e9917f48f0 @1=abs:C+G-1 @7=rel:487fa6 @12=rel:487fa1 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00487fa1 5 83c0d6eb03 050000007fe99f7f48f0e9977f48f0 @1=abs:0-C @6=rel:487fa9 @11=rel:487fa6 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 00487fd3 5 83f8297e03 3d0000007f0f8ed07f48f0e9c87f48f0 @1=abs:C-1 @7=rel:487fdb @12=rel:487fd8 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 00488187 9 83f8570f8d82000000 3d0000007f0f8d078248f0e9808148f0 @1=abs:N @7=rel:488212 @12=rel:488190 ; imm8->imm32 cmp eax, 0x57 = N
@@ -178,9 +261,13 @@ CAVE 0048831e 5 7f0483c0a9 0f8f1e8348f0050000007fe9138348f0 @2=rel:488324 @7=abs
 CAVE 00488338 5 83f8567e03 3d0000007f0f8e358348f0e92d8348f0 @1=abs:N-1 @7=rel:488340 @12=rel:48833d ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 00488358 5 83f8297e33 3d0000007f0f8e858348f0e94d8348f0 @1=abs:C-1 @7=rel:488390 @12=rel:48835d ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0048835d 5 83f82a7c13 3d0000007f0f8c6a8348f0e9528348f0 @1=abs:C @7=rel:488375 @12=rel:488362 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 00488362 5 83f8337f0e 3d0000007f0f8f6a8348f0e9578348f0 @1=abs:C+G-1 @7=rel:488375 @12=rel:488367 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 00488367 5 83c0d67821 050000007f0f88828348f0e95c8348f0 @1=abs:0-C @7=rel:48838d @12=rel:48836c ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048836f 5 7f1c83c02a 0f8f878348f0050000007fe9648348f0 @2=rel:48838d @7=abs:C @12=rel:488374 ; imm8->imm32 add eax, 0x2a = C
+CAVE 00488375 5 83f8347c13 3d0000007f0f8c828348f0e96a8348f0 @1=abs:C+G @7=rel:48838d @12=rel:48837a ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 0048837a 5 83f8567f0e 3d0000007f0f8f828348f0e96f8348f0 @1=abs:N-1 @7=rel:48838d @12=rel:48837f ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048837f 5 83c0cc7809 050000007f0f88828348f0e9748348f0 @1=abs:0-(C+G) @7=rel:48838d @12=rel:488384 ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 00488387 5 7f0483c034 0f8f878348f0050000007fe97c8348f0 @2=rel:48838d @7=abs:C+G @12=rel:48838c ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 004891ca 5 83f8577c4b 3d0000007f0f8c0f9248f0e9bf9148f0 @1=abs:N @7=rel:48921a @12=rel:4891cf ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 004891d6 5 83f8577c0c 3d0000007f0f8cdc9148f0e9cb9148f0 @1=abs:N @7=rel:4891e7 @12=rel:4891db ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 004891e2 5 83c0a9eb03 050000007fe9e09148f0e9d89148f0 @1=abs:0-N @6=rel:4891ea @11=rel:4891e7 ; imm8->imm32 add eax, -0x57 = -N
@@ -194,9 +281,13 @@ CAVE 0048964b 5 83fe577c0d 81fe0000007f0f8c519648f0e93f9648f0 @2=abs:N @8=rel:48
 CAVE 00489658 5 8d46a9eb03 8d860000007fe9559648f0e94d9648f0 @2=abs:0-N @7=rel:489660 @12=rel:48965d ; imm8->imm32 lea eax, [esi - 0x57] = 0-N
 CAVE 004896d0 5 83f8297e35 3d0000007f0f8eff9648f0e9c59648f0 @1=abs:C-1 @7=rel:48970a @12=rel:4896d5 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 004896d5 5 83f82a7c14 3d0000007f0f8ce39648f0e9ca9648f0 @1=abs:C @7=rel:4896ee @12=rel:4896da ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004896da 5 83f8337f0f 3d0000007f0f8fe39648f0e9cf9648f0 @1=abs:C+G-1 @7=rel:4896ee @12=rel:4896df ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004896df 5 83c0d67823 050000007f0f88fc9648f0e9d49648f0 @1=abs:0-C @7=rel:489707 @12=rel:4896e4 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004896e9 5 83c02aeb1c 050000007fe9009748f0e9df9648f0 @1=abs:C @6=rel:48970a @11=rel:4896ee ; imm8->imm32 add eax, 0x2a = C
+CAVE 004896ee 5 83f8347c14 3d0000007f0f8cfc9648f0e9e39648f0 @1=abs:C+G @7=rel:489707 @12=rel:4896f3 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004896f3 5 83f8567f0f 3d0000007f0f8ffc9648f0e9e89648f0 @1=abs:N-1 @7=rel:489707 @12=rel:4896f8 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004896f8 5 83c0cc780a 050000007f0f88fc9648f0e9ed9648f0 @1=abs:0-(C+G) @7=rel:489707 @12=rel:4896fd ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 00489702 5 83c034eb03 050000007fe9009748f0e9f89648f0 @1=abs:C+G @6=rel:48970a @11=rel:489707 ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 0048a312 5 83fe577c73 81fe0000007f0f8c7ea348f0e906a348f0 @2=abs:N @8=rel:48a38a @13=rel:48a317 ; imm8->imm32 cmp esi, 0x57 = N
 CAVE 0048a31f 5 83fe577c40 81fe0000007f0f8c58a348f0e913a348f0 @2=abs:N @8=rel:48a364 @13=rel:48a324 ; imm8->imm32 cmp esi, 0x57 = N
 CAVE 0048a32c 5 83fe577c0d 81fe0000007f0f8c32a348f0e920a348f0 @2=abs:N @8=rel:48a33e @13=rel:48a331 ; imm8->imm32 cmp esi, 0x57 = N
@@ -206,15 +297,30 @@ CAVE 0048b01d 5 83f8297f07 3d0000007f0f8f1eb048f0e912b048f0 @1=abs:C-1 @7=rel:48
 CAVE 0048b400 5 83f9577c08 81f90000007f0f8c01b448f0e9f4b348f0 @2=abs:N @8=rel:48b40d @13=rel:48b405 ; imm8->imm32 cmp ecx, 0x57 = N
 CAVE 0048b417 5 83f8297e35 3d0000007f0f8e46b448f0e90cb448f0 @1=abs:C-1 @7=rel:48b451 @12=rel:48b41c ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0048b41c 5 83f82a7c14 3d0000007f0f8c2ab448f0e911b448f0 @1=abs:C @7=rel:48b435 @12=rel:48b421 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 0048b421 5 83f8337f0f 3d0000007f0f8f2ab448f0e916b448f0 @1=abs:C+G-1 @7=rel:48b435 @12=rel:48b426 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048b426 5 83c0d67823 050000007f0f8843b448f0e91bb448f0 @1=abs:0-C @7=rel:48b44e @12=rel:48b42b ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048b430 5 83c02aeb1c 050000007fe947b448f0e926b448f0 @1=abs:C @6=rel:48b451 @11=rel:48b435 ; imm8->imm32 add eax, 0x2a = C
+CAVE 0048b435 5 83f8347c14 3d0000007f0f8c43b448f0e92ab448f0 @1=abs:C+G @7=rel:48b44e @12=rel:48b43a ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 0048b43a 5 83f8567f0f 3d0000007f0f8f43b448f0e92fb448f0 @1=abs:N-1 @7=rel:48b44e @12=rel:48b43f ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048b43f 5 83c0cc780a 050000007f0f8843b448f0e934b448f0 @1=abs:0-(C+G) @7=rel:48b44e @12=rel:48b444 ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 0048b449 5 83c034eb03 050000007fe947b448f0e93fb448f0 @1=abs:C+G @6=rel:48b451 @11=rel:48b44e ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 0048b49d 5 83f8567f2e 3d0000007f0f8fc5b448f0e992b448f0 @1=abs:N-1 @7=rel:48b4d0 @12=rel:48b4a2 ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 0048b50d 5 83f8297e35 3d0000007f0f8e3cb548f0e902b548f0 @1=abs:C-1 @7=rel:48b547 @12=rel:48b512 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0048b512 5 83f82a7c14 3d0000007f0f8c20b548f0e907b548f0 @1=abs:C @7=rel:48b52b @12=rel:48b517 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 0048b517 5 83f8337f0f 3d0000007f0f8f20b548f0e90cb548f0 @1=abs:C+G-1 @7=rel:48b52b @12=rel:48b51c ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0048b51c 5 83c0d67823 050000007f0f8839b548f0e911b548f0 @1=abs:0-C @7=rel:48b544 @12=rel:48b521 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 0048b526 5 83c02aeb1c 050000007fe93db548f0e91cb548f0 @1=abs:C @6=rel:48b547 @11=rel:48b52b ; imm8->imm32 add eax, 0x2a = C
+CAVE 0048b52b 5 83f8347c14 3d0000007f0f8c39b548f0e920b548f0 @1=abs:C+G @7=rel:48b544 @12=rel:48b530 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 0048b530 5 83f8567f0f 3d0000007f0f8f39b548f0e925b548f0 @1=abs:N-1 @7=rel:48b544 @12=rel:48b535 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0048b535 5 83c0cc780a 050000007f0f8839b548f0e92ab548f0 @1=abs:0-(C+G) @7=rel:48b544 @12=rel:48b53a ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 0048b53f 5 83c034eb03 050000007fe93db548f0e935b548f0 @1=abs:C+G @6=rel:48b547 @11=rel:48b544 ; imm8->imm32 add eax, 0x34 = C+G
+CAVE 0048d924 9 83c03450b958192007 050000007f50b958192007e91dd948f0 @1=abs:C+G @12=rel:48d92d ; imm8->imm32 add eax, 0x34 = C+G
+CAVE 0048d964 5 83c034eb03 050000007fe962d948f0e95ad948f0 @1=abs:C+G @6=rel:48d96c @11=rel:48d969 ; imm8->imm32 add eax, 0x34 = C+G
+CAVE 0048d9d4 5 83c034eb03 050000007fe9d2d948f0e9cad948f0 @1=abs:C+G @6=rel:48d9dc @11=rel:48d9d9 ; imm8->imm32 add eax, 0x34 = C+G
+CAVE 0048dad7 5 83c034eb03 050000007fe9d5da48f0e9cdda48f0 @1=abs:C+G @6=rel:48dadf @11=rel:48dadc ; imm8->imm32 add eax, 0x34 = C+G
+CAVE 0048db5c 5 83c034eb03 050000007fe95adb48f0e952db48f0 @1=abs:C+G @6=rel:48db64 @11=rel:48db61 ; imm8->imm32 add eax, 0x34 = C+G
+CAVE 0048dd0c 5 83c034eb03 050000007fe90add48f0e902dd48f0 @1=abs:C+G @6=rel:48dd14 @11=rel:48dd11 ; imm8->imm32 add eax, 0x34 = C+G
+CAVE 0048def4 5 83c034eb03 050000007fe9f2de48f0e9eade48f0 @1=abs:C+G @6=rel:48defc @11=rel:48def9 ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 0048e388 5 83f8567f06 3d0000007f0f8f88e348f0e97de348f0 @1=abs:N-1 @7=rel:48e393 @12=rel:48e38d ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 004905eb 5 83f8567f1c 3d0000007f0f8f010649f0e9e00549f0 @1=abs:N-1 @7=rel:49060c @12=rel:4905f0 ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 0049060c 5 83f8577c42 3d0000007f0f8c480649f0e9010649f0 @1=abs:N @7=rel:490653 @12=rel:490611 ; imm8->imm32 cmp eax, 0x57 = N
@@ -229,8 +335,11 @@ CAVE 004938c8 5 83ff2a7ce4 81ff0000007f0f8ca53849f0e9bc3849f0 @2=abs:C @8=rel:49
 CAVE 004955f4 5 7f0483c057 0f8ff45549f0050000007fe9e95549f0 @2=rel:4955fa @7=abs:N @12=rel:4955f9 ; imm8->imm32 add eax, 0x57 = N
 CAVE 0049ce92 5 83f8297e03 3d0000007f0f8e8fce49f0e987ce49f0 @1=abs:C-1 @7=rel:49ce9a @12=rel:49ce97 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0049cec8 5 83f82a7c1a 3d0000007f0f8cdcce49f0e9bdce49f0 @1=abs:C @7=rel:49cee7 @12=rel:49cecd ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 0049cecd 5 83f8337f15 3d0000007f0f8fdcce49f0e9c2ce49f0 @1=abs:C+G-1 @7=rel:49cee7 @12=rel:49ced2 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0049ced2 9 83c0d650b958192007 050000007f50b958192007e9cbce49f0 @1=abs:0-C @12=rel:49cedb ; imm8->imm32 add eax, -0x2a = -C
+CAVE 0049cf14 5 83f8347c1a 3d0000007f0f8c28cf49f0e909cf49f0 @1=abs:C+G @7=rel:49cf33 @12=rel:49cf19 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 0049cf19 5 83f8567f15 3d0000007f0f8f28cf49f0e90ecf49f0 @1=abs:N-1 @7=rel:49cf33 @12=rel:49cf1e ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0049cf1e 9 83c0cc50b958192007 050000007f50b958192007e917cf49f0 @1=abs:0-(C+G) @12=rel:49cf27 ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 0049d5f3 5 83f8577d0e 3d0000007f0f8dfbd549f0e9e8d549f0 @1=abs:N @7=rel:49d606 @12=rel:49d5f8 ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 0049d6ba 5 83fb2a7cd1 81fb0000007f0f8c84d649f0e9aed649f0 @2=abs:C @8=rel:49d690 @13=rel:49d6bf ; imm8->imm32 cmp ebx, 0x2a = C
 CAVE 0049edd7 5 83f8567e03 3d0000007f0f8ed4ed49f0e9cced49f0 @1=abs:N-1 @7=rel:49eddf @12=rel:49eddc ; imm8->imm32 cmp eax, 0x56 = N-1
@@ -244,9 +353,13 @@ CAVE 004a2576 7 6a2ae8d3fbfcff 680000007fe8462147f0e96e254af0 @1=abs:C @6=rel:47
 CAVE 004a4a87 7 6a2ae8c2d6fcff 680000007fe8462147f0e97f4a4af0 @1=abs:C @6=rel:472150 @11=rel:4a4a8e ; imm8->imm32 push 0x2a = C
 CAVE 004a4ac5 5 83ff297e35 81ff0000007f0f8ef34a4af0e9b94a4af0 @2=abs:C-1 @8=rel:4a4aff @13=rel:4a4aca ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 004a4aca 5 83ff2a7c14 81ff0000007f0f8cd74a4af0e9be4a4af0 @2=abs:C @8=rel:4a4ae3 @13=rel:4a4acf ; imm8->imm32 cmp edi, 0x2a = C
+CAVE 004a4acf 5 83ff337f0f 81ff0000007f0f8fd74a4af0e9c34a4af0 @2=abs:C+G-1 @8=rel:4a4ae3 @13=rel:4a4ad4 ; imm8->imm32 cmp edi, 0x33 = C+G-1
 CAVE 004a4ad4 5 83c7d67823 81c70000007f0f88f04a4af0e9c84a4af0 @2=abs:0-C @8=rel:4a4afc @13=rel:4a4ad9 ; imm8->imm32 add edi, -0x2a = -C
 CAVE 004a4ade 5 83c72aeb1c 81c70000007fe9f44a4af0e9d34a4af0 @2=abs:C @7=rel:4a4aff @12=rel:4a4ae3 ; imm8->imm32 add edi, 0x2a = C
+CAVE 004a4ae3 5 83ff347c14 81ff0000007f0f8cf04a4af0e9d74a4af0 @2=abs:C+G @8=rel:4a4afc @13=rel:4a4ae8 ; imm8->imm32 cmp edi, 0x34 = C+G
 CAVE 004a4ae8 5 83ff567f0f 81ff0000007f0f8ff04a4af0e9dc4a4af0 @2=abs:N-1 @8=rel:4a4afc @13=rel:4a4aed ; imm8->imm32 cmp edi, 0x56 = N-1
+CAVE 004a4aed 5 83c7cc780a 81c70000007f0f88f04a4af0e9e14a4af0 @2=abs:0-(C+G) @8=rel:4a4afc @13=rel:4a4af2 ; imm8->imm32 add edi, -0x34 = -(C+G)
+CAVE 004a4af7 5 83c734eb03 81c70000007fe9f44a4af0e9ec4a4af0 @2=abs:C+G @7=rel:4a4aff @12=rel:4a4afc ; imm8->imm32 add edi, 0x34 = C+G
 CAVE 004a4e37 5 83ff577cb4 81ff0000007f0f8ce44d4af0e92b4e4af0 @2=abs:N @8=rel:4a4df0 @13=rel:4a4e3c ; imm8->imm32 cmp edi, 0x57 = N
 CAVE 004a50f4 5 83fe57729d 81fe0000007f0f828a504af0e9e8504af0 @2=abs:N @8=rel:4a5096 @13=rel:4a50f9 ; imm8->imm32 cmp esi, 0x57 = N
 CAVE 004a5153 5 83fe2a7ce8 81fe0000007f0f8c34514af0e947514af0 @2=abs:C @8=rel:4a5140 @13=rel:4a5158 ; imm8->imm32 cmp esi, 0x2a = C
@@ -262,26 +375,42 @@ CAVE 004a6360 5 83f8567f07 3d0000007f0f8f61634af0e955634af0 @1=abs:N-1 @7=rel:4a
 CAVE 004a7a98 5 83f8567e03 3d0000007f0f8e957a4af0e98d7a4af0 @1=abs:N-1 @7=rel:4a7aa0 @12=rel:4a7a9d ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 004a7b0b 5 83fd297f0a 81fd0000007f0f8f0e7b4af0e9ff7a4af0 @2=abs:C-1 @8=rel:4a7b1a @13=rel:4a7b10 ; imm8->imm32 cmp ebp, 0x29 = C-1
 CAVE 004a7b1a 5 83fd2a7c1a 81fd0000007f0f8c2d7b4af0e90e7b4af0 @2=abs:C @8=rel:4a7b39 @13=rel:4a7b1f ; imm8->imm32 cmp ebp, 0x2a = C
+CAVE 004a7b1f 5 83fd337f15 81fd0000007f0f8f2d7b4af0e9137b4af0 @2=abs:C+G-1 @8=rel:4a7b39 @13=rel:4a7b24 ; imm8->imm32 cmp ebp, 0x33 = C+G-1
 CAVE 004a7b24 5 83c5d6782f 81c50000007f0f884c7b4af0e9187b4af0 @2=abs:0-C @8=rel:4a7b58 @13=rel:4a7b29 ; imm8->imm32 add ebp, -0x2a = -C
+CAVE 004a7b30 5 8d452a5d5b 8d850000007f5d5be9287b4af0 @2=abs:C @9=rel:4a7b35 ; imm8->imm32 lea eax, [ebp + 0x2a] = C
+CAVE 004a7b39 5 83fd347c1a 81fd0000007f0f8c4c7b4af0e92d7b4af0 @2=abs:C+G @8=rel:4a7b58 @13=rel:4a7b3e ; imm8->imm32 cmp ebp, 0x34 = C+G
 CAVE 004a7b3e 5 83fd567f15 81fd0000007f0f8f4c7b4af0e9327b4af0 @2=abs:N-1 @8=rel:4a7b58 @13=rel:4a7b43 ; imm8->imm32 cmp ebp, 0x56 = N-1
+CAVE 004a7b43 5 83c5cc7810 81c50000007f0f884c7b4af0e9377b4af0 @2=abs:0-(C+G) @8=rel:4a7b58 @13=rel:4a7b48 ; imm8->imm32 add ebp, -0x34 = -(C+G)
+CAVE 004a7b4f 5 8d45345d5b 8d850000007f5d5be9477b4af0 @2=abs:C+G @9=rel:4a7b54 ; imm8->imm32 lea eax, [ebp + 0x34] = C+G
 CAVE 004a8394 5 83f8567e03 3d0000007f0f8e91834af0e989834af0 @1=abs:N-1 @7=rel:4a839c @12=rel:4a8399 ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 004a8c1d 6 83c057508bce 050000007f508bcee9168c4af0 @1=abs:N @9=rel:4a8c23 ; imm8->imm32 add eax, 0x57 = N
 CAVE 004a8c56 5 83f8297e49 3d0000007f0f8e998c4af0e94b8c4af0 @1=abs:C-1 @7=rel:4a8ca4 @12=rel:4a8c5b ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 004a8c5b 5 83f82a7c1e 3d0000007f0f8c738c4af0e9508c4af0 @1=abs:C @7=rel:4a8c7e @12=rel:4a8c60 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004a8c60 5 83f8337f19 3d0000007f0f8f738c4af0e9558c4af0 @1=abs:C+G-1 @7=rel:4a8c7e @12=rel:4a8c65 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004a8c65 5 83c0d67837 050000007f0f88968c4af0e95a8c4af0 @1=abs:0-C @7=rel:4a8ca1 @12=rel:4a8c6a ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004a8c6f 6 83c02a508bce 050000007f508bcee9688c4af0 @1=abs:C @9=rel:4a8c75 ; imm8->imm32 add eax, 0x2a = C
+CAVE 004a8c7e 5 83f8347c1e 3d0000007f0f8c968c4af0e9738c4af0 @1=abs:C+G @7=rel:4a8ca1 @12=rel:4a8c83 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004a8c83 5 83f8567f19 3d0000007f0f8f968c4af0e9788c4af0 @1=abs:N-1 @7=rel:4a8ca1 @12=rel:4a8c88 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004a8c88 5 83c0cc7814 050000007f0f88968c4af0e97d8c4af0 @1=abs:0-(C+G) @7=rel:4a8ca1 @12=rel:4a8c8d ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 004a8c92 6 83c034508bce 050000007f508bcee98b8c4af0 @1=abs:C+G @9=rel:4a8c98 ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 004a946e 5 83f8567e03 3d0000007f0f8e6b944af0e963944af0 @1=abs:N-1 @7=rel:4a9476 @12=rel:4a9473 ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 004a94b0 5 83f8567e03 3d0000007f0f8ead944af0e9a5944af0 @1=abs:N-1 @7=rel:4a94b8 @12=rel:4a94b5 ; imm8->imm32 cmp eax, 0x56 = N-1
 CAVE 004a9555 5 83ff577c08 81ff0000007f0f8c56954af0e949954af0 @2=abs:N @8=rel:4a9562 @13=rel:4a955a ; imm8->imm32 cmp edi, 0x57 = N
 CAVE 004aac62 5 83ff297f04 81ff0000007f0f8f5fac4af0e956ac4af0 @2=abs:C-1 @8=rel:4aac6b @13=rel:4aac67 ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 004aac6b 5 83ff2a7c16 81ff0000007f0f8c7aac4af0e95fac4af0 @2=abs:C @8=rel:4aac86 @13=rel:4aac70 ; imm8->imm32 cmp edi, 0x2a = C
+CAVE 004aac70 5 83ff337f11 81ff0000007f0f8f7aac4af0e964ac4af0 @2=abs:C+G-1 @8=rel:4aac86 @13=rel:4aac75 ; imm8->imm32 cmp edi, 0x33 = C+G-1
 CAVE 004aac81 5 83c02aeb1e 050000007fe99aac4af0e977ac4af0 @1=abs:C @6=rel:4aaca4 @11=rel:4aac86 ; imm8->imm32 add eax, 0x2a = C
+CAVE 004aac86 5 83ff347c16 81ff0000007f0f8c95ac4af0e97aac4af0 @2=abs:C+G @8=rel:4aaca1 @13=rel:4aac8b ; imm8->imm32 cmp edi, 0x34 = C+G
 CAVE 004aac8b 5 83ff567f11 81ff0000007f0f8f95ac4af0e97fac4af0 @2=abs:N-1 @8=rel:4aaca1 @13=rel:4aac90 ; imm8->imm32 cmp edi, 0x56 = N-1
+CAVE 004aac90 5 8d47cc85c0 8d870000007f85c0e988ac4af0 @2=abs:0-(C+G) @9=rel:4aac95 ; imm8->imm32 lea eax, [edi - 0x34] = -(C+G)
+CAVE 004aac9c 5 83c034eb03 050000007fe99aac4af0e992ac4af0 @1=abs:C+G @6=rel:4aaca4 @11=rel:4aaca1 ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 004ad0b2 5 83f8297e03 3d0000007f0f8eafd04af0e9a7d04af0 @1=abs:C-1 @7=rel:4ad0ba @12=rel:4ad0b7 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 004ad0ed 5 83f82a7c0a 3d0000007f0f8cf1d04af0e9e2d04af0 @1=abs:C @7=rel:4ad0fc @12=rel:4ad0f2 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004ad0f2 5 83f8337f05 3d0000007f0f8ff1d04af0e9e7d04af0 @1=abs:C+G-1 @7=rel:4ad0fc @12=rel:4ad0f7 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004ad0f7 5 83c0d6eb03 050000007fe9f5d04af0e9edd04af0 @1=abs:0-C @6=rel:4ad0ff @11=rel:4ad0fc ; imm8->imm32 add eax, -0x2a = -C
+CAVE 004ad12d 5 83f8347c0a 3d0000007f0f8c31d14af0e922d14af0 @1=abs:C+G @7=rel:4ad13c @12=rel:4ad132 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004ad132 5 83f8567f05 3d0000007f0f8f31d14af0e927d14af0 @1=abs:N-1 @7=rel:4ad13c @12=rel:4ad137 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004ad137 5 83c0cceb03 050000007fe935d14af0e92dd14af0 @1=abs:0-(C+G) @6=rel:4ad13f @11=rel:4ad13c ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 004b0ede 5 83f8297e03 3d0000007f0f8edb0e4bf0e9d30e4bf0 @1=abs:C-1 @7=rel:4b0ee6 @12=rel:4b0ee3 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 004b1238 7 6a2ae8110ffcff 680000007fe8462147f0e930124bf0 @1=abs:C @6=rel:472150 @11=rel:4b123f ; imm8->imm32 push 0x2a = C
 CAVE 004b1249 5 83f8297e03 3d0000007f0f8e46124bf0e93e124bf0 @1=abs:C-1 @7=rel:4b1251 @12=rel:4b124e ; imm8->imm32 cmp eax, 0x29 = C-1
@@ -320,15 +449,24 @@ CAVE 004bbc19 5 83c0a9eb03 050000007fe917bc4bf0e90fbc4bf0 @1=abs:0-N @6=rel:4bbc
 CAVE 004bbc44 9 83ff290f8f02010000 81ff0000007f0f8f43bd4bf0e93cbc4bf0 @2=abs:C-1 @8=rel:4bbd4f @13=rel:4bbc4d ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 004bbc5a 5 83f8297edb 3d0000007f0f8e2fbc4bf0e94fbc4bf0 @1=abs:C-1 @7=rel:4bbc3a @12=rel:4bbc5f ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 004bbd4f 5 83ff2a7c21 81ff0000007f0f8c69bd4bf0e943bd4bf0 @2=abs:C @8=rel:4bbd75 @13=rel:4bbd54 ; imm8->imm32 cmp edi, 0x2a = C
+CAVE 004bbd54 5 83ff337f1c 81ff0000007f0f8f69bd4bf0e948bd4bf0 @2=abs:C+G-1 @8=rel:4bbd75 @13=rel:4bbd59 ; imm8->imm32 cmp edi, 0x33 = C+G-1
 CAVE 004bbd6d 8 83c02ae9f0feffff 050000007fe95bbc4bf0e966bd4bf0 @1=abs:C @6=rel:4bbc65 @11=rel:4bbd75 ; imm8->imm32 add eax, 0x2a = C
+CAVE 004bbd75 9 83ff340f8ce4feffff 81ff0000007f0f8c56bc4bf0e96dbd4bf0 @2=abs:C+G @8=rel:4bbc62 @13=rel:4bbd7e ; imm8->imm32 cmp edi, 0x34 = C+G
 CAVE 004bbd7e 9 83ff560f8fdbfeffff 81ff0000007f0f8f56bc4bf0e976bd4bf0 @2=abs:N-1 @8=rel:4bbc62 @13=rel:4bbd87 ; imm8->imm32 cmp edi, 0x56 = N-1
+CAVE 004bbd87 5 8d47cc85c0 8d870000007f85c0e97fbd4bf0 @2=abs:0-(C+G) @9=rel:4bbd8c ; imm8->imm32 lea eax, [edi - 0x34] = -(C+G)
+CAVE 004bbd9b 8 83c034e9c2feffff 050000007fe95bbc4bf0e994bd4bf0 @1=abs:C+G @6=rel:4bbc65 @11=rel:4bbda3 ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 004bbe73 5 83fb2a7cc8 81fb0000007f0f8c34be4bf0e967be4bf0 @2=abs:C @8=rel:4bbe40 @13=rel:4bbe78 ; imm8->imm32 cmp ebx, 0x2a = C
 CAVE 004bbfd7 5 83ff577cb8 81ff0000007f0f8c88bf4bf0e9cbbf4bf0 @2=abs:N @8=rel:4bbf94 @13=rel:4bbfdc ; imm8->imm32 cmp edi, 0x57 = N
 CAVE 004bc1a9 5 83fd577ca2 81fd0000007f0f8c44c14bf0e99dc14bf0 @2=abs:N @8=rel:4bc150 @13=rel:4bc1ae ; imm8->imm32 cmp ebp, 0x57 = N
 CAVE 004bcd3c 5 83fd297f06 81fd0000007f0f8f3bcd4bf0e930cd4bf0 @2=abs:C-1 @8=rel:4bcd47 @13=rel:4bcd41 ; imm8->imm32 cmp ebp, 0x29 = C-1
 CAVE 004bcd47 5 83fd2a7c1a 81fd0000007f0f8c5acd4bf0e93bcd4bf0 @2=abs:C @8=rel:4bcd66 @13=rel:4bcd4c ; imm8->imm32 cmp ebp, 0x2a = C
+CAVE 004bcd4c 5 83fd337f15 81fd0000007f0f8f5acd4bf0e940cd4bf0 @2=abs:C+G-1 @8=rel:4bcd66 @13=rel:4bcd51 ; imm8->imm32 cmp ebp, 0x33 = C+G-1
+CAVE 004bcd51 5 8d45d63bc7 8d850000007f3bc7e949cd4bf0 @2=abs:0-C @9=rel:4bcd56 ; imm8->imm32 lea eax, [ebp - 0x2a] = -C
 CAVE 004bcd5d 7 83c02a89442434 050000007f89442434e956cd4bf0 @1=abs:C @10=rel:4bcd64 ; imm8->imm32 add eax, 0x2a = C
+CAVE 004bcd66 5 83fd347c23 81fd0000007f0f8c82cd4bf0e95acd4bf0 @2=abs:C+G @8=rel:4bcd8e @13=rel:4bcd6b ; imm8->imm32 cmp ebp, 0x34 = C+G
 CAVE 004bcd6b 5 83fd567f1e 81fd0000007f0f8f82cd4bf0e95fcd4bf0 @2=abs:N-1 @8=rel:4bcd8e @13=rel:4bcd70 ; imm8->imm32 cmp ebp, 0x56 = N-1
+CAVE 004bcd70 5 8d45cc3bc7 8d850000007f3bc7e968cd4bf0 @2=abs:0-(C+G) @9=rel:4bcd75 ; imm8->imm32 lea eax, [ebp - 0x34] = -(C+G)
+CAVE 004bcd7c 7 83c03489442434 050000007f89442434e975cd4bf0 @1=abs:C+G @10=rel:4bcd83 ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 004bd26e 9 83fb290f8f2e010000 81fb0000007f0f8f99d34bf0e966d24bf0 @2=abs:C-1 @8=rel:4bd3a5 @13=rel:4bd277 ; imm8->imm32 cmp ebx, 0x29 = C-1
 CAVE 004be741 5 83fd577cbe 81fd0000007f0f8cf8e64bf0e935e74bf0 @2=abs:N @8=rel:4be704 @13=rel:4be746 ; imm8->imm32 cmp ebp, 0x57 = N
 CAVE 004c08c8 5 83f82a7d06 3d0000007f0f8dc8084cf0e9bd084cf0 @1=abs:C @7=rel:4c08d3 @12=rel:4c08cd ; imm8->imm32 cmp eax, 0x2a = C
@@ -351,9 +489,13 @@ CAVE 004ce34e 5 83ff2a7ccd 81ff0000007f0f8c14e34cf0e942e34cf0 @2=abs:C @8=rel:4c
 CAVE 004ce3be 5 83ff2a7ccd 81ff0000007f0f8c84e34cf0e9b2e34cf0 @2=abs:C @8=rel:4ce390 @13=rel:4ce3c3 ; imm8->imm32 cmp edi, 0x2a = C
 CAVE 004ceb61 5 83f8297e39 3d0000007f0f8e94eb4cf0e956eb4cf0 @1=abs:C-1 @7=rel:4ceb9f @12=rel:4ceb66 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 004ceb66 5 83f82a7c16 3d0000007f0f8c76eb4cf0e95beb4cf0 @1=abs:C @7=rel:4ceb81 @12=rel:4ceb6b ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 004ceb6b 5 83f8337f11 3d0000007f0f8f76eb4cf0e960eb4cf0 @1=abs:C+G-1 @7=rel:4ceb81 @12=rel:4ceb70 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 004ceb70 5 83c0d63bc6 050000007f3bc6e969eb4cf0 @1=abs:0-C @8=rel:4ceb75 ; imm8->imm32 add eax, -0x2a = -C
 CAVE 004ceb7c 5 83c02aeb1e 050000007fe995eb4cf0e972eb4cf0 @1=abs:C @6=rel:4ceb9f @11=rel:4ceb81 ; imm8->imm32 add eax, 0x2a = C
+CAVE 004ceb81 5 83f8347c16 3d0000007f0f8c91eb4cf0e976eb4cf0 @1=abs:C+G @7=rel:4ceb9c @12=rel:4ceb86 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 004ceb86 5 83f8567f11 3d0000007f0f8f91eb4cf0e97beb4cf0 @1=abs:N-1 @7=rel:4ceb9c @12=rel:4ceb8b ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 004ceb8b 5 83c0cc3bc6 050000007f3bc6e984eb4cf0 @1=abs:0-(C+G) @8=rel:4ceb90 ; imm8->imm32 add eax, -0x34 = -(C+G)
+CAVE 004ceb97 5 83c034eb03 050000007fe995eb4cf0e98deb4cf0 @1=abs:C+G @6=rel:4ceb9f @11=rel:4ceb9c ; imm8->imm32 add eax, 0x34 = C+G
 CAVE 0052d4f0 5 83ff2a7cab 81ff0000007f0f8c94d452f0e9e4d452f0 @2=abs:C @8=rel:52d4a0 @13=rel:52d4f5 ; imm8->imm32 cmp edi, 0x2a = C
 CAVE 0052e67b 5 83fe2a7cd5 81fe0000007f0f8c49e652f0e96fe652f0 @2=abs:C @8=rel:52e655 @13=rel:52e680 ; imm8->imm32 cmp esi, 0x2a = C
 CAVE 0052e6cb 5 83fe2a7cd5 81fe0000007f0f8c99e652f0e9bfe652f0 @2=abs:C @8=rel:52e6a5 @13=rel:52e6d0 ; imm8->imm32 cmp esi, 0x2a = C
@@ -382,8 +524,12 @@ CAVE 0054de83 5 83fb297f1b 81fb0000007f0f8f97de54f0e977de54f0 @2=abs:C-1 @8=rel:
 CAVE 0054e030 5 83ff2a7cab 81ff0000007f0f8cd4df54f0e924e054f0 @2=abs:C @8=rel:54dfe0 @13=rel:54e035 ; imm8->imm32 cmp edi, 0x2a = C
 CAVE 0054e076 5 83f8297f04 3d0000007f0f8f74e054f0e96be054f0 @1=abs:C-1 @7=rel:54e07f @12=rel:54e07b ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0054e07f 5 83f82a7c16 3d0000007f0f8c8fe054f0e974e054f0 @1=abs:C @7=rel:54e09a @12=rel:54e084 ; imm8->imm32 cmp eax, 0x2a = C
+CAVE 0054e084 5 83f8337f11 3d0000007f0f8f8fe054f0e979e054f0 @1=abs:C+G-1 @7=rel:54e09a @12=rel:54e089 ; imm8->imm32 cmp eax, 0x33 = C+G-1
 CAVE 0054e095 5 83c12aeb1e 81c10000007fe9ade054f0e98ae054f0 @2=abs:C @7=rel:54e0b8 @12=rel:54e09a ; imm8->imm32 add ecx, 0x2a = C
+CAVE 0054e09a 5 83f8347c16 3d0000007f0f8caae054f0e98fe054f0 @1=abs:C+G @7=rel:54e0b5 @12=rel:54e09f ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 0054e09f 5 83f8567f11 3d0000007f0f8faae054f0e994e054f0 @1=abs:N-1 @7=rel:54e0b5 @12=rel:54e0a4 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 0054e0a4 5 8d48cc85c9 8d880000007f85c9e99ce054f0 @2=abs:0-(C+G) @9=rel:54e0a9 ; imm8->imm32 lea ecx, [eax - 0x34] = -(C+G)
+CAVE 0054e0b0 5 83c134eb03 81c10000007fe9ade054f0e9a5e054f0 @2=abs:C+G @7=rel:54e0b8 @12=rel:54e0b5 ; imm8->imm32 add ecx, 0x34 = C+G
 CAVE 0054e172 5 83fe2a7c99 81fe0000007f0f8c04e154f0e966e154f0 @2=abs:C @8=rel:54e110 @13=rel:54e177 ; imm8->imm32 cmp esi, 0x2a = C
 CAVE 0054e1f0 5 83f8297e03 3d0000007f0f8eede154f0e9e5e154f0 @1=abs:C-1 @7=rel:54e1f8 @12=rel:54e1f5 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0054e36e 9 83fd2a0f8c69ffffff 81fd0000007f0f8cd4e254f0e966e354f0 @2=abs:C @8=rel:54e2e0 @13=rel:54e377 ; imm8->imm32 cmp ebp, 0x2a = C
@@ -436,8 +582,12 @@ CAVE 00557723 7 83fb2a894c2410 81fb0000007f894c2410e91b7755f0 @2=abs:C @11=rel:5
 CAVE 00557789 5 83f8297e03 3d0000007f0f8e867755f0e97e7755f0 @1=abs:C-1 @7=rel:557791 @12=rel:55778e ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 005577c7 5 83f9297f31 81f90000007f0f8ff17755f0e9bb7755f0 @2=abs:C-1 @8=rel:5577fd @13=rel:5577cc ; imm8->imm32 cmp ecx, 0x29 = C-1
 CAVE 005577fd 5 83f92a7c16 81f90000007f0f8c0c7855f0e9f17755f0 @2=abs:C @8=rel:557818 @13=rel:557802 ; imm8->imm32 cmp ecx, 0x2a = C
+CAVE 00557802 5 83f9337f11 81f90000007f0f8f0c7855f0e9f67755f0 @2=abs:C+G-1 @8=rel:557818 @13=rel:557807 ; imm8->imm32 cmp ecx, 0x33 = C+G-1
 CAVE 00557813 5 83c22aeb1e 81c20000007fe92b7855f0e9087855f0 @2=abs:C @7=rel:557836 @12=rel:557818 ; imm8->imm32 add edx, 0x2a = C
+CAVE 00557818 5 83f9347c16 81f90000007f0f8c277855f0e90c7855f0 @2=abs:C+G @8=rel:557833 @13=rel:55781d ; imm8->imm32 cmp ecx, 0x34 = C+G
 CAVE 0055781d 5 83f9567f11 81f90000007f0f8f277855f0e9117855f0 @2=abs:N-1 @8=rel:557833 @13=rel:557822 ; imm8->imm32 cmp ecx, 0x56 = N-1
+CAVE 00557822 5 8d51cc85d2 8d910000007f85d2e91a7855f0 @2=abs:0-(C+G) @9=rel:557827 ; imm8->imm32 lea edx, [ecx - 0x34] = -(C+G)
+CAVE 0055782e 5 83c234eb03 81c20000007fe92b7855f0e9237855f0 @2=abs:C+G @7=rel:557836 @12=rel:557833 ; imm8->imm32 add edx, 0x34 = C+G
 CAVE 0055bb48 9 83fd290f8f3f050000 81fd0000007f0f8f84c055f0e940bb55f0 @2=abs:C-1 @8=rel:55c090 @13=rel:55bb51 ; imm8->imm32 cmp ebp, 0x29 = C-1
 CAVE 0057e857 5 83fe5772d4 81fe0000007f0f8224e857f0e94be857f0 @2=abs:N @8=rel:57e830 @13=rel:57e85c ; imm8->imm32 cmp esi, 0x57 = N
 CAVE 0057eb63 5 83fe2a7ce8 81fe0000007f0f8c44eb57f0e957eb57f0 @2=abs:C @8=rel:57eb50 @13=rel:57eb68 ; imm8->imm32 cmp esi, 0x2a = C
@@ -497,8 +647,11 @@ CAVE 0059075a 5 83f8577d13 3d0000007f0f8d670759f0e94f0759f0 @1=abs:N @7=rel:5907
 CAVE 0059078d 7 83f82989442420 3d0000007f89442420e9860759f0 @1=abs:C-1 @10=rel:590794 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 005908bf 5 83fb297f04 81fb0000007f0f8fbc0859f0e9b30859f0 @2=abs:C-1 @8=rel:5908c8 @13=rel:5908c4 ; imm8->imm32 cmp ebx, 0x29 = C-1
 CAVE 005908c8 5 83fb2a7c16 81fb0000007f0f8cd70859f0e9bc0859f0 @2=abs:C @8=rel:5908e3 @13=rel:5908cd ; imm8->imm32 cmp ebx, 0x2a = C
+CAVE 005908cd 5 83fb337f11 81fb0000007f0f8fd70859f0e9c10859f0 @2=abs:C+G-1 @8=rel:5908e3 @13=rel:5908d2 ; imm8->imm32 cmp ebx, 0x33 = C+G-1
 CAVE 005908de 5 83c02aeb1d 050000007fe9f60859f0e9d40859f0 @1=abs:C @6=rel:590900 @11=rel:5908e3 ; imm8->imm32 add eax, 0x2a = C
+CAVE 005908e3 5 83fb347c15 81fb0000007f0f8cf10859f0e9d70859f0 @2=abs:C+G @8=rel:5908fd @13=rel:5908e8 ; imm8->imm32 cmp ebx, 0x34 = C+G
 CAVE 005908e8 5 83fb567f10 81fb0000007f0f8ff10859f0e9dc0859f0 @2=abs:N-1 @8=rel:5908fd @13=rel:5908ed ; imm8->imm32 cmp ebx, 0x56 = N-1
+CAVE 005908ed 5 8d43cc3bc6 8d830000007f3bc6e9e50859f0 @2=abs:0-(C+G) @9=rel:5908f2 ; imm8->imm32 lea eax, [ebx - 0x34] = -(C+G)
 CAVE 00590a0b 9 83fb570f8c2cfeffff 81fb0000007f0f8c340859f0e9030a59f0 @2=abs:N @8=rel:590840 @13=rel:590a14 ; imm8->imm32 cmp ebx, 0x57 = N
 CAVE 00590bb6 7 83f82a8944241c 3d0000007f8944241ce9af0b59f0 @1=abs:C @10=rel:590bbd ; imm8->imm32 cmp eax, 0x2a = C
 CAVE 00598500 7 83ff2a897c2420 81ff0000007f897c2420e9f88459f0 @2=abs:C @11=rel:598507 ; imm8->imm32 cmp edi, 0x2a = C
@@ -602,6 +755,7 @@ CAVE 005e2032 5 83fe297f4d 81fe0000007f0f8f78205ef0e926205ef0 @2=abs:C-1 @8=rel:
 CAVE 005e38c6 5 83fd297f5d 81fd0000007f0f8f1c395ef0e9ba385ef0 @2=abs:C-1 @8=rel:5e3928 @13=rel:5e38cb ; imm8->imm32 cmp ebp, 0x29 = C-1
 CAVE 005e3918 5 83fe297eb5 81fe0000007f0f8ec6385ef0e90c395ef0 @2=abs:C-1 @8=rel:5e38d2 @13=rel:5e391d ; imm8->imm32 cmp esi, 0x29 = C-1
 CAVE 005e3b16 10 83fd56898c2484000000 81fd0000007f898c2484000000e90e3b5ef0 @2=abs:N-1 @14=rel:5e3b20 ; imm8->imm32 cmp ebp, 0x56 = N-1
+CAVE 005e4375 5 83ff347c1c 81ff0000007f0f8c8a435ef0e969435ef0 @2=abs:C+G @8=rel:5e4396 @13=rel:5e437a ; imm8->imm32 cmp edi, 0x34 = C+G
 CAVE 005e437a 5 83ff567f17 81ff0000007f0f8f8a435ef0e96e435ef0 @2=abs:N-1 @8=rel:5e4396 @13=rel:5e437f ; imm8->imm32 cmp edi, 0x56 = N-1
 CAVE 005e46b8 6 6a578d542438 680000007f8d542438e9b0465ef0 @1=abs:N @10=rel:5e46be ; imm8->imm32 push 0x57 = N
 CAVE 005e48ce 6 6a578d542440 680000007f8d542440e9c6485ef0 @1=abs:N @10=rel:5e48d4 ; imm8->imm32 push 0x57 = N
@@ -686,7 +840,9 @@ CAVE 005f4df0 7 8804bdc29f3f07 668904bdc29f3f07e9ea4d5ff0 @9=rel:5f4df7 ; imm8->
 CAVE 005f5064 5 83f8297e5a 3d0000007f0f8eb8505ff0e959505ff0 @1=abs:C-1 @7=rel:5f50c3 @12=rel:5f5069 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 005f5151 9 83ff290f8f5e010000 81ff0000007f0f8fac525ff0e949515ff0 @2=abs:C-1 @8=rel:5f52b8 @13=rel:5f515a ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 005f6509 5 83ff577c06 81ff0000007f0f8c08655ff0e9fd645ff0 @2=abs:N @8=rel:5f6514 @13=rel:5f650e ; imm8->imm32 cmp edi, 0x57 = N
+CAVE 005f656f 5 83f8347c0a 3d0000007f0f8c73655ff0e964655ff0 @1=abs:C+G @7=rel:5f657e @12=rel:5f6574 ; imm8->imm32 cmp eax, 0x34 = C+G
 CAVE 005f6574 5 83f8567f05 3d0000007f0f8f73655ff0e969655ff0 @1=abs:N-1 @7=rel:5f657e @12=rel:5f6579 ; imm8->imm32 cmp eax, 0x56 = N-1
+CAVE 005f6579 5 83c0cceb03 050000007fe977655ff0e96f655ff0 @1=abs:0-(C+G) @6=rel:5f6581 @11=rel:5f657e ; imm8->imm32 add eax, -0x34 = -(C+G)
 CAVE 005f6637 5 83fe297f04 81fe0000007f0f8f34665ff0e92b665ff0 @2=abs:C-1 @8=rel:5f6640 @13=rel:5f663c ; imm8->imm32 cmp esi, 0x29 = C-1
 CAVE 005f66c6 5 83ff577ca5 81ff0000007f0f8c64665ff0e9ba665ff0 @2=abs:N @8=rel:5f6670 @13=rel:5f66cb ; imm8->imm32 cmp edi, 0x57 = N
 CAVE 005f66fc 5 83f8577d1d 3d0000007f0f8d13675ff0e9f1665ff0 @1=abs:N @7=rel:5f671e @12=rel:5f6701 ; imm8->imm32 cmp eax, 0x57 = N
@@ -707,10 +863,14 @@ CAVE 005f8831 5 83f8577d19 3d0000007f0f8d44885ff0e926885ff0 @1=abs:N @7=rel:5f88
 CAVE 005f88c1 5 83f8577d19 3d0000007f0f8dd4885ff0e9b6885ff0 @1=abs:N @7=rel:5f88df @12=rel:5f88c6 ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 005f8a52 5 83ff577c9e 81ff0000007f0f8ce9895ff0e9468a5ff0 @2=abs:N @8=rel:5f89f5 @13=rel:5f8a57 ; imm8->imm32 cmp edi, 0x57 = N
 CAVE 005f8ae2 5 83ff577c9e 81ff0000007f0f8c798a5ff0e9d68a5ff0 @2=abs:N @8=rel:5f8a85 @13=rel:5f8ae7 ; imm8->imm32 cmp edi, 0x57 = N
+CAVE 005f8d87 5 83fe347c0a 81fe0000007f0f8c8a8d5ff0e97b8d5ff0 @2=abs:C+G @8=rel:5f8d96 @13=rel:5f8d8c ; imm8->imm32 cmp esi, 0x34 = C+G
 CAVE 005f8d8c 5 83fe567f05 81fe0000007f0f8f8a8d5ff0e9808d5ff0 @2=abs:N-1 @8=rel:5f8d96 @13=rel:5f8d91 ; imm8->imm32 cmp esi, 0x56 = N-1
+CAVE 005f8d91 5 8d46cceb03 8d860000007fe98e8d5ff0e9868d5ff0 @2=abs:0-(C+G) @7=rel:5f8d99 @12=rel:5f8d96 ; imm8->imm32 lea eax, [esi - 0x34] = -(C+G)
 CAVE 005f8e3c 5 83fe297e0a 81fe0000007f0f8e3f8e5ff0e9308e5ff0 @2=abs:C-1 @8=rel:5f8e4b @13=rel:5f8e41 ; imm8->imm32 cmp esi, 0x29 = C-1
 CAVE 005f8e50 9 83fe570f8c07ffffff 81fe0000007f0f8c548d5ff0e9488e5ff0 @2=abs:N @8=rel:5f8d60 @13=rel:5f8e59 ; imm8->imm32 cmp esi, 0x57 = N
+CAVE 005f90ac 5 83fe347c0a 81fe0000007f0f8caf905ff0e9a0905ff0 @2=abs:C+G @8=rel:5f90bb @13=rel:5f90b1 ; imm8->imm32 cmp esi, 0x34 = C+G
 CAVE 005f90b1 5 83fe567f05 81fe0000007f0f8faf905ff0e9a5905ff0 @2=abs:N-1 @8=rel:5f90bb @13=rel:5f90b6 ; imm8->imm32 cmp esi, 0x56 = N-1
+CAVE 005f90b6 5 8d46cceb03 8d860000007fe9b3905ff0e9ab905ff0 @2=abs:0-(C+G) @7=rel:5f90be @12=rel:5f90bb ; imm8->imm32 lea eax, [esi - 0x34] = -(C+G)
 CAVE 005f914b 5 83fe297e0a 81fe0000007f0f8e4e915ff0e93f915ff0 @2=abs:C-1 @8=rel:5f915a @13=rel:5f9150 ; imm8->imm32 cmp esi, 0x29 = C-1
 CAVE 005f915b 9 83fe570f8c1dffffff 81fe0000007f0f8c75905ff0e953915ff0 @2=abs:N @8=rel:5f9081 @13=rel:5f9164 ; imm8->imm32 cmp esi, 0x57 = N
 CAVE 005f92de 5 83f8567e03 3d0000007f0f8edb925ff0e9d3925ff0 @1=abs:N-1 @7=rel:5f92e6 @12=rel:5f92e3 ; imm8->imm32 cmp eax, 0x56 = N-1
@@ -778,6 +938,7 @@ CAVE 006759d1 5 83ff2a7cca 81ff0000007f0f8c945967f0e9c55967f0 @2=abs:C @8=rel:67
 CAVE 0067624d 5 83f8297e03 3d0000007f0f8e4a6267f0e9426267f0 @1=abs:C-1 @7=rel:676255 @12=rel:676252 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 0067a774 7 6a57e8352b0000 680000007fe8a6d267f0e96ca767f0 @1=abs:N @6=rel:67d2b0 @11=rel:67a77b ; imm8->imm32 push 0x57 = N
 CAVE 00689352 7 83fe2a89742414 81fe0000007f89742414e94a9368f0 @2=abs:C @11=rel:689359 ; imm8->imm32 cmp esi, 0x2a = C
+CAVE 00689414 5 83ff337ec7 81ff0000007f0f8ed49368f0e9089468f0 @2=abs:C+G-1 @8=rel:6893e0 @13=rel:689419 ; imm8->imm32 cmp edi, 0x33 = C+G-1
 CAVE 00689450 5 83ff567ecb 81ff0000007f0f8e149468f0e9449468f0 @2=abs:N-1 @8=rel:689420 @13=rel:689455 ; imm8->imm32 cmp edi, 0x56 = N-1
 CAVE 00689490 5 83ff297ecb 81ff0000007f0f8e549468f0e9849468f0 @2=abs:C-1 @8=rel:689460 @13=rel:689495 ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 006895c2 5 83f8297f04 3d0000007f0f8fc09568f0e9b79568f0 @1=abs:C-1 @7=rel:6895cb @12=rel:6895c7 ; imm8->imm32 cmp eax, 0x29 = C-1
@@ -900,3 +1061,5 @@ REWRITE 0054ec01 139 bd070000008b48fc83f9ff74053b4a0875068338007501478b481083f9f
 REWRITE 0054eda6 144 be07000000eb038d49008b48fc83f9ff74053b4b0875068338007501428b481083f9ff74053b4b0875088b481485c97501428b482483f9ff74053b4b0875088b482885c97501428b483883f9ff74053b4b0875088b483c85c97501428b484c83f9ff74053b4b0875088b485085c97501428b486083f9ff74053b4b0875088b486485c975014283c0784e0f857affffff be0000007f8b48fc83f9ff74053b4b08750683380075014283c0144e75e7909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090 @1=abs:C ; S.city[C] loop (was unrolled 6x7)
 REWRITE 0055088c 76 be070000003941ec750683f8ff7401423901750683f8ff740142394114750683f8ff740142394128750683f8ff74014239413c750683f8ff740142394150750683f8ff74014283c1784e75b9 be0000007f3941ec750683f8ff74014283c1144e75ef909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090 @1=abs:C ; S.city[C] loop (was unrolled 6x7)
 REWRITE 00556496 111 ba07000000eb038d49008b460883f8ff7407394104750289298b460883f8ff740839411875038969148b460883f8ff740839412c75038969288b460883f8ff7408394140750389693c8b460883f8ff740839415475038969508b460883f8ff7408394168750389696483c1784a759b ba0000007f8b460883f8ff74073941047502892983c1144a75eb90909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090 @1=abs:C ; S.city[C] loop (was unrolled 6x7)
+REWRITE 004862d0 32 8b44240483f82a7c0983f8337f0483c0d6c383c8ffc3cccccccccccccccccccc 8b4424043d0000007f7c0d3d0001007f7f062d0000007fc383c8ffc390909090 @5=abs:C @12=abs:C+G-1 @19=abs:C ; building id -> gate index
+REWRITE 004862f0 32 8b44240483f8347c0983f8567f0483c0ccc383c8ffc3cccccccccccccccccccc 8b4424043d0000007f7c0d3d0001007f7f062d0000007fc383c8ffc390909090 @5=abs:C+G @12=abs:N-1 @19=abs:C+G ; building id -> port index
