@@ -1,0 +1,116 @@
+{"addr": "0x5a587f", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch-table helper returning neg/sbb/and constants (0x32 or 0x5f); plain game value, not a force id."}
+{"addr": "0x5a5a14", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "eax = object vfunc+0x40 owner force id; 0..41 = regular force, then get_force 0x490aa0(eax)."}
+{"addr": "0x5a6b67", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = vfunc+0x40 force id of map-slot object from 0x483b20; valid-force check 0..46."}
+{"addr": "0x5a6cb5", "value": "-44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "jump-table data mis-disassembled as imul (bytes 6b 5a 00 d4 are a case address)."}
+{"addr": "0x5a73b0", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2c = skill id tested via unit vfunc+0x58 (has-skill)."}
+{"addr": "0x5a806b", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; returns 0 if a valid force 0..46, else calls 0x487e10."}
+{"addr": "0x5a83c1", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rep stosd 0x2c dwords clears a 0xb0-byte stack message struct passed to 0x5a37f0; not per-force."}
+{"addr": "0x5aa52f", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = unit +0x44 (force id field, setter 0x495a20 accepts -1 or 0..46); inlined valid-force check like 0x4123b0."}
+{"addr": "0x5aa547", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "eax = unit vfunc+0x40 force id; <=41 = regular force."}
+{"addr": "0x5aa68e", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "eax = unit vfunc+0x40 force id; <=41 = regular force."}
+{"addr": "0x5ab52f", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; jle 0x29 = regular force branch."}
+{"addr": "0x5ab55f", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = vfunc+0x40 force id of map-slot object (0x483b20); valid-force check 0..46."}
+{"addr": "0x5ae6d1", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x29 = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5ae6e2", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5ae6f5", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x29 = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5ae702", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2b = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5ae715", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2c = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5ae728", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2d = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5ae76c", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2e = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5ae783", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2f = skill id for unit vfunc+0x58 (has-skill), switch on unit +0xa8 troop type."}
+{"addr": "0x5b5879", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46 before comparing the two objects' forces."}
+{"addr": "0x5b6299", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop ebx 0..41 over get_force 0x490aa0(ebx) testing AI per-force record bit set 0x5f6a50(ebp,ebx) (that bit set is PAIR data)."}
+{"addr": "0x5b6e89", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5b6ea1", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; <=41 = regular force."}
+{"addr": "0x5b92bc", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "loop over the 44 AI task-handler pointers at this+8 (handler container, one per person+0x13c task); not force count."}
+{"addr": "0x5b9d1c", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "loop edi 0..43 over the 44 AI task-handler pointers at this+8; not force count."}
+{"addr": "0x5b9e2e", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person+0x13c task enum minus 2 (<=0x29); task ids, not forces."}
+{"addr": "0x5ba35e", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = 0x4897b0(person,0) task target = force id; checked 0..46 then get_force 0x490aa0(eax)."}
+{"addr": "0x5ba8e6", "value": "184", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset 0xb8 = 8 + 44*4: first embedded task-handler sub-object (0x98 each) in AI handler container ctor."}
+{"addr": "0x5baa80", "value": "3384", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset of an embedded 0x98-byte task-handler sub-object in AI handler container ctor."}
+{"addr": "0x5babb1", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rep stosd 0x2c clears the 44-entry task-handler pointer table at this+8."}
+{"addr": "0x5babba", "value": "184", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset 0xb8 of first embedded task handler stored into handler table slot 0."}
+{"addr": "0x5bb362", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "[esp+0x14] = force-id argument (callers pass -1 or object vfunc+0x40); 0..46 = filter cities by this force."}
+{"addr": "0x5bb574", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = item (treasure) id for get_item 0x490b30."}
+{"addr": "0x5bbfa0", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = item (treasure) id for get_item 0x490b30."}
+{"addr": "0x5bc2b1", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = item (treasure) id for get_item 0x490b30."}
+{"addr": "0x5bccd0", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop ebx 0..41 over get_force 0x490aa0(ebx)."}
+{"addr": "0x5bcd10", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "rep stosd count: stack local int[47] at esp+0x10 indexed by force id (fn 0x5bcce0, frame sub esp,0xc4 must grow too)."}
+{"addr": "0x5bcd72", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop edi 0..41 over get_force 0x490aa0(edi) filling the per-force stack array."}
+{"addr": "0x5bcd98", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = building (0x490d00) vfunc+0x40 force id; 0..46 then indexes the stack int[47]."}
+{"addr": "0x5bcdf0", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "rep stosd count: stack local int[47] at esp+0x10 indexed by force id (fn 0x5bcdc0, frame sub esp,0xc4 must grow too)."}
+{"addr": "0x5bce52", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop edi 0..41 over get_force 0x490aa0(edi) filling the per-force stack array."}
+{"addr": "0x5bcea5", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = building vfunc+0x40 force id (building from person +0x98); 0..46 then indexes the stack int[47]."}
+{"addr": "0x5bd06d", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2b = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5bd289", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "0x2f = condition code 47 (jump-table case of decoder 0x4c4267) in a 6-item list; the per-force codes are the force+0x82/0xb1/0xe0 lea's beside it, not this one."}
+{"addr": "0x5bd392", "value": "-45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "(handler vfunc+8 type - 15)*0x60 record address arithmetic into table 0x9773030."}
+{"addr": "0x5bd3c0", "value": "-45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "(handler vfunc+8 type - 15)*0x60 record address arithmetic into table 0x9773030."}
+{"addr": "0x5bd77c", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "loop edi 0..41 (jle) over get_force 0x490aa0(edi)."}
+{"addr": "0x5bd8c8", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "list of condition/column codes (1,4,0xc,0xf,0x13,0x11,0x12,..,0x2b) for a dialog."}
+{"addr": "0x5beb03", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = effect id passed to 0x4d0940 on effect manager 0x9119810."}
+{"addr": "0x5beb29", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = item (treasure) id for get_item 0x490b30."}
+{"addr": "0x5bff3d", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2c = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5c07ef", "value": "42", "verdict": "FORCE", "role": "BARB", "patch": "C", "encoding": "imm8", "note": "loop ebx 0..46 over get_force; ebx>=42 && <=45 skipped = barbarian range start."}
+{"addr": "0x5c07f4", "value": "45", "verdict": "FORCE", "role": "BARB", "patch": "C+3", "encoding": "imm8", "note": "same loop: ebx<=45 = last barbarian force id."}
+{"addr": "0x5c07f9", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "same loop: ebx==46 skipped = special (bandit) force id."}
+{"addr": "0x5c0809", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop bound ebx<47 over get_force 0x490aa0(ebx)."}
+{"addr": "0x5c0869", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "edi = city (0x490a10) vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5c094c", "value": "46", "verdict": "FORCE", "role": "CORPS_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = 0x481240(force, n) = corps id (scans corps 0..46 for force/number); valid check 0..46."}
+{"addr": "0x5c1328", "value": "46", "verdict": "FORCE", "role": "CORPS_MAX", "patch": "C+4", "encoding": "imm8", "note": "edi = corps id from local table, compared with unit vfunc+0x44 corps and passed to get_corps 0x490ad0; check 0..46."}
+{"addr": "0x5c2fbd", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2b = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5c3241", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2b = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5c402b", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2d = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5c40ad", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x29 = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5c43fb", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x29 = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5c4ff0", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object (ebp) vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5c5199", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "+0x2d additive constant in an AI score formula."}
+{"addr": "0x5c6dd6", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2d = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5cd3e8", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "rep stosd count: stack local int[47] at esp+0x14 indexed by force id (fn 0x5cd3b0, frame sub esp,0xc0 must grow too)."}
+{"addr": "0x5cd45e", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop esi 0..46 over get_force 0x490aa0(esi) filling the per-force stack array (uses PAIR test 0x481500)."}
+{"addr": "0x5cd4a4", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = building vfunc+0x40 force id; 0..46 then indexes the stack int[47]."}
+{"addr": "0x5cd55b", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "esi = building vfunc+0x40 force id; 0..46 then PAIR test 0x481500(force, esi)."}
+{"addr": "0x5cd785", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; 0..46 then 0x481500 PAIR test."}
+{"addr": "0x5cd812", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; 0..46 then 0x481500 PAIR test."}
+{"addr": "0x5cd8f4", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; 0..46 then relation 0x4814e0 (PAIR)."}
+{"addr": "0x5ce16a", "value": "46", "verdict": "FORCE", "role": "CORPS_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = person +0x94 corps id; valid corps check 0..46."}
+{"addr": "0x5ced7c", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5cf16b", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "person+0x13c task enum <=0x2b (44 task types); not a force."}
+{"addr": "0x5d04d2", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2c = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5d0859", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5d1f5d", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5d332c", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5d7ed6", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x2a = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5db106", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x29 = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5db86d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "push 0x29 = facility type id for 0x49dab0(city, type)."}
+{"addr": "0x5dc51b", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop esi 0..41 counting existing forces via get_force 0x490aa0(esi); count kept in byte bl -> byte table 0x73f6130 (overflows past 255)."}
+{"addr": "0x5dc815", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = city 0x16 (get_city 0x490a10) vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5dc835", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = city 0x17 vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5dc855", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = city 0x18 vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5dda4c", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = unit +0x44 force-id field (unit comparator, +0x2c order); valid-force check 0..46."}
+{"addr": "0x5dda64", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = second unit's +0x44 force-id field; valid-force check 0..46."}
+{"addr": "0x5ddb38", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "edi = vfunc+0x40 force id of object from 0x495ce0; valid-force check 0..46."}
+{"addr": "0x5ddb4f", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "edi = same force id re-checked <=46 before 0x799895c pair query."}
+{"addr": "0x5de39e", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; 0..46 then 0x4b5cc0(force, edi) pair query."}
+{"addr": "0x5defca", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "ebp = force idx 0x491270(this+8); <=41 = regular force."}
+{"addr": "0x5df029", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = unit +0x44 force-id field; valid-force check 0..46."}
+{"addr": "0x5e1a67", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "edi = force idx 0x491270; <=41 regular force."}
+{"addr": "0x5e1a79", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "edi = force idx 0x491270; <=41 guard before AI per-force record reset 0x5f69a0 (42 x 0xd4 records)."}
+{"addr": "0x5e1beb", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop esi 0..41 over forces (get_force, 0x4811b0, AI records 0x5f6a50/0x5f6ab0)."}
+{"addr": "0x5e1d92", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "outer loop ebp 0..41 over get_force 0x490aa0(ebp)."}
+{"addr": "0x5e2c78", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "ebp = force idx 0x491270; <42 bound of the 42 x 0xd4 AI per-force records at 0x73f61c0."}
+{"addr": "0x5e2ef6", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop ebp 0..41 over get_force 0x490aa0(ebp) (body at 0x5e2e00)."}
+{"addr": "0x5e2fd0", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "ebp = force idx 0x491270; <42 bound of the AI per-force records at 0x73f61c0."}
+{"addr": "0x5e3028", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "rep stosd count: stack local int[47] at esp+0x80 indexed by force id (fn 0x5e2f70, frame sub esp,0x134 must grow too)."}
+{"addr": "0x5e3080", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = building vfunc+0x40 force id; 0..46 then sets the stack int[47] entry."}
+{"addr": "0x5e32c1", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "esi = force idx 0x491270; 0..46 then indexes the stack int[47] at esp+0x80."}
+{"addr": "0x5e3499", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "ebp = force idx 0x491270; <42 bound of the AI per-force records at 0x73f61c0."}
+{"addr": "0x5e4692", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5e4797", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "ebp = force-id argument; 0..46 then 0x4b5cc0(force, ebp) pair query."}
+{"addr": "0x5e48ad", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5e4944", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5e4a39", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = building (0x490d00) vfunc+0x40 force id; 0..46 then 0x4b5cc0 pair query."}
+{"addr": "0x5e4aff", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = object vfunc+0x40 force id; valid-force check 0..46."}
+{"addr": "0x5e53f7", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "constant list of AI command/task ids (0x30,0x2d,0x2c,0x2b,0x2a,0x29,...) built on the stack."}
+{"addr": "0x5e53ff", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "constant list of AI command/task ids (0x30,0x2d,0x2c,0x2b,0x2a,0x29,...) built on the stack."}
+{"addr": "0x5e5407", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "constant list of AI command/task ids (0x30,0x2d,0x2c,0x2b,0x2a,0x29,...) built on the stack."}
+{"addr": "0x5e540f", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "constant list of AI command/task ids (0x30,0x2d,0x2c,0x2b,0x2a,0x29,...) built on the stack."}

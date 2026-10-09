@@ -1,0 +1,116 @@
+{"addr": "0x4cc7f0", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "property-index switch (0..0x2f jump table) in unit property getter 0x4cc7a0; 0x30-0x31 / 0x32-0x3d handled separately; field ids, not forces"}
+{"addr": "0x4cccf8", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "same property-index switch (field id 0..0x2f) in 0x4ccc90"}
+{"addr": "0x4ccf18", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "unit vfunc+0x40 = force id; 0..41 returns the value, otherwise returns sort key 0x7fffffd0+force; companion add ebp,0x7fffffd0 at 0x4ccf2a (not a candidate) must become 0x7ffffffa-C or the keys of forces C..C+4 overflow past 0x7fffffff"}
+{"addr": "0x4cd144", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "property-index switch (field id 0..0x2f) in unit text formatter 0x4cd090"}
+{"addr": "0x4cd531", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "property id 0x2c passed to unit property getter 0x4cc7a0"}
+{"addr": "0x4cd60a", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "property id 0x2f passed to unit property getter 0x4cc7a0"}
+{"addr": "0x4cda44", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "sort compare 0x4cda20: force id from callback/vfunc+0x40 checked 0..46 before indexing static .data dword rank table 0x7998b88[force] (47 dwords, needs relocation)"}
+{"addr": "0x4cda52", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm32", "note": "fallback rank 47 (sorts after every force) for an invalid force id in sort compare 0x4cda20"}
+{"addr": "0x4cda72", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "second operand of the same compare: force id 0..46 bound before static table 0x7998b88[force]"}
+{"addr": "0x4cda80", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm32", "note": "fallback rank 47 for the second operand in sort compare 0x4cda20"}
+{"addr": "0x4cdba3", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "eax = 0x4918b0 ptr->index into a 98-entry table (world+0x86dd8, stride 0x6c); ids 0..0x2f are bits of force +0xb0, 0x30..0x61 a 10-slot list at +0xe8 (0x481970); not a force id"}
+{"addr": "0x4ce403", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop edi 0..46 over get_force 0x490aa0 adding every force to a list"}
+{"addr": "0x4ce453", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop edi 0..41 over get_force 0x490aa0 adding only regular forces to a list"}
+{"addr": "0x4ce4a3", "value": "47", "verdict": "FORCE", "role": "CORPS_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop edi 0..46 over get_corps 0x490ad0 adding every corps to a list"}
+{"addr": "0x4ce4f0", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "ebx = force id from 0x491270, validity check 0..46 before collecting that force's corps"}
+{"addr": "0x4ce52e", "value": "47", "verdict": "FORCE", "role": "CORPS_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop edi 0..46 over get_corps 0x490ad0, keeps corps whose vfunc+0x40 force == ebx"}
+{"addr": "0x4cec6a", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "rep stosd dword count clearing STATIC .data dword[47] force rank table 0x7998b88 (filled by 0x491270 id at 0x4cecde); neighbour 0x7998c48 is static char[47][0x40] per-force name keys (0x4cec13/0x4cd957); both need relocation"}
+{"addr": "0x4cf638", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "building vfunc+0x40 = owner force (building +0xc), validity check 0..46"}
+{"addr": "0x4cf689", "value": "42", "verdict": "FORCE", "role": "BARB", "patch": "C", "encoding": "imm8", "note": "person vfunc+0x40 = force id; skips persons of barbarian forces 42..45 (lower bound)"}
+{"addr": "0x4cf68e", "value": "45", "verdict": "FORCE", "role": "BARB", "patch": "C+3", "encoding": "imm8", "note": "upper bound of the barbarian force range 42..45 on the person force id"}
+{"addr": "0x4cf69e", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "person force id == 46 (special/bandit force) is skipped"}
+{"addr": "0x4e0f7c", "value": "184", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct member offset +0xb8 (string buffer) in UI object ctor"}
+{"addr": "0x4e18ee", "value": "184", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct member offset +0xb8 (string buffer) copied with rep movsd"}
+{"addr": "0x4e2a14", "value": "2256", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "sprite/resource id 0x8d0 among the 0x8cf..0x8f2 set"}
+{"addr": "0x4f51c9", "value": "94", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "virtual-key switch range (edi-0x1b <= 0x5e)"}
+{"addr": "0x4f7b7e", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "text-wrap width argument to 0x499030"}
+{"addr": "0x4f880d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id compare"}
+{"addr": "0x4f9e6d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control/menu id 0x29 -> message 0x2da1"}
+{"addr": "0x4fa798", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id for 0x4dc620"}
+{"addr": "0x4fa825", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id for 0x4d94c0"}
+{"addr": "0x4fa831", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id for 0x4d9e90"}
+{"addr": "0x4fb6ab", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "gameplay formula min(45-x,30)*v/15, not an id"}
+{"addr": "0x4fce3d", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI/render object field +0x13c init value"}
+{"addr": "0x4fceb5", "value": "1128", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x468 (2x3x7 graphics handle block)"}
+{"addr": "0x4fd2dd", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "index arithmetic into 0x1c-stride graphics records (+0x29 records = struct offset)"}
+{"addr": "0x4fd2f2", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "same 0x1c-stride graphics record offset"}
+{"addr": "0x4fd58f", "value": "1316", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x524 (sound/effect slot array, index <= 0x1e)"}
+{"addr": "0x4fe092", "value": "1128", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x468 in UI draw code"}
+{"addr": "0x4ff205", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "argument 12 of UI element factory 0x4fe420 -> element +0xa0, a key/icon index 0..0x35 (siblings use 0x27)"}
+{"addr": "0x4ff2a4", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI element +0xa0 key/icon index (range-checked 0..0x35 at 0x4fe1d9, siblings use 0x27)"}
+{"addr": "0x4fffc1", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI draw call argument to 0x4fe850"}
+{"addr": "0x5000e5", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI layout parameter to 0x4fe850"}
+{"addr": "0x500277", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI/animation parameter struct field on stack"}
+{"addr": "0x5012a6", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI icon/sprite id in switch on element type (siblings 6,7,8,9)"}
+{"addr": "0x502fde", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI sprite index list 0x22/0x25/0x26/0x29"}
+{"addr": "0x503f85", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "clears 42 x 8-byte graphics handles at +0x314 (2x3x7 layout, inner table 0x8387c0 has 7 entries)"}
+{"addr": "0x5041bf", "value": "1316", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x524 (31 sound handles)"}
+{"addr": "0x5049fc", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI sprite ids 6/7/0x2a/0x2d/0x2e/0x31"}
+{"addr": "0x504a04", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI sprite id set"}
+{"addr": "0x504a0c", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI sprite id set"}
+{"addr": "0x504a36", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI sprite id set (alternate)"}
+{"addr": "0x504a3e", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI sprite id set (alternate)"}
+{"addr": "0x504a46", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI sprite id set (alternate)"}
+{"addr": "0x506c83", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x4883c0 (0x62,0x90,0xb9,0x18b)"}
+{"addr": "0x506c88", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x4883c0"}
+{"addr": "0x507ffa", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x4883c0"}
+{"addr": "0x508003", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x4883c0"}
+{"addr": "0x5080d4", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x4883c0 (0x62,0x90,0x18b,0x1b0)"}
+{"addr": "0x509d22", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x507ae0"}
+{"addr": "0x50c6f5", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x4883c0"}
+{"addr": "0x50c6fa", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on person id from 0x4883c0"}
+{"addr": "0x50d90a", "value": "184", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct copy offset +0xb8"}
+{"addr": "0x50d912", "value": "184", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct copy offset +0xb8"}
+{"addr": "0x510836", "value": "564", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct member offset +0x234 in UI dtor"}
+{"addr": "0x51094a", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id range 0xa33..0xa61 switch"}
+{"addr": "0x510a0a", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id range 0xa33..0xa61 switch"}
+{"addr": "0x510ae7", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id range 0xa33..0xa61 switch"}
+{"addr": "0x510ba8", "value": "564", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct member offset +0x234"}
+{"addr": "0x5125ca", "value": "564", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct member offset +0x234"}
+{"addr": "0x51299b", "value": "564", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct member offset +0x234"}
+{"addr": "0x514225", "value": "2632", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0xa48 (0xa45..0xa4c set)"}
+{"addr": "0x515012", "value": "94", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI layout y coordinate argument"}
+{"addr": "0x5183c1", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "queue entry type 3 parameter = animation/motion id (other callers pass 0x53/0x54)"}
+{"addr": "0x52331d", "value": "2820", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0xb04 (0xb01..0xb04)"}
+{"addr": "0x523c47", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x523d8f", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x523df1", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x523e15", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x523eb4", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x523f48", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x523fd0", "value": "2820", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0xb04 (0xb01..0xb04)"}
+{"addr": "0x525b41", "value": "2820", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0xb04 (0xb01..0xb04)"}
+{"addr": "0x525b69", "value": "2820", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0xb04 (0xb01..0xb04)"}
+{"addr": "0x52709c", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x5271e9", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x5272d2", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x5274f5", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x52763e", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x527695", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x5278bd", "value": "2068", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "struct offset +0x814 of an embedded 2 x 0x19c widget array"}
+{"addr": "0x527df5", "value": "2820", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0xb04 (0xb01..0xb04)"}
+{"addr": "0x527e08", "value": "2820", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0xb04 (0xb01..0xb04)"}
+{"addr": "0x527e70", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "message id range switch (ebx-0xad9 <= 0x2b)"}
+{"addr": "0x5282ba", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "message/control id range switch (eax-0xa73 <= 0x2d)"}
+{"addr": "0x52933b", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control/command id 0x29"}
+{"addr": "0x52b55a", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id for 0x4dc620"}
+{"addr": "0x52bd33", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "text-wrap width for 0x499030"}
+{"addr": "0x52c4d5", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI scene/state id from vfunc+0x1d4"}
+{"addr": "0x52ce49", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "byte-offset loop over 11 UI control ids (table 0x83dbf0)"}
+{"addr": "0x52ce92", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control/command id 0x29 -> msg"}
+{"addr": "0x52d1b1", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id for 0x4d94c0"}
+{"addr": "0x52d288", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "byte-offset loop over 11 UI control ids (table 0x83dbf0)"}
+{"addr": "0x52fb5d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "city-map widget loop over 42 city markers (each entry has a map position); city 41 label offset, M7 KEEP; not force-related"}
+{"addr": "0x52fc3e", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "same city-map widget special case for city 41 (M7 KEEP); not force-related"}
+{"addr": "0x532a44", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "jump-table data disassembled as code"}
+{"addr": "0x532f43", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "pointer to string field +0x29 inside a struct"}
+{"addr": "0x5388d3", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id 0x2f for rect lookup 0x4d96b0"}
+{"addr": "0x53892c", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0x2f stored in layout struct for 0x4da4a0"}
+{"addr": "0x5390ba", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id 0x2d for rect lookup 0x4d96b0"}
+{"addr": "0x539114", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0x2d stored in layout struct for 0x4da4a0"}
+{"addr": "0x53b7ba", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id 0x2e for rect lookup 0x4d96b0"}
+{"addr": "0x53b814", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0x2e stored in layout struct for 0x4da4a0"}
+{"addr": "0x53d5a3", "value": "94", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "person id table (0xd,0x20,0xe,0x28,0x58,0x5e) for get_person 0x490b00"}
+{"addr": "0x5410b8", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm8", "note": "0x5410a0 clears out[47] 8-byte (ruler,val) pairs; out is a STACK local of the only caller 0x551bd0 at [esp+0x54..0x1cc) (frame 0x5d4) -> needs relocation; up to 8 extra entries are appended after the forces"}
+{"addr": "0x541111", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop ebp 0..46 over get_force 0x490aa0 collecting force rulers (force +4) into the 47 x 8 stack array"}
+{"addr": "0x54127e", "value": "376", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "(C+5)*8", "encoding": "imm32", "note": "0x5411d0 walks the same 47 x 8-byte array (pointer parent +0x2c8 -> child +0x1bc), byte bound 0x178 = 47*8; array is a stack local of 0x551bd0"}

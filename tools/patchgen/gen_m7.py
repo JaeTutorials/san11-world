@@ -42,6 +42,23 @@ for f in sorted(glob.glob(f'{PROJ}/m7_review/result_*.jsonl')):
         r = json.loads(l)
         if r['verdict'] == 'BASE':
             review.append(r)
+# M8 review (M8_FORCES.md, m8_review/result_*.jsonl): CITY = base constants the M7 review missed (always on);
+# FORCE = force / corps count constants, written in C by the reviewers (trinity: R = C), applied with the regular
+# force count R. FORCE sites are generated only when M8_FORCE_SITES is on (the force arrays must move first).
+M8_FORCE_SITES = False
+m8_city, m8_force = [], []
+for f in sorted(glob.glob(f'{PROJ}/m8_review/result_*.jsonl')):
+    for l in open(f, encoding='utf-8'):
+        if not l.strip():
+            continue
+        r = json.loads(l)
+        if r['verdict'] == 'CITY' and r.get('patch'):
+            m8_city.append(r)
+        elif r['verdict'] == 'FORCE' and r.get('patch') and r.get('role') not in ('PAIR', 'ARRAY_SIZE'):
+            m8_force.append(dict(r, patch=re.sub(r'\bC\b', 'R', r['patch'])))
+review += m8_city
+if M8_FORCE_SITES:
+    review += m8_force
 struct_rows = [json.loads(l) for l in open(f'{PROJ}/m7_struct_sites.jsonl', encoding='utf-8') if l.strip()]
 # follow-up pass after the C=210 tests (M7_LAYOUT.md §11a)
 struct_rows += [json.loads(l) for l in open(f'{PROJ}/m7_struct_sites_extra.jsonl', encoding='utf-8') if l.strip()]

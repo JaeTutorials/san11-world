@@ -1,0 +1,116 @@
+{"addr": "0x543a7e", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI text slot id 0x29 for 0x4da250 (string 0x2da1)."}
+{"addr": "0x543be0", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "eax = control id from 0x4db7e0 compared with 0x29 -> message 0x2da1."}
+{"addr": "0x54591c", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "switch on UI command id (ecx-0x6c1) range 0..0x2d, jump table 0x545b5c."}
+{"addr": "0x545b54", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "bytes inside the switch byte table 0x545b88 (data, mis-disassembled)."}
+{"addr": "0x545bf9", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI element id 0x29 for 0x5442b0 (UI table 0x5593e0), after a control-id switch."}
+{"addr": "0x546020", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI layout table index 0x29 for 0x5593e0 (0xc2 entries of 12 bytes at 0x843700)."}
+{"addr": "0x5466fd", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI element id 0x29 for 0x5442b0 (alternative 0x1a)."}
+{"addr": "0x546c69", "value": "1692", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI control id 0x69c passed to 0x4dc620 (get control)."}
+{"addr": "0x546fe1", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "ebp = control id from 0x4db7e0 compared with 0x29 -> message 0x2da1."}
+{"addr": "0x547646", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "loop edi 0..45 over get_force 0x490aa0 (all forces except the special one): bound 46 -> C+4."}
+{"addr": "0x548d49", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI command id switch (0x29 / 0x31f / 0x320), edi = command id."}
+{"addr": "0x549124", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "eax = control id from 0x4db7e0 (cases 8, 0x29, 0x31f)."}
+{"addr": "0x54912f", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI control id 0x29 passed to dialog vtable+0x1ac."}
+{"addr": "0x54933d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI text slot id 0x29 for 0x4d94c0."}
+{"addr": "0x54a9ac", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "loop edi 0..40 (jl 41) over get_force 0x490aa0 registering force colours [force+0x44] via 0x52fa40; Koei stops at 40 (probable off-by-one of the regular range), semantics kept as C-1 (C would also be fine)."}
+{"addr": "0x54afc3", "value": "42", "verdict": "FORCE", "role": "REG_COUNT", "patch": "C", "encoding": "imm8", "note": "loop edi 0..41 over get_force 0x490aa0 adding each valid regular force to a list (0x4dd0b0)."}
+{"addr": "0x54b088", "value": "41", "verdict": "FORCE", "role": "REG_MAX", "patch": "C-1", "encoding": "imm8", "note": "esi = owner force of a city (vfunc+0x40); 0..41 regular-force check before get_force 0x490aa0."}
+{"addr": "0x54c13c", "value": "42", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "rep stosd count clearing STATIC int[42] at 0x9283108 (next var 0x92831b0) indexed by owner force id; inc at 0x54c17f allows id<=46 (overflows in original), read by sort comparator 0x54aa9b/0x54aaa2: relocate to C+5 dwords and clear C+5 (minimum C)."}
+{"addr": "0x54c17a", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = building owner force (vfunc+0x40), bound 0..46 before inc [force*4+0x9283108] (static per-force counter array)."}
+{"addr": "0x54d4f3", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI text slot id 0x29 for 0x4d94c0."}
+{"addr": "0x54ddd9", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop esi 0..46 over get_force 0x490aa0 setting relations of a new force against every force (0x4b4f40/0x4b5050/0x4b52d0)."}
+{"addr": "0x54e089", "value": "-42", "verdict": "CITY", "role": "NEG", "patch": "-C", "encoding": "imm8", "note": "M7 MISS: building-id normalisation, gate index = id-42 (lea ecx,[eax-0x2a]); neighbours 0x54e07f/0x54e084/0x54e095 already patched to C / C+G-1 / C, this disp8 must become -C or every gate maps to -1."}
+{"addr": "0x54f44b", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "init loop count over the 47 per-force records (0x184 bytes, 8 sub-entries each) at dialog+0x34e8; embedded in setup dialog object vt 0x842de0 which is a stack local of 0x556d20."}
+{"addr": "0x551404", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "loop over the 47 per-force 0x184-byte records at dialog+0x34e8 (ruler person id at +0 checked 0..0x44b)."}
+{"addr": "0x551639", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop [esp+0x14] 0..46 over get_force 0x490aa0 filling up to 8 force entries."}
+{"addr": "0x552f3a", "value": "47", "verdict": "FORCE", "role": "CORPS_COUNT", "patch": "C+5", "encoding": "imm32", "note": "returns 47 - count over the corps list built by 0x4ce470 (all corps 0..46 via 0x490ad0) = free corps slots."}
+{"addr": "0x55373b", "value": "47", "verdict": "FORCE", "role": "CORPS_COUNT", "patch": "C+5", "encoding": "imm32", "note": "47 - count over the corps list built by 0x4ce470 (all corps 0..46 via 0x490ad0), result >0 test."}
+{"addr": "0x553cce", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = city owner force (building vfunc+0x40), valid range 0..46."}
+{"addr": "0x5541cc", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "ctor 0x554180: loop over 47 per-force records of 0x184 at this+0x34ec (vector ctor of 8 x 0x2c sub-objects); array embedded in the dialog object (stack local of 0x556d20, frame 0x8ce4)."}
+{"addr": "0x5541d8", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "element size 0x2c of the 8 sub-objects per record (vector ctor 0x402990), not a count."}
+{"addr": "0x5551fe", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = city owner force (building vfunc+0x40), valid range 0..46."}
+{"addr": "0x557807", "value": "-42", "verdict": "CITY", "role": "NEG", "patch": "-C", "encoding": "imm8", "note": "M7 MISS: building-id normalisation, gate index = id-42 (lea edx,[ecx-0x2a]); neighbours 0x5577fd/0x557802/0x557813 already patched to C / C+G-1 / C, this disp8 must become -C."}
+{"addr": "0x557a29", "value": "47", "verdict": "KEEP", "role": "", "patch": "", "encoding": "imm8", "note": "row-pool size of list control vt 0x843260 (47 x 0x10 rows at +0x1b0, in-use flags at +0x4a0) with heap fallback 0x4e3af0; keep 47 (offset 0x4a0 and new(0x560) at 0x5512db depend on it)."}
+{"addr": "0x557a89", "value": "47", "verdict": "KEEP", "role": "", "patch": "", "encoding": "imm8", "note": "free search over the same 47-slot row pool (non-pool rows freed by 0x4e3b70); keep."}
+{"addr": "0x557c58", "value": "47", "verdict": "FORCE", "role": "FORCE_COUNT", "patch": "C+5", "encoding": "imm8", "note": "loop ebx 0..46 over get_force 0x490aa0 (regular filter 0x481350) writing compacted 0x184 records into dialog+0x34e8."}
+{"addr": "0x557e81", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "loop over the 47 per-force 0x184 records (arg = dialog+0x34e8, embedded array, stack local of 0x556d20)."}
+{"addr": "0x557f02", "value": "47", "verdict": "FORCE", "role": "ARRAY_SIZE", "patch": "C+5", "encoding": "imm32", "note": "search loop over the 47 per-force 0x184 records (dialog+0x34e8) for a ruler person id."}
+{"addr": "0x5580cb", "value": "47", "verdict": "KEEP", "role": "", "patch": "", "encoding": "imm32", "note": "ctor 0x558090 of list control vt 0x843260: 47 preallocated rows (pool with heap fallback); keep."}
+{"addr": "0x5580e3", "value": "47", "verdict": "KEEP", "role": "", "patch": "", "encoding": "imm32", "note": "ctor 0x558090: 47 in-use flags at +0x4a0 of the row pool; keep."}
+{"addr": "0x559270", "value": "184", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "sound id 0xb8 for sound manager 0xa5fef0 method 0x414670."}
+{"addr": "0x5595c6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "eax = control id from 0x4db7e0 compared with 0x29."}
+{"addr": "0x5598b9", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "rectangle coordinates (0x12,0x2b,0x71,0x3b) for 0x472660."}
+{"addr": "0x559904", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rectangle coordinates (0x13,0x2a,0x72,0x3a)."}
+{"addr": "0x55ac50", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "rectangle coordinates (0x12,0x2b,0x71,0x3b) for 0x472660."}
+{"addr": "0x55d446", "value": "46", "verdict": "FORCE", "role": "FORCE_MAX", "patch": "C+4", "encoding": "imm8", "note": "eax = force id from the 8 player slots at this+0x3fa4, range 0..46 before get_force 0x490aa0."}
+{"addr": "0x55de78", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "ebx = UI control id compared with 0x29 -> message 0x2da1."}
+{"addr": "0x55e5ba", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI text slot id 0x29 for 0x4d94c0."}
+{"addr": "0x560661", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "text wrap width 0x2a for string formatter 0x499030."}
+{"addr": "0x560762", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "ebp = control id from 0x4db7e0 compared with 0x29."}
+{"addr": "0x560c0a", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "edi = UI command id (vtable+0x1d4) switch."}
+{"addr": "0x560ed4", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "UI ids from table 0x847328 (range 0x1d2..0x1da) compared with 0x29."}
+{"addr": "0x5628c8", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound id 0x2b for 0xa5fef0 method 0x414280."}
+{"addr": "0x562921", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "unit motion/state code returned by 0x5628e0 (terrain-dependent 0x2b..0x2e)."}
+{"addr": "0x562947", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "unit motion/state code returned by 0x5628e0 (terrain-dependent 0x2b..0x2e)."}
+{"addr": "0x562965", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "unit motion/state code returned by 0x5628e0 (terrain-dependent 0x2b..0x2e)."}
+{"addr": "0x56296d", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "unit motion/state code returned by 0x5628e0 (terrain-dependent 0x2b..0x2e)."}
+{"addr": "0x564d55", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "random animation/sound id base (0x2a/0x2e) from rand(2)."}
+{"addr": "0x564d99", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "random animation/sound id base (0x2a/0x2e) from rand(2)."}
+{"addr": "0x564e1b", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound id 0x2e for 0x414670."}
+{"addr": "0x565074", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "random animation/sound id base (0x2a/0x2e) from rand(2)."}
+{"addr": "0x5650cc", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56522d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56524c", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56529d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5652bc", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56530d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x565328", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56539d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5653b8", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5654bd", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5654e6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id for 0xa5fef0 method 0x414280."}
+{"addr": "0x565504", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56554d", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x565568", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5655dd", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5656dd", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x565706", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id for 0xa5fef0 method 0x414280."}
+{"addr": "0x565724", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56576d", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56588d", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x565f06", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit motion id 0x2f for 0x564bb0."}
+{"addr": "0x565f78", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "random animation/sound id base (0x2a/0x2e) from rand(2)."}
+{"addr": "0x566024", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound id 0x2c for 0x414670."}
+{"addr": "0x56609f", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound id 0x2d for 0x414670."}
+{"addr": "0x566506", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id for 0xa5fef0 method 0x414280."}
+{"addr": "0x5666f6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x56670a", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x566727", "value": "47", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id for 0xa5fef0 method 0x414280."}
+{"addr": "0x566775", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5667d6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5667ea", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x566855", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5668b6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x5668ca", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x566935", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566999", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566bc6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566c45", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566ca6", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566d22", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566d85", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566d99", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x566da7", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566e35", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566e49", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x566e57", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566ee5", "value": "41", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566ef9", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x566f07", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id queried with 0x5623c0."}
+{"addr": "0x566ff6", "value": "42", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "motion state id compare [eax+4]==0x2a."}
+{"addr": "0x5671ad", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x5671cd", "value": "46", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x56720d", "value": "45", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "unit 3D model motion id set with 0x562280 (float speed argument)."}
+{"addr": "0x56836d", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "state-machine state id 0x2c stored at [esi+4] (state table 0x848d94, <0x38 states)."}
+{"addr": "0x5683e9", "value": "43", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm8", "note": "sound/effect id for 0xa5fef0 method 0x414280."}
+{"addr": "0x568410", "value": "44", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "state-machine state id 0x2c stored at [esi+4] (state table 0x848d94)."}

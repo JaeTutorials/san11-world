@@ -19,6 +19,7 @@
 #include "terrainworld.h"
 #include "bases.h"
 #include "midmap.h"
+#include "forces.h"
 
 // ---------------------------------------------------------------- logging
 static FILE* g_log = nullptr;
@@ -37,6 +38,7 @@ struct Config {
     int W = 200, H = 200;        // world size in hexes
     int C = 42;                  // number of cities (Koei: 42); gates G=10 and ports P=35 follow, N = C+G+P bases
     int bases = 0;               // 1 = base-count patch set (worldmod_bases*.txt, bases.cpp): cities = C
+    int R = 42;                  // regular forces = regular corps (forces.cpp, M8_FORCES.md); forces = corps = R + 5
     int X0 = 0, Y0 = 0;          // where the original 200x200 China map sits in the world (Y0 must be even)
     int enable = 1;              // 0 = proxy only, no patches
     int verifyOnly = 0;          // 1 = check patch table against exe bytes, write nothing
@@ -75,6 +77,7 @@ static void loadConfig() {
     g_cfg.H = GetPrivateProfileIntW(g_section, L"height", 200, ini);
     g_cfg.C = GetPrivateProfileIntW(g_section, L"cities", 42, ini);
     g_cfg.bases = GetPrivateProfileIntW(g_section, L"bases", 0, ini);
+    g_cfg.R = GetPrivateProfileIntW(g_section, L"forces", 42, ini);
     g_cfg.X0 = GetPrivateProfileIntW(g_section, L"china_x", 0, ini);
     g_cfg.Y0 = GetPrivateProfileIntW(g_section, L"china_y", 0, ini);
     g_cfg.enable = GetPrivateProfileIntW(L"mod", L"enable", 1, ini);
@@ -156,6 +159,7 @@ struct Eval {
         if (is("G")) return 10;
         if (is("P")) return 35;
         if (is("N")) return g_cfg.C + 45;
+        if (is("R")) return g_cfg.R;
         if (is("B20")) return (int64_t)(uintptr_t)g_world.hex20;
         if (is("E20")) return (int64_t)(uintptr_t)g_world.hex20 + W * H * 20;
         if (is("B28")) return (int64_t)(uintptr_t)g_world.hex28;
@@ -1274,6 +1278,7 @@ static void installTerrainHooks() {
 // (markers outside the map area are moved far off screen) and adds zoom (mouse wheel) and panning (left
 // drag; a click without dragging still moves the camera there).
 static Bases* g_bases = nullptr;
+static Forces* g_forces = nullptr;
 static const uint32_t MAPUI_VT = 0x859670;
 typedef int(__thiscall* MapUiComposeFn)(void* ui);                                   // 0x640260
 typedef void(__thiscall* MapUiLayoutFn)(void* ui);                                   // 0x63fd00
@@ -1492,8 +1497,44 @@ static int __fastcall hdrWrite(uint8_t* hdr, void*, uint8_t* stream) {
     return g_hdrWriteOrig(hdr, stream);
 }
 
+// M8 (forces.cpp): with more than 42 regular forces the two u8[47] force x force members live in side tables
+typedef void(__thiscall* ForceResetFn)(void*, int);
+static ForceResetFn g_forceResetOrig = nullptr;
+static void __fastcall forceResetHook(uint8_t* force, void*, int arg) {
+    g_forceResetOrig(force, arg);
+    forceClearRows(force);
+}
+static bool installForceHooks() {
+    static const uint8_t getRel[] = { 0x8b, 0x44, 0x24, 0x04, 0x85, 0xc0, 0x7c, 0x0c, 0x83, 0xf8, 0x2e };
+    static const uint8_t setRel[] = { 0x8b, 0x44, 0x24, 0x04, 0x85, 0xc0, 0x7c, 0x12, 0x83, 0xf8, 0x2e };
+    static const uint8_t getA64[] = { 0x56, 0x8b, 0xf1, 0x8b, 0x06, 0xff, 0x50, 0x08 };
+    static const uint8_t setA64[] = { 0x8b, 0x44, 0x24, 0x04, 0x85, 0xc0, 0x7c, 0x0d, 0x83, 0xf8, 0x2e };
+    static const uint8_t reset[] = { 0x8b, 0x44, 0x24, 0x04, 0x53, 0x56, 0x57 };
+    static const uint8_t serRel[] = { 0xe8, 0x60, 0xfd, 0xff, 0xff };     // 0x481d7b call 0x481ae0
+    static const uint8_t serA64[] = { 0xe8, 0xdb, 0xfc, 0xff, 0xff };     // 0x481e00 call 0x481ae0
+    if (memcmp((void*)0x4814e0, getRel, sizeof getRel) || memcmp((void*)0x481ac0, setRel, sizeof setRel) ||
+        memcmp((void*)0x4812c0, getA64, sizeof getA64) || memcmp((void*)0x4814c0, setA64, sizeof setA64) ||
+        memcmp((void*)0x481d7b, serRel, sizeof serRel) || memcmp((void*)0x481e00, serA64, sizeof serA64)) return false;
+    g_forceResetOrig = (ForceResetFn)makeTrampoline(0x481020, sizeof reset, reset);
+    if (!g_forceResetOrig) return false;
+    writeJmp(0x481020, (void*)forceResetHook);
+    writeJmp(0x4814e0, g_forces->GET_REL);
+    writeJmp(0x481ac0, g_forces->SET_REL);
+    writeJmp(0x4812c0, g_forces->GET_A64);
+    writeJmp(0x4814c0, g_forces->SET_A64);
+    auto setCall = [](uint32_t at, const void* to) {
+        DWORD old; VirtualProtect((void*)at, 5, PAGE_EXECUTE_READWRITE, &old);
+        *(int32_t*)(at + 1) = (int32_t)((uintptr_t)to - (at + 5));
+        VirtualProtect((void*)at, 5, old, &old);
+    };
+    setCall(0x481d7b, g_forces->SER_FREL);
+    setCall(0x481e00, g_forces->SER_FA64);
+    return true;
+}
+
 static void installHooks() {
     writeJmp(0x483b70, (void*)hexCtor);
+    if (g_forces && g_forces->R > 42) logf("force x force tables (R=%d): %s", g_forces->R, installForceHooks() ? "installed" : "NOT installed (unexpected code)");
     if (g_bases) {
         static const uint8_t rdHead[] = { 0x51, 0x53, 0x55, 0x56, 0x8B, 0x74, 0x24, 0x14 };   // push ecx/ebx/ebp/esi; mov esi,[esp+14h]
         static const uint8_t wrHead[] = { 0x56, 0x8B, 0x74, 0x24, 0x08 };                     // push esi; mov esi,[esp+8]
@@ -1674,6 +1715,15 @@ static void init() {
             { "AREA2BASE", b.AREA2BASE }, { "CITYTAB844", b.CITYTAB844 }, { "DBGBASE", b.DBGBASE },
             { "BLD_U8", b.BLD_U8 }, { "SER_U8ID", b.SER_U8ID }, { "SER_ID", b.SER_ID }, { "IDWIDE", b.IDWIDE } };
         for (auto& e : syms) Eval::add(e.n, e.v);
+        static Forces fo;
+        if (g_cfg.R > g_cfg.C) g_cfg.R = g_cfg.C;
+        if (!forcesSetup(g_cfg.R, fo, logf)) { logf("ERROR: force arrays could not be set up. Patches disabled."); return; }
+        g_forces = &fo;
+        struct { const char* n; const void* v; } fsyms[] = {
+            { "FORCEARR", fo.FORCEARR }, { "CORPSARR", fo.CORPSARR }, { "FREL", fo.FREL }, { "FA64", fo.FA64 },
+            { "GET_REL", fo.GET_REL }, { "SET_REL", fo.SET_REL }, { "GET_A64", fo.GET_A64 }, { "SET_A64", fo.SET_A64 },
+            { "SER_FREL", fo.SER_FREL }, { "SER_FA64", fo.SER_FA64 } };
+        for (auto& e : fsyms) Eval::add(e.n, e.v);
         // u16 area of every hex, at the same byte offset as its HEX20 record (+4): the 7-bit field
         // in HEX20 dword+4 bits 5..11 cannot hold more than 128 areas
         uint8_t* a = (uint8_t*)VirtualAlloc(nullptr, cells * 20 + 2 * pad20, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);

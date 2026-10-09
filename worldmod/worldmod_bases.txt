@@ -185,6 +185,7 @@
 004c15a9 2 4 81c4ac000000 0xac+((C-42)*4) ; [frame] stack 0x4c0c30 (int[42] city->barbarian base, esp+
 004c15fd 2 4 81c4ac000000 0xac+((C-42)*4) ; [frame] stack 0x4c0c30 (int[42] city->barbarian base, esp+
 004c1617 2 4 81c4ac000000 0xac+((C-42)*4) ; [frame] stack 0x4c0c30 (int[42] city->barbarian base, esp+
+004c37f1 2 4 81f996000000 0x40+N-1 ; [BASE_MAX] cmp ecx, 0x96
 004cf305 2 4 81fd3e040000 N+999 ; [LOCATION_MAX] cmp ebp, 0x43e
 004cf8d7 1 4 3d3e040000 N+999 ; [LOCATION_MAX] cmp eax, 0x43e
 004d4b5a 1 4 b978691b09 UISCR_A ; [imm] UISCR_A static UI screen object relocated

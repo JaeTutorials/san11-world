@@ -15,7 +15,7 @@ call "%VSDIR%\VC\Auxiliary\Build\vcvars32.bat" >nul
 :build
 cd /d "%~dp0"
 if not exist build mkdir build
-cl /nologo /utf-8 /O2 /MT /W3 /EHsc /std:c++17 /LD src\worldmod.cpp src\d3dtrace.cpp src\automation.cpp src\terrainworld.cpp src\bases.cpp src\profiler.cpp src\pathfind.cpp src\radar.cpp src\midmap.cpp /Fobuild\ /Febuild\d3d9.dll /link /DEF:src\d3d9.def user32.lib kernel32.lib shell32.lib gdi32.lib
+cl /nologo /utf-8 /O2 /MT /W3 /EHsc /std:c++17 /LD src\worldmod.cpp src\d3dtrace.cpp src\automation.cpp src\terrainworld.cpp src\bases.cpp src\profiler.cpp src\pathfind.cpp src\radar.cpp src\midmap.cpp src\forces.cpp /Fobuild\ /Febuild\d3d9.dll /link /DEF:src\d3d9.def user32.lib kernel32.lib shell32.lib gdi32.lib
 if errorlevel 1 exit /b 1
 exit /b 0
 
