@@ -279,7 +279,7 @@ static void commitPatches() {
 }
 
 // ---------------------------------------------------------------- code caves (worldmod_caves.txt, see tools/detour.py)
-// CAVE <site> <steal_len> <old_bytes> <cave_bytes> [@<off>=rel:<hexaddr> | @<off>=abs:<expr>]... ; comment
+// CAVE <site> <steal_len> <old_bytes> <cave_bytes> [@<off>=rel:<hexaddr> | @<off>=abs|abs16|abs8:<expr>]... ; comment
 // The stolen span at <site> becomes `jmp cave` + nops. rel fixups are rel32 to an absolute exe address,
 // abs fixups are 32-bit values of an expression (worldmod symbols, W, H, B20...).
 struct Cave { uint8_t* site; int steal; uint8_t* code; bool inPlace; };
@@ -321,16 +321,16 @@ static int loadCaves(const wchar_t* file, bool required) {
         for (size_t i = 0; i < len; i++) { unsigned b; sscanf_s(code_s + 2 * i, "%2x", &b); code[i] = (uint8_t)b; }
         while (char* fx = strtok_s(nullptr, " \t\r\n", &ctx)) {
             unsigned off = 0; char kind[8] = {}; char arg[256] = {};
-            bool w16 = false;
+            int width = 4;                            // abs / rel: 4 bytes, abs16: 2, abs8: 1
             if (sscanf_s(fx, "@%u=%7[a-z0-9]:%255s", &off, kind, (unsigned)sizeof kind, arg, (unsigned)sizeof arg) != 3 ||
-                off + ((w16 = !strcmp(kind, "abs16")) ? 2 : 4) > len) {
+                off + (width = !strcmp(kind, "abs16") ? 2 : !strcmp(kind, "abs8") ? 1 : 4) > len) {
                 logf("CAVE line %d: bad fixup %s", lineno, fx); bad++; continue;
             }
             int32_t v;
             uint8_t* at = inPlace ? site : code;      // rel32 is relative to where the bytes will run
             if (!strcmp(kind, "rel")) v = (int32_t)(strtoul(arg, nullptr, 16) - ((uintptr_t)at + off + 4));
             else { Eval e{ arg }; v = (int32_t)e.expr(); if (!e.ok) { logf("CAVE line %d: bad expr %s", lineno, arg); bad++; continue; } }
-            memcpy(code + off, &v, w16 ? 2 : 4);
+            memcpy(code + off, &v, width);
         }
         g_cavePoolUsed += (len + 15) & ~(size_t)15;
         g_caves[g_ncaves++] = { site, steal, code, inPlace };
@@ -1486,13 +1486,21 @@ __declspec(naked) static void loadedThunk() {
 static const uint32_t WIDE_MARK = 'EDIW';                 // bytes "WIDE"
 typedef int(__thiscall* HeaderIoFn)(void* hdr, void* stream);
 static HeaderIoFn g_hdrReadOrig = nullptr, g_hdrWriteOrig = nullptr;
+// M8: streams for more than 42 regular forces carry "WF" + u16 R instead (also wide)
+static uint32_t streamMark() { return g_forces && g_forces->R != 42 ? ('F' << 8 | 'W' | (uint32_t)g_forces->R << 16) : WIDE_MARK; }
 static int __fastcall hdrRead(uint8_t* hdr, void*, uint8_t* stream) {
     int r = g_hdrReadOrig(hdr, stream);
-    if (g_bases && g_bases->IDWIDE) InterlockedExchange((LONG*)g_bases->IDWIDE, *(uint32_t*)(hdr + 0x30) == WIDE_MARK);
+    uint32_t m = *(uint32_t*)(hdr + 0x30);
+    bool wf = (m & 0xffff) == ('F' << 8 | 'W');
+    if (g_bases && g_bases->IDWIDE) InterlockedExchange((LONG*)g_bases->IDWIDE, m == WIDE_MARK || wf);
+    int streamR = wf ? (int)(m >> 16) : 42;
+    uint32_t kind = *(uint32_t*)(hdr + 8);         // 4 / 0x18: master data (no forces)
+    if (g_forces && streamR != g_forces->R && m != 0 && kind != 4 && kind != 0x18)
+        logf("ERROR: this file was made for %d regular forces, the game runs %d (worldmod.ini forces=): it will not load correctly", streamR, g_forces->R);
     return r;
 }
 static int __fastcall hdrWrite(uint8_t* hdr, void*, uint8_t* stream) {
-    *(uint32_t*)(hdr + 0x30) = WIDE_MARK;
+    *(uint32_t*)(hdr + 0x30) = streamMark();
     if (g_bases && g_bases->IDWIDE) InterlockedExchange((LONG*)g_bases->IDWIDE, 1);
     return g_hdrWriteOrig(hdr, stream);
 }
@@ -1535,6 +1543,7 @@ static bool installForceHooks() {
 static void installHooks() {
     writeJmp(0x483b70, (void*)hexCtor);
     if (g_forces && g_forces->R > 42) logf("force x force tables (R=%d): %s", g_forces->R, installForceHooks() ? "installed" : "NOT installed (unexpected code)");
+    if (g_forces) logf("stack-array store traps: %s", forcesInstallTraps() ? "installed" : "NOT installed (unexpected code)");
     if (g_bases) {
         static const uint8_t rdHead[] = { 0x51, 0x53, 0x55, 0x56, 0x8B, 0x74, 0x24, 0x14 };   // push ecx/ebx/ebp/esi; mov esi,[esp+14h]
         static const uint8_t wrHead[] = { 0x56, 0x8B, 0x74, 0x24, 0x08 };                     // push esi; mov esi,[esp+8]
@@ -1726,7 +1735,7 @@ static void init() {
             { "SER_FREL", fo.SER_FREL }, { "SER_FA64", fo.SER_FA64 }, { "TURNORD", fo.TURNORD },
             { "AIFREG", fo.AIFREG }, { "AICORPS", fo.AICORPS }, { "FLAG104", fo.FLAG104 }, { "FLAG84A", fo.FLAG84A },
             { "FLAG84B", fo.FLAG84B }, { "FLAG1004", fo.FLAG1004 }, { "SFRC1", fo.SFRC1 }, { "SFRC2", fo.SFRC2 },
-            { "SFRC3", fo.SFRC3 }, { "SFRC4", fo.SFRC4 } };
+            { "SFRC3", fo.SFRC3 }, { "SFRC4", fo.SFRC4 }, { "STKARR", fo.STKARR }, { "DLGREC", fo.DLGREC } };
         for (auto& e : fsyms) Eval::add(e.n, e.v);
         // u16 area of every hex, at the same byte offset as its HEX20 record (+4): the 7-bit field
         // in HEX20 dword+4 bits 5..11 cannot hold more than 128 areas

@@ -3,6 +3,7 @@
   "world_dir": "data/world",
   "data_name": "world_custom",
   "cities": 500,
+  "forces": 59,
   "spacing": 14,
   "exe": "san11pk_world.exe",
   "save_dir": "UserData_kit",

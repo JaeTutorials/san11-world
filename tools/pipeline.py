@@ -65,6 +65,7 @@ DEFAULT_PROJECT = {
     "world_dir": "data/world",          # 世界地图的工作目录（生成的中间文件，在本项目里）
     "data_name": "world_custom",        # 游戏目录里的数据目录名
     "cities": 500,                      # 城市总数（含光荣的 42 座），42~1000
+    "forces": 42,                       # 常规势力（= 常规军团）数，42~59；另有 4 个异族和 1 个贼（M8_FORCES.md）
     "spacing": 14,                      # 城市最小间距（格），光荣中国约 13~21
     "exe": "san11pk_world.exe",         # 用哪个启动程序玩（它在 worldmod.ini 里有同名的一节）
     "save_dir": "",                     # 存档目录（空 = 游戏默认的「我的文档」）
@@ -227,13 +228,15 @@ def build_world(cfg, fresh=False, reselect=False, log=say):
     run("make_world.py", world, "--types-from", world / "world_types.npy", "--cache", cache, log=log)
     dst.mkdir(parents=True, exist_ok=True)
     run("gen_bases.py", world, "--cities", C, "--out", dst, "--game", g, log=log)
-    run("convert_scen.py", "--cities-json", dst / "bases_cities.json", "--out", dst, "--no-ts", "--game", g, log=log)
+    R = int(cfg.get("forces", 42))
+    run("convert_scen.py", "--cities-json", dst / "bases_cities.json", "--out", dst, "--no-ts", "--game", g,
+        "--forces", R, log=log)
     shutil.rmtree(dst / "scenario_base", ignore_errors=True)    # scenario_build.py starts from the fresh files
     for f in ("world_mat.npy", "world_info.json"):
         shutil.copy2(world / f, dst / f)
     info = json.loads((world / "world_info.json").read_text())
     values = {"world_terrain": 1, "data_dir": cfg["data_name"], "width": info["cols"], "height": info["rows"],
-              "china_x": info["china_hi"], "china_y": info["china_lo"], "bases": 1, "cities": C, "auto_skip": 1}
+              "china_x": info["china_hi"], "china_y": info["china_lo"], "bases": 1, "cities": C, "forces": R, "auto_skip": 1}
     if cfg.get("save_dir"):
         values["save_dir"] = cfg["save_dir"]
     ini_set(g, section_of(cfg), values, log)

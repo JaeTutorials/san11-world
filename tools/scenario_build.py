@@ -89,8 +89,11 @@ def split_name(o):
 class Scenario:
     def __init__(self, data, data_dir):
         self.D = bytearray(data)
+        mark = bytes(data[0x2c:0x30])           # "WIDE", or "WF" + u16 regular forces (M8_FORCES.md)
+        self.R = struct.unpack("<H", mark[2:])[0] if mark[:2] == b"WF" else 42
+        self.F = self.R + 5
         for C in range(42, 1001):
-            L, end = scen_layout(C, C + 45, wide=True)
+            L, end = scen_layout(C, C + 45, wide=True, R=self.R)
             if end == len(data):
                 self.L, self.C, self.N = L, C, C + 45
                 break
@@ -142,7 +145,7 @@ class Scenario:
         return self.i16(self.at("force", f))
 
     def used_forces(self):
-        return [f for f in range(42) if self.force_ruler(f) != -1]
+        return [f for f in range(self.R) if self.force_ruler(f) != -1]
 
 
 def build(spec, scn):
@@ -156,17 +159,18 @@ def build(spec, scn):
     used_slots = set()
     tp = bytes(D[at("person", TEMPLATE_PERSON):at("person", TEMPLATE_PERSON) + PERSON])
     tc = bytes(D[at("city", TEMPLATE_CITY):at("city", TEMPLATE_CITY) + 81])
-    used_kokugo = {D[at("force", f) + 4 + 47 + 1] for f in range(47) if scn.force_ruler(f) != -1}
-    used_colors = {D[at("force", f) + 4 + 47 + 2] for f in range(47) if scn.force_ruler(f) != -1}
+    F, R = scn.F, scn.R
+    used_kokugo = {D[at("force", f) + 4 + F + 1] for f in range(F) if scn.force_ruler(f) != -1}
+    used_colors = {D[at("force", f) + 4 + F + 2] for f in range(F) if scn.force_ruler(f) != -1}
     created = []
     for fs in spec.get("forces", []):
         fname = fs.get("name", "?")
         # ---- ids: force, corps, 国号, colour
-        fid = next((f for f in range(42) if scn.force_ruler(f) == -1), None)
-        kid = next((k for k in range(42) if D[at("army", k)] == 0xff), None)
+        fid = next((f for f in range(R) if scn.force_ruler(f) == -1), None)
+        kid = next((k for k in range(R) if D[at("army", k)] == 0xff), None)
         kok = next((k for k in KOKUGO_FREE if k not in used_kokugo), None)
         if fid is None or kid is None or kok is None:
-            raise BuildError("势力已满：一个剧本最多 42 个势力")
+            raise BuildError(f"势力已满：这个剧本最多 {R} 个常规势力（project.json 的 forces 可以调大，最大 59）")
         used_kokugo.add(kok)
         color = fs.get("color")
         if color is None:
@@ -260,18 +264,18 @@ def build(spec, scn):
         # ---- corps, force, 国号, description
         D[at("army", kid):at("army", kid) + 10] = (bytes([fid, 1]) + struct.pack("<h", ruler) + bytes([0]) +
                                                     struct.pack("<h", 0x1c) + bytes([0]) + struct.pack("<h", -1))
-        rel = [50] * 47
+        rel = [50] * F
         rel[fid] = 100
-        for k in range(42, 47):
+        for k in range(R, F):
             rel[k] = 0
         fo = at("force", fid)
-        D[fo:fo + 73] = struct.pack("<hh", ruler, -1) + bytes(rel) + bytes([9, kok, color, 0]) + struct.pack("<h", -1) + bytes(16)
+        D[fo:fo + 4 + F + 22] = struct.pack("<hh", ruler, -1) + bytes(rel) + bytes([9, kok, color, 0]) + struct.pack("<h", -1) + bytes(16)
         for k in scn.used_forces():
             if k != fid:
                 D[at("force", k) + 4 + fid] = 50
         to = at("type14", kok)
         D[to:to + 5] = big5(fname, 5, "国号")
-        if fs.get("intro"):
+        if fs.get("intro") and fid < 42:                    # the scenario has 42 descriptions (forces 0..41)
             do = scn.L["force_desc"][0] + 369 * fid
             D[do] = fs.get("stars", 3)
             D[do + 1:do + 369] = big5(fs["intro"], 368, "势力介绍")
@@ -286,7 +290,7 @@ def build(spec, scn):
             r[73:75] = tc[73:75]
             D[co:co + 81] = r
             if c < 42:
-                D[0x1DB + c] = fid                                 # owner shown on the scenario preview
+                D[0x1DB + c] = color                               # owner's colour on the scenario preview
         created.append((fid, fname, ruler, [n for _, n in members], [cs["city"] for _, cs in cities]))
     # ---- relations (after every force exists, so they can name each other)
     rulers = {scn.person_name(scn.force_ruler(f)): f for f in scn.used_forces()}
@@ -306,7 +310,7 @@ def list_scenario(scn):
     print(f"城市 {scn.C} 座。势力：")
     for f in scn.used_forces():
         fo = scn.at("force", f)
-        kok = scn.D[fo + 4 + 47 + 1]
+        kok = scn.D[fo + 4 + scn.F + 1]
         name = "—"
         if kok < 84:
             to = scn.at("type14", kok)

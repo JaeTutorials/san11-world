@@ -100,11 +100,54 @@ static void serRow(uint8_t* stream, uint8_t* member, uint8_t* table, int off) {
 void* __fastcall forceSerRel(uint8_t* stream, int, uint8_t* member) { serRow(stream, member, g_f->FREL, 0x0c); return stream; }
 void* __fastcall forceSerA64(uint8_t* stream, int, uint8_t* member) { serRow(stream, member, g_f->FA64, 0x64); return stream; }
 
+// ---- four stores into the stack-array slots that are 4-byte instructions with branch targets at them and
+// right after them (no 5-byte jump fits): int3 + this vectored handler (tools/patchgen/m8_sites.py STACK_TRAP)
+volatile LONG g_trapHits = 0;           // stores performed by the handler (debug: "forces" automation command)
+namespace {
+enum { EAX, EBX, ECX, EDX, ESI, EDI };
+struct StackTrap { uint32_t at; int slot, idx, src; uint8_t bytes[4]; };
+const StackTrap kTraps[] = {
+    { 0x58d252, 2, EDI, ESI, { 0x89, 0x74, 0xbc, 0x18 } },     // mov [esp+edi*4+0x18], esi
+    { 0x5cd459, 11, ESI, EDI, { 0x89, 0x7c, 0xb4, 0x14 } },    // mov [esp+esi*4+0x14], edi
+    { 0x5e9310, 13, ESI, EBX, { 0x89, 0x5c, 0xb4, 0x60 } },    // mov [esp+esi*4+0x60], ebx
+    { 0x5e9342, 13, ESI, EAX, { 0x89, 0x44, 0xb4, 0x60 } },    // mov [esp+esi*4+0x60], eax
+};
+DWORD reg(const CONTEXT* c, int r) {
+    switch (r) { case EAX: return c->Eax; case EBX: return c->Ebx; case ECX: return c->Ecx;
+                 case EDX: return c->Edx; case ESI: return c->Esi; default: return c->Edi; }
+}
+LONG CALLBACK trapHandler(EXCEPTION_POINTERS* e) {
+    if (e->ExceptionRecord->ExceptionCode != EXCEPTION_BREAKPOINT || !g_f) return EXCEPTION_CONTINUE_SEARCH;
+    uint32_t at = (uint32_t)(uintptr_t)e->ExceptionRecord->ExceptionAddress;
+    for (const auto& t : kTraps) {
+        if (t.at != at) continue;
+        CONTEXT* c = e->ContextRecord;
+        DWORD i = reg(c, t.idx);
+        if (i < 0x2000 / 4) *(DWORD*)(g_f->STKARR + t.slot * 0x2000 + i * 4) = reg(c, t.src);
+        InterlockedIncrement(&g_trapHits);
+        c->Eip = at + 4;
+        return EXCEPTION_CONTINUE_EXECUTION;
+    }
+    return EXCEPTION_CONTINUE_SEARCH;
+}
+}  // namespace
+
+bool forcesInstallTraps() {
+    for (const auto& t : kTraps) if (memcmp((void*)(uintptr_t)t.at, t.bytes, 4)) return false;
+    if (!AddVectoredExceptionHandler(1, trapHandler)) return false;
+    for (const auto& t : kTraps) {
+        DWORD old; VirtualProtect((void*)(uintptr_t)t.at, 1, PAGE_EXECUTE_READWRITE, &old);
+        *(uint8_t*)(uintptr_t)t.at = 0xcc;
+        VirtualProtect((void*)(uintptr_t)t.at, 1, old, &old);
+    }
+    return true;
+}
+
 bool forcesSetup(int R, Forces& f, TraceLogFn log) {
     g_log = log;
-    // stage 1 allows up to 59 (64 forces: the force bit sets stay 64-bit, ids fit in signed bytes); until the
-    // stack arrays and screen objects sized by the force count are moved too (M8_FORCES.md), only 42
-    const int maxR = 42;
+    // stage 1 allows up to 59: 64 forces, so the force bit sets stay 64-bit and every id and patched constant fits
+    // in a signed byte (M8_FORCES.md)
+    const int maxR = 59;
     if (R < 42 || R > maxR) { if (log) log("forces: regular force count %d not supported yet (42..%d), using 42", R, maxR); R = 42; }
     f.R = R; f.F = R + 5;
     const int F = f.F;
@@ -125,8 +168,10 @@ bool forcesSetup(int R, Forces& f, TraceLogFn log) {
     f.SFRC2 = alloc(F * 4);
     f.SFRC3 = alloc(F * 0x40);
     f.SFRC4 = alloc(F * 4);
+    f.STKARR = alloc(32 * 0x2000);
+    f.DLGREC = alloc(F * 0x184 + 0x200);
     if (!f.TURNORD || !f.AIFREG || !f.AICORPS || !f.FLAG104 || !f.FLAG84A || !f.FLAG84B || !f.FLAG1004 ||
-        !f.SFRC1 || !f.SFRC2 || !f.SFRC3 || !f.SFRC4) { if (log) log("forces: allocation failed"); return false; }
+        !f.SFRC1 || !f.SFRC2 || !f.SFRC3 || !f.SFRC4 || !f.STKARR || !f.DLGREC) { if (log) log("forces: allocation failed"); return false; }
     memcpy(f.SFRC1, (void*)0x9283108, 42 * 4);
     memcpy(f.SFRC2, (void*)0x7998b88, 47 * 4);
     memcpy(f.SFRC3, (void*)0x7998c48, 47 * 0x40);
@@ -140,6 +185,6 @@ bool forcesSetup(int R, Forces& f, TraceLogFn log) {
     f.SER_FREL = (void*)forceSerRel; f.SER_FA64 = (void*)forceSerA64;
     g_f = &f;
     bool ok = f.FORCEARR && f.CORPSARR && f.FREL && f.FA64;
-    if (log) log("forces: R=%d F=%d, arrays %s", R, F, ok ? "allocated" : "FAILED");
+    if (log) log("forces: R=%d F=%d, arrays %s (FORCEARR %p, STKARR %p, trap counter %p)", R, F, ok ? "allocated" : "FAILED", f.FORCEARR, f.STKARR, (void*)&g_trapHits);
     return ok;
 }

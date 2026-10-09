@@ -102,12 +102,118 @@ WIDE_SCEN = {'item': [55], 'force': [55], 'army': [5, 7], 'type14': [81, 82]}
 WIDE_SAVE = dict(WIDE_SCEN, city=[89])
 
 
-def scen_layout(C, N, wide=False):
+def scen_layout(C, N, wide=False, R=42):
+    """R: regular forces (M8_FORCES.md); F = R+5 force and corps records, each force record with F relations"""
     w = 1 if wide else 0
+    F = R + 5
     secs = [('filehdr', 1, HDR), ('scen_info', 1, 595), ('force_desc', 42, 369), ('world_head', 1, 11),
-            ('building', N, BLD), ('person', 850, PERSON_SCEN), ('item', 100, 57 + w), ('force', 47, 72 + w),
-            ('army', 47, 8 + 2 * w), ('city', C, CITY_SCEN), ('gate', G, 64), ('port', P, 64), ('type14', 84, 87 + 2 * w)]
+            ('building', N, BLD), ('person', 850, PERSON_SCEN), ('item', 100, 57 + w), ('force', F, 72 + w + F - 47),
+            ('army', F, 8 + 2 * w), ('city', C, CITY_SCEN), ('gate', G, 64), ('port', P, 64), ('type14', 84, 87 + 2 * w)]
     return _place(secs, 0)
+
+
+# ---------------------------------------------------------------- M8: more forces and corps (M8_FORCES.md)
+# Koei: forces 0..41 regular, 42..45 barbarians, 46 bandits (47); corps 0..41 regular, 42..46 belong to forces
+# 42..46. With R regular forces the barbarian / bandit forces and their corps move to R..R+4 (F = R+5 of each).
+# The stream's header mark becomes "WF" + u16 R (worldmod checks it against its own R).
+P_CORPS = 95          # person +0x94 corps (i8)
+
+
+def fmap(v, R):
+    """old force / corps id -> new (0xff = none)"""
+    if v == 0xff or v < 42:
+        return v
+    if v <= 46:
+        return R + v - 42
+    raise ConvError(f'force/corps id {v} out of range')
+
+
+def force_mark(R):
+    return b'WF' + struct.pack('<H', R) if R != 42 else WIDE_MARK
+
+
+def forces_expand(W, C, N, R):
+    """wide scenario stream with 47 forces/corps -> R regular forces (F = R+5); R = 42 gives W back"""
+    if R == 42:
+        return W
+    if not 42 < R <= 59:
+        raise ConvError(f'regular force count {R}: 42..59 supported (64 forces, the force bit sets are 64-bit)')
+    F = R + 5
+    L, end = scen_layout(C, N, wide=True)
+    if len(W) != end or W[0x2c:0x30] != WIDE_MARK:
+        raise ConvError('not a wide scenario stream of this layout')
+    D = bytearray(W)
+    # (the scenario info's 42 bytes at 0x1DB are the owners' colours for the preview map, not force ids)
+    o, n, sz = L['building']                                # building +1 owner force
+    for i in range(n):
+        D[o + i * sz + 1] = fmap(D[o + i * sz + 1], R)
+    o, n, sz = L['person']                                  # person corps
+    for i in range(n):
+        D[o + i * sz + P_CORPS] = fmap(D[o + i * sz + P_CORPS], R)
+    for name in ('city', 'gate', 'port'):                   # +0 corps
+        o, n, sz = L[name]
+        for i in range(n):
+            D[o + i * sz] = fmap(D[o + i * sz], R)
+    newid = {old: fmap(old, R) for old in range(47)}        # old record -> new record index
+
+    # forces: ruler i16, i16, relations u8[47], 4 bytes, target type, target id i16, force bits u64, u64
+    fo, fn, fsz = L['force']
+    old = [bytes(D[fo + k * fsz: fo + (k + 1) * fsz]) for k in range(fn)]
+    tmpl = old[41]                                          # an unused regular force in every Koei scenario?
+    forces = [None] * F
+    for k, r in enumerate(old):
+        forces[newid[k]] = r
+    out_f = []
+    for k in range(F):
+        r = forces[k]
+        if r is None:                                       # new regular force slot: like Koei's unused ones
+            r = b'\xff\xff\xff\xff' + bytes([50] * 47) + tmpl[51:]
+            r = r[:4] + bytes([50] * 47) + r[51:]
+            row_old = None
+        rel_old = r[4:51]
+        rel = bytearray([50] * F)
+        for j in range(47):
+            rel[newid[j]] = rel_old[j]
+        if forces[k] is None:
+            rel[k] = 100
+            for j in range(42, 47):
+                rel[newid[j]] = tmpl[4 + j]
+        tail = bytearray(r[51:])                            # +0x3c +0x40 +0x44 +0x48 type, +0x4c id (i16), masks
+        if tail[3] == 0 and tail[4:6] != b'\xff\xff':       # target type 0 = force
+            tail[4:6] = struct.pack('<h', fmap(struct.unpack('<h', tail[4:6])[0] & 0xff, R))
+        if forces[k] is None:
+            tail[1] = 0xff                                  # no 国号
+            tail[3:6] = b'\xff\xff\xff'                     # no target
+            tail[6:14] = bytes(8)
+        bits = struct.unpack('<Q', bytes(tail[6:14]))[0]
+        nb = 0
+        for j in range(47):
+            if bits >> j & 1:
+                nb |= 1 << newid[j]
+        tail[6:14] = struct.pack('<Q', nb)
+        out_f.append(bytes(r[:4]) + bytes(rel) + bytes(tail))
+
+    # corps: force, number, leader i16, (type, id i16) x 2
+    ao, an, asz = L['army']
+    olda = [bytes(D[ao + k * asz: ao + (k + 1) * asz]) for k in range(an)]
+    empty = next(r for r in olda if r[0] == 0xff)
+    corps = [None] * F
+    for k, r in enumerate(olda):
+        corps[newid[k]] = r
+    out_a = []
+    for k in range(F):
+        r = bytearray(corps[k] if corps[k] is not None else empty)
+        r[0] = fmap(r[0], R)
+        for t in (4, 7):
+            if r[t] == 0 and r[t + 1:t + 3] != b'\xff\xff':
+                r[t + 1:t + 3] = struct.pack('<h', fmap(struct.unpack('<h', bytes(r[t + 1:t + 3]))[0] & 0xff, R))
+        out_a.append(bytes(r))
+    E = bytes(D[:fo]) + b''.join(out_f) + b''.join(out_a) + bytes(D[ao + an * asz:])
+    E = E[:0x2c] + force_mark(R) + E[0x30:]
+    L2, end2 = scen_layout(C, N, wide=True, R=R)
+    if len(E) != end2:
+        raise ConvError(f'forces_expand: {len(E)} bytes, layout says {end2}')
+    return E
 
 
 def save_layout(v1, v2, base, C, N, wide=False):
@@ -596,6 +702,7 @@ def main():
     ap.add_argument('--troops', type=int, default=0, help='troops of the new (unowned) cities (Koei: 0)')
     ap.add_argument('--gold', type=int, default=0, help='gold of the new cities (Koei unowned cities: 0)')
     ap.add_argument('--food', type=int, default=0, help='food of the new cities (Koei unowned cities: 0)')
+    ap.add_argument('--forces', type=int, default=42, help='regular forces R (M8_FORCES.md); 42 = Koei')
     a = ap.parse_args()
     opts = {'troops': a.troops, 'gold': a.gold, 'food': a.food}
     try:
@@ -624,6 +731,7 @@ def main():
             W = widen(E, Ln, Lw, WIDE_SCEN)
             if narrow(W, Lw, Ln, WIDE_SCEN) != E:
                 raise ConvError(f'{p.name}: widened ids do not narrow back')
+            W = forces_expand(W, C, N, a.forces)
             (out / 'scenario' / p.name).write_bytes(W)
             print(f'{p.name}: {len(D)} -> {len(W)} bytes')
         D = master.read_bytes()

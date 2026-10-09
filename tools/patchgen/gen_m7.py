@@ -132,6 +132,10 @@ if M8_FORCE_SITES:
     import m8_sites
     for r in m8_force:
         va = int(r['addr'], 16)
+        if va in m8_sites.KEEP_SITES or any(lo <= va < hi for lo, hi in m8_sites.KEEP_RANGES):
+            continue
+        if va in m8_sites.FIXED:
+            r = dict(r, patch=m8_sites.FIXED[va])
         size = 4 if r['encoding'] == 'imm32' else 1
         add_field(va, locate(va, int(str(r['value']), 0), size), size, norm(r['patch']),
                   f"[M8 {r['role']}] {insn[va][1]} {insn[va][2]}")
@@ -187,6 +191,11 @@ PHASE_C_TEXT = {
 for va, text in PHASE_C_TEXT.items():
     widen[va] = 'TEXT'
     WIDEN_TEXT[va] = (None, text)
+if M8_FORCE_SITES:                              # M8 stack arrays -> STKARR slots (re-encoded in caves)
+    for va, old, new in m8_sites.STACK:
+        assert f'{insn[va][1]} {insn[va][2]}' == old, (hex(va), old)
+        widen[va] = 'TEXT'
+        WIDEN_TEXT[va] = (None, new)
 
 # ---- structural rows
 HAND = {}            # hand-written in-place rewrites for rows described in prose: va -> (start, length, asm)
@@ -313,6 +322,10 @@ for start, length, text, relocs, comment in rewrites:
     for v in range(start, start + length):
         taken.add(v)
 field_vas = {va for (va, off) in fields}
+if M8_FORCE_SITES:                     # int3 traps of forces.cpp: no cave may steal these bytes
+    for va in m8_sites.STACK_TRAP:
+        for v in range(va, va + 4):
+            taken.add(v)
 caves_ok, caves_failed = 0, []
 
 

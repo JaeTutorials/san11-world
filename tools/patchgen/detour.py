@@ -123,9 +123,10 @@ class Builder:
                     e = f'({e})+{add}'
                 fix.append(f'@{off}=abs:{e}')
         for off, size, expr in fp:
-            if size != 4:
+            kind = {4: 'abs', 2: 'abs16', 1: 'abs8'}.get(size)
+            if not kind:
                 raise SystemExit(f'detour {site:#x}: patched field of size {size} not supported')
-            fix.append(f'@{off}=abs:{expr.replace(" ", "")}')
+            fix.append(f'@{off}={kind}:{expr.replace(" ", "")}')
         self.records.append(f'CAVE {site:08x} {steal} {old.hex()} {c1.hex()} {" ".join(fix)} ; {comment}')
         return len(c1)
 
