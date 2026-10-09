@@ -73,8 +73,9 @@ _START = _click(524, 1176, 3000) + _click(524, 1176, 3000) + _click(524, 1176, 8
 # through the opening events until the map is idle
 MACROS = {
     # scenario 1 (184 黄巾之乱) as 公孫瓚
-    "newgame": _click(720, 430, 3000) + _skip() + _click(816, 425, 1500) + _START,
-    # the same scenario as 凱撒 (歐洲, tools/forces/europe.json): pick it in the force list ("切換顯示")
+    "newgame": _click(720, 430, 3000) + _skip() + ["wait 6000"] + _click(816, 426, 1500) + _START,
+    # the same scenario as 凱撒 (歐洲): pick it in the force list ("切換顯示"). The row (556,528) was 歐洲 when it
+    # was force 12 (tools/forces/europe.json); scenarios/europe_184.json makes it force 0, so check the row first
     "europe": _click(720, 430, 3000) + _click(540, 856, 1500) + _click(556, 528, 1500) + _START,
     "skip": ["skip 180000"],
 }
