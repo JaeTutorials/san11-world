@@ -1,0 +1,97 @@
+{"addr": "0x598144", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "rep stosd count 0x2710 dwords = 40000-byte 200x200 map-cell bitmap on the stack of 0x597f20 (esp+0x20), indexed x*200+y"}
+{"addr": "0x598aee", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: ebp=0..999 passed to unit getter 0x490e70 at 0x5989c6"}
+{"addr": "0x5991fb", "value": "80000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "difficulty table 80000/200000/320000 (with 4/10/16): troop threshold compared with a building value"}
+{"addr": "0x59a125", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = unit vtable+0x50 = troop count < 1000 check"}
+{"addr": "0x59a211", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: ebx=0..999 passed to unit getter 0x490e70 at 0x59a106"}
+{"addr": "0x59a80d", "value": "3000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 3000 to 0x649410(ms,1): wait/display duration in milliseconds"}
+{"addr": "0x59b3f9", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "amount 10000 passed to 0x4ae3c0(building, amount) resource change"}
+{"addr": "0x59b46e", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "amount arg of 0x4b6580(obj, amount, src) (other callers pass -10/5/50/500): gameplay value"}
+{"addr": "0x59bad2", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "difficulty-dependent table of starting resource amounts (2000/1000/40000/...)"}
+{"addr": "0x59bb06", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "difficulty-dependent table of starting resource amounts (1000/500/20000/...)"}
+{"addr": "0x59c0a3", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: edi=0..999 passed to unit getter 0x490e70 at 0x59c056"}
+{"addr": "0x59c1c2", "value": "3000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 3000 to 0x649410(ms,1): display duration in milliseconds"}
+{"addr": "0x59c2d4", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: edi=0..999 passed to unit getter 0x490e70 at 0x59c2b6"}
+{"addr": "0x59c9be", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "person 0x55 (getter 0x490b00) face id (+0x3c via 0x48a450, 0..2399) + 1000 -> alternate portrait via 0x4892d0"}
+{"addr": "0x59d345", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "merit/exp amount 1000 for the 3 officers of a unit via 0x4ad3d0(unit, a, b)"}
+{"addr": "0x59d350", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "merit/exp amount 1000 for the 3 officers of a unit via 0x4ad3d0(unit, a, b)"}
+{"addr": "0x59db2f", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "merit/exp amount 1000 for the 3 officers of a unit via 0x4ad3d0(unit, a, b)"}
+{"addr": "0x59db3a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "merit/exp amount 1000 for the 3 officers of a unit via 0x4ad3d0(unit, a, b)"}
+{"addr": "0x59fbe3", "value": "2000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 2000 duration (ms) to message/animation call 0x5899c0"}
+{"addr": "0x59fc00", "value": "2000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 2000 duration (ms) to message call 0x589780 (other callers pass 1500)"}
+{"addr": "0x5a04b6", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm16", "note": "building durability word [obj+0x10] >= 1000 -> damage display state (66 3d = 16-bit immediate)"}
+{"addr": "0x5a0539", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "building max durability (0x487150) & ~1 compared with 1000 for display threshold"}
+{"addr": "0x5a12e6", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "millisecond accumulator [0x96a61e0] wraps at 1000 -> animation frame counter [0x96a61e4] 0..5"}
+{"addr": "0x5a5400", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI score bonus +1000 (troop type vs terrain affinity) returned in ecx"}
+{"addr": "0x5a55a3", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = unit vtable+0x50 troop count <= 1000"}
+{"addr": "0x5a56ec", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = unit vtable+0x50 troop count <= 1000"}
+{"addr": "0x5a5948", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = unit vtable+0x50 troop count < 1000"}
+{"addr": "0x5a69f0", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI target score 1000 returned when own troops between 1x and 2x of target's"}
+{"addr": "0x5a7a07", "value": "4000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "random(4000)+2000 compared with troop count (0x472150 = rand)"}
+{"addr": "0x5a7a56", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI score +1000 when troops <= enemy-400"}
+{"addr": "0x5a9487", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a949b", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a9646", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a965a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a9bb3", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a9bb9", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a9c8b", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a9dd0", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a9de7", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5a9f30", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa04c", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa063", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa171", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa1fa", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa227", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa308", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa365", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa388", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action-score arithmetic in 0x5a91d0 (unit move/attack candidate score: +/-1000 bonus/penalty or n*1000), no id involved"}
+{"addr": "0x5aa7ab", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "random(1000) < 1 or 5: permille chance"}
+{"addr": "0x5aac65", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "target vtable+0x50 troop count > 1000 -> score +125"}
+{"addr": "0x5ab25a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action score base +1000 (same scoring scheme as 0x5a91d0)"}
+{"addr": "0x5ab28a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "AI action score: ebx + bonus + 1000"}
+{"addr": "0x5b1380", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "random(1000)+1500 stored as damage/result value in a 0x80-byte result struct"}
+{"addr": "0x5b1721", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "per-type damage/value table (edi=800, ebx=1000)"}
+{"addr": "0x5b282d", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "arg4 of 0x5b85f0 = gold cost 1000 compared with the building's gold (0x486c80)"}
+{"addr": "0x5b2ef5", "value": "4000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "merit 4000 given to a person via 0x4a6d50(person, amount)"}
+{"addr": "0x5b8fad", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "command object ctor (vtable 0x8492f8): amount field +0xc default 1000 (gold)"}
+{"addr": "0x5b917b", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "command object ctor (vtable 0x849350): amount field +0x10 default 1000"}
+{"addr": "0x5b9c5d", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "command object ctor (vtable 0x84991c): amount field +0xc default 1000"}
+{"addr": "0x5c2fa2", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "0x5c2f90 returns a gold cost: 1000 (500 if the force has tech 0x2b)"}
+{"addr": "0x5c2fda", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "0x5c2f90 returns a gold cost: 1000 - 500*hasTech(0x2b)"}
+{"addr": "0x5c36e8", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "formula: 1000 + stat-sum*(x+20)/20 for an amount"}
+{"addr": "0x5cb5c4", "value": "5000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "string/message id 0x1388 passed to 0x49cb60"}
+{"addr": "0x5cc79e", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "merit 1000 given to a person via 0x4a6d50(person, amount)"}
+{"addr": "0x5ccbbd", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "arg4 of 0x5b85f0 = gold cost 1000 compared with the building's gold"}
+{"addr": "0x5cd922", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "command amount [esi+0x14] (gold) capped at 1000 in a success-chance formula"}
+{"addr": "0x5cd936", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "command amount [esi+0x14] (gold) capped at 1000 in a success-chance formula"}
+{"addr": "0x5cda5d", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "command amount (gold) capped at 1000 in a success-chance formula"}
+{"addr": "0x5cda65", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "command amount (gold) capped at 1000 in a success-chance formula"}
+{"addr": "0x5d1aa6", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "building max troops (0x47b330) - 1000 compared with current troops +0x40"}
+{"addr": "0x5d23ec", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "number 1000 stored into message parameter slot 0 via 0x49c980 (text formatting)"}
+{"addr": "0x5d245a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "number 1000 stored into message parameter slot 0 via 0x49c980 (text formatting)"}
+{"addr": "0x5d4603", "value": "15000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "string/message id 0x3a98 passed to 0x49cb60"}
+{"addr": "0x5d509b", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "per-side value 1000 in a person-vs-person event struct passed to 0x520680 (persons at +0/+0xc)"}
+{"addr": "0x5d53b9", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "per-side value 1000 in a person-vs-person event struct passed to 0x520680 (persons at +0/+0xc)"}
+{"addr": "0x5d795c", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "infinite path-length sentinel for a route over region ids 0..35 (getter 0x490c70)"}
+{"addr": "0x5dc145", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "new-unit parameter [ebp+0x14] (gold to carry) = 1000 when base gold >= 2000"}
+{"addr": "0x5dc42c", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "0x5dc420 adds a unit id into the first free of 16 slots of an AI group record (planner+0x2164+k*0x44); slot used if id in 0..999 (callers push the unit id fed to getter 0x490e70 / checked by 0x4909c0)"}
+{"addr": "0x5dc467", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "0x5dc450 counts valid unit ids (0..999) in the 16 slots of an AI group record"}
+{"addr": "0x5dc476", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "0x5dc450 counts valid unit ids (0..999) in the 16 slots of an AI group record"}
+{"addr": "0x5dc486", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "0x5dc450 counts valid unit ids (0..999) in the 16 slots of an AI group record"}
+{"addr": "0x5dc496", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "0x5dc450 counts valid unit ids (0..999) in the 16 slots of an AI group record"}
+{"addr": "0x5e0656", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "in/out troop amount initialised to 1000 for 0x5f80d0 (computes troops (6-x)*1000)"}
+{"addr": "0x5e0665", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "troop amount returned by 0x5f80d0 compared with 1000"}
+{"addr": "0x5e07b9", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "(6 - person[+0xfc]) * 1000 troops"}
+{"addr": "0x5e0e43", "value": "1000", "verdict": "UNIT", "role": "ARRAY_SIZE", "patch": "U", "encoding": "imm32", "note": "rep stosd dword count: clears the per-unit dword array embedded in the global AI planner object 0x99c78a8 at +0x11c4 (static 0x99c8a6c..0x99c9a0c); 0x5e0e20 then writes one dword per unit id; group table follows at +0x2164 -> relocate"}
+{"addr": "0x5e0f96", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "inlined 0x5dc420: free-slot test (unit id 0..999) in an AI group record while inserting unit id [esp+0x14] from the 0x490e70 loop"}
+{"addr": "0x5e0ff6", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "inlined 0x5dc420: free-slot test (unit id 0..999) in a new AI group record, inserting unit id [esp+0x14]"}
+{"addr": "0x5e183a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "troop amount rounded down to thousands ((x/1000)*1000)"}
+{"addr": "0x5e19a0", "value": "1000", "verdict": "UNIT", "role": "ARRAY_SIZE", "patch": "U", "encoding": "imm32", "note": "rep stosd dword count: planner reset 0x5e1900 clears the per-unit dword array at AI planner (0x99c78a8)+0x11c4, 1000 dwords; embedded static -> relocate"}
+{"addr": "0x5e2cfa", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "stack command object (vtable 0x8492f8) amount field +0xc = 1000"}
+{"addr": "0x5e37d6", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "troops + 1000, capped at 20000"}
+{"addr": "0x5e57f0", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: [esp+0x18]=0..999 passed to unit getter 0x490e70 at 0x5e56ff"}
+{"addr": "0x5e61ba", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: ebx=0..999 passed to unit getter 0x490e70 at 0x5e6166"}
+{"addr": "0x5e7a1f", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: edi=0..999 passed to unit getter 0x490e70 at 0x5e77a6"}
+{"addr": "0x5e8014", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "loop bound: ebp=0..999 passed to unit getter 0x490e70 at 0x5e7f56 (also indexes per-unit 0x73f9fc0[ebp*4])"}
+{"addr": "0x5e81e9", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "object vtable+0x50 troop count < 1000"}

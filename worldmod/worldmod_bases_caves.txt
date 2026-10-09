@@ -13,6 +13,7 @@ CAVE 004795f8 5 83f8577d19 3d0000007f0f8d0b9647f0e9ed9547f0 @1=abs:N @7=rel:4796
 CAVE 00479605 5 83f9577d0c 81f90000007f0f8d0a9647f0e9f99547f0 @2=abs:N @8=rel:479616 @13=rel:47960a ; imm8->imm32 cmp ecx, 0x57 = N
 CAVE 0047960a 11 6bc0570fb6840858997900 69c00000007f0fb6840858997900e9029647f0 @2=abs:N @15=rel:479615 @10=abs:MAT87B ; imm8->imm32 imul eax, eax, 0x57 = N
 CAVE 00479c44 7 83f82a89442414 3d0000007f89442414e93d9c47f0 @1=abs:R @10=rel:479c4b ; imm8->imm32 cmp eax, 0x2a = R
+CAVE 0047a08d 8 c744241ce8030000 50a10000007f8944242058e985a047f0 @2=abs:USTREAM @12=rel:47a095 ; imm8->imm32 mov dword ptr [esp + 0x1c], 0x3e8 = TEXT
 CAVE 0047a9a1 5 83f8577c03 3d0000007f0f8c9ea947f0e996a947f0 @1=abs:N @7=rel:47a9a9 @12=rel:47a9a6 ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 0047b044 5 83f82a7c0b 3d0000007f0f8c49b047f0e939b047f0 @1=abs:C @7=rel:47b054 @12=rel:47b049 ; imm8->imm32 cmp eax, 0x2a = C
 CAVE 0047b049 5 83f8337f06 3d0000007f0f8f49b047f0e93eb047f0 @1=abs:C+G-1 @7=rel:47b054 @12=rel:47b04e ; imm8->imm32 cmp eax, 0x33 = C+G-1
@@ -415,6 +416,7 @@ CAVE 00492e66 10 6a2f6a508d8e0cb20000 680000007f6a508d8e0cb20000e95e2e49f0 @1=ab
 CAVE 0049387f 5 83ff2f7ce4 81ff0000007f0f8c5c3849f0e9733849f0 @2=abs:R+5 @8=rel:493868 @13=rel:493884 ; imm8->imm32 cmp edi, 0x2f = R+5
 CAVE 004938a4 5 83ff2f7ce7 81ff0000007f0f8c843849f0e9983849f0 @2=abs:R+5 @8=rel:493890 @13=rel:4938a9 ; imm8->imm32 cmp edi, 0x2f = R+5
 CAVE 004938c8 5 83ff2a7ce4 81ff0000007f0f8ca53849f0e9bc3849f0 @2=abs:C @8=rel:4938b1 @13=rel:4938cd ; imm8->imm32 cmp edi, 0x2a = C
+CAVE 00493afe 6 81ffe8030000 3b3d0000007fe9f93a49f0 @2=abs:USTREAM @7=rel:493b04 ; imm8->imm32 cmp edi, 0x3e8 = TEXT
 CAVE 004955f4 5 7f0483c057 0f8ff45549f0050000007fe9e95549f0 @2=rel:4955fa @7=abs:N @12=rel:4955f9 ; imm8->imm32 add eax, 0x57 = N
 CAVE 00495a2d 5 83f82e7f03 3d0000007f0f8f2a5a49f0e9225a49f0 @1=abs:R+4 @7=rel:495a35 @12=rel:495a32 ; imm8->imm32 cmp eax, 0x2e = R+4
 CAVE 00495f37 5 83f82e7f06 3d0000007f0f8f375f49f0e92c5f49f0 @1=abs:R+4 @7=rel:495f42 @12=rel:495f3c ; imm8->imm32 cmp eax, 0x2e = R+4
@@ -800,6 +802,47 @@ CAVE 0055782e 5 83c234eb03 81c20000007fe92b7855f0e9237855f0 @2=abs:C+G @7=rel:55
 CAVE 00557c58 7 83fb2f895c2410 81fb0000007f895c2410e9507c55f0 @2=abs:R+5 @11=rel:557c5f ; imm8->imm32 cmp ebx, 0x2f = R+5
 CAVE 0055bb48 9 83fd290f8f3f050000 81fd0000007f0f8f84c055f0e940bb55f0 @2=abs:C-1 @8=rel:55c090 @13=rel:55bb51 ; imm8->imm32 cmp ebp, 0x29 = C-1
 CAVE 0055d446 5 83f82e7f13 3d0000007f0f8f53d455f0e93bd455f0 @1=abs:R+4 @7=rel:55d45e @12=rel:55d44b ; imm8->imm32 cmp eax, 0x2e = R+4
+CAVE 0056de45 7 8bf5bfe8030000 be0000007fbfe8030000e93dde56f0 @1=abs:UWRAP @11=rel:56de4c @6=abs:U ; imm8->imm32 mov esi, ebp = TEXT
+CAVE 0056e46b 6 03c60fb74008 050000007f0fb74008e963e456f0 @1=abs:UWRAP @10=rel:56e471 ; imm8->imm32 add eax, esi = TEXT
+CAVE 0056e508 6 03c60fb74008 050000007f0fb74008e900e556f0 @1=abs:UWRAP @10=rel:56e50e ; imm8->imm32 add eax, esi = TEXT
+CAVE 0056f12e 5 0fb7443e08 0fb7860000007fe927f156f0 @3=abs:UWRAP+8 @8=rel:56f133 ; imm8->imm32 movzx eax, word ptr [esi + edi + 8] = TEXT
+CAVE 0056f133 8 03f769c0f4000000 81c60000007f69c0f4000000e92af156f0 @2=abs:UWRAP @13=rel:56f13b ; imm8->imm32 add esi, edi = TEXT
+CAVE 0056f82b 5 8b0c3e03f7 8b8e0000007f81c60000007fe91ff856f0 @2=abs:UWRAP @8=abs:UWRAP @13=rel:56f830 ; imm8->imm32 mov ecx, dword ptr [esi + edi] = TEXT
+CAVE 0056f8b6 8 8d460eb9e8030000 b80000007fb9e8030000e9aff856f0 @1=abs:UWRAP+0xe @11=rel:56f8be @6=abs:U ; imm8->imm32 lea eax, [esi + 0xe] = TEXT
+CAVE 0056f941 6 33c08bce8bd5 33c0b90000007f8bd5e939f956f0 @3=abs:UWRAP @10=rel:56f947 ; imm8->imm32 mov ecx, esi = TEXT
+CAVE 0056f9ad 5 8d34398b0e 8db10000007f8b0ee9a5f956f0 @2=abs:UWRAP @9=rel:56f9b2 ; imm8->imm32 lea esi, [ecx + edi] = TEXT
+CAVE 0056fcf6 7 8bf7bde8030000 be0000007fbde8030000e9eefc56f0 @1=abs:UWRAP @11=rel:56fcfd @6=abs:U ; imm8->imm32 mov esi, edi = TEXT
+CAVE 0056ffe6 5 8b041e03f3 8b860000007f81c60000007fe9daff56f0 @2=abs:UWRAP @8=abs:UWRAP @13=rel:56ffeb ; imm8->imm32 mov eax, dword ptr [esi + ebx] = TEXT
+CAVE 0057011f 6 03f033c085db 81c60000007f33c085dbe9160157f0 @2=abs:UWRAP @11=rel:570125 ; imm8->imm32 add esi, eax = TEXT
+CAVE 0057025f 6 03f033c085db 81c60000007f33c085dbe9560257f0 @2=abs:UWRAP @11=rel:570265 ; imm8->imm32 add esi, eax = TEXT
+CAVE 0057037e 5 03f3508bce 81c60000007f508bcee9750357f0 @2=abs:UWRAP @10=rel:570383 ; imm8->imm32 add esi, ebx = TEXT
+CAVE 00570424 5 8b043e03f7 8b860000007f81c60000007fe9180457f0 @2=abs:UWRAP @8=abs:UWRAP @13=rel:570429 ; imm8->imm32 mov eax, dword ptr [esi + edi] = TEXT
+CAVE 00570463 5 8b043e03f7 8b860000007f81c60000007fe9570457f0 @2=abs:UWRAP @8=abs:UWRAP @13=rel:570468 ; imm8->imm32 mov eax, dword ptr [esi + edi] = TEXT
+CAVE 005704c8 5 03fb508bcf 81c70000007f508bcfe9bf0457f0 @2=abs:UWRAP @10=rel:5704cd ; imm8->imm32 add edi, ebx = TEXT
+CAVE 00570533 5 8b0c1803c3 8b880000007f050000007fe9280557f0 @2=abs:UWRAP @7=abs:UWRAP @12=rel:570538 ; imm8->imm32 mov ecx, dword ptr [eax + ebx] = TEXT
+CAVE 005705bf 6 03c38b0085c0 050000007f8b0085c0e9b70557f0 @1=abs:UWRAP @10=rel:5705c5 ; imm8->imm32 add eax, ebx = TEXT
+CAVE 005706e9 5 03f7508bce 81c60000007f508bcee9e00657f0 @2=abs:UWRAP @10=rel:5706ee ; imm8->imm32 add esi, edi = TEXT
+CAVE 00570737 6 03c78b0085c0 050000007f8b0085c0e92f0757f0 @1=abs:UWRAP @10=rel:57073d ; imm8->imm32 add eax, edi = TEXT
+CAVE 005707a9 5 03f7508bce 81c60000007f508bcee9a00757f0 @2=abs:UWRAP @10=rel:5707ae ; imm8->imm32 add esi, edi = TEXT
+CAVE 005707f7 6 03c78b0085c0 050000007f8b0085c0e9ef0757f0 @1=abs:UWRAP @10=rel:5707fd ; imm8->imm32 add eax, edi = TEXT
+CAVE 0057086d 9 03fe8bcfe82ad3ffff 81c70000007f8bcfe893db56f0e9640857f0 @2=abs:UWRAP @9=rel:56dba0 @14=rel:570876 ; imm8->imm32 add edi, esi = TEXT
+CAVE 00570961 5 8b040e03f1 8b860000007f81c60000007fe9550957f0 @2=abs:UWRAP @8=abs:UWRAP @13=rel:570966 ; imm8->imm32 mov eax, dword ptr [esi + ecx] = TEXT
+CAVE 00570a38 5 03f3508bce 81c60000007f508bcee92f0a57f0 @2=abs:UWRAP @10=rel:570a3d ; imm8->imm32 add esi, ebx = TEXT
+CAVE 00570a7e 6 03c38b0085c0 050000007f8b0085c0e9760a57f0 @1=abs:UWRAP @10=rel:570a84 ; imm8->imm32 add eax, ebx = TEXT
+CAVE 00570ad8 5 03f7508bce 81c60000007f508bcee9cf0a57f0 @2=abs:UWRAP @10=rel:570add ; imm8->imm32 add esi, edi = TEXT
+CAVE 00570b1e 6 03c78b0085c0 050000007f8b0085c0e9160b57f0 @1=abs:UWRAP @10=rel:570b24 ; imm8->imm32 add eax, edi = TEXT
+CAVE 00570b85 6 03c68b0085c0 050000007f8b0085c0e97d0b57f0 @1=abs:UWRAP @10=rel:570b8b ; imm8->imm32 add eax, esi = TEXT
+CAVE 00570bb8 6 03c68b0085c0 050000007f8b0085c0e9b00b57f0 @1=abs:UWRAP @10=rel:570bbe ; imm8->imm32 add eax, esi = TEXT
+CAVE 00570c19 5 03f5508bce 81c60000007f508bcee9100c57f0 @2=abs:UWRAP @10=rel:570c1e ; imm8->imm32 add esi, ebp = TEXT
+CAVE 00570c78 6 03c58b0085c0 050000007f8b0085c0e9700c57f0 @1=abs:UWRAP @10=rel:570c7e ; imm8->imm32 add eax, ebp = TEXT
+CAVE 00570d1f 5 03fe508bcf 81c70000007f508bcfe9160d57f0 @2=abs:UWRAP @10=rel:570d24 ; imm8->imm32 add edi, esi = TEXT
+CAVE 00570dbd 5 8b040e03f1 8b860000007f81c60000007fe9b10d57f0 @2=abs:UWRAP @8=abs:UWRAP @13=rel:570dc2 ; imm8->imm32 mov eax, dword ptr [esi + ecx] = TEXT
+CAVE 00570e68 5 03f7508bce 81c60000007f508bcee95f0e57f0 @2=abs:UWRAP @10=rel:570e6d ; imm8->imm32 add esi, edi = TEXT
+CAVE 00570f14 5 03fe83f90a 81c70000007f83f90ae90b0f57f0 @2=abs:UWRAP @10=rel:570f19 ; imm8->imm32 add edi, esi = TEXT
+CAVE 005711d8 5 03f3508bce 81c60000007f508bcee9cf1157f0 @2=abs:UWRAP @10=rel:5711dd ; imm8->imm32 add esi, ebx = TEXT
+CAVE 0057121a 5 8b0c1803c3 8b880000007f050000007fe90f1257f0 @2=abs:UWRAP @7=abs:UWRAP @12=rel:57121f ; imm8->imm32 mov ecx, dword ptr [eax + ebx] = TEXT
+CAVE 00571298 5 03f3508bce 81c60000007f508bcee98f1257f0 @2=abs:UWRAP @10=rel:57129d ; imm8->imm32 add esi, ebx = TEXT
+CAVE 005712de 5 8b0c1803c3 8b880000007f050000007fe9d31257f0 @2=abs:UWRAP @7=abs:UWRAP @12=rel:5712e3 ; imm8->imm32 mov ecx, dword ptr [eax + ebx] = TEXT
 CAVE 0057382f 5 83f82e7f10 3d0000007f0f8f393857f0e9243857f0 @1=abs:R+4 @7=rel:573844 @12=rel:573834 ; imm8->imm32 cmp eax, 0x2e = R+4
 CAVE 005753ff 5 83f82e7e07 3d0000007f0f8e005457f0e9f45357f0 @1=abs:R+4 @7=rel:57540b @12=rel:575404 ; imm8->imm32 cmp eax, 0x2e = R+4
 CAVE 0057637b 9 83f82e0f8f8f010000 3d0000007f0f8f086557f0e9746357f0 @1=abs:R+4 @7=rel:576513 @12=rel:576384 ; imm8->imm32 cmp eax, 0x2e = R+4
@@ -1209,19 +1252,19 @@ CAVE 005edf31 9 83ff290f8fe0010000 81ff0000007f0f8f0ee15ef0e929df5ef0 @2=abs:C-1
 CAVE 005edf49 5 83f8297e03 3d0000007f0f8e46df5ef0e93edf5ef0 @1=abs:C-1 @7=rel:5edf51 @12=rel:5edf4e ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 005ee8e4 6 889865210000 6689980000007fe9dee85ef0 @3=abs:0x2165+(N-87)*0x34 @8=rel:5ee8ea ; imm8->imm32 mov byte ptr [eax + 0x2165], bl = TEXT
 CAVE 005ef01c 5 83f8297f3b 3d0000007f0f8f51f05ef0e911f05ef0 @1=abs:C-1 @7=rel:5ef05c @12=rel:5ef021 ; imm8->imm32 cmp eax, 0x29 = C-1
-CAVE 005ef27b 7 8804b5c29f3f07 668904b5c29f3f07e975f25ef0 @9=rel:5ef282 ; imm8->imm32 mov byte ptr [esi*4 + 0x73f9fc2], al = TEXT
+CAVE 005ef27b 7 8804b5c29f3f07 668904b50000007fe975f25ef0 @4=abs:AIUREC+2 @9=rel:5ef282 ; imm8->imm32 mov byte ptr [esi*4 + 0x73f9fc2], al = TEXT
 CAVE 005ef504 5 83fd2a7d17 81fd0000007f0f8d14f55ef0e9f8f45ef0 @2=abs:R @8=rel:5ef520 @13=rel:5ef509 ; imm8->imm32 cmp ebp, 0x2a = R
 CAVE 005ef9a5 5 83fb2a7d17 81fb0000007f0f8db5f95ef0e999f95ef0 @2=abs:R @8=rel:5ef9c1 @13=rel:5ef9aa ; imm8->imm32 cmp ebx, 0x2a = R
 CAVE 005efb15 6 c60101884101 c6010166894101e90ffb5ef0 @8=rel:5efb1b ; imm8->imm32 mov byte ptr [ecx + 1], al = TEXT
-CAVE 005effdf 7 8804b5c29f3f07 668904b5c29f3f07e9d9ff5ef0 @9=rel:5effe6 ; imm8->imm32 mov byte ptr [esi*4 + 0x73f9fc2], al = TEXT
+CAVE 005effdf 7 8804b5c29f3f07 668904b50000007fe9d9ff5ef0 @4=abs:AIUREC+2 @9=rel:5effe6 ; imm8->imm32 mov byte ptr [esi*4 + 0x73f9fc2], al = TEXT
 CAVE 005f0161 5 83f82a7d17 3d0000007f0f8d72015ff0e956015ff0 @1=abs:R @7=rel:5f017d @12=rel:5f0166 ; imm8->imm32 cmp eax, 0x2a = R
 CAVE 005f0406 7 8a5424140fb6c8 668b5424140fb6c8e900045ff0 @9=rel:5f040d ; imm8->imm32 mov dl, byte ptr [esp + 0x14] = TEXT
-CAVE 005f042e 7 8814bdc29f3f07 668914bdc29f3f07e928045ff0 @9=rel:5f0435 ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], dl = TEXT
+CAVE 005f042e 7 8814bdc29f3f07 668914bd0000007fe928045ff0 @4=abs:AIUREC+2 @9=rel:5f0435 ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], dl = TEXT
 CAVE 005f043f 6 889065210000 6689900000007fe939045ff0 @3=abs:0x2165+(N-87)*0x34 @8=rel:5f0445 ; imm8->imm32 mov byte ptr [eax + 0x2165], dl = TEXT
 CAVE 005f05cc 5 83ff297f35 81ff0000007f0f8ffa055ff0e9c0055ff0 @2=abs:C-1 @8=rel:5f0606 @13=rel:5f05d1 ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 005f078e 6 8a4c241803c6 668b4c241803c6e988075ff0 @8=rel:5f0794 ; imm8->imm32 mov cl, byte ptr [esp + 0x18] = TEXT
 CAVE 005f079b 6 888865210000 6689880000007fe995075ff0 @3=abs:0x2165+(N-87)*0x34 @8=rel:5f07a1 ; imm8->imm32 mov byte ptr [eax + 0x2165], cl = TEXT
-CAVE 005f0a08 7 8804bdc29f3f07 668904bdc29f3f07e9020a5ff0 @9=rel:5f0a0f ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], al = TEXT
+CAVE 005f0a08 7 8804bdc29f3f07 668904bd0000007fe9020a5ff0 @4=abs:AIUREC+2 @9=rel:5f0a0f ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], al = TEXT
 CAVE 005f0ad5 5 83fb298bc3 81fb0000007f8bc3e9cd0a5ff0 @2=abs:C-1 @9=rel:5f0ada ; imm8->imm32 cmp ebx, 0x29 = C-1
 CAVE 005f0c02 5 83fd297e15 81fd0000007f0f8e100c5ff0e9f60b5ff0 @2=abs:C-1 @8=rel:5f0c1c @13=rel:5f0c07 ; imm8->imm32 cmp ebp, 0x29 = C-1
 CAVE 005f0ca5 5 83f8297f07 3d0000007f0f8fa60c5ff0e99a0c5ff0 @1=abs:C-1 @7=rel:5f0cb1 @12=rel:5f0caa ; imm8->imm32 cmp eax, 0x29 = C-1
@@ -1229,17 +1272,17 @@ CAVE 005f0cb3 5 83ff297e09 81ff0000007f0f8eb50c5ff0e9a70c5ff0 @2=abs:C-1 @8=rel:
 CAVE 005f0cc9 5 83f8297f06 3d0000007f0f8fc90c5ff0e9be0c5ff0 @1=abs:C-1 @7=rel:5f0cd4 @12=rel:5f0cce ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 005f0e75 6 889965210000 6689990000007fe96f0e5ff0 @3=abs:0x2165+(N-87)*0x34 @8=rel:5f0e7b ; imm8->imm32 mov byte ptr [ecx + 0x2165], bl = TEXT
 CAVE 005f108a 7 8a4c24186bd244 668b4c24186bd244e984105ff0 @9=rel:5f1091 ; imm8->imm32 mov cl, byte ptr [esp + 0x18] = TEXT
-CAVE 005f1095 7 880cbdc29f3f07 66890cbdc29f3f07e98f105ff0 @9=rel:5f109c ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], cl = TEXT
+CAVE 005f1095 7 880cbdc29f3f07 66890cbd0000007fe98f105ff0 @4=abs:AIUREC+2 @9=rel:5f109c ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], cl = TEXT
 CAVE 005f1209 5 83f82a7d25 3d0000007f0f8d28125ff0e9fe115ff0 @1=abs:R @7=rel:5f1233 @12=rel:5f120e ; imm8->imm32 cmp eax, 0x2a = R
 CAVE 005f143d 5 83ff297f07 81ff0000007f0f8f3d145ff0e931145ff0 @2=abs:C-1 @8=rel:5f1449 @13=rel:5f1442 ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 005f144b 5 83f9297e09 81f90000007f0f8e4d145ff0e93f145ff0 @2=abs:C-1 @8=rel:5f1459 @13=rel:5f1450 ; imm8->imm32 cmp ecx, 0x29 = C-1
 CAVE 005f15b2 7 8a5424140fb6f8 668b5424140fb6f8e9ac155ff0 @9=rel:5f15b9 ; imm8->imm32 mov dl, byte ptr [esp + 0x14] = TEXT
 CAVE 005f15d4 6 889065210000 6689900000007fe9ce155ff0 @3=abs:0x2165+(N-87)*0x34 @8=rel:5f15da ; imm8->imm32 mov byte ptr [eax + 0x2165], dl = TEXT
-CAVE 005f17ba 11 8a542414880cbdc09f3f07 668b542414880cbdc09f3f07e9b4175ff0 @13=rel:5f17c5 ; imm8->imm32 mov dl, byte ptr [esp + 0x14] = TEXT
-CAVE 005f17d5 7 8814bdc29f3f07 668914bdc29f3f07e9cf175ff0 @9=rel:5f17dc ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], dl = TEXT
+CAVE 005f17ba 11 8a542414880cbdc09f3f07 668b542414880cbdc09f3f07e9b4175ff0 @13=rel:5f17c5 @8=abs:AIUREC+0 ; imm8->imm32 mov dl, byte ptr [esp + 0x14] = TEXT
+CAVE 005f17d5 7 8814bdc29f3f07 668914bd0000007fe9cf175ff0 @4=abs:AIUREC+2 @9=rel:5f17dc ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], dl = TEXT
 CAVE 005f1945 9 83ff290f8f8f070000 81ff0000007f0f8fd1205ff0e93d195ff0 @2=abs:C-1 @8=rel:5f20dd @13=rel:5f194e ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 005f1f0e 7 88843e65210000 6689843e0000007fe9081f5ff0 @4=abs:0x2165+(N-87)*0x34 @9=rel:5f1f15 ; imm8->imm32 mov byte ptr [esi + edi + 0x2165], al = TEXT
-CAVE 005f20c2 7 8804b5c29f3f07 668904b5c29f3f07e9bc205ff0 @9=rel:5f20c9 ; imm8->imm32 mov byte ptr [esi*4 + 0x73f9fc2], al = TEXT
+CAVE 005f20c2 7 8804b5c29f3f07 668904b50000007fe9bc205ff0 @4=abs:AIUREC+2 @9=rel:5f20c9 ; imm8->imm32 mov byte ptr [esi*4 + 0x73f9fc2], al = TEXT
 CAVE 005f219e 5 83fe2a7c5a 81fe0000007f0f8cf1215ff0e992215ff0 @2=abs:C @8=rel:5f21fd @13=rel:5f21a3 ; imm8->imm32 cmp esi, 0x2a = C
 CAVE 005f21a3 5 83fe567f55 81fe0000007f0f8ff1215ff0e997215ff0 @2=abs:N-1 @8=rel:5f21fd @13=rel:5f21a8 ; imm8->imm32 cmp esi, 0x56 = N-1
 CAVE 005f2208 7 6a2cb958192007 680000007fb958192007e900225ff0 @1=abs:C+2 @11=rel:5f220f ; imm8->imm32 push 0x2c = C+2
@@ -1252,7 +1295,7 @@ CAVE 005f4459 5 83f82e7f34 3d0000007f0f8f87445ff0e94e445ff0 @1=abs:R+4 @7=rel:5f
 CAVE 005f45d7 9 83fe290f8fd0010000 81fe0000007f0f8fa4475ff0e9cf455ff0 @2=abs:C-1 @8=rel:5f47b0 @13=rel:5f45e0 ; imm8->imm32 cmp esi, 0x29 = C-1
 CAVE 005f45f0 5 83f8577cf0 3d0000007f0f8cda455ff0e9e5455ff0 @1=abs:N @7=rel:5f45e5 @12=rel:5f45f5 ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 005f4ce0 10 8a442424888165210000 668b4424246689810000007fe9d94c5ff0 @8=abs:0x2165+(N-87)*0x34 @13=rel:5f4cea ; imm8->imm32 mov al, byte ptr [esp + 0x24] = TEXT
-CAVE 005f4df0 7 8804bdc29f3f07 668904bdc29f3f07e9ea4d5ff0 @9=rel:5f4df7 ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], al = TEXT
+CAVE 005f4df0 7 8804bdc29f3f07 668904bd0000007fe9ea4d5ff0 @4=abs:AIUREC+2 @9=rel:5f4df7 ; imm8->imm32 mov byte ptr [edi*4 + 0x73f9fc2], al = TEXT
 CAVE 005f5064 5 83f8297e5a 3d0000007f0f8eb8505ff0e959505ff0 @1=abs:C-1 @7=rel:5f50c3 @12=rel:5f5069 ; imm8->imm32 cmp eax, 0x29 = C-1
 CAVE 005f5151 9 83ff290f8f5e010000 81ff0000007f0f8fac525ff0e949515ff0 @2=abs:C-1 @8=rel:5f52b8 @13=rel:5f515a ; imm8->imm32 cmp edi, 0x29 = C-1
 CAVE 005f5bd5 5 83f82e7f35 3d0000007f0f8f045c5ff0e9ca5b5ff0 @1=abs:R+4 @7=rel:5f5c0f @12=rel:5f5bda ; imm8->imm32 cmp eax, 0x2e = R+4
@@ -1442,6 +1485,13 @@ CAVE 00697f48 5 83f8297e03 3d0000007f0f8e457f69f0e93d7f69f0 @1=abs:C-1 @7=rel:69
 CAVE 00697f9d 5 83f8575f5e 3d0000007f5f5ee9967f69f0 @1=abs:N @8=rel:697fa2 ; imm8->imm32 cmp eax, 0x57 = N
 CAVE 006983ec 5 83fe577ccf 81fe0000007f0f8cb48369f0e9e08369f0 @2=abs:N @8=rel:6983c0 @13=rel:6983f1 ; imm8->imm32 cmp esi, 0x57 = N
 CAVE 006998f4 9 83ff570f8dc9000000 81ff0000007f0f8dba9969f0e9ec9869f0 @2=abs:N @8=rel:6999c6 @13=rel:6998fd ; imm8->imm32 cmp edi, 0x57 = N
+CAVE 006a3fd0 7 5355565783ceff 5251b80000007fffd083c4045a89c15355565783ceffe9bc3f6af0 @3=abs:SNAPSHADOW @23=rel:6a3fd7 ; imm8->imm32 push ebx = TEXT
+CAVE 006a4020 6 8b44240485c0 5251b80000007fffd083c4045a89c18b44240485c0e90c406af0 @3=abs:SNAPSHADOW @22=rel:6a4026 ; imm8->imm32 mov eax, dword ptr [esp + 4] = TEXT
+CAVE 006a40a0 8 33c081c184b50100 5251b80000007fffd083c4045a89c131c081c184b50100e98c406af0 @3=abs:SNAPSHADOW @24=rel:6a40a8 @19=abs:4+U*0x70 ; imm8->imm32 xor eax, eax = TEXT
+CAVE 006a40d0 9 8b4424043de8030000 5251b80000007fffd083c4045a89c18b4424043de8030000e9bc406af0 @3=abs:SNAPSHADOW @25=rel:6a40d9 @20=abs:U ; imm8->imm32 mov eax, dword ptr [esp + 4] = TEXT
+CAVE 006a40f0 6 8b54240433c0 5251b80000007fffd083c4045a89c18b54240433c0e9dc406af0 @3=abs:SNAPSHADOW @22=rel:6a40f6 ; imm8->imm32 mov edx, dword ptr [esp + 4] = TEXT
+CAVE 006a4200 6 51538b5c2410 5251b80000007fffd083c4045a89c151538b5c2410e9ec416af0 @3=abs:SNAPSHADOW @22=rel:6a4206 ; imm8->imm32 push ecx = TEXT
+CAVE 006a44d0 5 5355568be9 5251b80000007fffd083c4045a89c15355568be9e9bc446af0 @3=abs:SNAPSHADOW @21=rel:6a44d5 ; imm8->imm32 push ebx = TEXT
 CAVE 006a5576 5 83c057eb03 050000007fe974556af0e96c556af0 @1=abs:N @6=rel:6a557e @11=rel:6a557b ; imm8->imm32 add eax, 0x57 = N
 CAVE 0072ee9d 7 6a2a6848020000 680000007f6848020000e995ee72f0 @1=abs:C @11=rel:72eea4 ; imm8->imm32 push 0x2a = C
 CAVE 007319ed 7 6a2a688c000000 680000007f688c000000e9e51973f0 @1=abs:C @11=rel:7319f4 ; imm8->imm32 push 0x2a = C
@@ -1453,6 +1503,14 @@ REWRITE 005f86ea 11 69c0d400000005c0613f07 69c00000007f050001007f @2=abs:((R+36)
 REWRITE 00479815 179 8dbd94000000bb020000008b460885c075108b466885c074098bcee8eb0ffcff3107837e08016a048bce577507e8d966ffffeb05e83269ffff837e080175108b466885c074098bcee8be0ffcff310783c7044b75b68dbd9c000000bb02000000bd010000008d9b000000008b460885c075108b466885c074098bcee88b0ffcff3107396e086a048bce577507e87a66ffffeb05e8d368ffff396e0875108b466885c074098bcee8600ffcff310783c7044b75b8 8b4424145056b80000007fffd083c408bd010000009090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090 @7=abs:SER_AIM ; [M8] AI serializer: force record bit sets -> AIM0 / AIM1 rows
 REWRITE 00680190 80 568bf18b4c240885c97c3083f92f7d2b8bc19983e21f03c2c1f8058d44860485c0741881e11f00008079054983c9e0418b00d3e85e83e001c2040033c05ec20400cccccccccccccccccccccccccccccc 8b4c240481f90001007f730e0fa30d0000007f19c0f7d8c2040031c0c2040090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090 @6=abs:R+5 @15=abs:FBITS ; [M8] flag bitset<F>: test on FBITS
 REWRITE 006801e0 84 568b74240885f67c4783fe2f7d428bc69983e21f03c2c1f8058d44810485c0742f81e61f00008079054e83cee0468bce8b30ba01000000d3e2f7d223f289308bd68b74240c8b3683e601d3e60bf289305ec20800 8b4c240481f90001007f731a8b442408f60001740a0fab0d0000007fc208000fb30d0000007fc2080090909090909090909090909090909090909090909090909090909090909090909090909090909090909090 @6=abs:R+5 @24=abs:FBITS @34=abs:FBITS ; [M8] flag bitset<F>: set on FBITS
+REWRITE 0056f8d7 6 8dae805e0000 bd0000007f90 @1=abs:UPOOL ; [M9] unit view manager ctor: node pool -> UPOOL
+REWRITE 0056f98e 6 8d8f805e0000 b90000007f90 @1=abs:UPOOL ; [M9] unit view manager: node pool -> UPOOL
+REWRITE 0056f9d4 6 8d8f805e0000 b90000007f90 @1=abs:UPOOL ; [M9] unit view manager: node pool -> UPOOL
+REWRITE 0056fd2b 6 8d8f805e0000 b90000007f90 @1=abs:UPOOL ; [M9] unit view manager: node pool -> UPOOL
+REWRITE 0056f25d 6 8b86608d0000 a10000007f90 @1=abs:UPOOL+U*0xc+4 ; [M9] unit view manager: pool used head -> UPOOL
+REWRITE 0056f9f7 6 8bb9608d0000 8b3d0000007f @2=abs:UPOOL+U*0xc+4 ; [M9] unit view manager: pool used head -> UPOOL
+REWRITE 0056fbd9 6 8b9d608d0000 8b1d0000007f @2=abs:UPOOL+U*0xc+4 ; [M9] unit view manager: pool used head -> UPOOL
+REWRITE 0056fdc9 6 8b9f608d0000 8b1d0000007f @2=abs:UPOOL+U*0xc+4 ; [M9] unit view manager: pool used head -> UPOOL
 REWRITE 0054fb99 77 ba070000008bff3928750589388948fc3968147506897814894810396828750689782889482439683c750689783c894838396850750689785089484c396864750689786489486083c0784a75ba ba0000007f3928750589388948fc83c0144a75f1909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090 @1=abs:C ; SetupS value struct (0x10a8, init 0x551460: forces 8x0x1c@+0
 REWRITE 0058c3dd 19 8bfaf3ab33ed33ff8d7208eb068d9b00000000 bf0000007ff3ab31ed31ffbe0001007f909090 @1=abs:AIBLD16 @12=abs:AIBLD16+8 ; global AI object 0x96a59d8 (vtbl 0x84a918, ctor 0x57da70): 8
 REWRITE 0058c452 12 8b54300c8d44300c03d18910 01880000007f909090909090 @2=abs:AIBLD16+0xc ; global AI object 0x96a59d8 (vtbl 0x84a918, ctor 0x57da70): 8

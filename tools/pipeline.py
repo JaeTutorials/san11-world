@@ -66,6 +66,7 @@ DEFAULT_PROJECT = {
     "data_name": "world_custom",        # 游戏目录里的数据目录名
     "cities": 500,                      # 城市总数（含光荣的 42 座），42~1000
     "forces": 42,                       # 常规势力（= 常规军团）数，42~249 且不超过城市数；另有 4 个异族和 1 个贼（M8_FORCES.md）
+    "units": 1000,                      # 地图上部队数上限，1000~30000（光荣是 1000，M9_UNITS.md）
     "spacing": 14,                      # 城市最小间距（格），光荣中国约 13~21
     "exe": "san11pk_world.exe",         # 用哪个启动程序玩（它在 worldmod.ini 里有同名的一节）
     "save_dir": "",                     # 存档目录（空 = 游戏默认的「我的文档」）
@@ -208,6 +209,9 @@ def build_world(cfg, fresh=False, reselect=False, log=say):
     R = int(cfg.get("forces", 42))
     if not 42 <= R <= min(249, C):
         raise StepError(f"forces 要在 42~{min(249, C)} 之间（最多 249，且不超过城市数 {C}）（{R}）")
+    U = int(cfg.get("units", 1000))
+    if not 1000 <= U <= 30000:
+        raise StepError(f"units 要在 1000~30000 之间（{U}）")
     for f in ("china_shex.npy", "china_k3st_v.npy"):
         if not (DATA / f).exists():
             raise StepError(f"缺少 data/{f}：先运行  python san11kit.py setup")
@@ -238,7 +242,7 @@ def build_world(cfg, fresh=False, reselect=False, log=say):
         shutil.copy2(world / f, dst / f)
     info = json.loads((world / "world_info.json").read_text())
     values = {"world_terrain": 1, "data_dir": cfg["data_name"], "width": info["cols"], "height": info["rows"],
-              "china_x": info["china_hi"], "china_y": info["china_lo"], "bases": 1, "cities": C, "forces": R, "auto_skip": 1}
+              "china_x": info["china_hi"], "china_y": info["china_lo"], "bases": 1, "cities": C, "forces": R, "units": U, "auto_skip": 1}
     if cfg.get("save_dir"):
         values["save_dir"] = cfg["save_dir"]
     ini_set(g, section_of(cfg), values, log)

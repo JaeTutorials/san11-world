@@ -22,4 +22,4 @@ struct Bases {
 };
 
 // C = number of cities (42..1000). dir: data directory (bases_tables.bin)
-bool basesSetup(int C, const wchar_t* dir, Bases& b, TraceLogFn log);
+bool basesSetup(int C, int U, const wchar_t* dir, Bases& b, TraceLogFn log);

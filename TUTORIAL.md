@@ -324,6 +324,15 @@ DLL 用 `VirtualAlloc` 按 W×H 分配，补丁把所有引用改到新地址。
   文件里的字节势力号按无符号读（0xff = 无），R 最多 249（F ≤ 254，势力号还放得进一个字节）且不超过城市数。
   R=200 测过新游戏、过回合、存读档。细节和剩下的限制见 `M8_FORCES.md`。
 
+### 6.9 部队上限（M9）
+
+地图上的部队是 world 里固定的 1000 条记录（world+0x169730，每条 0xf4），后面紧跟着别的对象，原地放不大。做法和势力
+一样：记录搬到 DLL（U 条，ini `units=`），按部队开的其它数据一起搬——AI 子对象里每部队 4 字节、AI 运行对象里每部队
+一个 int、中地圖界面里的部队标记、部队显示管理器里每部队 0x10 的包装和链表节点池、出征对话框栈上的部队快照；
+580 个 999/1000 常量审查后改了 104 处。存档里的部队条数写进文件头（`'U'`+R+U），读的时候按文件里的条数读，
+所以 U 改大后旧存档还能读。测试中发现：只构造没重置的部队记录全是 0，会被当成统帅为 0 号武将的活部队，读档后要把
+文件里没有的那些记录逐条重置。U=5000 和 U=30000 都测过 AI 出兵、存读档。细节见 `M9_UNITS.md`。
+
 ## 7. 第五步：稳定性——两个典型崩溃
 
 调试时最有用的是这几样工具（都在 worldmod 里，用 `worldmod.ini` 打开）：
@@ -526,6 +535,7 @@ python tools/editor/server.py [--world data/world] [--game G:/San11PK] [--out wo
 | `tools/scenario_build.py`、`scenarios/` | 剧本编译器：用 JSON 写势力、武将、城市归属 |
 | `tools/connect_cities.py` | 沿城市连线修路（主径、栈道、渡所），报告走不到的城 |
 | `M8_FORCES.md`、`m8_review/`、`tools/patchgen/m8_sites.py`、`worldmod/src/forces.cpp` | 势力 / 军团上限（常规势力 R ≤ 249 且 ≤ 城市数）：审查结果、搬迁清单、DLL 侧的表和替换函数 |
+| `M9_UNITS.md`、`m9_review/`、`tools/patchgen/m9_sites.py`、`worldmod/src/units.cpp` | 部队上限（U，1000~30000）：审查结果、搬迁清单、DLL 侧的数组 |
 | `tools/add_force.py`、`tools/forces/*.json` | 往转换后的剧本里加势力、武将、国号 |
 | `tools/editor/` | 地图和城市编辑器 |
 | `tools/gamectl.py`、`profile_report.py` | 测试与分析 |

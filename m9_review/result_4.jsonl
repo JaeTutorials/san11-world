@@ -1,0 +1,97 @@
+{"addr": "0x5e933d", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Score weight added to a per-city stack array inside a loop over 42 cities (esi<0x2a); gameplay score."}
+{"addr": "0x5e94ef", "value": "2000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Same per-city score switch (weights 0x44c..0x7d0) in loop over 42 cities; gameplay score."}
+{"addr": "0x5ea223", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = max city gold ([city+0x44]+[edi+0x14]) from loop over 42 bases; gold threshold."}
+{"addr": "0x5ec440", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "Loop ebx=0..999 calling unit getter 0x490e70(ebx) at 0x5ec3d9."}
+{"addr": "0x5ed061", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "(troops+999)/1000*1000 round-up of [obj vt+0x50] troops; rounding."}
+{"addr": "0x5ed07a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "*1000 of the same round-up; troops rounded to thousands (min 5000)."}
+{"addr": "0x5ed377", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Round-up (x+999)/1000*1000 of computed troop share; rounding."}
+{"addr": "0x5ed392", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "*1000 of the same round-up; rounding."}
+{"addr": "0x5ee82a", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = troops of base param (vt+0x50); skip if troops < 1000."}
+{"addr": "0x5eead4", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "Loop edi=0..999 calling unit getter 0x490e70(edi) at 0x5eea97, collects units of a force."}
+{"addr": "0x5eec70", "value": "1001", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 1001 to 0x472150 = random(n) -> rand 0..1000 troop jitter."}
+{"addr": "0x5eec8f", "value": "1001", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Second random(1001) call (0x472150); gameplay randomness."}
+{"addr": "0x5eecda", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "(troop sum/2)/1000*1000 rounding of summed unit troops."}
+{"addr": "0x5eecf1", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "ebp = summed unit troops ([esp+0x34] sum of vt+0x50) + 1000; troop formula."}
+{"addr": "0x5eef49", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "[esp+0xbc] = troop count filled by 0x5e0580, require >= 1000 troops."}
+{"addr": "0x5eefc4", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "ecx = troop count clamped against base troops (vt+0x50); >= 1000 check."}
+{"addr": "0x5eeff8", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "ecx = troop count (half of base troops); >= 1000 check."}
+{"addr": "0x5ef217", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "esi = new unit id returned by [ecx]->vt+0x20 (unit create); 0..999 check then 0x490e70(esi) and per-unit AI array 0x73f9fc0[esi*4]."}
+{"addr": "0x5ef297", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "edx = unit id slot in AI plan list [plan+0x2168+i*4] (16 slots, read via 0x490e70 at 0x5eeba9); valid-id test 0..999."}
+{"addr": "0x5ef64c", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "esi = random count (0x472150) * 1000 -> troop amount."}
+{"addr": "0x5ef687", "value": "1001", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "random(1001) via 0x472150, troop amount jitter."}
+{"addr": "0x5ef6c2", "value": "5000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "random(5000)+15000 via 0x472150, troop amount cap."}
+{"addr": "0x5efacb", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "0x486950(type) value /1000*1000 rounding, summed and compared to troop need."}
+{"addr": "0x5efd88", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "[esp+0x60] amount = 1000 when AI gold [ebp+0x328c] >= 2000; gold amount."}
+{"addr": "0x5f0310", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "ecx = troop count to send (clamped to half base troops); >= 1000 check."}
+{"addr": "0x5f0945", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "edi = new unit id from [esi+4]->vt+0x20 (unit create); 0..999 check then writes 0x73f9fc0[edi*4] (per-unit AI array)."}
+{"addr": "0x5f2150", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Local gold threshold 1000 (food 5000) compared with base gold 0x486c80 / food 0x486df0."}
+{"addr": "0x5f30e0", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = base gold from 0x486c80 (city+0x44 / gate,port+0x28); gold >= 1000."}
+{"addr": "0x5f36d0", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = base gold 0x486c80; gold >= 1000."}
+{"addr": "0x5f3b2b", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "eax = base gold 0x486c80; gold >= 1000."}
+{"addr": "0x5f4178", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "+1000 bonus to person score from 0x5de300 when value >= 100; score."}
+{"addr": "0x5f4c07", "value": "3000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 3000 troops to 0x5f6470; then base troops (vt+0x50) >= 3000 check."}
+{"addr": "0x5f5c10", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "Loop ebx=0..999 calling unit getter 0x490e70(ebx) at 0x5f5b98."}
+{"addr": "0x5f6dbe", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "(value*byte[+0x56])/1000*1000 rounding of an amount; permille/rounding."}
+{"addr": "0x5f6e87", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "[obj+0x60] (object from 0x490c50) *1000 added to amount; quantity scale."}
+{"addr": "0x5f6e96", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Same [obj+0x60]*1000 added to second amount; quantity scale."}
+{"addr": "0x5f74fd", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "lea = random-based value + 1000, clamped to 1000..2500; gameplay amount."}
+{"addr": "0x5f7507", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Lower clamp 1000 of the same 1000..2500 value."}
+{"addr": "0x5f750e", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Returns 1000 as default/min of the 1000..2500 value."}
+{"addr": "0x5f80e3", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Minimum troops 1000 (3000 alt) compared to min(unit troops, person command); troop threshold."}
+{"addr": "0x5f810f", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "(6-[obj+0xfc])*1000 troop threshold."}
+{"addr": "0x5f87c8", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "Loop edi=0..999 calling unit getter 0x490e70(edi) at 0x5f8766."}
+{"addr": "0x5f9b0a", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "Loop edi=0..999 calling unit getter 0x490e70(edi) at 0x5f9aa7, sums troops."}
+{"addr": "0x5fc74a", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x5fcdaa", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x5fd588", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x5fe835", "value": "5000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 5000 = UI control id to 0x4d94c0 (set control text); UI."}
+{"addr": "0x5fe8e6", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x6008c2", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x602c5c", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x604712", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x604d98", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x6056f8", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x6069cd", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x608358", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60978d", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60a681", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60aca8", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60b05e", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60cc36", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60db16", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60dfc8", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60ea83", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x60f4db", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x611933", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x61230e", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x613a14", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x614864", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x615e6f", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Display percentage (x*200/y) clamped to 999 before formatting text; UI number clamp."}
+{"addr": "0x615e77", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Clamped display value 999 (with color); UI number clamp."}
+{"addr": "0x619361", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x624d78", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "eax = unit id picked by unit-list dialog 0x6a4640; 0..999 check then 0x490e70(eax)."}
+{"addr": "0x62eb10", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "eax = unit id from 0x4917c0(unit ptr); 0..999 check then +0x57 (N) to make a location id compared to person+0x9c."}
+{"addr": "0x63123c", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "Loop edi=0..999 calling unit getter 0x490e70(edi) at 0x631206."}
+{"addr": "0x633b90", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 1000 as arg to text/message vcall [0x9c20468]->vt+0x18 (with ftol value); UI parameter."}
+{"addr": "0x635de7", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "ebx = unit id param (arg2, passed from 0x638520 kind 0xb); 0..999 check then 0x490e70(ebx)."}
+{"addr": "0x635fda", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "Same unit id param ebx re-checked 0..999 to enable the dialog."}
+{"addr": "0x636cb3", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x6372dc", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x6385b2", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "ebx = picked object id for kind 0xb (unit; kind 5 uses 0x3fff), 0..999 check, passed to 0x635d80 which calls 0x490e70."}
+{"addr": "0x63b2c7", "value": "10000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "push 10000 as dialog close/result code to [this]->vt+0x1ac (sibling case pushes -2); UI message handler."}
+{"addr": "0x63b7bc", "value": "1001", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "UI widget init struct field (id 1001) for 0x4733a0, then added to dialog via 0x475590; UI id."}
+{"addr": "0x63bf59", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Portrait/face id from 0x48a450 taken mod 1000 (table 0x6fae8bb, 0..0x95f); not a unit."}
+{"addr": "0x63d464", "value": "1000", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "First threshold of a 1000..100000 level table (0x85963c) for a quantity; display level."}
+{"addr": "0x63e690", "value": "1000", "verdict": "UNIT", "role": "ARRAY_SIZE", "patch": "U", "encoding": "imm32", "note": "Ctor 0x63e5f0 init loop count of embedded per-unit array at obj+0x80310 (1000 x 0x20) in heap object vtable 0x859670 (new 0x8afb4 at 0x6375eb); must be relocated."}
+{"addr": "0x63ea28", "value": "1000", "verdict": "UNIT", "role": "ARRAY_SIZE", "patch": "U", "encoding": "imm32", "note": "Loop count over the per-unit array obj+0x80310 (1000 x 0x20, entry [0]=2,[4]=unit id) in 0x63e780; embedded in heap object 0x859670."}
+{"addr": "0x63f64e", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "Reverse loop ebp=999..0 over per-unit array obj+0x80310; companion lea edi,[esi+0x87ff0] (=0x80310+999*0x20) at 0x63f653 also depends on U; hit returns kind 0xb + unit id."}
+{"addr": "0x63fbe5", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "ebx = hovered object id of kind 0xb (unit); 0..999 check then 0x490e70(ebx)."}
+{"addr": "0x63feaf", "value": "1000", "verdict": "UNIT", "role": "UNIT_COUNT", "patch": "U", "encoding": "imm32", "note": "Loop edi=0..999 calling 0x490e70(edi) and filling per-unit array obj+0x80314+edi*0x20 (heap object 0x859670)."}
+{"addr": "0x642c13", "value": "999", "verdict": "UNIT", "role": "UNIT_MAX", "patch": "U-1", "encoding": "imm32", "note": "eax = unit id from 0x4917c0(unit ptr); 0..999 check then +0x57 (N) location compare with person+0x9c."}
+{"addr": "0x643f6a", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Display percentage (x*100/y) clamped to 999; UI number clamp."}
+{"addr": "0x643f72", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Clamped display value 999; UI number clamp."}
+{"addr": "0x64704e", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Display percentage clamped to 999; UI number clamp."}
+{"addr": "0x647056", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Clamped display value 999; UI number clamp."}
+{"addr": "0x649f90", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Display percentage (x*200/y) clamped to 999; UI number clamp."}
+{"addr": "0x649fa1", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Clamped display value 999; UI number clamp."}
+{"addr": "0x64a048", "value": "999", "verdict": "NOT", "role": "", "patch": "", "encoding": "imm32", "note": "Display percentage clamped to 999; UI number clamp."}

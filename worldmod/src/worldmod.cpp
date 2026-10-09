@@ -20,6 +20,7 @@
 #include "bases.h"
 #include "midmap.h"
 #include "forces.h"
+#include "units.h"
 
 // ---------------------------------------------------------------- logging
 static FILE* g_log = nullptr;
@@ -39,6 +40,7 @@ struct Config {
     int C = 42;                  // number of cities (Koei: 42); gates G=10 and ports P=35 follow, N = C+G+P bases
     int bases = 0;               // 1 = base-count patch set (worldmod_bases*.txt, bases.cpp): cities = C
     int R = 42;                  // regular forces = regular corps (forces.cpp, M8_FORCES.md); forces = corps = R + 5
+    int U = 1000;                // units (部队) on the map (units.cpp, M9_UNITS.md); locations N..N+U-1 are units
     int X0 = 0, Y0 = 0;          // where the original 200x200 China map sits in the world (Y0 must be even)
     int enable = 1;              // 0 = proxy only, no patches
     int verifyOnly = 0;          // 1 = check patch table against exe bytes, write nothing
@@ -54,6 +56,7 @@ struct Config {
     int objListLock = 1;         // serialize the object manager's list operations (loader thread vs main thread)
     int modelGuard = 1;          // skip the unit model rebuild callback for units without a model (0x5a03e0)
     int getterCheck = 0;         // debug: log gate / port getter calls with an out-of-range index and their call sites
+    int unitFirst = 0;           // debug (M9 tests): new units take the first free id from this one on
     int astarStats = 0;          // debug: time every A* call (0x567520) and log the slow ones
     int astarMode = 3;           // A*: 0 original, 1 binary heap (same results), 2 + 2x heuristic, 3 + search window
     int astarMargin = 100;       // A* mode 3: search window margin in hexes
@@ -78,6 +81,7 @@ static void loadConfig() {
     g_cfg.C = GetPrivateProfileIntW(g_section, L"cities", 42, ini);
     g_cfg.bases = GetPrivateProfileIntW(g_section, L"bases", 0, ini);
     g_cfg.R = GetPrivateProfileIntW(g_section, L"forces", 42, ini);
+    g_cfg.U = GetPrivateProfileIntW(g_section, L"units", 1000, ini);
     g_cfg.X0 = GetPrivateProfileIntW(g_section, L"china_x", 0, ini);
     g_cfg.Y0 = GetPrivateProfileIntW(g_section, L"china_y", 0, ini);
     g_cfg.enable = GetPrivateProfileIntW(L"mod", L"enable", 1, ini);
@@ -104,6 +108,7 @@ static void loadConfig() {
     g_cfg.objListLock = GetPrivateProfileIntW(g_section, L"objlist_lock", 1, ini);
     g_cfg.modelGuard = GetPrivateProfileIntW(g_section, L"model_guard", 1, ini);
     g_cfg.getterCheck = GetPrivateProfileIntW(g_section, L"getter_check", 0, ini);
+    g_cfg.unitFirst = GetPrivateProfileIntW(g_section, L"unit_first", 0, ini);
     g_cfg.watchLo = GetPrivateProfileIntW(g_section, L"watch_lo", -1, ini);
     g_cfg.watchHi = GetPrivateProfileIntW(g_section, L"watch_hi", -1, ini);
     g_cfg.watchMirror = GetPrivateProfileIntW(g_section, L"area_mirror", 1, ini);
@@ -160,6 +165,7 @@ struct Eval {
         if (is("P")) return 35;
         if (is("N")) return g_cfg.C + 45;
         if (is("R")) return g_cfg.R;
+        if (is("U")) return g_cfg.U;
         if (is("B20")) return (int64_t)(uintptr_t)g_world.hex20;
         if (is("E20")) return (int64_t)(uintptr_t)g_world.hex20 + W * H * 20;
         if (is("B28")) return (int64_t)(uintptr_t)g_world.hex28;
@@ -690,6 +696,24 @@ static void* __fastcall portGetter(uint8_t* world, int, int idx) {
     if (idx >= 0 && idx <= 34) return world + 0x6748 + idx * 0x90;
     if (idx != -1) noteBadIndex("port", idx, (uint32_t)(uintptr_t)_ReturnAddress());
     return nullptr;
+}
+static Units* g_units = nullptr;
+// debug (unit_first=N, M9 tests): the free unit search 0x491040 starts at id N (then wraps to 0), so new units use
+// ids beyond Koei's 1000 without a thousand units on the map
+typedef int(__thiscall* UnitBusyFn)(void*);
+static void* __fastcall findFreeUnitFrom(uint8_t*, int) {
+    int U = g_units->U;
+    for (int k = 0; k < U; k++) {
+        uint8_t* u = g_units->UNITARR + ((g_cfg.unitFirst + k) % U) * 0xf4;
+        if (!(*(UnitBusyFn*)(*(uint8_t**)u + 8))(u)) return u;
+    }
+    return nullptr;
+}
+static bool installUnitFirst() {
+    static const uint8_t head[] = { 0x56, 0x57, 0x33, 0xf6 };      // push esi; push edi; xor esi, esi
+    if (!g_units || memcmp((void*)0x491040, head, sizeof head)) return false;
+    writeJmp(0x491040, (void*)findFreeUnitFrom);
+    return true;
 }
 static bool installGetterCheck() {
     static const uint8_t gate[] = { 0x8b, 0x44, 0x24, 0x04, 0x85, 0xc0, 0x7c, 0x15, 0x83, 0xf8, 0x09 };
@@ -1447,6 +1471,8 @@ static void installMidmapHooks() {
 // Saves written in world mode already hold world positions.
 static void __stdcall translateLoaded(uint8_t* stream) {
     g_loadThreadId = GetCurrentThreadId();
+    int rdKind = *(int*)(stream + 0x54);           // M9: unit records the stream did not hold (not master data 4 / 0x18)
+    if (*(int*)(stream + 8) == 1 && g_units && rdKind != 4 && rdKind != 0x18) unitsResetTail(*g_units);
     if (*(int*)(stream + 8) != 1 || (!g_cfg.X0 && !g_cfg.Y0)) return;      // reading only
     int kind = *(int*)(stream + 0x54);
     bool chinaLocal = kind == 2 || kind == 3 || kind == 0x16 || kind == 0x17 || kind == 0x0C || kind == 0x1B;
@@ -1486,22 +1512,36 @@ __declspec(naked) static void loadedThunk() {
 static const uint32_t WIDE_MARK = 'EDIW';                 // bytes "WIDE"
 typedef int(__thiscall* HeaderIoFn)(void* hdr, void* stream);
 static HeaderIoFn g_hdrReadOrig = nullptr, g_hdrWriteOrig = nullptr;
-// M8: streams for more than 42 regular forces carry "WF" + u16 R instead (also wide)
-static uint32_t streamMark() { return g_forces && g_forces->R != 42 ? ('F' << 8 | 'W' | (uint32_t)g_forces->R << 16) : WIDE_MARK; }
+// M8: streams for more than 42 regular forces carry "WF" + u16 R instead (also wide).
+// M9: streams for more than 1000 units carry 'U' + u8 R + u16 U (also wide; R <= 249 fits the byte).
+static uint32_t streamMark() {
+    int R = g_forces ? g_forces->R : 42, U = g_units ? g_units->U : 1000;
+    if (U != 1000) return 'U' | (uint32_t)R << 8 | (uint32_t)U << 16;
+    return R != 42 ? ('F' << 8 | 'W' | (uint32_t)R << 16) : WIDE_MARK;
+}
 static int __fastcall hdrRead(uint8_t* hdr, void*, uint8_t* stream) {
     int r = g_hdrReadOrig(hdr, stream);
     uint32_t m = *(uint32_t*)(hdr + 0x30);
-    bool wf = (m & 0xffff) == ('F' << 8 | 'W');
-    if (g_bases && g_bases->IDWIDE) InterlockedExchange((LONG*)g_bases->IDWIDE, m == WIDE_MARK || wf);
-    int streamR = wf ? (int)(m >> 16) : 42;
-    uint32_t kind = *(uint32_t*)(hdr + 8);         // 4 / 0x18: master data (no forces)
-    if (g_forces && streamR != g_forces->R && m != 0 && kind != 4 && kind != 0x18)
+    bool wf = (m & 0xffff) == ('F' << 8 | 'W'), wu = (m & 0xff) == 'U';
+    if (g_bases && g_bases->IDWIDE) InterlockedExchange((LONG*)g_bases->IDWIDE, m == WIDE_MARK || wf || wu);
+    int streamR = wf ? (int)(m >> 16) : wu ? (int)(m >> 8 & 0xff) : 42;
+    int streamU = wu ? (int)(m >> 16) : 1000;
+    uint32_t kind = *(uint32_t*)(hdr + 8);         // 4 / 0x18: master data (no forces, no units)
+    bool master = kind == 4 || kind == 0x18;
+    if (g_forces && streamR != g_forces->R && m != 0 && !master)
         logf("ERROR: this file was made for %d regular forces, the game runs %d (worldmod.ini forces=): it will not load correctly", streamR, g_forces->R);
+    if (g_units) {
+        int U = g_units->U;
+        if (streamU > U && !master)
+            logf("ERROR: this file holds %d units, the game runs %d (worldmod.ini units=): it will not load correctly", streamU, U);
+        *g_units->USTREAM = streamU < U ? streamU : U;    // older saves: 1000 records, the rest stay empty
+    }
     return r;
 }
 static int __fastcall hdrWrite(uint8_t* hdr, void*, uint8_t* stream) {
     *(uint32_t*)(hdr + 0x30) = streamMark();
     if (g_bases && g_bases->IDWIDE) InterlockedExchange((LONG*)g_bases->IDWIDE, 1);
+    if (g_units) *g_units->USTREAM = g_units->U;
     return g_hdrWriteOrig(hdr, stream);
 }
 
@@ -1584,6 +1624,7 @@ static void installHooks() {
     if (g_cfg.objListLock) logf("object list lock: %s", installObjListLock() ? "installed" : "NOT installed (unexpected code)");
     if (g_cfg.modelGuard) logf("unit model update guard: %s", installModelGuard() ? "installed" : "NOT installed (unexpected code)");
     if (g_cfg.getterCheck) logf("gate/port getter check: %s", installGetterCheck() ? "installed" : "NOT installed (unexpected code)");
+    if (g_cfg.unitFirst > 0) logf("unit_first=%d: %s", g_cfg.unitFirst, installUnitFirst() ? "installed" : "NOT installed (unexpected code)");
     logf("hooks installed (hexCtor, shex=%s, hex28 dirty-page clear=%s)", g_shexOrig ? "yes" : "no", clear ? "yes" : "no");
     PathfindConfig pf = {};
     pf.mode = g_cfg.astarMode; pf.margin = g_cfg.astarMargin; pf.benchSlow = g_cfg.astarBenchSlow; pf.benchGoal = g_cfg.astarBenchGoal; pf.stats = g_cfg.astarStats; pf.verify = g_cfg.astarVerify; pf.benchable = g_cfg.automation;
@@ -1727,8 +1768,16 @@ static void init() {
     int bad = loadPatches(L"worldmod_patches.txt");
     bad += loadCaves(L"worldmod_caves.txt", false);
     if (g_cfg.bases) {
+        static Units un;
+        if (!unitsSetup(g_cfg.U, un, logf)) { logf("ERROR: unit arrays could not be set up. Patches disabled."); return; }
+        g_units = &un;
+        g_cfg.U = un.U;                    // the patch expressions use the count unitsSetup accepted
+        struct { const char* n; const void* v; } usyms[] = {
+            { "UNITARR", un.UNITARR }, { "AIUREC", un.AIUREC }, { "USTREAM", un.USTREAM }, { "UWRAP", un.UWRAP },
+            { "UPOOL", un.UPOOL }, { "SNAPSHADOW", (void*)snapShadow } };
+        for (auto& e : usyms) Eval::add(e.n, e.v);
         static Bases b;
-        if (!basesSetup(g_cfg.C, g_cfg.dataDir, b, logf)) { logf("ERROR: base arrays could not be set up. Patches disabled."); return; }
+        if (!basesSetup(g_cfg.C, g_cfg.U, g_cfg.dataDir, b, logf)) { logf("ERROR: base arrays could not be set up. Patches disabled."); return; }
         g_bases = &b;
         struct { const char* n; const void* v; } syms[] = {
             { "CITYARR", b.CITYARR }, { "AIBASE", b.AIBASE }, { "AICITY", b.AICITY }, { "AIUNIT", b.AIUNIT },

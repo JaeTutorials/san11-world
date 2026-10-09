@@ -62,7 +62,13 @@ for f in sorted(glob.glob(f'{PROJ}/m8_review/result_*.jsonl')):
         elif r['verdict'] == 'FORCE' and r.get('patch') and int(r['addr'], 16) not in M8_SKIP:
             m8_force.append(dict(r, patch=re.sub(r'\bC\b', 'R', r['patch'])))
 review += m8_city
-struct_rows = [json.loads(l) for l in open(f'{PROJ}/m7_struct_sites.jsonl', encoding='utf-8') if l.strip()]
+# M9 (M9_UNITS.md): the unit count U (Koei: 1000). The M7 location bounds N+999 (last unit location) follow U.
+M9_UNIT_SITES = True
+if M9_UNIT_SITES:
+    for r in review:
+        if r.get('patch') == 'N+999':
+            r['patch'] = 'N+U-1'
+struct_rows =[json.loads(l) for l in open(f'{PROJ}/m7_struct_sites.jsonl', encoding='utf-8') if l.strip()]
 # follow-up pass after the C=210 tests (M7_LAYOUT.md §11a)
 struct_rows += [json.loads(l) for l in open(f'{PROJ}/m7_struct_sites_extra.jsonl', encoding='utf-8') if l.strip()]
 
@@ -82,6 +88,12 @@ for r in struct_rows:
         r['expr'] = e.replace('BLD_U8', '0x490d00', 1)
     elif r['kind'] == 'opcode' and e == '0xb6' and r['insn'].startswith('movsx') and 'byte ptr' in r['insn']:
         r['expr'] = '0xbf'                       # movsx r32, byte -> movsx r32, word
+
+if M9_UNIT_SITES:                     # MapUI: the unit markers move to the end of the object (m9_sites.py)
+    for r in struct_rows:
+        if r['va'] == '0x6375e6':
+            assert r['expr'] == '0x8afb4+(N-87)*0x8c', r['expr']
+            r['expr'] += '+U*0x20'
 
 # fields replaced by structural rows
 overridden = set()
@@ -150,6 +162,27 @@ if M8_FORCE_SITES:
         add_field(va, locate(va, old, size), size, norm(expr), f'[M8] {comment}')
     for start, length, text, comment in m8_sites.REWRITE:
         rewrites.append((start, length, text, None, f'[M8] {comment}'))
+# ---- M9 (M9_UNITS.md): unit count constants (m9_review, values 999 / 1000 and sizes, all imm32 or re-encoded)
+# and the relocation of the unit storage (m9_sites.py)
+if M9_UNIT_SITES:
+    import m9_sites
+    for f in sorted(glob.glob(f'{PROJ}/m9_review/result_*.jsonl')):
+        for l in open(f, encoding='utf-8'):
+            if not l.strip():
+                continue
+            r = json.loads(l)
+            va = int(r['addr'], 16)
+            if r['verdict'] != 'UNIT' or not r.get('patch') or va in m9_sites.SKIP:
+                continue
+            expr = norm(r['patch'])
+            if r['encoding'] == 'imm32':
+                add_field(va, locate(va, int(str(r['value']), 0), 4), 4, expr, f"[M9 {r['role']}] {insn[va][1]} {insn[va][2]}")
+            else:
+                widen[va] = expr
+    for va, old, size, expr, comment in m9_sites.FIELD:
+        add_field(va, locate(va, old, size), size, norm(expr), f'[M9] {comment}')
+    for start, length, text, comment in m9_sites.REWRITE:
+        rewrites.append((start, length, text, None, f'[M9] {comment}'))
 # found in testing (an officer marched out of a new city): unit index <-> person location (+0x9c = N + unit)
 # sites the review missed. Encoders and decoders must all use N, or a marching officer reads as being in city 87+k.
 WIDEN_TEXT = {0x4a1c47: ('N', 'lea esi, [eax + {N}]'),        # unit formation 0x4a1bd0: officers' location
@@ -196,8 +229,15 @@ PHASE_C_TEXT = {
     0x5f4ce4: f'mov word ptr [ecx + {PLAN1}], ax',
 }
 for va, text in PHASE_C_TEXT.items():
+    if M9_UNIT_SITES:                           # the AI unit records moved to AIUREC (m9_sites.py)
+        text = text.replace('0x73f9fc2', '{AIUREC+2}')
     widen[va] = 'TEXT'
     WIDEN_TEXT[va] = (None, text)
+if M9_UNIT_SITES:                               # M9 stream record counts (re-encoded in caves)
+    for va, old, new in m9_sites.CAVE_TEXT:
+        assert f'{insn[va][1]} {insn[va][2]}' == old, (hex(va), old)
+        widen[va] = 'TEXT'
+        WIDEN_TEXT[va] = (None, new)
 if M8_FORCE_SITES:                              # M8 stack arrays, bit-set rows, code clamps (re-encoded in caves)
     for va, old, new in m8_sites.STACK + m8_sites.CAVE_TEXT:
         assert f'{insn[va][1]} {insn[va][2]}' == old, (hex(va), old)

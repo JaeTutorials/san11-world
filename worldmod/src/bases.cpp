@@ -155,7 +155,7 @@ bool loadTables(const wchar_t* dir, int C, Bases& b) {
 
 }  // namespace
 
-bool basesSetup(int C, const wchar_t* dir, Bases& b, TraceLogFn log) {
+bool basesSetup(int C, int U, const wchar_t* dir, Bases& b, TraceLogFn log) {
     g_log = log;
     const int N = C + 45, oldC = 42, oldN = 87;
     if (C < oldC || C > 1000) { if (log) log("bases: invalid city count %d (42..1000)", C); return false; }
@@ -164,7 +164,7 @@ bool basesSetup(int C, const wchar_t* dir, Bases& b, TraceLogFn log) {
     b.CITYARR = alloc(C * 0x248);           copyOld(b.CITYARR, 0x7201b30, oldC * 0x248, C * 0x248);
     b.AIBASE = alloc(N * 0x34);             copyOld(b.AIBASE, 0x73f8e14, oldN * 0x34, N * 0x34);
     b.AICITY = alloc(A4(C * 0x21 + 2));     copyOld(b.AICITY, 0x73faf60, A4(oldC * 0x21 + 2), A4(C * 0x21 + 2));
-    b.AIUNIT = alloc(0xfa0);                copyOld(b.AIUNIT, 0x99c8a6c, 0xfa0, 0xfa0);
+    b.AIUNIT = alloc(U * 4);                copyOld(b.AIUNIT, 0x99c8a6c, 0xfa0, U * 4);    // one int per unit (M9)
     b.AIBLD16 = alloc(N * 0x10);            copyOld(b.AIBLD16, 0x96a5a30, oldN * 0x10, N * 0x10);
     b.AREAHEX = alloc(4 + N * 0x44);        copyOld(b.AREAHEX, 0x96a9350, 4 + oldN * 0x44, 4 + N * 0x44);
     size_t bits = 4 * (((C + 31) >> 5) > 2 ? ((C + 31) >> 5) : 2);
