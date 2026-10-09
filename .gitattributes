@@ -5,3 +5,4 @@
 *.npy binary
 *.bin binary
 *.dll binary
+*.jpg binary
