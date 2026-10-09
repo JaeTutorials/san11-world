@@ -8,6 +8,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 #include "units.h"
 
 namespace {
@@ -27,6 +29,7 @@ struct Shadow { uint8_t* self; uint8_t* buf; };
 Shadow g_shadow[16];
 int g_nshadow = 0, g_nextShadow = 0;
 size_t g_shadowSize = 0;
+Units* g_u = nullptr;
 
 }  // namespace
 
@@ -54,6 +57,7 @@ bool unitsSetup(int U, Units& u, TraceLogFn log) {
     g_log = log;
     g_shadowSize = 4 + (size_t)U * 0x74;
     if (!u.UNITARR || !u.AIUREC || !u.UWRAP || !u.UPOOL) { if (log) log("units: allocation failed"); return false; }
+    g_u = &u;
     if (log) log("units: U=%d, arrays allocated (UNITARR %p, AIUREC %p)", U, u.UNITARR, u.AIUREC);
     return true;
 }
@@ -65,4 +69,30 @@ void unitsResetTail(const Units& u) {
         uint8_t* vt = *(uint8_t**)p;
         if (vt) (*(UnitResetFn*)(vt + 0x20))(p, 0);
     }
+}
+
+int unitsClone(int src, const char* path) {
+    if (!g_u || src < 0 || src >= g_u->U) return -1;
+    FILE* f = nullptr;
+    if (fopen_s(&f, path, "r") || !f) return -2;
+    const uint8_t* s = g_u->UNITARR + (size_t)src * UNIT_SIZE;
+    const uint32_t PERS = 0x720DA14, PSIZE = 0x190;
+    int n = 0, dst, leader, copyFrom, corps, home, status, lo, hi, loc;
+    while (fscanf_s(f, "%d %d %d %d %d %d %d %d %d", &dst, &leader, &copyFrom, &corps, &home, &status, &lo, &hi, &loc) == 9) {
+        if (dst < 0 || dst >= g_u->U || dst == src || leader < 0 || leader >= 1100) continue;
+        uint8_t* p = (uint8_t*)(uintptr_t)(PERS + leader * PSIZE);
+        if (copyFrom >= 0) memcpy(p + 4, (void*)(uintptr_t)(PERS + copyFrom * PSIZE + 4), PSIZE - 4);
+        if (corps >= 0) { *(int*)(p + 0x94) = corps; *(int*)(p + 0x98) = home; *(int*)(p + 0xa0) = status; }
+        uint8_t* d = g_u->UNITARR + (size_t)dst * UNIT_SIZE;
+        memcpy(d + 4, s + 4, UNIT_SIZE - 4);                   // the vtable stays
+        *(int*)(d + 0x10) = -1; *(int*)(d + 0x14) = -1;       // no deputies
+        *(int16_t*)(d + 0x3c) = (int16_t)lo; *(int16_t*)(d + 0x3e) = (int16_t)hi;
+        *(int16_t*)(d + 0x38) = -1; *(int16_t*)(d + 0x3a) = -1;
+        memset(g_u->AIUREC + dst * 4, 0xff, 4);                // no AI record yet (as after a reset)
+        *(int*)(d + 0xc) = leader;                             // last: makes the record a live unit (force = leader's)
+        *(int*)(p + 0x9c) = loc;                               // the leader is in the unit
+        n++;
+    }
+    fclose(f);
+    return n;
 }

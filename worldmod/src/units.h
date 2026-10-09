@@ -19,3 +19,8 @@ bool unitsSetup(int U, Units& u, TraceLogFn log);
 // after a stream has been read (0x493BCE): records USTREAM..U-1 got no data, reset them as the serializer resets
 // the ones it reads (vtable+0x20); constructed but never reset, a record passes for a live unit led by person 0
 void unitsResetTail(const Units& u);
+
+// debug (automation "unitclone <src> <file>", M9 tests): copy live unit src into the slots listed in the file, one
+// "dst leader copyFrom corps home status lo hi location" per line: the leader's record is first copied from person
+// copyFrom (if >= 0) and joins corps / home base / status (if corps >= 0); its location becomes the unit
+int unitsClone(int src, const char* path);

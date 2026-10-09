@@ -32,6 +32,7 @@
 #include "profiler.h"
 #include "pathfind.h"
 #include "radar.h"
+#include "units.h"
 
 namespace {
 
@@ -371,6 +372,8 @@ void run(char* line, FILE* out) {
                 window(), rc.right, rc.bottom, g_nCursor, g_nAsync, g_nKeyState, g_nFg);
     }
     else if (!strcmp(cmd, "mem") && sscanf_s(line, "%*s %x %d", (unsigned*)&a, &b) == 2) dumpMem(out, (uint32_t)a, b > 4096 ? 4096 : b);
+    else if (!strcmp(cmd, "unitclone") && sscanf_s(line, "%*s %d %259[^\r\n]", &a, arg, (unsigned)sizeof arg) == 2)
+        fprintf(out, "unitclone: %d\n", unitsClone(a, arg));       // debug (M9 tests): units.cpp
     else if (!strcmp(cmd, "radardump") && sscanf_s(line, "%*s %259[^\r\n]", arg, (unsigned)sizeof arg) == 1)
         fprintf(out, "radardump: %d\n", radarDump(arg));
     else if (!strcmp(cmd, "poke") && sscanf_s(line, "%*s %x %x", (unsigned*)&a, (unsigned*)&b) == 2) {   // poke <addr> <dword>, hex
