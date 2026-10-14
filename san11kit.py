@@ -54,7 +54,7 @@ def cmd_doctor(a):
         print(("  [好] " if good else "  [缺] ") + text + ("" if good or not fix else f"\n        → {fix}"))
     print("Python 和库：")
     line(sys.version_info >= (3, 9), f"Python {sys.version.split()[0]}", "需要 Python 3.9 或更新")
-    for mod in ("numpy", "scipy", "shapefile", "tifffile", "PIL"):
+    for mod in ("numpy", "scipy", "shapefile", "tifffile", "imagecodecs", "PIL"):
         try:
             __import__(mod)
             line(True, mod)

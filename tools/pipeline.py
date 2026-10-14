@@ -174,7 +174,12 @@ def prepare_dem(log=say):
     import numpy as np
     import tifffile
     log("转换 ETOPO 高程数据（约 1 分钟）……")
-    a = tifffile.imread(ETOPO_TIF)
+    try:
+        a = tifffile.imread(ETOPO_TIF)
+    except ValueError as e:                      # Predictor=3 (浮点预测) 没有 imagecodecs 解不了
+        if "imagecodecs" in str(e):
+            raise StepError("读高程数据需要 imagecodecs 库：运行  pip install imagecodecs  （或 pip install -r requirements.txt）后再试")
+        raise
     np.save(ETOPO_NPY, np.round(a).astype(np.int16))
     log(f"已写入 {ETOPO_NPY}")
 
